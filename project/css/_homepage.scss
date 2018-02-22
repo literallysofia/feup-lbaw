@@ -1,0 +1,44 @@
+html,
+body {
+    font-family: $font-body;
+    color: $black;
+}
+
+body { 
+    padding-top: 80px; 
+}
+
+nav {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+    background-color: $white;
+    .navbar-brand {
+        font-family: $font-title;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+    &.navbar-light {
+        .navbar-nav .nav-link {
+            font-family: $font-title;
+            font-weight: 500;
+            color: $black;
+            &:hover {
+                color: $medium-grey;
+            }
+        }
+        .navbar-toggler {
+            border: none;
+        }
+    }
+}
+
+footer {
+    .img-fluid{
+        max-height: 100px;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-expand-md .navbar-nav .nav-link {
+        padding: 0.5em 1em;
+    }
+}
