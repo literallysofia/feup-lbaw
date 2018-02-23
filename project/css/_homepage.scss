@@ -4,8 +4,9 @@ body {
     color: $black;
 }
 
-body { 
-    padding-top: 80px; 
+body {
+    padding-top: 80px;
+    background-color: $background;
 }
 
 nav {
@@ -32,8 +33,31 @@ nav {
 }
 
 footer {
-    .img-fluid{
+    font-family: $font-title;
+    background-color: $white;
+    .img-fluid {
         max-height: 100px;
+        margin-right: 1em;
+    }
+    .title {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1em;
+    }
+    .list-unstyled a {
+        color: $black;
+        font-size: 0.9em;
+        &:hover {
+            color: $medium-grey;
+            text-decoration: none;
+        }
+    }
+    p {
+        font-size: 0.9em;
+    }
+    .slogan {
+        font-weight: 700;
+        letter-spacing: 0.1em;
     }
 }
 
