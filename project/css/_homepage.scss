@@ -5,8 +5,21 @@ body {
 }
 
 body {
-    padding-top: 80px;
+    margin-top: 56px;
     background-color: $background;
+}
+
+main {
+    h1 {
+        font-family: $font-title;
+        font-weight: 700;
+        font-size: 1.5em;
+        margin: 2em 0;
+    }
+    .box {
+        background-color: $white;
+        padding: 1.5em;
+    }
 }
 
 nav {
