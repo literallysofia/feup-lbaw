@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,500,700|Roboto:400,500,700");
+/* SOFIA */
+html,
+body {
+  font-family: "Roboto", sans-serif;
+  color: black; }
+
+body {
+  margin-top: 56px;
+  background-color: #F1F1F1; }
+
+.top-buffer {
+  margin-top: 2em; }
+
+main h1 {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 1.5em;
+  margin-top: 2em; }
+main .box {
+  background-color: white;
+  padding: 2em;
+  height: 100%; }
+  main .box .img-fluid {
+    max-width: 70%; }
+  main .box h6 {
+    margin: 1em 0;
+    font-weight: 400;
+    text-align: center; }
+  main .box span {
+    font-weight: 700;
+    flex-grow: 1; }
+  main .box input {
+    margin: 1em 0 0 0;
+    background-color: white;
+    border-radius: 50px;
+    width: 100%;
+    padding: 0.5em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 3px solid black; }
+    main .box input:hover {
+      background-color: black;
+      color: white;
+      cursor: pointer; }
+
+nav {
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+  background-color: white; }
+  nav .navbar-brand {
+    font-family: "Raleway", sans-serif;
+    text-transform: uppercase;
+    font-weight: 500; }
+  nav.navbar-light .navbar-nav .nav-link {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    color: black; }
+    nav.navbar-light .navbar-nav .nav-link:hover {
+      color: #949494; }
+  nav.navbar-light .navbar-toggler {
+    border: none; }
+
+footer {
+  font-family: "Raleway", sans-serif;
+  background-color: white; }
+  footer .img-fluid {
+    max-height: 100px;
+    margin-right: 1em; }
+  footer .title {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1em; }
+  footer .list-unstyled a {
+    color: black;
+    font-size: 0.9em; }
+    footer .list-unstyled a:hover {
+      color: #949494;
+      text-decoration: none; }
+  footer p {
+    font-size: 0.9em; }
+  footer .slogan {
+    font-weight: 700;
+    letter-spacing: 0.1em; }
+
+@media (min-width: 768px) {
+  .navbar-expand-md .navbar-nav .nav-link {
+    padding: 0.5em 1em; } }
+/* JULIETA */
+main #client_area_nav {
+  border-bottom: 0.1em solid black;
+  margin-top: 2em;
+  padding-bottom: 0.3em; }
+  main #client_area_nav h1 {
+    margin: 0; }
+  main #client_area_nav a {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 1.2em;
+    color: black;
+    padding-right: 0;
+    text-decoration: none; }
+    main #client_area_nav a:hover {
+      color: #646464;
+      cursor: pointer; }
+main #profile_form input {
+  margin: 0;
+  background-color: white;
+  color: #646464;
+  padding-left: 1em;
+  text-transform: none;
+  font-weight: 200;
+  border: 0.06em solid #D9D9D9;
+  border-radius: 2em; }
+  main #profile_form input:hover {
+    background-color: none;
+    cursor: auto; }
+  main #profile_form input:focus {
+    outline: none;
+    border-color: #D9D9D9;
+    color: #949494;
+    box-shadow: 0 0 0.7em #D9D9D9; }
+main #profile_form label {
+  padding-left: 1.1em;
+  font-weight: 700; }
+main #profile_form button {
+  color: black;
+  margin: 1em 0 0 0;
+  background-color: white;
+  border-radius: 2em;
+  width: 20%;
+  padding: 0.5em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: 0.15em solid black; }
+  main #profile_form button:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer; }
+  @media (max-width: 530px) {
+    main #profile_form button {
+      width: 100%; } }
+
+/*# sourceMappingURL=style.css.map */
