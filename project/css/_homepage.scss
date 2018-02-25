@@ -1,0 +1,113 @@
+html,
+body {
+    font-family: $font-body;
+    color: $black;
+}
+
+body {
+    margin-top: 56px;
+    background-color: $background;
+}
+
+.top-buffer {
+    margin-top: 2em;
+}
+
+main {
+    h1 {
+        font-family: $font-title;
+        font-weight: 700;
+        font-size: 1.5em;
+        margin-top: 2em;
+    }
+    .box {
+        background-color: $white;
+        padding: 2em;
+        height: 100%;
+        .img-fluid {
+            max-width: 70%;
+        }
+        h6 {
+            margin: 1em 0;
+            font-weight: 400;
+            text-align: center;
+        }
+        span {
+            font-weight: 700;
+            flex-grow: 1;
+        }
+        input {
+            margin: 1em 0 0 0;
+            background-color: $white;
+            border-radius: 50px;
+            width: 100%;
+            padding: 0.5em;
+            text-transform: uppercase;
+            font-weight: 500;
+            border: 3px solid $black;
+            &:hover {
+                background-color: $black;
+                color: $white;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+nav {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+    background-color: $white;
+    .navbar-brand {
+        font-family: $font-title;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+    &.navbar-light {
+        .navbar-nav .nav-link {
+            font-family: $font-title;
+            font-weight: 500;
+            color: $black;
+            &:hover {
+                color: $medium-grey;
+            }
+        }
+        .navbar-toggler {
+            border: none;
+        }
+    }
+}
+
+footer {
+    font-family: $font-title;
+    background-color: $white;
+    .img-fluid {
+        max-height: 100px;
+        margin-right: 1em;
+    }
+    .title {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1em;
+    }
+    .list-unstyled a {
+        color: $black;
+        font-size: 0.9em;
+        &:hover {
+            color: $medium-grey;
+            text-decoration: none;
+        }
+    }
+    p {
+        font-size: 0.9em;
+    }
+    .slogan {
+        font-weight: 700;
+        letter-spacing: 0.1em;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-expand-md .navbar-nav .nav-link {
+        padding: 0.5em 1em;
+    }
+}

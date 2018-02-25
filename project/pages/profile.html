@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Client Area</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script defer src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+
+      <h1 class="col-lg-9 col-md-6">
+        Client Area
+      </h1>
+      <a href="#profile" class="col-lg-1 col-md-2">
+        Profile
+      </a>
+      <a href="#hanging" class="col-lg-1 col-md-2">
+        Hanging
+      </a>
+      <a href="#history" class="col-lg-1 col-md-2">
+        History
+      </a>
+
+      <h2 id="profile" class="col-12"> Profile </h2>
+
+      <form class="col-9">
+        <div class="form-group">
+          <label for="profile_name">Name</label>
+          <input type="text" class="form-control" id="profile_name" placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label for="profile_username">Username</label>
+          <input type="text" class="form-control" id="profile_username" placeholder="johndoe">
+        </div>
+        <div class="form-group">
+          <label for="profile_email">Email</label>
+          <input type="text" class="form-control" id="profile_email" placeholder="johndoe@email.com">
+        </div>
+        <label>Optional</label>
+        <div class="form-group">
+          <input type="text" class="form-control" id="profile_newpassword" placeholder="New Password">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="profile_newpassword_confirmation" placeholder="New Password Confirmation">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Update</button>
+      </form>
+
+      <form id="photo_field" class="col-3">
+        <label>Photo</label>
+        <img src="../assets/profile.jpg" class="img-fluid" alt="Profile Picture">
+        <div class="input-group mb-3">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile02">
+            <label class="custom-file-label" for="inputGroupFile02"></label>
+          </div>
+          <div class="input-group-append">
+            <span class="input-group-text">Upload</span>
+          </div>
+        </div>
+      </form>
+
+      <h2 id="hanging" class="col-12"> Hanging </h2>
+
+      <div class="col-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Cost</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>18/02/17</td>
+              <td>2000€</td>
+              <td>Processing</td>
+            </tr>
+            <tr>
+              <td>15/02/17</td>
+              <td>750€</td>
+              <td>Processing</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Shipped</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Shipped</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Shipped</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Shipped</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Shipped</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Shipped</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Shipped</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Shipped</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Shipped</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Shipped</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="history" class="col-12"> History </h2>
+
+      <div class="col-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Cost</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>18/02/17</td>
+              <td>2000€</td>
+              <td>Delivered</td>
+            </tr>
+            <tr>
+              <td>15/02/17</td>
+              <td>750€</td>
+              <td>Delivered</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Delivered</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Delivered</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Delivered</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Delivered</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Delivered</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Delivered</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Delivered</td>
+            </tr>
+            <tr>
+              <td>10/02/17</td>
+              <td>1500€</td>
+              <td>Delivered</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
