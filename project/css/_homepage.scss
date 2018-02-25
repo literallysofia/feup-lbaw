@@ -75,6 +75,43 @@ nav {
             border: none;
         }
     }
+    .dropdown {
+        position: static;
+    }
+    .container {
+        position: relative;
+    }
+    .dropdown-menu {
+        background-color: $background;
+        border: none;
+        border-radius: 0;
+        width: 100%;
+        margin-top: 0.5em;
+        padding: 2em;
+        .col-divider [class*='col-']:not(:last-child):after {
+            background: $light-grey;
+            width: 1px;
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            min-height: 70px;
+        }
+        .col-sm-4 {
+            padding: 0 2em;
+        }
+        .dropdown-header {
+            font-family: $font-title;
+            color: $dark-grey;
+            text-transform: uppercase;
+            padding: 0;
+        }
+        .dropdown-divider {
+            border-top: 1px solid $dark-grey;
+        }
+    }
 }
 
 footer {
