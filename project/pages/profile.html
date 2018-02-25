@@ -63,11 +63,14 @@
 
         <div id="client_area_nav" class="container">
           <div class="row">
-            <h1 class="col-lg-9 col-md-6 col-sm-12">
+            <h1 class="col-lg-8 col-md-4 col-sm-12">
               Client Area
             </h1>
             <a href="#profile_title" class="col-lg-1 col-md-2 col-sm-12 text-lg-right text-md-right text-sm-left">
               Profile
+            </a>
+            <a href="#addresses_title" class="col-lg-1 col-md-2 col-sm-12 text-lg-right text-md-right text-sm-left">
+              Addresses
             </a>
             <a href="#hanging_title" class="col-lg-1 col-md-2 col-sm-12 text-lg-right text-md-right text-sm-left">
               Hanging
@@ -105,21 +108,30 @@
           <button type="submit" class="btn btn-primary mb-2">Update</button>
         </form>
 
-        <!--<form id="photo_field" class="col-3">
-          <label>Photo</label>
-          <img src="../assets/profile.jpg" class="img-fluid" alt="Profile Picture">
-          <div class="input-group mb-3">
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="inputGroupFile02">
-              <label class="custom-file-label" for="inputGroupFile02"></label>
-            </div>
-            <div class="input-group-append">
-              <span class="input-group-text">Upload</span>
+        <h1 id="addresses_title" class="col-8">Addresses</h1>
+
+        <div id="addresses_cards" class="row">
+          <div class="bottom-buffer col-md-6 col-lg-3">
+            <div class="box d-flex flex-column align-items-center">
+              <p>R. Dr. Roberto Frias, 4200-465 Porto, Portugal </p>
+              <i class="fas fa-trash-alt align-self-end mt-auto"></i>
             </div>
           </div>
-        </form>-->
+          <div class="bottom-buffer col-md-6 col-lg-3">
+            <div class="box d-flex flex-column align-items-center">
+              <p>R. Dr. Virgílio Taborda 43, 5180-169 Freixo de Espada À Cinta, Portugal</p>
+              <i class="fas fa-trash-alt align-self-end mt-auto"></i>
+            </div>
+          </div>
+          <div class="bottom-buffer col-md-6 col-lg-3">
+            <div class="box d-flex flex-column align-items-center">
+              Rua de Álvares Cabral 72, 4050 Porto, Portugal
+              <i class="fas fa-trash-alt align-self-end mt-auto"></i>
+            </div>
+          </div>
+        </div>
 
-        <h1 id="hanging_title" class="col-12"> Hanging </h1>
+        <h1 id="hanging_title" class="col-12">Hanging</h1>
 
         <div class="col-12 box">
           <table class="table table-striped">
@@ -195,7 +207,7 @@
           </table>
         </div>
 
-      <h1 id="history_title" class="col-12"> History </h1>
+        <h1 id="history_title" class="col-12"> History </h1>
 
         <div class="col-12 box">
           <table class="table table-striped">
