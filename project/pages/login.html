@@ -19,33 +19,135 @@
 </head>
 
 <body>
+    <header>
+        <nav class="navbar navbar-expand-md fixed-top navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Sweven</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-    <div class="container">
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Products
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="row col-divider">
+                                    <div class="col-sm-4">
+                                        <h6 class="dropdown-header">Shop By Category</h6>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Smartphones</a>
+                                        <a class="dropdown-item" href="#">Tablets</a>
+                                        <a class="dropdown-item" href="#">Computers</a>
+                                        <a class="dropdown-item" href="#">Monitors</a>
+                                        <a class="dropdown-item" href="#">Acessories</a>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h6 class="dropdown-header">Shop By Brand</h6>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Apple</a>
+                                        <a class="dropdown-item" href="#">Samsung</a>
+                                        <a class="dropdown-item" href="#">Huawei</a>
+                                        <a class="dropdown-item" href="#">Google</a>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h6 class="dropdown-header">Sales</h6>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Apple</a>
+                                        <a class="dropdown-item" href="#">Samsung</a>
+                                        <a class="dropdown-item" href="#">Huawei</a>
+                                        <a class="dropdown-item" href="#">Google</a>
+                                    </div>
+                                </div>
 
-        <div class="row">
-
-            <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12">
-                    <img src="https://botw-pd.s3.amazonaws.com/styles/logo-thumbnail/s3/082014/bootstrap_0.png?itok=eLhbxaNS" class="img-thumbnail rounded mx-auto d-block"
-                    alt="Sweven Logo">
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-heart"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-shopping-bag"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sign In</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
-            <div class="jumbotron jumbotron-fluid">
-                <div class="login form">
-                    <h3>Login</h3>
-                    <form action="">
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="email" placeholder="Username/Email">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="pass" placeholder="Password">
-                        </div>
-                        <button type="submit" class="btn btn-dark"><span class="glyphicon glyphicon-menu-right"></span>Log In</button>
-                    </form>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+
+            <div class="row box">
+
+                <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12">
+                    <img src="https://botw-pd.s3.amazonaws.com/styles/logo-thumbnail/s3/082014/bootstrap_0.png?itok=eLhbxaNS" class="img-thumbnail rounded mx-auto d-block"
+                        alt="Sweven Logo">
+                </div>
+                <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
+
+                    <div class="login form">
+                        <h3>Login</h3>
+                        <form action="">
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="email" placeholder="Username/Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="pass" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-dark">
+                                <span class="glyphicon glyphicon-menu-right"></span>Log In</button>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
+    </main>
+    <footer class="page-footer pt-5 pb-5 mt-5">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 d-flex align-items-center">
+                    <div class="d-flex flex-column">
+                        <h5 class="title">Help</h5>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#!">Contact</a>
+                            </li>
+                            <li>
+                                <a href="#!">FAQs</a>
+                            </li>
+                            <li>
+                                <a href="#!">About</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <img src="../assets/logo.svg" alt="Sweven logo" class="img-fluid">
+                    <p class="slogan">The technology of your dreams.</p>
+                </div>
+
+                <div class="col-md-4 d-flex justify-content-end align-items-end">
+                    <p>© Copyright 2018 Sweven. All rights reserved.</p>
+                </div>
+            </div>
         </div>
-    </div>
+
+    </footer>
 </body>
 
 </html>
