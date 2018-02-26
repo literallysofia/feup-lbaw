@@ -48,5 +48,37 @@ main {
         color: $dark-grey;
       }
     }
+
+    .last-card {
+      color: black;
+      background-color: $white;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 1.3em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      &:hover {
+        background-color: $black;
+        color: $white;
+        cursor: pointer;
+      }
+    }
   }
+
+  /**input[type="button"] {
+    color:black;
+    background-color: $white;
+    border-radius: 2em;
+    padding: 0.5em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 2px solid $black;
+    &:hover {
+        background-color: $black;
+        color: $white;
+        cursor: pointer;
+    }
+}**/
 }
