@@ -14,12 +14,6 @@ body {
 }
 
 main {
-    h1 {
-        font-family: $font-title;
-        font-weight: 700;
-        font-size: 1.5em;
-        margin-top: 2em;
-    }
     .box {
         background-color: $white;
         padding: 2em;
@@ -38,18 +32,7 @@ main {
         }
         input {
             margin: 1em 0 0 0;
-            background-color: $white;
-            border-radius: 50px;
             width: 100%;
-            padding: 0.5em;
-            text-transform: uppercase;
-            font-weight: 500;
-            border: 3px solid $black;
-            &:hover {
-                background-color: $black;
-                color: $white;
-                cursor: pointer;
-            }
         }
     }
 }
@@ -77,6 +60,9 @@ nav {
     }
     .dropdown {
         position: static;
+        .dropdown-toggle::after {
+            display: none;
+        }
     }
     .container {
         position: relative;
@@ -157,5 +143,8 @@ footer {
         .justify-content-end {
             justify-content: center!important;
         }
+    }
+    nav .dropdown .dropdown-toggle::after {
+        display: inline-block;
     }
 }

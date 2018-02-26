@@ -1,0 +1,28 @@
+main {
+    h1 {
+        font-family: $font-title;
+        font-weight: 700;
+        font-size: 1.5em;
+        margin-top: 2em;
+    }
+    .section-container {
+        background-color: $white;
+        h3 {
+            font-family: $font-title;
+            font-weight: 700;
+        }
+    }
+    input[type=button] {
+        background-color: $white;
+        border-radius: 50px;
+        padding: 0.5em;
+        text-transform: uppercase;
+        font-weight: 500;
+        border: 2px solid $black;
+        &:hover {
+            background-color: $black;
+            color: $white;
+            cursor: pointer;
+        }
+    }
+}
