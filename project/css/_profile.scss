@@ -27,8 +27,8 @@ main {
     }
   }
 
-  #profile_form {
-    input {
+  form {
+   /* input {
       margin: 0;
       background-color: white;
       color: $dark-grey;
@@ -47,7 +47,7 @@ main {
         color: $medium-grey;
         box-shadow: 0 0 0.7em $light-grey;
       }
-    }
+    }*/
 
     label {
       padding-left: 1.1em;
