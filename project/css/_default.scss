@@ -27,7 +27,7 @@ main {
             width: 100%;
         }
     }
-    
+
     .section-container {
         padding:1.5em;
         background-color: $white;
@@ -42,7 +42,7 @@ main {
             color: $dark-grey;
             padding-left: 1em;
             text-transform: none;
-            font-weight: 200;
+            font-weight: 400;
             border: 0.06em solid $light-grey;
             border-radius: 2em;
             &:hover {
@@ -55,6 +55,10 @@ main {
               color: $medium-grey;
               box-shadow: 0 0 0.7em $light-grey;
             }
+            
+        }
+        ::placeholder{
+            color: $dark-grey;
         }
     }
     input[type="button"] {
