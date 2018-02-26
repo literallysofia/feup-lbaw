@@ -28,61 +28,25 @@ main {
   }
 
   form {
-   /* input {
-      margin: 0;
-      background-color: white;
-      color: $dark-grey;
-      padding-left: 1em;
-      text-transform: none;
-      font-weight: 200;
-      border: 0.06em solid $light-grey;
-      border-radius: 2em;
-      &:hover {
-        background-color: none;
-        cursor: auto;
-      }
-      &:focus {
-        outline: none;
-        border-color: $light-grey;
-        color: $medium-grey;
-        box-shadow: 0 0 0.7em $light-grey;
-      }
-    }*/
-
     label {
       padding-left: 1.1em;
       font-weight: 700;
     }
 
-    button {
-      color: black;
-      margin: 1em 0 0 0;
-      background-color: $white;
-      border-radius: 2em;
+    input[type="button"] {
       width: 20%;
-      padding: 0.5em;
-      text-transform: uppercase;
-      font-weight: 500;
-      border: 0.2em solid $black;
-      &:hover {
-        background-color: $black;
-        color: $white;
-        cursor: pointer;
-      }
       @media (max-width: 530px) {
         width: 100%;
       }
-    
     }
   }
 
-  #addresses_cards{
-    .fa-trash-alt{
-      &:hover{
+  #addresses_cards {
+    .fa-trash-alt {
+      &:hover {
         cursor: pointer;
         color: $dark-grey;
       }
     }
   }
-
 }

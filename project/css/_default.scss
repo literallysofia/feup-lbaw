@@ -5,14 +5,38 @@ main {
         font-size: 1.5em;
         margin-top: 2em;
     }
+
+    .box {
+        background-color: $white;
+        padding: 2em;
+        height: 100%;
+        .img-fluid {
+            max-width: 70%;
+        }
+        h6 {
+            margin: 1em 0;
+            font-weight: 400;
+            text-align: center;
+        }
+        span {
+            font-weight: 700;
+            flex-grow: 1;
+        }
+        input {
+            margin: 1em 0 0 0;
+            width: 100%;
+        }
+    }
+    
     .section-container {
+        padding:1.5em;
         background-color: $white;
         h3 {
             font-family: $font-title;
             font-weight: 700;
         }
 
-        input {
+        input[type="text"], input[type="password"]{
             margin: 0;
             background-color: white;
             color: $dark-grey;
@@ -33,9 +57,10 @@ main {
             }
         }
     }
-    input[type=button] {
+    input[type="button"] {
+        color:black;
         background-color: $white;
-        border-radius: 50px;
+        border-radius: 2em;
         padding: 0.5em;
         text-transform: uppercase;
         font-weight: 500;

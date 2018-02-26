@@ -13,30 +13,6 @@ body {
     margin-top: 2em;
 }
 
-main {
-    .box {
-        background-color: $white;
-        padding: 2em;
-        height: 100%;
-        .img-fluid {
-            max-width: 70%;
-        }
-        h6 {
-            margin: 1em 0;
-            font-weight: 400;
-            text-align: center;
-        }
-        span {
-            font-weight: 700;
-            flex-grow: 1;
-        }
-        input {
-            margin: 1em 0 0 0;
-            width: 100%;
-        }
-    }
-}
-
 nav {
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
     background-color: $white;
