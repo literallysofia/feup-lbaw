@@ -61,7 +61,7 @@
     <div class="container">
       <div class="row">
 
-        <div id="client_area_nav" class="container">
+        <div class="container scroll_nav">
           <div class="row">
             <h1 class="col-lg-8 col-md-4 col-sm-12">
               Client Area
@@ -72,8 +72,8 @@
             <a href="#addresses_title" class="col-lg-1 col-md-2 col-sm-12 text-lg-right text-md-right text-sm-left">
               Addresses
             </a>
-            <a href="#hanging_title" class="col-lg-1 col-md-2 col-sm-12 text-lg-right text-md-right text-sm-left">
-              Hanging
+            <a href="#onhold_title" class="col-lg-1 col-md-2 col-sm-12 text-lg-right text-md-right text-sm-left">
+              On Hold
             </a>
             <a href="#history_title" class="col-lg-1 col-md-2 col-sm-12 text-lg-right text-md-right text-sm-left">
               History
@@ -81,7 +81,8 @@
           </div>
         </div>
 
-        <h1 id="profile_title" class="col-12"> Profile </h1>
+        <span  class="anchor"></span>
+        <h1  id="profile_title" class="col-12"> Profile </h1>
 
         <form class="col-12 section-container">
           <div class="form-group">
@@ -106,35 +107,37 @@
           <input type="button" value="Update"></input>
         </form>
 
-        <h1 id="addresses_title" class="col-8">Addresses</h1>
+        <span  class="anchor"></span>
+        <h1  id="addresses_title" class="col-12">Addresses</h1>
 
-        <div id="addresses_cards" class="row">
+        <div class="cards row">
           <div class="bottom-buffer col-md-6 col-lg-3">
-            <div class="box d-flex flex-column align-items-center">
+            <div class="box d-flex flex-column">
               <h6>R. Dr. Roberto Frias, 4200-465 Porto, Portugal </h6>
               <i class="fas fa-trash-alt align-self-end mt-auto"></i>
             </div>
           </div>
           <div class="bottom-buffer col-md-6 col-lg-3">
-            <div class="box d-flex flex-column align-items-center">
+            <div class="box d-flex flex-column">
+              <h6>R. Dr. Virgílio Taborda 43, 5180-169 Freixo de Espada À Cinta, Portugal </h6>
+              <i class="fas fa-trash-alt align-self-end mt-auto"></i>
+            </div>
+          </div>
+          <div class="bottom-buffer col-md-6 col-lg-3">
+            <div class="box d-flex flex-column">
               <h6>R. Dr. Virgílio Taborda 43, 5180-169 Freixo de Espada À Cinta, Portugal</h6>
               <i class="fas fa-trash-alt align-self-end mt-auto"></i>
             </div>
           </div>
           <div class="bottom-buffer col-md-6 col-lg-3">
-            <div class="box d-flex flex-column align-items-center">
-              <h6>R. Dr. Virgílio Taborda 43, 5180-169 Freixo de Espada À Cinta, Portugal</h6>
-              <i class="fas fa-trash-alt align-self-end mt-auto"></i>
-            </div>
-          </div>
-          <div class="bottom-buffer col-md-6 col-lg-3">
-            <div class="box d-flex flex-column align-items-center last-card">
+            <div class="box d-flex flex-column last-card">
               Add Address
             </div>
           </div>
         </div>
 
-        <h1 id="hanging_title" class="col-12">Hanging</h1>
+        <span  class="anchor"></span>
+        <h1  id="onhold_title" class="col-12">On Hold</h1>
 
         <div class="col-12 section-container">
           <table class="table">
@@ -210,7 +213,8 @@
           </table>
         </div>
 
-        <h1 id="history_title" class="col-12"> History </h1>
+        <span  class="anchor"></span>
+        <h1  id="history_title" class="col-12"> History </h1>
 
         <div class="col-12 section-container">
           <table class="table">

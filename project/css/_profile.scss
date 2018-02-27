@@ -3,7 +3,7 @@
 }
 
 main {
-  #client_area_nav {
+  .scroll_nav {
     border-bottom: 0.1em solid black;
     margin-top: 2em;
     padding-bottom: 0.3em;
@@ -19,6 +19,12 @@ main {
       color: black;
       padding-right: 0;
       text-decoration: none;
+
+      &.anchor{
+        display:block;
+        /*margin-top: -1em;*/
+        visibility: hidden;
+      }
 
       &:hover {
         color: $dark-grey;
@@ -41,7 +47,7 @@ main {
     }
   }
 
-  #addresses_cards {
+  .cards {
     .fa-trash-alt {
       &:hover {
         cursor: pointer;
