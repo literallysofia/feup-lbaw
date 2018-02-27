@@ -67,18 +67,26 @@ main {
     }
   }
 
-  /**input[type="button"] {
-    color:black;
-    background-color: $white;
-    border-radius: 2em;
-    padding: 0.5em;
-    text-transform: uppercase;
-    font-weight: 500;
-    border: 2px solid $black;
-    &:hover {
-        background-color: $black;
-        color: $white;
-        cursor: pointer;
+  .table {
+    text-align: center;
+    thead {
+      text-transform: uppercase;
+      font-weight: 700;
+      tr {
+        border-bottom: 0.2em solid black;
+        th {
+          border-top: none;
+        }
+      }
     }
-}**/
+
+    tbody {
+      tr {
+        border-top: 0.1em solid $light-grey;
+        &:hover {
+          background: $extra-light-grey;
+        }
+      }
+    }
+  }
 }
