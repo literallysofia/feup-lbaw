@@ -1,16 +1,23 @@
-html,
-body {
-    font-family: $font-body;
-    color: $black;
-}
-
-body {
-    padding-top: 56px;
-    background-color: $background;
-}
-
-.top-buffer {
-    margin-top: 2em;
+.breadcrumb {
+    background-color: transparent;
+    box-shadow: none;
+    margin-bottom: 2em;
+    .breadcrumb-item {
+        color: $black;
+        font-size: 0.9em;
+        letter-spacing: 1px;
+        &.active {
+            color: $medium-grey;
+        }
+        &:hover:not(.active) {
+            text-decoration: none;
+            color: $medium-grey;
+        }
+        &+.breadcrumb-item::before {
+            color: $medium-grey;
+            content: ">";
+        }
+    }
 }
 
 nav {
@@ -61,8 +68,8 @@ nav {
             right: 0;
             min-height: 70px;
         }
-        .top-buffer {
-            margin-top: 0;
+        .mt-4 {
+            margin-top: 0 !important;
         }
         .col-sm-4 {
             padding: 0 2em;
@@ -146,8 +153,8 @@ footer {
             .col-divider [class*='col-']:not(:last-child):after {
                 display: none;
             }
-            .top-buffer:not(:first-child) {
-                margin-top: 2em;
+            .mt-4:not(:first-child) {
+                margin-top: 2em !important;
             }
             .col-sm-4 {
                 padding: 0;
