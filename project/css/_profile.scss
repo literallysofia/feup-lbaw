@@ -3,6 +3,10 @@
 }
 
 main {
+  section{
+    padding-left:0 !important;
+    padding-right:0 !important;
+  }
   .scroll_nav {
     border-bottom: 0.1em solid black;
     margin-top: 2em;
@@ -32,8 +36,8 @@ main {
   }
 
   div.jumptarget {
-    padding-top: 56px !important;
-    margin-top:-56px;
+    padding-top: 5em !important;
+    margin-top:-5em;
   }
 
   form {
