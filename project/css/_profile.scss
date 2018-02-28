@@ -106,6 +106,12 @@ main {
           background: $extra-light-grey;
           cursor: pointer;
         }
+        &.bold{
+          font-weight: bold;
+        }
+        &.unbold{
+          font-weight: normal;
+        }
       }
     }
 
