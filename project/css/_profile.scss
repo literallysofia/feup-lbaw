@@ -108,9 +108,7 @@ main {
         }
         &.bold{
           font-weight: bold;
-        }
-        &.unbold{
-          font-weight: normal;
+          background: $extra-light-grey;
         }
       }
     }
@@ -119,6 +117,7 @@ main {
       padding: 0em;
       border-top: none;
       text-align: start;
+      background: $extra-light-grey;
       div.collapse {
         padding: 0.75em;
         .products_list_title {
