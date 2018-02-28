@@ -1,0 +1,36 @@
+
+.cart-item-quantity {
+    display: inline;
+    padding-top: 0.7em;
+    p {
+        padding-top: 0.2em;
+        margin-right: 0.5em;
+    }
+    p > i {
+        -webkit-text-stroke: 0.2em white;
+    }
+    p > i:first-child {
+        padding-left: 0.7em;
+        padding-right: 0.7em;
+    }
+    input {
+        width: 2em;
+        height: 2em;
+        text-align: center;
+    }
+
+}
+
+.info-item-cart {
+    height: 100%;
+}
+
+.price-item-cart p{
+    margin-bottom: 0em;
+}
+
+.remove-item-cart > a, .remove-item-cart > a:hover{
+    font-size: 0.8em;
+    color:black;
+    text-decoration: underline;
+}

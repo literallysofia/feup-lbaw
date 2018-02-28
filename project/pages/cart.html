@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Homepage</title>
+    <title>Cart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -93,15 +93,30 @@
         <div class="container">
             <h1>My cart</h1>
             <div class="section-container">
-                <div class="row">
-                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                <div class="d-flex flex-row">
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-12">
                         <div class="d-flex flex-column align-items-center">
                             <img src="../assets/phone.jpg" alt="Item 1" class="img-fluid">
                         </div>
                     </div>
-                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-6 col-xs-12">
-                        <div class="d-flex flex-column">
-                            <h5>Apple iPhone X - 256 GB - Silver</h5>
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <div class="info-item-cart d-flex flex-column">
+                            <div>    
+                                <h5>Apple iPhone X - 256 GB - Silver</h5>
+                            </div>
+                            <div class="d-flex flex-row cart-item-quantity">
+                                <p>Quantity:</p>
+                                <input value="3" disabled>
+                                <p><i class="fas fa-minus"></i><i class="fas fa-plus"></i></p>
+                            </div>
+                            <div class="remove-item-cart mt-auto">
+                                <a href="#">Remove</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price-item-cart col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-12 mt-auto">
+                        <div class="d-flex flex-column align-items-end">
+                            <p>1359,99 €</p>
                         </div>
                     </div>
                 </div>

@@ -31,12 +31,13 @@ main {
     .section-container {
         padding:1.5em;
         background-color: $white;
+        margin-top: 2em;
         h3 {
             font-family: $font-title;
             font-weight: 700;
         }
 
-        input[type="text"], input[type="password"]{
+        input[type="text"], input[type="password"], input[type="email"]{
             margin: 0;
             background-color: white;
             color: $dark-grey;
