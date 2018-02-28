@@ -1,3 +1,31 @@
 .filter {
     color: transparent;
 }
+
+nav .pagination {
+    margin: 0;
+    .page-link {
+        background-color: transparent;
+        border: none;
+        color: $black;
+        &:hover {
+            color: $medium-grey;
+        }
+    }
+}
+
+.products {
+    .dropdown {
+        .btn-default {
+            background-color: transparent;
+            outline: none;
+            &:hover {
+                background-color: transparent;
+                color: $medium-grey;
+            }
+        }
+        .dropdown-item {
+            font-size: 0.8em;
+        }
+    }
+}
