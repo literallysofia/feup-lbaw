@@ -3,7 +3,7 @@
 }
 
 main {
-  #client_area_nav {
+  .scroll_nav {
     border-bottom: 0.1em solid black;
     margin-top: 2em;
     padding-bottom: 0.3em;
@@ -18,13 +18,22 @@ main {
       font-size: 1.2em;
       color: black;
       padding-right: 0;
+      padding-left: 0.75em;
       text-decoration: none;
 
       &:hover {
         color: $dark-grey;
         cursor: pointer;
       }
+      @media (max-width: 770px) {
+        padding-left: 0;
+      }
     }
+  }
+
+  div.jumptarget {
+    padding-top: 56px !important;
+    margin-top:-56px;
   }
 
   form {
@@ -41,7 +50,7 @@ main {
     }
   }
 
-  #addresses_cards {
+  .cards {
     .fa-trash-alt {
       &:hover {
         cursor: pointer;
@@ -67,18 +76,62 @@ main {
     }
   }
 
-  /**input[type="button"] {
-    color:black;
-    background-color: $white;
-    border-radius: 2em;
-    padding: 0.5em;
-    text-transform: uppercase;
-    font-weight: 500;
-    border: 2px solid $black;
-    &:hover {
-        background-color: $black;
-        color: $white;
-        cursor: pointer;
+  .table {
+    table-layout: fixed;
+    tr td:nth-child(2),
+    tr th:nth-child(2) {
+      text-align: center;
     }
-}**/
+    tr td:nth-child(3),
+    tr th:nth-child(3) {
+      text-align: end;
+    }
+    thead {
+      text-transform: uppercase;
+      font-weight: 700;
+      tr {
+        th {
+          border-bottom: 0.2em solid black;
+          border-top: none;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          border-top: 0.1em solid $light-grey;
+        }
+        &:hover {
+          background: $extra-light-grey;
+          cursor: pointer;
+        }
+        &.bold{
+          font-weight: bold;
+          background: $extra-light-grey;
+        }
+      }
+    }
+
+    .collapse-line {
+      padding: 0em;
+      border-top: none;
+      text-align: start;
+      background: $extra-light-grey;
+      div.collapse {
+        padding: 0.75em;
+        .products_list_title {
+          text-transform: uppercase;
+          font-weight: 700;
+        }
+        p {
+          padding: 0;
+        }
+        hr {
+          margin: 0.75em 0.75em 0em 0.75em;
+          border-color: $dark-grey;
+        }
+      }
+    }
+  }
 }

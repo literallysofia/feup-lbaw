@@ -15,6 +15,7 @@
     crossorigin="anonymous"></script>
   <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+  <script src="../js/profile.js"></script>
 </head>
 
 <body>
@@ -61,27 +62,29 @@
     <div class="container">
       <div class="row">
 
-        <div id="client_area_nav" class="container">
+        <div class="container scroll_nav">
           <div class="row">
-            <h1 class="col-lg-8 col-md-4 col-sm-12">
+            <h1 class="col-lg col-md col-sm-12">
               Client Area
             </h1>
-            <a href="#profile_title" class="col-lg-1 col-md-2 col-sm-12 text-lg-right text-md-right text-sm-left">
+            <a href="#profile_title" class="col-lg-auto col-md-auto col-sm-12 text-sm-left">
               Profile
             </a>
-            <a href="#addresses_title" class="col-lg-1 col-md-2 col-sm-12 text-lg-right text-md-right text-sm-left">
+            <a href="#addresses_title" class="col-lg-auto col-md-auto col-sm-12 text-sm-left">
               Addresses
             </a>
-            <a href="#hanging_title" class="col-lg-1 col-md-2 col-sm-12 text-lg-right text-md-right text-sm-left">
-              Hanging
+            <a href="#onhold_title" class="col-lg-auto col-md-auto col-sm-12 text-sm-left">
+              On Hold
             </a>
-            <a href="#history_title" class="col-lg-1 col-md-2 col-sm-12 text-lg-right text-md-right text-sm-left">
+            <a href="#history_title" class="col-lg-auto col-md-auto col-sm-12 text-sm-left">
               History
             </a>
           </div>
         </div>
 
-        <h1 id="profile_title" class="col-12"> Profile </h1>
+        <div id="profile_title" class="jumptarget">
+          <h1 class="col-12">Profile</h1>
+        </div>
 
         <form class="col-12 section-container">
           <div class="form-group">
@@ -103,174 +106,499 @@
           <div class="form-group">
             <input type="password" class="form-control" id="profile_newpassword_confirmation" placeholder="New Password Confirmation">
           </div>
-          <input type="button" value="Update"></input>
+          <input type="button" class="black-button" value="Update"></input>
         </form>
 
-        <h1 id="addresses_title" class="col-8">Addresses</h1>
+        <div id="addresses_title" class="jumptarget">
+          <h1 class="col-12">Addresses</h1>
+        </div>
 
-        <div id="addresses_cards" class="row">
-          <div class="bottom-buffer col-md-6 col-lg-3">
-            <div class="box d-flex flex-column align-items-center">
+        <div class="cards row">
+          <div class="top-buffer col-md-6 col-lg-3">
+            <div class="box d-flex flex-column">
               <h6>R. Dr. Roberto Frias, 4200-465 Porto, Portugal </h6>
               <i class="fas fa-trash-alt align-self-end mt-auto"></i>
             </div>
           </div>
-          <div class="bottom-buffer col-md-6 col-lg-3">
-            <div class="box d-flex flex-column align-items-center">
+          <div class="top-buffer col-md-6 col-lg-3">
+            <div class="box d-flex flex-column">
+              <h6>R. Dr. Virgílio Taborda 43, 5180-169 Freixo de Espada À Cinta, Portugal </h6>
+              <i class="fas fa-trash-alt align-self-end mt-auto"></i>
+            </div>
+          </div>
+          <div class="top-buffer col-md-6 col-lg-3">
+            <div class="box d-flex flex-column">
               <h6>R. Dr. Virgílio Taborda 43, 5180-169 Freixo de Espada À Cinta, Portugal</h6>
               <i class="fas fa-trash-alt align-self-end mt-auto"></i>
             </div>
           </div>
-          <div class="bottom-buffer col-md-6 col-lg-3">
-            <div class="box d-flex flex-column align-items-center">
-              <h6>R. Dr. Virgílio Taborda 43, 5180-169 Freixo de Espada À Cinta, Portugal</h6>
-              <i class="fas fa-trash-alt align-self-end mt-auto"></i>
-            </div>
-          </div>
-          <div class="bottom-buffer col-md-6 col-lg-3">
-            <div class="box d-flex flex-column align-items-center last-card">
+          <div class="top-buffer col-md-6 col-lg-3">
+            <div class="box d-flex flex-column last-card">
               Add Address
             </div>
           </div>
         </div>
 
-        <h1 id="hanging_title" class="col-12">Hanging</h1>
+        <div id="onhold_title" class="jumptarget">
+          <h1 class="col-12">On Hold</h1>
+        </div>
 
         <div class="col-12 section-container">
-          <table class="table table-striped">
+          <table class="table">
             <thead>
               <tr>
                 <th scope="col">Date</th>
-                <th scope="col">Cost</th>
                 <th scope="col">Status</th>
+                <th scope="col">Total</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr data-toggle="collapse" data-target="#purchase-1" class="clickable unbold" onclick="boldUnbold(this)">
                 <td>18/02/17</td>
+                <td>Processing</td>
                 <td>2000€</td>
-                <td>Processing</td>
               </tr>
               <tr>
+                <td colspan="3" class="collapse-line">
+                  <div id="purchase-1" class="collapse">
+                    <p class="products_list_title">Products</p>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple iPhone X - 256GB Silver</p>
+                        <hr class="col">
+                        <p class="col-auto">1359,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Samsung Galaxy S8 - G950FZ - Midnight Black</p>
+                        <hr class="col">
+                        <p class="col-auto">819,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple MacBook Pro 13'' Retina i5-2,3GHz</p>
+                        <hr class="col">
+                        <p class="col-auto">1549€</p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr data-toggle="collapse" data-target="#purchase-2" class="clickable unbold" onclick="boldUnbold(this)">
                 <td>15/02/17</td>
-                <td>750€</td>
                 <td>Processing</td>
+                <td>750€</td>
               </tr>
               <tr>
+                <td colspan="3" class="collapse-line">
+                  <div id="purchase-2" class="collapse">
+                    <p class="products_list_title">Products</p>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple iPhone X - 256GB Silver</p>
+                        <hr class="col">
+                        <p class="col-auto">1359,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Samsung Galaxy S8 - G950FZ - Midnight Black</p>
+                        <hr class="col">
+                        <p class="col-auto">819,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple MacBook Pro 13'' Retina i5-2,3GHz</p>
+                        <hr class="col">
+                        <p class="col-auto">1549€</p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr data-toggle="collapse" data-target="#purchase-3" class="clickable unbold" onclick="boldUnbold(this)">
                 <td>10/02/17</td>
-                <td>1500€</td>
                 <td>Shipped</td>
+                <td>1500€</td>
               </tr>
               <tr>
+                <td colspan="3" class="collapse-line">
+                  <div id="purchase-3" class="collapse">
+                    <p class="products_list_title">Products</p>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple iPhone X - 256GB Silver</p>
+                        <hr class="col">
+                        <p class="col-auto">1359,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Samsung Galaxy S8 - G950FZ - Midnight Black</p>
+                        <hr class="col">
+                        <p class="col-auto">819,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple MacBook Pro 13'' Retina i5-2,3GHz</p>
+                        <hr class="col">
+                        <p class="col-auto">1549€</p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr data-toggle="collapse" data-target="#purchase-4" class="clickable unbold" onclick="boldUnbold(this)">
                 <td>10/02/17</td>
-                <td>1500€</td>
                 <td>Shipped</td>
+                <td>1500€</td>
               </tr>
               <tr>
+                <td colspan="3" class="collapse-line">
+                  <div id="purchase-4" class="collapse">
+                    <p class="products_list_title">Products</p>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple iPhone X - 256GB Silver</p>
+                        <hr class="col">
+                        <p class="col-auto">1359,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Samsung Galaxy S8 - G950FZ - Midnight Black</p>
+                        <hr class="col">
+                        <p class="col-auto">819,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple MacBook Pro 13'' Retina i5-2,3GHz</p>
+                        <hr class="col">
+                        <p class="col-auto">1549€</p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr data-toggle="collapse" data-target="#purchase-5" class="clickable unbold" onclick="boldUnbold(this)">
                 <td>10/02/17</td>
-                <td>1500€</td>
                 <td>Shipped</td>
+                <td>1500€</td>
               </tr>
               <tr>
+                <td colspan="3" class="collapse-line">
+                  <div id="purchase-5" class="collapse">
+                    <p class="products_list_title">Products</p>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple iPhone X - 256GB Silver</p>
+                        <hr class="col">
+                        <p class="col-auto">1359,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Samsung Galaxy S8 - G950FZ - Midnight Black</p>
+                        <hr class="col">
+                        <p class="col-auto">819,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple MacBook Pro 13'' Retina i5-2,3GHz</p>
+                        <hr class="col">
+                        <p class="col-auto">1549€</p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr data-toggle="collapse" data-target="#purchase-6" class="clickable unbold" onclick="boldUnbold(this)">
                 <td>10/02/17</td>
-                <td>1500€</td>
                 <td>Shipped</td>
+                <td>1500€</td>
               </tr>
               <tr>
-                <td>10/02/17</td>
-                <td>1500€</td>
-                <td>Shipped</td>
-              </tr>
-              <tr>
-                <td>10/02/17</td>
-                <td>1500€</td>
-                <td>Shipped</td>
-              </tr>
-              <tr>
-                <td>10/02/17</td>
-                <td>1500€</td>
-                <td>Shipped</td>
-              </tr>
-              <tr>
-                <td>10/02/17</td>
-                <td>1500€</td>
-                <td>Shipped</td>
-              </tr>
-              <tr>
-                <td>10/02/17</td>
-                <td>1500€</td>
-                <td>Shipped</td>
-              </tr>
-              <tr>
-                <td>10/02/17</td>
-                <td>1500€</td>
-                <td>Shipped</td>
+                <td colspan="3" class="collapse-line">
+                  <div id="purchase-6" class="collapse">
+                    <p class="products_list_title">Products</p>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple iPhone X - 256GB Silver</p>
+                        <hr class="col">
+                        <p class="col-auto">1359,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Samsung Galaxy S8 - G950FZ - Midnight Black</p>
+                        <hr class="col">
+                        <p class="col-auto">819,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple MacBook Pro 13'' Retina i5-2,3GHz</p>
+                        <hr class="col">
+                        <p class="col-auto">1549€</p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <h1 id="history_title" class="col-12"> History </h1>
+        <div id="history_title" class="jumptarget">
+          <h1 class="col-12">History</h1>
+        </div>
 
         <div class="col-12 section-container">
-          <table class="table table-striped">
+          <table class="table">
             <thead>
               <tr>
                 <th scope="col">Date</th>
-                <th scope="col">Cost</th>
                 <th scope="col">Status</th>
+                <th scope="col">Total</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>18/02/17</td>
-                <td>2000€</td>
-                <td>Delivered</td>
-              </tr>
-              <tr>
-                <td>15/02/17</td>
-                <td>750€</td>
-                <td>Delivered</td>
-              </tr>
-              <tr>
+              <tr data-toggle="collapse" data-target="#purchase-7" class="clickable unbold" onclick="boldUnbold(this)">
                 <td>10/02/17</td>
-                <td>1500€</td>
                 <td>Delivered</td>
+                <td>1500€</td>
               </tr>
               <tr>
+                <td colspan="3" class="collapse-line">
+                  <div id="purchase-7" class="collapse">
+                    <p class="products_list_title">Products</p>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple iPhone X - 256GB Silver</p>
+                        <hr class="col">
+                        <p class="col-auto">1359,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Samsung Galaxy S8 - G950FZ - Midnight Black</p>
+                        <hr class="col">
+                        <p class="col-auto">819,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple MacBook Pro 13'' Retina i5-2,3GHz</p>
+                        <hr class="col">
+                        <p class="col-auto">1549€</p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr data-toggle="collapse" data-target="#purchase-8" class="clickable unbold" onclick="boldUnbold(this)">
                 <td>10/02/17</td>
-                <td>1500€</td>
                 <td>Delivered</td>
+                <td>1500€</td>
               </tr>
               <tr>
+                <td colspan="3" class="collapse-line">
+                  <div id="purchase-8" class="collapse">
+                    <p class="products_list_title">Products</p>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple iPhone X - 256GB Silver</p>
+                        <hr class="col">
+                        <p class="col-auto">1359,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Samsung Galaxy S8 - G950FZ - Midnight Black</p>
+                        <hr class="col">
+                        <p class="col-auto">819,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple MacBook Pro 13'' Retina i5-2,3GHz</p>
+                        <hr class="col">
+                        <p class="col-auto">1549€</p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr data-toggle="collapse" data-target="#purchase-9" class="clickable unbold" onclick="boldUnbold(this)">
                 <td>10/02/17</td>
-                <td>1500€</td>
                 <td>Delivered</td>
+                <td>1500€</td>
               </tr>
               <tr>
+                <td colspan="3" class="collapse-line">
+                  <div id="purchase-9" class="collapse">
+                    <p class="products_list_title">Products</p>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple iPhone X - 256GB Silver</p>
+                        <hr class="col">
+                        <p class="col-auto">1359,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Samsung Galaxy S8 - G950FZ - Midnight Black</p>
+                        <hr class="col">
+                        <p class="col-auto">819,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple MacBook Pro 13'' Retina i5-2,3GHz</p>
+                        <hr class="col">
+                        <p class="col-auto">1549€</p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr data-toggle="collapse" data-target="#purchase-10" class="clickable unbold" onclick="boldUnbold(this)">
                 <td>10/02/17</td>
-                <td>1500€</td>
                 <td>Delivered</td>
+                <td>1500€</td>
               </tr>
               <tr>
+                <td colspan="3" class="collapse-line">
+                  <div id="purchase-10" class="collapse">
+                    <p class="products_list_title">Products</p>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple iPhone X - 256GB Silver</p>
+                        <hr class="col">
+                        <p class="col-auto">1359,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Samsung Galaxy S8 - G950FZ - Midnight Black</p>
+                        <hr class="col">
+                        <p class="col-auto">819,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple MacBook Pro 13'' Retina i5-2,3GHz</p>
+                        <hr class="col">
+                        <p class="col-auto">1549€</p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr data-toggle="collapse" data-target="#purchase-11" class="clickable unbold" onclick="boldUnbold(this)">
                 <td>10/02/17</td>
-                <td>1500€</td>
                 <td>Delivered</td>
+                <td>1500€</td>
               </tr>
               <tr>
+                <td colspan="3" class="collapse-line">
+                  <div id="purchase-11" class="collapse">
+                    <p class="products_list_title">Products</p>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple iPhone X - 256GB Silver</p>
+                        <hr class="col">
+                        <p class="col-auto">1359,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Samsung Galaxy S8 - G950FZ - Midnight Black</p>
+                        <hr class="col">
+                        <p class="col-auto">819,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple MacBook Pro 13'' Retina i5-2,3GHz</p>
+                        <hr class="col">
+                        <p class="col-auto">1549€</p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr data-toggle="collapse" data-target="#purchase-12" class="clickable unbold" onclick="boldUnbold(this)">
                 <td>10/02/17</td>
-                <td>1500€</td>
                 <td>Delivered</td>
+                <td>1500€</td>
               </tr>
               <tr>
+                <td colspan="3" class="collapse-line">
+                  <div id="purchase-12" class="collapse">
+                    <p class="products_list_title">Products</p>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple iPhone X - 256GB Silver</p>
+                        <hr class="col">
+                        <p class="col-auto">1359,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Samsung Galaxy S8 - G950FZ - Midnight Black</p>
+                        <hr class="col">
+                        <p class="col-auto">819,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple MacBook Pro 13'' Retina i5-2,3GHz</p>
+                        <hr class="col">
+                        <p class="col-auto">1549€</p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr data-toggle="collapse" data-target="#purchase-13" class="clickable unbold" onclick="boldUnbold(this)">
                 <td>10/02/17</td>
-                <td>1500€</td>
                 <td>Delivered</td>
+                <td>1500€</td>
               </tr>
               <tr>
-                <td>10/02/17</td>
-                <td>1500€</td>
-                <td>Delivered</td>
+                <td colspan="3" class="collapse-line">
+                  <div id="purchase-13" class="collapse">
+                    <p class="products_list_title">Products</p>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple iPhone X - 256GB Silver</p>
+                        <hr class="col">
+                        <p class="col-auto">1359,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Samsung Galaxy S8 - G950FZ - Midnight Black</p>
+                        <hr class="col">
+                        <p class="col-auto">819,99€</p>
+                      </div>
+                    </div>
+                    <div class="product_list container">
+                      <div class="row">
+                        <p class="col-auto">Apple MacBook Pro 13'' Retina i5-2,3GHz</p>
+                        <hr class="col">
+                        <p class="col-auto">1549€</p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>
