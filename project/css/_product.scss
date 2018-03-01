@@ -14,5 +14,33 @@ main {
       font-family: $font-title;
       font-weight: bold;
   }
+
+  .review_info {
+    font-family: $font-title;
+  }
+
+  .stars-outer {
+    display: inline-block;
+    position: relative;
+    font-family: FontAwesome;
+  }
+   
+  .stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+   
+  .stars-inner {
+    color: #f8ce0b;
+  }
+
+  .review_comment{
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
  
 }
