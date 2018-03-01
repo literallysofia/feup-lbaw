@@ -10,9 +10,13 @@ body {
 }
 
 main {
-    h1 {
+    h1,
+    h5,
+    h6 {
         font-family: $font-title;
         font-weight: 700;
+    }
+    h1 {
         font-size: 1.5em;
     }
     .box {
@@ -23,8 +27,9 @@ main {
             max-width: 70%;
         }
         h6 {
-            margin: 1em 0;
+            font-family: $font-body;
             font-weight: 400;
+            margin: 1em 0;
             text-align: center;
         }
         span {
