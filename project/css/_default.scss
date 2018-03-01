@@ -51,7 +51,7 @@ main {
         }
         input[type="text"],
         input[type="password"],
-        input[type="email"] {
+        input[type="email"], textarea {
             margin: 0;
             background-color: white;
             color: $dark-grey;

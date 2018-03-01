@@ -1,0 +1,25 @@
+main{
+    .col-lg-6.col-md-8.col-sm-12.col-xs-12{
+        .container{
+            .login-form{
+               form input[type="button"]{
+                  align-items: right;
+               }
+            }
+
+        }
+
+
+
+      
+    }
+
+    .col-lg-6.col-md-4.col-sm-12.col-xs-12{
+        figure{
+            img{
+                width: 50%;
+            }
+        }
+    }
+
+}

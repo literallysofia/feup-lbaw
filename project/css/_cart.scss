@@ -1,3 +1,7 @@
+.cart-item h5 {
+    font-size: 1.2em;
+}
+
 .cart-item-quantity {
     display: inline;
     padding-top: 0.7em;
@@ -34,13 +38,21 @@
     text-decoration: underline;
 }
 
+@media screen and (max-width: 575px){
+    .cart_item_img {
+        padding:2em;
+    }
+
+}
+
 @media screen and (max-width: 767px){
-    .cart-item p, .cart-item h5, .cart-item input, .cart-item i {
-        font-size: 0.8em;
+
+    .cart-item p, .cart-item input, .cart-item i {
+        font-size: 0.9em;
     }
 
     .remove-item-cart > a, .remove-item-cart > a:hover {
-        font-size: 0.5em;
+        font-size: 0.8em;
     }
 
 }
