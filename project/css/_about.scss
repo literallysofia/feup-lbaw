@@ -1,0 +1,50 @@
+main {
+    .section-container {
+        margin-top: 2em;
+        .col {
+            img {
+                width: 40%;
+            }
+            #about-text{
+                margin-top: 2em;
+            }
+        }
+
+        figure{
+
+            text-align: center;
+            figcaption {
+                margin: 10px 0 0 0;
+                align-content: center;
+                font-weight: bold;
+            }
+        }
+        
+    }
+}
+
+/*Mobile*/
+
+@media screen and (max-width: 570px) {
+    main {
+        .section-container {
+            .col {
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 570px) and (max-width: 780px) {
+    main {
+        .section-container {
+            .col {
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
