@@ -20,27 +20,10 @@ function setCartItemsStructure() {
                 for(let i=0; i<cart_item.length; i++) {
                     cart_item[i].classList.remove("d-flex");
                     cart_item[i].classList.remove("flex-row");
+                    
                 }
             }
         }
     }
 
 }
-
-
-(function($) {
-    var $window = $(window),
-        $html = $('html');
-
-    function resize() {
-        if ($window.width() < 514) {
-            return $html.addClass('mobile');
-        }
-
-        $html.removeClass('mobile');
-    }
-
-    $window
-        .resize(resize)
-        .trigger('resize');
-})(jQuery);
