@@ -3,9 +3,9 @@
 }
 
 main {
-  section{
-    padding-left:0 !important;
-    padding-right:0 !important;
+  section {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
   .scroll_nav {
     border-bottom: 0.1em solid black;
@@ -36,7 +36,7 @@ main {
 
   div.jumptarget {
     padding-top: 5em !important;
-    margin-top:-5em;
+    margin-top: -5em;
   }
 
   form {
@@ -54,6 +54,7 @@ main {
   }
 
   .cards {
+    padding:0;
     .fa-trash-alt {
       &:hover {
         cursor: pointer;
@@ -81,14 +82,27 @@ main {
 
   .table {
     table-layout: fixed;
-    tr td:nth-child(2),
-    tr th:nth-child(2) {
+    
+    tr td,
+    tr th {
       text-align: center;
     }
-    tr td:nth-child(3),
-    tr th:nth-child(3) {
-      text-align: end;
+
+    tr td:first-child,
+    tr th:first-child {
+      text-align: start;
     }
+
+    tr td:last-child,
+    tr th:last-child {
+      text-align: end;
+
+      :last-child{
+        text-align: start;
+      }
+
+    }
+
     thead {
       text-transform: uppercase;
       font-weight: 700;
@@ -109,7 +123,7 @@ main {
           background: $extra-light-grey;
           cursor: pointer;
         }
-        &.bold{
+        &.bold {
           font-weight: bold;
           background: $extra-light-grey;
         }
