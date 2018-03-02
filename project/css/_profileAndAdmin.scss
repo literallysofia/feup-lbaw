@@ -115,6 +115,29 @@ main {
         }
       }
     }
+
+    &.properties-cards {
+      h6 {
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: start;
+        border-bottom: 0.15em solid black;
+      }
+      select {
+        margin-bottom: 1em;
+      }
+
+      .entry-buttons {
+        width: 100%;
+        margin-top: auto;
+        margin-left:auto;
+       
+        input[type="button"] {
+          width: 100%;
+        }
+      }
+    }
+
   }
 
   .table {
