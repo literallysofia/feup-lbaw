@@ -1,25 +1,30 @@
-main{
-    .col-lg-6.col-md-8.col-sm-12.col-xs-12{
-        .container{
-            .login-form{
-               form input[type="button"]{
-                  align-items: right;
-               }
-            }
-
-        }
-
-
-
-      
-    }
-
-    .col-lg-6.col-md-4.col-sm-12.col-xs-12{
-        figure{
-            img{
-                width: 50%;
+main {
+    .col-lg-5.col-md-6.col-sm-12.col-xs-12 {
+        .container {
+            .login-form {
+                margin-top: 2em;
+                form input[type="button"] {
+                    float: right;
+                }
             }
         }
     }
-
+    .col-lg-5.col-md-6.col-sm-12.col-xs-12.register-col {
+        .container {
+            .signup-form {
+                margin-top: 2em;
+                form input[type="button"] {
+                    float: right;
+                    width: auto;
+                }
+            }
+        }
+    }
+    .col-lg-7.col-md-6.col-sm-12.col-xs-12 {
+        margin-top: auto;
+        margin-bottom: auto;
+        img{
+            width: 50%;
+        }
+    }
 }
