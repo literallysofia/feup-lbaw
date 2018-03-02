@@ -203,10 +203,19 @@ main {
       }
     }
   }
-
-  .modal-footer{
-    input[type="button"]{
-      width:30%;
+  .modal{
+    input[type="text"]{
+      width: 100%;
+    }
+    textarea{
+      margin-top:1em;
+      width: 100%;
+    }
+    .modal-footer{
+      input[type="button"]{
+        width:30%;
+      }
     }
   }
+
 }
