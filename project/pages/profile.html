@@ -186,13 +186,32 @@
             </div>
           </div>
           <div class="mt-4 col-md-6 col-lg-3">
-            <div class="box d-flex flex-column last-card">
+            <div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#addAddressModal">
               Add Address
             </div>
           </div>
         </div>
-
       </section>
+    </div>
+
+    <div class="modal fade" id="addAddressModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Add Address</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body section-container mt-0">
+            <input type="text" class="form-control" id="new_address" placeholder="New Address">
+          </div>
+          <div class="modal-footer">
+            <input type="button" data-dismiss="modal" value="Close"></input>
+            <input type="button" class="black-button" value="Save"></input>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="container">
@@ -213,7 +232,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr data-toggle="collapse" data-target="#purchase-1" class="clickable unbold" onclick="boldUnbold(this)">
+              <tr data-toggle="collapse" data-target="#purchase-1" class="clickable unbold" onclick="boldUnboldLine(this)">
                 <td>18/02/17</td>
                 <td>Processing</td>
                 <td>2000€</td>
@@ -246,7 +265,7 @@
                   </div>
                 </td>
               </tr>
-              <tr data-toggle="collapse" data-target="#purchase-2" class="clickable unbold" onclick="boldUnbold(this)">
+              <tr data-toggle="collapse" data-target="#purchase-2" class="clickable unbold" onclick="boldUnboldLine(this)">
                 <td>15/02/17</td>
                 <td>Processing</td>
                 <td>750€</td>
@@ -279,7 +298,7 @@
                   </div>
                 </td>
               </tr>
-              <tr data-toggle="collapse" data-target="#purchase-3" class="clickable unbold" onclick="boldUnbold(this)">
+              <tr data-toggle="collapse" data-target="#purchase-3" class="clickable unbold" onclick="boldUnboldLine(this)">
                 <td>10/02/17</td>
                 <td>Shipped</td>
                 <td>1500€</td>
@@ -312,7 +331,7 @@
                   </div>
                 </td>
               </tr>
-              <tr data-toggle="collapse" data-target="#purchase-4" class="clickable unbold" onclick="boldUnbold(this)">
+              <tr data-toggle="collapse" data-target="#purchase-4" class="clickable unbold" onclick="boldUnboldLine(this)">
                 <td>10/02/17</td>
                 <td>Shipped</td>
                 <td>1500€</td>
@@ -345,7 +364,7 @@
                   </div>
                 </td>
               </tr>
-              <tr data-toggle="collapse" data-target="#purchase-5" class="clickable unbold" onclick="boldUnbold(this)">
+              <tr data-toggle="collapse" data-target="#purchase-5" class="clickable unbold" onclick="boldUnboldLine(this)">
                 <td>10/02/17</td>
                 <td>Shipped</td>
                 <td>1500€</td>
@@ -378,7 +397,7 @@
                   </div>
                 </td>
               </tr>
-              <tr data-toggle="collapse" data-target="#purchase-6" class="clickable unbold" onclick="boldUnbold(this)">
+              <tr data-toggle="collapse" data-target="#purchase-6" class="clickable unbold" onclick="boldUnboldLine(this)">
                 <td>10/02/17</td>
                 <td>Shipped</td>
                 <td>1500€</td>
@@ -436,7 +455,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr data-toggle="collapse" data-target="#purchase-7" class="clickable unbold" onclick="boldUnbold(this)">
+              <tr data-toggle="collapse" data-target="#purchase-7" class="clickable unbold" onclick="boldUnboldLine(this)">
                 <td>10/02/17</td>
                 <td>Delivered</td>
                 <td>1500€</td>
@@ -469,7 +488,7 @@
                   </div>
                 </td>
               </tr>
-              <tr data-toggle="collapse" data-target="#purchase-8" class="clickable unbold" onclick="boldUnbold(this)">
+              <tr data-toggle="collapse" data-target="#purchase-8" class="clickable unbold" onclick="boldUnboldLine(this)">
                 <td>10/02/17</td>
                 <td>Delivered</td>
                 <td>1500€</td>
@@ -502,7 +521,7 @@
                   </div>
                 </td>
               </tr>
-              <tr data-toggle="collapse" data-target="#purchase-9" class="clickable unbold" onclick="boldUnbold(this)">
+              <tr data-toggle="collapse" data-target="#purchase-9" class="clickable unbold" onclick="boldUnboldLine(this)">
                 <td>10/02/17</td>
                 <td>Delivered</td>
                 <td>1500€</td>
@@ -535,7 +554,7 @@
                   </div>
                 </td>
               </tr>
-              <tr data-toggle="collapse" data-target="#purchase-10" class="clickable unbold" onclick="boldUnbold(this)">
+              <tr data-toggle="collapse" data-target="#purchase-10" class="clickable unbold" onclick="boldUnboldLine(this)">
                 <td>10/02/17</td>
                 <td>Delivered</td>
                 <td>1500€</td>
@@ -568,7 +587,7 @@
                   </div>
                 </td>
               </tr>
-              <tr data-toggle="collapse" data-target="#purchase-11" class="clickable unbold" onclick="boldUnbold(this)">
+              <tr data-toggle="collapse" data-target="#purchase-11" class="clickable unbold" onclick="boldUnboldLine(this)">
                 <td>10/02/17</td>
                 <td>Delivered</td>
                 <td>1500€</td>
@@ -601,7 +620,7 @@
                   </div>
                 </td>
               </tr>
-              <tr data-toggle="collapse" data-target="#purchase-12" class="clickable unbold" onclick="boldUnbold(this)">
+              <tr data-toggle="collapse" data-target="#purchase-12" class="clickable unbold" onclick="boldUnboldLine(this)">
                 <td>10/02/17</td>
                 <td>Delivered</td>
                 <td>1500€</td>
@@ -634,7 +653,7 @@
                   </div>
                 </td>
               </tr>
-              <tr data-toggle="collapse" data-target="#purchase-13" class="clickable unbold" onclick="boldUnbold(this)">
+              <tr data-toggle="collapse" data-target="#purchase-13" class="clickable unbold" onclick="boldUnboldLine(this)">
                 <td>10/02/17</td>
                 <td>Delivered</td>
                 <td>1500€</td>
