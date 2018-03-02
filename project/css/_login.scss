@@ -1,12 +1,17 @@
 main {
+
+    
     .col-lg-5.col-md-6.col-sm-12.col-xs-12 {
         .container {
             .login-form {
                 margin-top: 2em;
                 form input[type="button"] {
                     float: right;
+                    min-width: 100%;
                 }
             }
+
+            
         }
     }
     .col-lg-5.col-md-6.col-sm-12.col-xs-12.register-col {
@@ -15,16 +20,24 @@ main {
                 margin-top: 2em;
                 form input[type="button"] {
                     float: right;
-                    width: auto;
+                    min-width: 100%;
                 }
             }
         }
     }
     .col-lg-7.col-md-6.col-sm-12.col-xs-12 {
-        margin-top: auto;
-        margin-bottom: auto;
+        margin: auto auto auto auto;
         img{
             width: 50%;
         }
+        figcaption{
+            font-family: $font-title;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+    }
+
+    #login-container{
+        padding: 5em;
     }
 }
