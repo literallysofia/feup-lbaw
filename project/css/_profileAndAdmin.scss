@@ -59,6 +59,16 @@ main {
       line-height: 150%;
     }
 
+    .question-card{
+      h6{
+        text-align: start;
+      }
+      
+      p{
+        text-align: justify;
+      }
+    }
+
     .fa-trash-alt {
       &:hover {
         cursor: pointer;
@@ -92,6 +102,7 @@ main {
     tr td,
     tr th {
       text-align: center;
+      
     }
 
     tr td:first-child,
@@ -131,6 +142,11 @@ main {
         &.bold {
           font-weight: bold;
           background: $extra-light-grey;
+        }
+        & .select-status{
+          @media (max-width: 700px){
+            width: 50%;
+          }
         }
       }
     }
