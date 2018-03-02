@@ -3,26 +3,26 @@
 }
 
 main {
-  section {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
+
   .scroll_nav {
     border-bottom: 0.1em solid black;
     padding-bottom: 0.3em;
 
     h1 {
       margin: 0;
+      padding-left: 0;
     }
 
     a {
       font-family: $font-title;
-      font-weight: 500;
-      font-size: 1.2em;
+      font-weight: bold;
+      font-size: 1em;
       color: black;
-      padding-right: 0;
+
       padding-left: 0.75em;
       text-decoration: none;
+
+      padding-right: 0;
 
       &:hover {
         color: $dark-grey;
@@ -54,7 +54,11 @@ main {
   }
 
   .cards {
-    padding:0;
+    padding: 0;
+    h6{
+      line-height: 150%;
+    }
+
     .fa-trash-alt {
       &:hover {
         cursor: pointer;
@@ -64,6 +68,7 @@ main {
 
     .last-card {
       color: black;
+      opacity: 0.50;
       background-color: $white;
       text-transform: uppercase;
       font-weight: 700;
@@ -73,6 +78,7 @@ main {
       justify-content: center;
       text-align: center;
       &:hover {
+        opacity: 1;
         background-color: $black;
         color: $white;
         cursor: pointer;
@@ -82,7 +88,7 @@ main {
 
   .table {
     table-layout: fixed;
-    
+
     tr td,
     tr th {
       text-align: center;
@@ -97,10 +103,9 @@ main {
     tr th:last-child {
       text-align: end;
 
-      :last-child{
+      :last-child {
         text-align: start;
       }
-
     }
 
     thead {
