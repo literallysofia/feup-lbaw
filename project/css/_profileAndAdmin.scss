@@ -3,7 +3,6 @@
 }
 
 main {
-
   .scroll_nav {
     border-bottom: 0.1em solid black;
     padding-bottom: 0.3em;
@@ -55,16 +54,16 @@ main {
 
   .cards {
     padding: 0;
-    h6{
+    h6 {
       line-height: 150%;
     }
 
-    .question-card{
-      h6{
+    .question-card {
+      h6 {
         text-align: start;
       }
-      
-      p{
+
+      p {
         text-align: justify;
       }
     }
@@ -78,7 +77,7 @@ main {
 
     .last-card {
       color: black;
-      opacity: 0.50;
+      opacity: 0.5;
       background-color: $white;
       text-transform: uppercase;
       font-weight: 700;
@@ -94,6 +93,28 @@ main {
         cursor: pointer;
       }
     }
+
+    &.navigation-cards {
+      h6 {
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: start;
+        border-bottom: 0.15em solid black;
+      }
+      select {
+        margin-bottom: 1em;
+      }
+
+      .entry-buttons {
+        width: 50%;
+        margin-top: auto;
+        margin-left:auto;
+       
+        input[type="button"] {
+          width: 100%;
+        }
+      }
+    }
   }
 
   .table {
@@ -102,7 +123,6 @@ main {
     tr td,
     tr th {
       text-align: center;
-      
     }
 
     tr td:first-child,
@@ -143,8 +163,8 @@ main {
           font-weight: bold;
           background: $extra-light-grey;
         }
-        & .select-status{
-          @media (max-width: 700px){
+        & .select-status {
+          @media (max-width: 700px) {
             width: 50%;
           }
         }
@@ -170,13 +190,13 @@ main {
           border-color: $dark-grey;
         }
         @media (max-width: 700px) {
-          p:first-child{
+          p:first-child {
             margin-bottom: 0;
           }
-          hr{
+          hr {
             display: none;
           }
-          p:last-child{
+          p:last-child {
             font-weight: bold;
           }
         }
