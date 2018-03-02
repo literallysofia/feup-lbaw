@@ -1,13 +1,14 @@
 
  function boldUnbold (text) {
-    let containsClass = text.classList.contains("unbold");
+    let line = text.parentElement;
+    let containsClass = line.classList.contains("unbold");
   
     if (containsClass) {
-      text.classList.remove("unbold");
-      text.classList.add("bold");
+      line.classList.remove("unbold");
+      line.classList.add("bold");
     } else {
-      text.classList.remove("bold");
-      text.classList.add("unbold");
+      line.classList.remove("bold");
+      line.classList.add("unbold");
     }
   };
     

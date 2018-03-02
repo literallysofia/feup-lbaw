@@ -143,6 +143,11 @@ main {
           font-weight: bold;
           background: $extra-light-grey;
         }
+        & .select-status{
+          @media (max-width: 700px){
+            width: 50%;
+          }
+        }
       }
     }
 
