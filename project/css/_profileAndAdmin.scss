@@ -153,6 +153,17 @@ main {
           margin: 0.75em 0.75em 0em 0.75em;
           border-color: $dark-grey;
         }
+        @media (max-width: 700px) {
+          p:first-child{
+            margin-bottom: 0;
+          }
+          hr{
+            display: none;
+          }
+          p:last-child{
+            font-weight: bold;
+          }
+        }
       }
     }
   }
