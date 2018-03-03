@@ -117,12 +117,17 @@ main {
     }
 
     &.properties-cards {
-      h6 {
-        text-transform: uppercase;
-        font-weight: bold;
-        text-align: start;
+      .property-header{
         border-bottom: 0.15em solid black;
+        margin-bottom: 1em;
+        h6 {
+          text-transform: uppercase;
+          font-weight: bold;
+          text-align: start;
+          margin:0;
+        }
       }
+
       select {
         margin-bottom: 1em;
       }
