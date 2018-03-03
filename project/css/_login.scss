@@ -3,6 +3,10 @@ main {
     
     .col-lg-5.col-md-6.col-sm-12.col-xs-12 {
         .container {
+
+            h3{
+                margin-bottom: 1em;
+            }
             .login-form {
                 margin-top: 2em;
                 form input[type="button"] {
@@ -37,7 +41,5 @@ main {
         }
     }
 
-    #login-container{
-        padding: 5em;
-    }
+  
 }

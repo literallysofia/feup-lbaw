@@ -18,17 +18,25 @@ main {
         margin-top: 2em;
       }
     }
-
-    .form-group {
-      width: 100%;
+    .contact-form{
+      .form-group {
+        width: 100%;
+      }
+      input[type="button"]{
+        width: 100%;
+      }
     }
+    
   }
 }
 
 @media screen and (min-width: 570px) and (max-width: 780px) {
   main {
-    .form-group {
-      width: 100%;
+    .contact-form{
+      .form-group {
+        width: 100%;
+      }
     }
+    
   }
 }
