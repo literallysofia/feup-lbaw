@@ -1,7 +1,7 @@
 main {
 
     
-    .col-lg-5.col-md-6.col-sm-12.col-xs-12 {
+    .col-lg-5.col-md-6.col-sm-12.col-xs-12.login-col {
         .container {
 
             h3{
@@ -42,4 +42,15 @@ main {
     }
 
   
+}
+
+@media screen and (max-width: 570px) {
+    main{
+        .col-lg-5.col-md-6.col-sm-12.col-xs-12.login-col, .col-lg-5.col-md-6.col-sm-12.col-xs-12.register-col  {
+            .container{
+                padding: 0;
+            }
+        }
+
+    }
 }
