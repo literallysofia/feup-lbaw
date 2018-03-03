@@ -92,6 +92,30 @@
   }
 }
 
+#checkoutModal{
+  select,p{
+    margin-bottom:2em;
+  }
+  p:last-child{
+    font-weight: bold;
+    margin-bottom:0;
+    font-size:1.5em;
+  }
+
+  h6:last-of-type{
+    font-size:1.5em;
+    font-weight: normal;
+  }
+
+  @media (max-width:400px){
+    input{
+      width:100%;
+    }
+  }
+
+
+}
+
 @media screen and (max-width: 575px) {
   .cart_item_img {
     padding: 2em;
