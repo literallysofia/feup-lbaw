@@ -97,11 +97,6 @@
                 <div class="row">
 
                     <div id="productCarouselIndicators" class="col-6 section-container carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#productCarouselIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#productCarouselIndicators" data-slide-to="1"></li>
-                            <li data-target="#productCarouselIndicators" data-slide-to="2"></li>
-                        </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img src="../assets/phone.jpg" alt="Item 1" class="d-block w-100 img-fluid">
@@ -125,12 +120,21 @@
 
                     <div class="col-6 d-flex flex-column align-items-center align-self-center">
                         <h1 class="text-center">Apple iPhone X - 256GB - Silver</h1>
-                        <div>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                        <div class="stars" id="product_stars">
+                            <div class="stars_outer">
+                                    <i class="fas fa-star fa-lg"></i>
+                                    <i class="fas fa-star fa-lg"></i>
+                                    <i class="fas fa-star fa-lg"></i>
+                                    <i class="fas fa-star fa-lg"></i>
+                                    <i class="fas fa-star fa-lg"></i>
+                                <div class="stars_inner">
+                                        <i class="fas fa-star fa-lg"></i>
+                                        <i class="fas fa-star fa-lg"></i>
+                                        <i class="fas fa-star fa-lg"></i>
+                                        <i class="fas fa-star fa-lg"></i>
+                                        <i class="fas fa-star fa-lg"></i>
+                                </div>
+                            </div>
                         </div>
                         <p>1 359,99€</p>
                         <input type="button" class="black-button col-6" value="Add to Cart"></input>
@@ -191,7 +195,10 @@
         <section class="mt-4">
             <div class="container">
                 <div class="row">
-                    <h1 class="col-12">Reviews / 2</h1>
+                    <div class="col-12 row">
+                        <h1>Reviews</h1>
+                        <h1 id="reviews_counter">/2</h1>
+                    </div>
                     <div class="col-12 section-container">
                             <div class="container">
                                 <div class="review_item">
