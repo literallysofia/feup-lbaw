@@ -90,17 +90,23 @@
         </nav>
     </header>
 
+    <nav class="breadcrumb container">
+        <a class="breadcrumb-item" href="#">
+            <i class="fas fa-home"></i> Home</a>
+        <span class="breadcrumb-item active">My Cart</span>
+    </nav>
+
     <main>
         <div class="container">
-            <h1>My cart</h1>
+            <h1>My Cart</h1>
             <div class="section-container">
                 <div class="cart-item">
-                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm col-xs">
                         <div class="d-flex flex-column align-items-center cart_item_img">
                             <img src="../assets/phone.jpg" alt="Item 1" class="img-fluid">
                         </div>
                     </div>
-                    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-5 col-xs-4">
+                    <div class="col-xl-10 col-lg-10 col-md-9 col-auto col-auto">
                         <div class="info_item d-flex flex-column">
                             <div>
                                 <h5>Apple iPhone X - 256 GB - Silver</h5>
@@ -113,25 +119,23 @@
                                     <i class="fas fa-plus"></i>
                                 </p>
                             </div>
-                            <div class="remove-item-cart mt-auto">
-                                <a href="#">Remove</a>
+                            <div class="remove-item-cart mt-auto d-flex align-items-end">
+                                <a class="mr-auto mt-auto" href="#">Remove</a>
+                                <div class="info_item ">
+                                    <p class="mb-auto">1359,99 €</p>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="price_item_cart col-xl-2 col-lg-2 col-md-2 col-sm-4 col-xs-8">
-                        <div class="info_item d-flex flex-column align-items-end">
-                            <p class="mt-auto">1359,99 €</p>
                         </div>
                     </div>
                 </div>
                 <hr class="my-4">
                 <div class="cart-item">
-                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm col-xs">
                         <div class="d-flex flex-column align-items-center cart_item_img">
                             <img src="../assets/phone.jpg" alt="Item 1" class="img-fluid">
                         </div>
                     </div>
-                    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-5 col-xs-4">
+                    <div class="col-xl-10 col-lg-10 col-md-9 col-auto col-auto">
                         <div class="info_item d-flex flex-column">
                             <div>
                                 <h5>Apple iPhone X - 256 GB - Silver</h5>
@@ -144,30 +148,65 @@
                                     <i class="fas fa-plus"></i>
                                 </p>
                             </div>
-                            <div class="remove-item-cart mt-auto">
-                                <a href="#">Remove</a>
+                            <div class="remove-item-cart mt-auto d-flex align-items-end">
+                                <a class="mr-auto mt-auto" href="#">Remove</a>
+                                <div class="info_item ">
+                                    <p class="mb-auto">1359,99 €</p>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="price_item_cart col-xl-2 col-lg-2 col-md-2 col-sm-4 col-xs-8">
-                        <div class="info_item d-flex flex-column align-items-end">
-                            <p class="mt-auto">1359,99 €</p>
                         </div>
                     </div>
                 </div>
                 <hr class="my-4">
-                <div id="end_cart" class="col-12 d-flex flex-row justify-content-end">
-                    <div class="row price_item_cart col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                        <p>Subtotal before delivery: </p>
-                        <p class="ml-auto">
-                            <strong>2179,8 €</strong>
-                        </p>
-                    </div>
+                <div id="end_cart" class="col-12 d-flex justify-content-end align-items-center">
+                    <p class="subtotal">Subtotal before delivery: </p>
+                    <p>2179,80 €</p>
                 </div>
                 <div id="checkout_cart" class="d-flex flex-row justify-content-end">
-                    <input type="button" class="black-button" value="Checkout"></input>
+                    <input type="button" class="black-button" value="Checkout" data-toggle="modal" data-target="#checkoutModal"></input>
                 </div>
             </div>
+        </div>
+
+        <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Checkout</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body section-container mt-0 d-flex flex-column">
+                        <h6>Delivery Address</h6>
+                        <select>
+                            <option disabled selected value>Choose Address</option>
+                            <option value="1">R. Dr. Roberto Frias, 4200-465 Porto, Portugal </option>
+                            <option value="2">R. Dr. Virgílio Taborda 43, 5180-169 Freixo de Espada À Cinta, Portugal</option>
+                            <option value="3">Rua de Álvares Cabral 72, 4050 Porto, Portugal</option>
+                        </select>
+                        <h6>Subtotal before Delivery</h6>
+                        <p>2179,98 €</p>
+                        <h6>Delivery Type</h6>
+                        <select>
+                            <option disabled selected value>Choose Delivery Type</option>
+                            <option value="1">Standard Delivery (+0,99 €)</option>
+                            <option value="2">Next-Working-Day Delivery (+4,99 €)</option>
+                            <option value="3">Next-Day Delivery (+9,99 €)</option>
+                        </select>
+                        <h6 class="ml-auto">Total</h6>
+                        <p class="ml-auto">2179,98 €</p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" data-dismiss="modal" value="Close"></input>
+                        <input type="button" class="black-button" value="Purchase"></input>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     </main>
 
     <footer class="page-footer pt-5 pb-5 mt-5">
