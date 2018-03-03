@@ -19,6 +19,15 @@ main {
     font-family: $font-title;
   }
 
+  #product_stars i {
+      -webkit-text-stroke: 0.08em $background;
+  }
+
+  #reviews_counter{
+    font-weight: normal;
+    padding-left: 0.5em;
+  }
+
   .stars_outer {
     display: inline-block;
     position: relative;
