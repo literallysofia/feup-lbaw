@@ -43,10 +43,18 @@ main {
       padding-left: 1.1em;
       font-weight: 700;
     }
+  }
+  form + div {
 
     input[type="button"] {
-      width: 20%;
-      @media (max-width: 530px) {
+      width: 30%;
+      margin-left:auto;
+
+      @media (max-width: 800px) {
+        width: 40%;
+      }
+
+      @media (max-width: 600px) {
         width: 100%;
       }
     }
@@ -108,41 +116,59 @@ main {
       .entry-buttons {
         width: 50%;
         margin-top: auto;
-        margin-left:auto;
-       
+        margin-left: auto;
+
         input[type="button"] {
           width: 100%;
         }
       }
     }
 
-    &.properties-cards {
-      .property-header{
+    &.categories-cards {
+      .category-header {
         border-bottom: 0.15em solid black;
         margin-bottom: 1em;
         h6 {
           text-transform: uppercase;
           font-weight: bold;
           text-align: start;
-          margin:0;
+          margin: 0;
         }
       }
 
-      select {
-        margin-bottom: 1em;
+      .select-checkbox {
+        margin-bottom: 0.5em;
+        select {
+          margin-bottom: 1em;
+          width: 100%;
+          margin-bottom: 0;
+        }
+
+        div {
+          padding-left: 0;
+          padding-top: 0.2em;
+          .form-check-input {
+            margin: 0;
+            width: 0.75em;
+            align-self: center;
+          }
+          label {
+            padding-left: 1.2em;
+            font-size: 0.7em;
+          }
+        }
       }
 
       .entry-buttons {
         width: 100%;
         margin-top: auto;
-        margin-left:auto;
-       
+        margin-left: auto;
+
         input[type="button"] {
           width: 100%;
         }
       }
     }
-
   }
 
   .table {
@@ -231,19 +257,26 @@ main {
       }
     }
   }
-  .modal{
-    input[type="text"]{
+
+  #table-save-button {
+    width: 20%;
+    @media (max-width: 700px) {
       width: 100%;
-    }
-    textarea{
-      margin-top:1em;
-      width: 100%;
-    }
-    .modal-footer{
-      input[type="button"]{
-        width:30%;
-      }
     }
   }
 
+  .modal {
+    input[type="text"] {
+      width: 100%;
+    }
+    textarea {
+      margin-top: 1em;
+      width: 100%;
+    }
+    .modal-footer {
+      input[type="button"] {
+        width: 30%;
+      }
+    }
+  }
 }

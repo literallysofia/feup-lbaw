@@ -344,9 +344,69 @@
               </tr>
             </tbody>
           </table>
+          <div class="d-flex justify-content-end">
+            <input id="table-save-button" type="button" class="black-button" value="Save">
+          </div>
         </div>
       </section>
     </div>
+
+    <div class="container">
+      <section class="mt-4">
+
+        <div id="manage_properties_title" class="jumptarget">
+          <h1>Properties</h1>
+        </div>
+
+        <div class="cards row">
+          <div class="mt-4 col-md-6 col-lg-3">
+            <div class="box d-flex flex-column">
+              <h6>Price</h6>
+              <i class="fas fa-trash-alt align-self-end mt-auto"></i>
+            </div>
+          </div>
+          <div class="mt-4 col-md-6 col-lg-3">
+            <div class="box d-flex flex-column">
+              <h6>Storage</h6>
+              <i class="fas fa-trash-alt align-self-end mt-auto"></i>
+            </div>
+          </div>
+          <div class="mt-4 col-md-6 col-lg-3">
+            <div class="box d-flex flex-column">
+              <h6>Brand</h6>
+              <i class="fas fa-trash-alt align-self-end mt-auto"></i>
+            </div>
+          </div>
+          <div class="mt-4 col-md-6 col-lg-3">
+            <div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#addPropertyModal">
+              Add Property
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+
+    <div class="modal fade" id="addPropertyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Add Property</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body section-container mt-0">
+            <input type="text" class="form-control" id="new_property" placeholder="New Property">
+          </div>
+          <div class="modal-footer">
+            <input type="button" data-dismiss="modal" value="Close"></input>
+            <input type="button" class="black-button" value="Save"></input>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <div class="container">
       <section class="mt-4">
@@ -355,26 +415,188 @@
           <h1>Categories</h1>
         </div>
 
-        <div class="cards row">
-          <div class="mt-4 col-md-6 col-lg-3">
+        <div class="cards categories-cards row">
+          <div class="mt-4 col-md-6 col-lg-4">
             <div class="box d-flex flex-column">
-              <h6>Smartphones</h6>
-              <i class="fas fa-trash-alt align-self-end mt-auto"></i>
+              <div class="d-flex flex-row category-header">
+                <h6>Smartphones</h6>
+                <i class="fas fa-trash-alt ml-auto"></i>
+              </div>
+              <div class="select-checkbox">
+                <select>
+                  <option disabled selected value>Property</option>
+                  <option value="1">Price</option>
+                  <option value="2">Brand</option>
+                  <option value="3">Storage</option>
+                </select>
+                <div class="form-check d-flex">
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Required Property</label>
+                </div>
+              </div>
+              <div class="select-checkbox">
+                <select>
+                  <option disabled selected value>Property</option>
+                  <option value="1">Price</option>
+                  <option value="2">Brand</option>
+                  <option value="3">Storage</option>
+                </select>
+                <div class="form-check d-flex">
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Required Property</label>
+                </div>
+              </div>
+              <div class="select-checkbox">
+                <select>
+                  <option disabled selected value>Property</option>
+                  <option value="1">Price</option>
+                  <option value="2">Brand</option>
+                  <option value="3">Storage</option>
+                </select>
+                <div class="form-check d-flex">
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Required Property</label>
+                </div>
+              </div>
+              <div class="select-checkbox">
+                <select>
+                  <option disabled selected value>Property</option>
+                  <option value="1">Price</option>
+                  <option value="2">Brand</option>
+                  <option value="3">Storage</option>
+                </select>
+                <div class="form-check d-flex">
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Required Property</label>
+                </div>
+              </div>
+              <div class="select-checkbox">
+                <select>
+                  <option disabled selected value>Property</option>
+                  <option value="1">Price</option>
+                  <option value="2">Brand</option>
+                  <option value="3">Storage</option>
+                </select>
+                <div class="form-check d-flex">
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Required Property</label>
+                </div>
+              </div>
+              <div class="entry-buttons">
+                <input type="button" value="Add Entry"></input>
+                <input type="button" class="black-button" value="Save"></input>
+              </div>
             </div>
           </div>
-          <div class="mt-4 col-md-6 col-lg-3">
+          <div class="mt-4 col-md-6 col-lg-4">
             <div class="box d-flex flex-column">
-              <h6>Tablets</h6>
-              <i class="fas fa-trash-alt align-self-end mt-auto"></i>
+              <div class="d-flex flex-row category-header">
+                <h6>Tablets</h6>
+                <i class="fas fa-trash-alt ml-auto"></i>
+              </div>
+              <div class="select-checkbox">
+                <select>
+                  <option disabled selected value>Property</option>
+                  <option value="1">Price</option>
+                  <option value="2">Brand</option>
+                  <option value="3">Storage</option>
+                </select>
+                <div class="form-check d-flex">
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Required Property</label>
+                </div>
+              </div>
+              <div class="select-checkbox">
+                <select>
+                  <option disabled selected value>Property</option>
+                  <option value="1">Price</option>
+                  <option value="2">Brand</option>
+                  <option value="3">Storage</option>
+                </select>
+                <div class="form-check d-flex">
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Required Property</label>
+                </div>
+              </div>
+              <div class="select-checkbox">
+                <select>
+                  <option disabled selected value>Property</option>
+                  <option value="1">Price</option>
+                  <option value="2">Brand</option>
+                  <option value="3">Storage</option>
+                </select>
+                <div class="form-check d-flex">
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Required Property</label>
+                </div>
+              </div>
+              <div class="entry-buttons">
+                <input type="button" value="Add Entry"></input>
+                <input type="button" class="black-button" value="Save"></input>
+              </div>
             </div>
           </div>
-          <div class="mt-4 col-md-6 col-lg-3">
+          <div class="mt-4 col-md-6 col-lg-4">
             <div class="box d-flex flex-column">
-              <h6>Computers</h6>
-              <i class="fas fa-trash-alt align-self-end mt-auto"></i>
+              <div class="d-flex flex-row category-header">
+                <h6>Computers</h6>
+                <i class="fas fa-trash-alt ml-auto"></i>
+              </div>
+              <div class="select-checkbox">
+                <select>
+                  <option disabled selected value>Property</option>
+                  <option value="1">Price</option>
+                  <option value="2">Brand</option>
+                  <option value="3">Storage</option>
+                </select>
+                <div class="form-check d-flex">
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Required Property</label>
+                </div>
+              </div>
+              <div class="select-checkbox">
+                <select>
+                  <option disabled selected value>Property</option>
+                  <option value="1">Price</option>
+                  <option value="2">Brand</option>
+                  <option value="3">Storage</option>
+                </select>
+                <div class="form-check d-flex">
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Required Property</label>
+                </div>
+              </div>
+              <div class="select-checkbox">
+                <select>
+                  <option disabled selected value>Property</option>
+                  <option value="1">Price</option>
+                  <option value="2">Brand</option>
+                  <option value="3">Storage</option>
+                </select>
+                <div class="form-check d-flex">
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Required Property</label>
+                </div>
+              </div>
+              <div class="select-checkbox">
+                <select>
+                  <option disabled selected value>Property</option>
+                  <option value="1">Price</option>
+                  <option value="2">Brand</option>
+                  <option value="3">Storage</option>
+                </select>
+                <div class="form-check d-flex">
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Required Property</label>
+                </div>
+              </div>
+              <div class="entry-buttons">
+                <input type="button" value="Add Entry"></input>
+                <input type="button" class="black-button" value="Save"></input>
+              </div>
             </div>
           </div>
-          <div class="mt-4 col-md-6 col-lg-3">
+          <div class="mt-4 col-md-6 col-lg-4">
             <div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#addCategoryModal">
               Add Category
             </div>
@@ -402,134 +624,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-
-
-    <div class="container">
-      <section class="mt-4">
-
-        <div id="manage_properties_title" class="jumptarget">
-          <h1>Properties</h1>
-        </div>
-
-        <div class="cards properties-cards row">
-          <div class="mt-4 col-md-6 col-lg-3">
-            <div class="box d-flex flex-column">
-              <div class="d-flex flex-row property-header">
-                <h6>Brand</h6>
-                <i class="fas fa-trash-alt ml-auto"></i>
-              </div>
-              <select>
-                <option disabled selected value>Category</option>
-                <option value="1">Computer</option>
-                <option value="2">Tablet</option>
-                <option value="3">Smartphone</option>
-              </select>
-              <select>
-                <option disabled selected value>Category</option>
-                <option value="1">Computer</option>
-                <option value="2">Tablet</option>
-                <option value="3">Smartphone</option>
-              </select>
-              <select>
-                <option disabled selected value>Category</option>
-                <option value="1">Computer</option>
-                <option value="2">Tablet</option>
-                <option value="3">Smartphone</option>
-              </select>
-              <select>
-                <option disabled selected value>Category</option>
-                <option value="1">Computer</option>
-                <option value="2">Tablet</option>
-                <option value="3">Smartphone</option>
-              </select>
-              <select>
-                <option disabled selected value>Category</option>
-                <option value="1">Computer</option>
-                <option value="2">Tablet</option>
-                <option value="3">Smartphone</option>
-              </select>
-              <div class="entry-buttons">
-                <input type="button" value="Add Entry"></input>
-                <input type="button" class="black-button" value="Save"></input>
-              </div>
-            </div>
-          </div>
-          <div class="mt-4 col-md-6 col-lg-3">
-            <div class="box d-flex flex-column">
-              <div class="d-flex flex-row property-header">
-                <h6>Price</h6>
-                <i class="fas fa-trash-alt ml-auto"></i>
-              </div>
-              <select>
-                <option disabled selected value>Category</option>
-                <option value="1">Computer</option>
-                <option value="2">Tablet</option>
-                <option value="3">Smartphone</option>
-              </select>
-              <select>
-                <option disabled selected value>Category</option>
-                <option value="1">Computer</option>
-                <option value="2">Tablet</option>
-                <option value="3">Smartphone</option>
-              </select>
-              <select>
-                <option disabled selected value>Category</option>
-                <option value="1">Computer</option>
-                <option value="2">Tablet</option>
-                <option value="3">Smartphone</option>
-              </select>
-              <div class="entry-buttons">
-                <input type="button" value="Add Entry"></input>
-                <input type="button" class="black-button" value="Save"></input>
-              </div>
-            </div>
-          </div>
-          <div class="mt-4 col-md-6 col-lg-3">
-            <div class="box d-flex flex-column">
-              <div class="d-flex flex-row property-header">
-                <h6>Storage</h6>
-                <i class="fas fa-trash-alt ml-auto"></i>
-              </div>
-              <select>
-                <option disabled selected value>Category</option>
-                <option value="1">Computer</option>
-                <option value="2">Tablet</option>
-                <option value="3">Smartphone</option>
-              </select>
-              <select>
-                <option disabled selected value>Category</option>
-                <option value="1">Computer</option>
-                <option value="2">Tablet</option>
-                <option value="3">Smartphone</option>
-              </select>
-              <select>
-                <option disabled selected value>Category</option>
-                <option value="1">Computer</option>
-                <option value="2">Tablet</option>
-                <option value="3">Smartphone</option>
-              </select>
-              <select>
-                <option disabled selected value>Category</option>
-                <option value="1">Computer</option>
-                <option value="2">Tablet</option>
-                <option value="3">Smartphone</option>
-              </select>
-              <div class="entry-buttons">
-                <input type="button" value="Add Entry"></input>
-                <input type="button" class="black-button" value="Save"></input>
-              </div>
-            </div>
-          </div>
-          <div class="mt-4 col-md-6 col-lg-3">
-            <div class="box d-flex flex-column last-card" data-toggle="modal">
-              Add Property
-            </div>
-          </div>
-        </div>
-
-      </section>
     </div>
 
 
