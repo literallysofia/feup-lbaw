@@ -33,6 +33,15 @@
   p.mb-auto {
     font-weight: bold;
   }
+  input[type="button"] {
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-top: 0.5em;
+  }
+  p.mt-auto.mb-0.ml-auto {
+    font-weight: bold;
+    font-size: 1.1em;
+  }
 }
 
 .price_item_cart {
