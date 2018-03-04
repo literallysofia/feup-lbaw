@@ -1,56 +1,38 @@
 main {
-
-    
-    .col-lg-5.col-md-6.col-sm-12.col-xs-12.login-col {
-        .container {
-
-            h3{
-                margin-bottom: 1em;
-            }
-            .login-form {
-                margin-top: 2em;
-                form input[type="button"] {
-                    float: right;
-                    min-width: 100%;
-                }
-            }
-
-            
+    .register {
+        height: 60vh;
+        .row {
+            height: 100%;
         }
     }
-    .col-lg-5.col-md-6.col-sm-12.col-xs-12.register-col {
-        .container {
-            .signup-form {
-                margin-top: 2em;
-                form input[type="button"] {
-                    float: right;
-                    min-width: 100%;
-                }
-            }
+    .register-form {
+        width: 100%;
+        form {
+            margin: 2em 0 0 0;
+        }
+        form input[type="button"] {
+            min-width: 100%;
         }
     }
-    .col-lg-7.col-md-6.col-sm-12.col-xs-12 {
-        margin: auto auto auto auto;
-        img{
-            width: 50%;
-        }
-        figcaption{
+    .login-logo {
+        figcaption {
             font-family: $font-title;
             font-weight: 700;
             letter-spacing: 0.1em;
         }
     }
-
-  
 }
 
-@media screen and (max-width: 570px) {
-    main{
-        .col-lg-5.col-md-6.col-sm-12.col-xs-12.login-col, .col-lg-5.col-md-6.col-sm-12.col-xs-12.register-col  {
-            .container{
-                padding: 0;
-            }
+@media screen and (max-width: 767px) {
+    main {
+        .register {
+            height: min-content;
         }
-
+        .login-logo {
+            margin: 2em 0;
+        }
+        .register-form {
+            margin: 2em 0;
+        }
     }
 }
