@@ -1,52 +1,26 @@
 main {
-    .section-container {
-        margin-top: 2em;
-        .col {
-            img {
-                width: 40%;
-            }
-            #about-text{
-                margin-top: 2em;
-            }
-        }
-
-        figure{
-
+    .about {
+        figure {
             text-align: center;
+            img {
+                width: 30%;
+            }
             figcaption {
-                margin: 10px 0 0 0;
-                align-content: center;
-                font-weight: bold;
+                margin: 2em 0 3em 0;
             }
         }
-        
-    }
-
-    div .answer p, #about-text{
-        text-align: justify;
-    }
-}
-
-/*Mobile*/
-
-@media screen and (max-width: 570px) {
-    main {
-        .section-container {
-            .col {
-                img {
-                    width: 100%;
-                }
-            }
+        p {
+            text-align: justify;
         }
     }
 }
 
-@media screen and (min-width: 570px) and (max-width: 780px) {
+@media (max-width: 767px) {
     main {
-        .section-container {
-            .col {
+        .about {
+            figure {
                 img {
-                    width: 100%;
+                    width: 60%;
                 }
             }
         }

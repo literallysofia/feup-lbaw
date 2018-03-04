@@ -14,22 +14,15 @@ main {
             }
         }
     }
-    .login-logo {
-        figcaption {
-            font-family: $font-title;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-        }
-    }
 }
 
 @media (max-width: 767px) {
     main {
         .register {
             height: min-content;
-        }
-        .login-logo {
-            margin: 2em 0;
+            figure {
+                margin: 2em 0;
+            }
         }
         .register-form {
             margin: 2em 0;
