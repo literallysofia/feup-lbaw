@@ -356,12 +356,10 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body section-container mt-0 container" id="review_body">
-                        <div class="row col-12">
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-5 col-xs-12">
-                                <p>Your global rate:</p>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-7 col-xs-12">
+                    <div class="modal-body section-container" id="review_body">
+                        <div class="d-flex">
+                            <h6 class="ml-auto">Your global rate:</h6>
+                            <div class="ml-2 align-self-center">
                                 <div class="stars_outer" id="review_stars">
                                     <i class="fas fa-star fa-lg"></i>
                                     <i class="fas fa-star fa-lg"></i>
@@ -379,18 +377,16 @@
                                 <p id="rate_text">rate</p>
                             </div>
                         </div>
-                        <div class="row col-12">
-                            <div class="col-12">
-                                <label for="review_title">Title:</label>
-                                <input type="text" placeholder="Your title">
+                        <form>
+                            <div class="form-group">
+                                <label for="review_title">Title</label>
+                                <input type="text" class="form-control" id="review_title" placeholder="Your title">
                             </div>
-                        </div>
-                        <div class="row col-12">
-                            <div class="col-12">
-                                <label for="review_text">Text:</label>
-                                <textarea rows="4" cols="10" placeholder="Your review"></textarea>
+                            <div class="form-group">
+                                <label for="review_text">Review</label>
+                                <textarea rows="4" cols="10" id="review_text" placeholder="Your review"></textarea>
                             </div>
-                        </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <input type="button" data-dismiss="modal" value="Close"></input>
