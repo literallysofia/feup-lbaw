@@ -124,8 +124,8 @@ main {
       }
     }
 
-    &.categories-cards {
-      .category-header {
+    &.categories-cards, &.specs-cards, &.photo-cards {
+      .category-header, .spec-header {
         border-bottom: 0.15em solid black;
         margin-bottom: 1em;
         h6 {

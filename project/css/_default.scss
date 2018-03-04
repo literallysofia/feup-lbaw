@@ -50,32 +50,32 @@ main {
       font-family: $font-title;
       font-weight: 700;
     }
-    input[type="text"],
-    input[type="password"],
-    input[type="email"],
-    textarea {
-      margin: 0;
-      background-color: white;
-      color: $dark-grey;
-      padding-left: 1em;
-      text-transform: none;
-      font-weight: 400;
-      border: 0.06em solid $light-grey;
-      border-radius: 2em;
-      &:hover {
-        background-color: none;
-        cursor: auto;
-      }
-      &:focus {
-        outline: none;
-        border-color: $light-grey;
-        color: $medium-grey;
-        box-shadow: 0 0 0.7em $light-grey;
-      }
+  }
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  textarea {
+    margin: 0;
+    background-color: white;
+    color: $dark-grey;
+    padding-left: 1em;
+    text-transform: none;
+    font-weight: 400;
+    border: 0.06em solid $light-grey;
+    border-radius: 2em;
+    &:hover {
+      background-color: none;
+      cursor: auto;
     }
-    textarea{
-      border-radius: 1em;
+    &:focus {
+      outline: none;
+      border-color: $light-grey;
+      color: $medium-grey;
+      box-shadow: 0 0 0.7em $light-grey;
     }
+  }
+  textarea {
+    border-radius: 1em;
   }
   input[type="button"] {
     outline: none;
@@ -96,7 +96,6 @@ main {
     color: white;
     background-color: black;
   }
-
 
   ::placeholder {
     color: $dark-grey;
