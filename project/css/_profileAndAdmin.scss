@@ -47,8 +47,12 @@ main {
   form + div {
 
     input[type="button"] {
-      width: 30%;
+      width: 20%;
       margin-left:auto;
+
+      @media (max-width: 1000px) {
+        width: 30%;
+      }
 
       @media (max-width: 800px) {
         width: 40%;
