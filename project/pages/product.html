@@ -16,7 +16,6 @@
     <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="../js/product.js" defer></script>
-    <script src="../js/row_structure.js" defer></script>
 </head>
 
 <body>
@@ -150,40 +149,76 @@
                     <h1 class="col-12">Tech Specs</h1>
 
                     <div class="col-12 section-container">
-                        <div class="col-5">
-                            <div class="container">
-                                <div class="row">
-                                    <p class="col-auto product-property">Property One</p>
-                                    <hr class="col">
-                                    <p class="col-auto">Value</p>
+                        <div class="container product-spec">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <p class="product-property">Storage</p>
+                                    <hr class="specs-title-line">
+                                </div>
+                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <p class="row-specs">256GB</p>
                                 </div>
                             </div>
-                            <div class="container">
-                                <div class="row">
-                                    <p class="col-auto product-property">Property Two</p>
-                                    <hr class="col">
-                                    <p class="col-auto">Value</p>
+                        </div>
+                        <hr class="mt-1 specs-break-line">
+                        <div class="container product-spec">
+                            <div class="row">
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                            <p class="product-property">Chip</p>
+                                            <hr class="specs-title-line">
+                                        </div>
+                                <hr class="specs-title-line">
+                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <p class="row-specs">A11 Bionic chip with 64-bit architecture</p>
                                 </div>
                             </div>
-                            <div class="container">
-                                <div class="row">
-                                    <p class="col-auto product-property">Property Three</p>
-                                    <hr class="col">
-                                    <p class="col-auto">Value</p>
+                        </div>
+                        <hr class="mt-1 specs-break-line">
+                        <div class="container product-spec">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <p class="product-property">Location</p>
+                                    <hr class="specs-title-line">
+                                </div>
+                                <hr class="specs-title-line">
+                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <p class="row-specs">Assisted GPS, GLONASS, Galileo, and QZSS</p>
+                                    <p class="row-specs">Digital compass</p>
+                                    <p class="row-specs">Wi-Fi</p>
+                                    <p class="row-specs">Cellular</p>
+                                    <p class="row-specs">iBeacon microlocation</p>
                                 </div>
                             </div>
-                            <div class="container">
-                                <div class="row">
-                                    <p class="col-auto product-property">Property Four</p>
-                                    <hr class="col">
-                                    <p class="col-auto">Value</p>
+                        </div>
+                        <hr class="mt-1 specs-break-line">
+                        <div class="container product-spec">
+                            <div class="row">
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <p class="product-property">Power and Battery</p>
+                                        <hr class="specs-title-line">
+                                    </div>
+                                <hr class="mt-1 specs-title-line">
+                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <p class="row-specs">Up to 21h (wireless)</p>
+                                    <p class="row-specs">Up to 50% charge 30 minutes</p>
                                 </div>
                             </div>
-                            <div class="container">
-                                <div class="row">
-                                    <p class="col-auto product-property">Property Five</p>
-                                    <hr class="col">
-                                    <p class="col-auto">Value</p>
+                        </div>
+                        <hr class="mt-1 specs-break-line">
+                        <div class="container product-spec">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <p class="product-property">Sensors</p>
+                                    <hr class="specs-title-line">
+                                </div>
+                                <hr class="specs-title-line">
+                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <p class="row-specs">Face ID</p>
+                                    <p class="row-specs">Barometer</p>
+                                    <p class="row-specs">Three-axis gyro</p>
+                                    <p class="row-specs">Accelerometer</p>
+                                    <p class="row-specs">Proximity sensor</p>
+                                    <p class="row-specs">Ambient light sensor</p>
                                 </div>
                             </div>
                         </div>
@@ -201,7 +236,7 @@
                     </div>
                     <div class="col-12 section-container">
                             <div class="container">
-                                <div class="review_item">
+                                <div class="review_item row col-12">
                                     <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-xs-12">
                                         <div class="d-flex flex-column align-items-start">
                                             <div class="stars">
@@ -244,7 +279,7 @@
                                     </div>
                                 </div>
                             <hr class="my-4">
-                                <div class="review_item">
+                                <div class="review_item row col-12">
                                     <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-xs-12">
                                         <div class="d-flex flex-column align-items-start">
                                             <div class="stars">
@@ -326,7 +361,7 @@
                                             <i class="fas fa-star fa-lg" data-alt="1" title="Terrible"></i>
                                     </div>
                                 </div>
-                                <p id="rate_text"></p>
+                                <p id="rate_text">rate</p>
                             </div>
                         </div>
                         <div class="row col-12">

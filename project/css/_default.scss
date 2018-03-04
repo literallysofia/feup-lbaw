@@ -43,8 +43,7 @@ main {
   }
   .section-container {
     margin-top: 1em;
-    padding: 1.5em;
-
+    padding: 2em;
     background-color: $white;
     h3 {
       font-family: $font-title;
@@ -77,6 +76,7 @@ main {
   textarea {
     border-radius: 1em;
   }
+
   input[type="button"] {
     outline: none;
     color: black;
