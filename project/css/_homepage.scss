@@ -47,6 +47,10 @@ header nav {
                 padding-right: 0;
             }
         }
+        span {
+            display: none;
+            padding-left: 1em;
+        }
     }
     .dropdown {
         position: static;
@@ -96,6 +100,47 @@ header nav {
             }
         }
     }
+    .search-container {
+        .search-box {
+            transition: width $tl, border-radius $tl, background $tl, box-shadow $tl;
+            width: 2.5em;
+            height: 2.5em;
+            border-radius: 10em;
+            border: none;
+            cursor: pointer;
+            &:hover {
+                &+label .search-icon {
+                    color: $medium-grey;
+                }
+            }
+            &:focus {
+                transition: width $tl cubic-bezier(0, 1.22, .66, 1.39), border-radius $tl, background $tl;
+                border: none;
+                outline: none;
+                box-shadow: none;
+                padding-left: 15px;
+                cursor: text;
+                width: 300px;
+                border-radius: auto;
+                background: rgb(235, 235, 235);
+                color: black;
+                &+label .search-icon {
+                    color: black;
+                }
+            }
+            &:not(:focus) {
+                text-indent: -5000px;
+            }
+        }
+        label {
+            width: 0;
+        }
+        .search-icon {
+            position: relative;
+            left: -30px;
+            cursor: pointer;
+        }
+    }
 }
 
 footer {
@@ -133,6 +178,11 @@ footer {
         }
     }
     header nav {
+        .nav-item {
+            span {
+                display: inline;
+            }
+        }
         .dropdown {
             position: relative;
             .dropdown-toggle::after {
@@ -155,6 +205,23 @@ footer {
             }
             .col-sm-4 {
                 padding: 0;
+            }
+        }
+        .search-container {
+            .search-box {
+                transition: width $tl cubic-bezier(0, 1.22, .66, 1.39), border-radius $tl, background $tl;
+                border: none;
+                outline: none;
+                box-shadow: none;
+                padding-left: 15px;
+                cursor: text;
+                width: 300px;
+                border-radius: auto;
+                background: rgb(235, 235, 235);
+                color: black;
+                &+label .search-icon {
+                    color: black;
+                }
             }
         }
     }
