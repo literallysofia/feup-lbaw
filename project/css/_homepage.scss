@@ -101,10 +101,7 @@ header nav {
 footer {
     font-family: $font-title;
     background-color: $white;
-    .img-fluid {
-        max-height: 100px;
-        margin: 0 2em 0 5em;
-    }
+    padding: 2em 0;
     .title {
         text-transform: uppercase;
         font-weight: 700;
@@ -121,10 +118,6 @@ footer {
     p {
         font-size: 0.9em;
     }
-    .slogan {
-        font-weight: 700;
-        letter-spacing: 0.1em;
-    }
 }
 
 @media (min-width: 768px) {
@@ -135,9 +128,6 @@ footer {
 
 @media (max-width: 767px) {
     footer {
-        .img-fluid {
-            max-height: 50px;
-        }
         .justify-content-end {
             justify-content: center !important;
         }
