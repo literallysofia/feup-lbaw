@@ -137,11 +137,10 @@ main {
       }
 
       .select-checkbox {
-        margin-bottom: 0.5em;
+        margin-bottom: 0.7em;
         select {
-          margin-bottom: 1em;
+          margin-bottom: 0.1em;
           width: 100%;
-          margin-bottom: 0;
         }
 
         div {
@@ -230,7 +229,7 @@ main {
       border-top: none;
       text-align: start;
       background: $extra-light-grey;
-      div.collapse {
+      div.collapse-div {
         padding: 0.75em;
         .products_list_title {
           text-transform: uppercase;
