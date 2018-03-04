@@ -53,7 +53,7 @@ main {
   input[type="text"],
   input[type="password"],
   input[type="email"],
-  textarea {
+  textarea, #message {
     margin: 0;
     background-color: white;
     color: $dark-grey;
@@ -73,7 +73,7 @@ main {
       box-shadow: 0 0 0.7em $light-grey;
     }
   }
-  textarea {
+  textarea, #message {
     border-radius: 1em;
   }
 
