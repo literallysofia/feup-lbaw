@@ -1,0 +1,15 @@
+main {
+    .faq {
+        p {
+            text-align: justify;
+        }
+        .question {
+            &:not(:first-child) {
+                margin-top: 2em;
+            }
+            &:not(:last-child) {
+                border-bottom: 1px solid $light-grey;
+            }
+        }
+    }
+}
