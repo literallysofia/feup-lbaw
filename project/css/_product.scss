@@ -60,11 +60,13 @@ main {
 
       }
       .selected_star {
-
         color: #F7D633;
       }
     }
+  }
 
+  #rate_text{
+    visibility: hidden;
   }
 
   #giveOpinionModal{

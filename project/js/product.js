@@ -13,42 +13,38 @@ let stars_rate = document.querySelectorAll("#review_stars .stars_inner i");
 let rate_text = document.getElementById("rate_text");
 if(stars_rate != null) {
     for(let i=0; i<stars_rate.length; i++) {
-        stars_rate[i].addEventListener('mouseover', rateText);
+        stars_rate[i].addEventListener("mouseover",rateText);
+        stars_rate[i].addEventListener('mouseout', resetRateText);
         stars_rate[i].addEventListener('click', setRate);
     }
 }
 
 function rateText() {
-    if(this.id != null && rate_text != null){
-        switch(this.id) {
-            case "rate5":
-                rate_text.innerHTML = "Excellent";
-                break;
-            case "rate4":
-                rate_text.innerHTML = "Good";
-                break;
-            case "rate3":
-                rate_text.innerHTML = "Average";
-                break;
-            case "rate2":
-                rate_text.innerHTML = "Poor";
-                break;
-            case "rate1":
-                rate_text.innerHTML = "Terrible";
-                break;
-        }
+    if($(this).attr("data-alt") != null && rate_text != null){
+        rate_text.innerHTML = this.title;
+        rate_text.style.visibility = "visible";
     }
 }
 
+function resetRateText() {
+    let text = document.querySelector("#review_stars .stars_inner .selected_star");
+    if(rate_text == null)
+        return;
+    if(text != null) {
+        rate_text.innerHTML = text.title;
+    } else {
+        rate_text.innerHTML = "rate";
+        rate_text.style.visibility = "hidden";
+    }
+}
 
 
 /**
  * To get rate value just use rate variable
  */
 function setRate() {
-    if(this.id != null) {
-        console.log(this.id);
-        let rate = this.id.match(/[0-9]/);
+    if($(this).attr("data-alt") != null) {
+        let rate = $(this).attr("data-alt");
         console.log(rate);
         if(document.querySelector('#review_stars .stars_inner') != null) {
             if($(this).prevAll('.fas').hasClass('selected_star')) {
