@@ -67,9 +67,12 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-search"></i>
-                            </a>
+                            <form class="search-container" action="">
+                                <input id="search-box" type="text" class="search-box" name="q" />
+                                <label for="search-box">
+                                    <i class="fas fa-search search-icon"></i>
+                                </label>
+                            </form>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
@@ -267,36 +270,32 @@
         </div>
     </main>
 
-    <footer class="page-footer pt-5 pb-5 mt-5">
+    <footer class="page-footer mt-5">
 
         <div class="container">
             <div class="row">
-                <div class="col-md-8 d-flex align-items-center">
-                    <div class="d-flex flex-column">
-                        <h5 class="title">Help</h5>
-                        <ul class="list-unstyled">
-                            <li>
-                                <a href="contact.html">Contact</a>
-                            </li>
-                            <li>
-                                <a href="faq.html">FAQs</a>
-                            </li>
-                            <li>
-                                <a href="about.html">About</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <img src="../assets/logo.svg" alt="Sweven logo" class="img-fluid">
-                    <p class="slogan">The technology of your dreams.</p>
+                <div class="col-md-6">
+                    <h5 class="title">Help</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="contact.html">Contact</a>
+                        </li>
+                        <li>
+                            <a href="faq.html">FAQs</a>
+                        </li>
+                        <li>
+                            <a href="about.html">About</a>
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="col-md-4 d-flex justify-content-end align-items-end">
+                <div class="col-md-6 d-flex justify-content-end align-items-end">
                     <p>© Copyright 2018 Sweven. All rights reserved.</p>
                 </div>
             </div>
         </div>
 
     </footer>
-
+</body>
 
 </html>
