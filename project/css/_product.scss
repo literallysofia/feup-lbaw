@@ -144,16 +144,19 @@ main {
   }
 }
 
-#add_product_button {
+#save_product_button {
   margin-top: 2em;
   border-top: 0.1em solid black;
   input {
-    width: 20%;
-    @media (max-width: 800px) {
-      width: 40%;
-    }
+    width: 30%;
     @media (max-width: 600px) {
       width: 100%;
     }
+  }
+}
+
+.review_item a i{
+  &:hover{
+    color:$dark-grey;
   }
 }

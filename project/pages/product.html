@@ -276,6 +276,7 @@
                                         <strong>John Doe</strong>
                                     </p>
                                     <p>26 Dec 2017</p>
+
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10 col-md-9 col-sm-8 col-xs-12">
@@ -292,6 +293,15 @@
                                         urna arcu vitae felis.</p>
                                 </div>
                             </div>
+                            <div class="d-flex flex-row align-items-end col-12">
+                                <a class="ml-auto mr-3" data-toggle="modal" data-target="#editReviewModal">
+                                    <i class="fas fa-lg fa-pencil-alt "></i>
+                                </a>
+                                <a>
+                                    <i class="fas fa-lg fa-trash-alt"></i>
+                                </a>
+                            </div>
+
                         </div>
                         <hr class="my-4">
                         <div class="review_item row col-12  ml-0">
@@ -316,7 +326,7 @@
                                 </div>
                                 <div class="review_info">
                                     <p>By
-                                        <strong>John Doe</strong>
+                                        <strong>Peter Doe</strong>
                                     </p>
                                     <p>26 Dec 2017</p>
                                 </div>
@@ -329,10 +339,7 @@
                                         sem sapien. Duis fermentum facilisis nisi, eu finibus urna viverra ac. Proin non
                                         sapien vitae lacus finibus porta eget nec justo. Sed est ante, interdum eget nunc
                                         sit amet, malesuada ultricies purus. In molestie nunc ut neque finibus, nec blandit
-                                        tellus tincidunt. Maecenas iaculis ipsum at nisi maximus lobortis. Fusce rutrum mi
-                                        bibendum odio hendrerit porttitor. Morbi semper felis hendrerit neque varius malesuada.
-                                        Maecenas rutrum, mauris vel sagittis suscipit, turpis odio malesuada leo, non cursus
-                                        urna arcu vitae felis.</p>
+                                        tellus tincidunt.</p>
                                 </div>
                             </div>
                         </div>
@@ -349,6 +356,57 @@
             </div>
             </div>
         </section>
+
+        <div class="modal fade" id="editReviewModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Review</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body section-container" id="review_body">
+                        <form>
+                            <div class="form-group">
+                                <label for="rate_review">Global rate:</label>
+                                <div class="d-flex justify-content-center">
+                                    <div id="review_stars">
+                                        <div class="stars_outer">
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <div class="stars_inner">
+                                                <i class="fas fa-star fa-lg" data-alt="5" title="Excellent"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="4" title="Good"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="3" title="Average"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="2" title="Poor"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="1" title="Terrible"></i>
+                                            </div>
+                                        </div>
+                                        <p id="rate_text">rate</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="review_title">Title</label>
+                                <input type="text" class="form-control" id="review_title" placeholder="Lorem ipsum">
+                            </div>
+                            <div class="form-group">
+                                <label for="review_text">Review</label>
+                                <textarea rows="4" cols="10" id="review_text" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel ultricies lacus. Praesent fermentum vehicula augue a convallis. Nulla vel cursus augue. Integer ut sem sapien. Duis fermentum facilisis nisi, eu finibus urna viverra ac. Proin non sapien vitae lacus finibus porta eget nec justo. Sed est ante, interdum eget nunc sit amet, malesuada ultricies purus. In molestie nunc ut neque finibus, nec blandit tellus tincidunt. Maecenas iaculis ipsum at nisi maximus lobortis. Fusce rutrum mi bibendum odio hendrerit porttitor. Morbi semper felis hendrerit neque varius malesuada. Maecenas rutrum, mauris vel sagittis suscipit, turpis odio malesuada leo, non cursus urna arcu vitae felis."></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" data-dismiss="modal" value="Close"></input>
+                        <input type="button" class="black-button" value="Save"></input>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="modal fade" id="giveOpinionModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
