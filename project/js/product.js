@@ -9,7 +9,7 @@ $('.stars-inner').width(starRating+'%');
 
 
 
-let stars_rate = document.querySelectorAll("#review_stars .stars_inner i");
+let stars_rate = document.querySelectorAll("#review_stars .stars_outer .stars_inner i");
 let rate_text = document.getElementById("rate_text");
 if(stars_rate != null) {
     for(let i=0; i<stars_rate.length; i++) {
@@ -27,7 +27,7 @@ function rateText() {
 }
 
 function resetRateText() {
-    let text = document.querySelector("#review_stars .stars_inner .selected_star");
+    let text = document.querySelector("#review_stars .stars_outer .stars_inner .selected_star");
     if(rate_text == null)
         return;
     if(text != null) {

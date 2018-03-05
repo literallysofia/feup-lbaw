@@ -66,6 +66,7 @@ main {
     display: inline-block;
     position: relative;
     color: #e9e9e9;
+    white-space: nowrap;
 
     i {
       -webkit-text-stroke: 0.08em white;
@@ -82,24 +83,31 @@ main {
   }
 
   #review_stars {
-    unicode-bidi: bidi-override;
-    direction: rtl;
 
-    .stars_inner {
-      color: transparent;
+    .stars_outer {
+      unicode-bidi: bidi-override;
+      direction: rtl;
+      font-size: 1.15em;
 
-      i:hover,
-      i:hover ~ i {
-        color: #f7d633;
-      }
-      .selected_star {
-        color: #f7d633;
+      .stars_inner {
+        color: transparent;
+        
+
+        i:hover,
+        i:hover ~ i {
+          color: #f7d633;
+        }
+        .selected_star {
+          color: #f7d633;
+        }
       }
     }
   }
 
+
   #rate_text {
     visibility: hidden;
+    margin: 0em;
   }
 
   #giveOpinionModal {

@@ -360,27 +360,29 @@
                         </button>
                     </div>
                     <div class="modal-body section-container" id="review_body">
-                        <div class="d-flex">
-                            <h6 class="ml-auto">Your global rate:</h6>
-                            <div class="ml-2 align-self-center">
-                                <div class="stars_outer" id="review_stars">
-                                    <i class="fas fa-star fa-lg"></i>
-                                    <i class="fas fa-star fa-lg"></i>
-                                    <i class="fas fa-star fa-lg"></i>
-                                    <i class="fas fa-star fa-lg"></i>
-                                    <i class="fas fa-star fa-lg"></i>
-                                    <div class="stars_inner">
-                                        <i class="fas fa-star fa-lg" data-alt="5" title="Excellent"></i>
-                                        <i class="fas fa-star fa-lg" data-alt="4" title="Good"></i>
-                                        <i class="fas fa-star fa-lg" data-alt="3" title="Average"></i>
-                                        <i class="fas fa-star fa-lg" data-alt="2" title="Poor"></i>
-                                        <i class="fas fa-star fa-lg" data-alt="1" title="Terrible"></i>
+                        <form>
+                            <div class="form-group">
+                                <label for="rate_review">Global rate:</label>
+                                <div class="d-flex justify-content-center">
+                                    <div id="review_stars">
+                                        <div class="stars_outer">
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <div class="stars_inner">
+                                                <i class="fas fa-star fa-lg" data-alt="5" title="Excellent"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="4" title="Good"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="3" title="Average"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="2" title="Poor"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="1" title="Terrible"></i>
+                                            </div>
+                                        </div>
+                                        <p id="rate_text">rate</p>
                                     </div>
                                 </div>
-                                <p id="rate_text">rate</p>
                             </div>
-                        </div>
-                        <form>
                             <div class="form-group">
                                 <label for="review_title">Title</label>
                                 <input type="text" class="form-control" id="review_title" placeholder="Your title">
