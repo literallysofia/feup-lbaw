@@ -1,10 +1,10 @@
 
 // change this to adjust the rating display
-var bvTireRating = 4.5;
+var bvTireRating = 2;
 // multiply by 20 to get percentage
 var starRating = (bvTireRating+0.05)*20;
 // set the width of the stars
-$('.stars-inner').width(starRating+'%'); 
+$('.review_item .stars_inner').width(starRating+'%'); 
 
 
 
