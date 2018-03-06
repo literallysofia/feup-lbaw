@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Add Product</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script defer src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="../js/profile.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md fixed-top navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="homepage.html">Sweven</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Products
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="row col-divider">
+                                    <div class="mt-4 col-sm-4">
+                                        <h6 class="dropdown-header">Shop By Category</h6>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="products.html">Smartphones</a>
+                                        <a class="dropdown-item" href="products.html">Tablets</a>
+                                        <a class="dropdown-item" href="products.html">Computers</a>
+                                        <a class="dropdown-item" href="products.html">Monitors</a>
+                                        <a class="dropdown-item" href="products.html">Acessories</a>
+                                    </div>
+                                    <div class="mt-4 col-sm-4">
+                                        <h6 class="dropdown-header">Shop By Brand</h6>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="products.html">Apple</a>
+                                        <a class="dropdown-item" href="products.html">Samsung</a>
+                                        <a class="dropdown-item" href="products.html">Huawei</a>
+                                        <a class="dropdown-item" href="products.html">Google</a>
+                                    </div>
+                                    <div class="mt-4 col-sm-4">
+                                        <h6 class="dropdown-header">Sales</h6>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="products.html">Apple</a>
+                                        <a class="dropdown-item" href="products.html">Samsung</a>
+                                        <a class="dropdown-item" href="products.html">Huawei</a>
+                                        <a class="dropdown-item" href="products.html">Google</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <form class="search-container" action="">
+                                <input id="search-box" type="text" class="search-box" name="q" />
+                                <label for="search-box">
+                                    <i class="fas fa-search search-icon"></i>
+                                </label>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="wishlist.html">
+                                <i class="fas fa-heart"></i>
+                                <span>Wishlist</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cart.html">
+                                <i class="fas fa-shopping-bag"></i>
+                                <span>Cart</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin.html">
+                                <i class="fas fa-user"></i>
+                                <span>Profile</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <nav class="breadcrumb container">
+        <a class="breadcrumb-item" href="homepage.html">
+            <i class="fas fa-home"></i> Home</a>
+        <a class="breadcrumb-item" href="admin.html">
+            <i class="fas fa-home"></i> Management Area</a>
+        <span class="breadcrumb-item active">Add Product</span>
+    </nav>
+
+    <main>
+
+        <div class="container">
+            <div class="container scroll_nav">
+                <div class="row">
+                    <h1 class="col-12">
+                        Smartphone
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <section class="mt-5">
+                <h2>Basic Information</h2>
+
+                <div class="section-container">
+                    <form>
+                        <div class="form-group">
+                            <label for="product_name">Name</label>
+                            <input type="text" class="form-control" id="product_name" placeholder="Product Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="product_price">Price</label>
+                            <input type="text" class="form-control" id="product_price" placeholder="Product Price">
+                        </div>
+                        <div class="form-group">
+                            <label for="product_quantity">Quantity</label>
+                            <input type="text" class="form-control" id="product_quantity" placeholder="Poduct Quantity">
+                        </div>
+                        <div class="form-group">
+                            <label for="product_brand">Brand</label>
+                            <input type="text" class="form-control" id="product_brand" placeholder="Product Brand">
+                        </div>
+                    </form>
+                </div>
+
+            </section>
+        </div>
+
+        <div class="container">
+            <section class="mt-5">
+                <h2>Photos</h2>
+
+                <div class="cards photo-cards row">
+                    <div class="mt-4 col-md-6 col-lg-3">
+                        <div class="box d-flex flex-column ">
+                            <div class="box d-flex flex-column align-items-center pt-0 pr-0 pl-0">
+                                <img src="../assets/phone.jpg" alt="Item 1" class="img-fluid">
+                            </div>
+                            <div class="mt-auto">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile02">
+                                    <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="uploadspan input-group-text" id="">Upload</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 col-md-6 col-lg-3">
+                        <div class="box d-flex flex-column ">
+                            <div class="box d-flex flex-column align-items-center pt-0 pr-0 pl-0">
+                                <img src="../assets/phone.jpg" alt="Item 1" class="img-fluid">
+                            </div>
+                            <div class="mt-auto">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile02">
+                                    <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="uploadspan input-group-text" id="">Upload</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 col-md-6 col-lg-3">
+                        <div class="box d-flex flex-column ">
+                            <div class="box d-flex flex-column align-items-center pt-0 pr-0 pl-0">
+
+                            </div>
+                            <div class="mt-auto">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile02">
+                                    <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="uploadspan input-group-text" id="">Upload</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 col-md-6 col-lg-3">
+                        <div class="box d-flex flex-column last-card">
+                            Add Photo
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+        <div class="container">
+            <section class="mt-5">
+                <h2>Tech Specs</h2>
+
+                <div class="cards specs-cards row">
+                    <div class="mt-4 col-md-6 col-lg-4">
+                        <div class="box d-flex flex-column ">
+                            <div class="spec-header">
+                                <h6>Storage *</h6>
+                            </div>
+                            <input class="mb-2" type="text"></input>
+                            <div class="entry-buttons">
+                                <input type="button" value="Add Entry"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 col-md-6 col-lg-4">
+                        <div class="box d-flex flex-column ">
+                            <div class="spec-header">
+                                <h6>Chip</h6>
+                            </div>
+                            <input class="mb-2" type="text"></input>
+                            <div class="entry-buttons">
+                                <input type="button" value="Add Entry"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 col-md-6 col-lg-4">
+                        <div class="box d-flex flex-column">
+                            <div class="spec-header">
+                                <h6>Sensors *</h6>
+                            </div>
+                            <input class="mb-2" type="text"></input>
+                            <input class="mb-2" type="text"></input>
+                            <input class="mb-2" type="text"></input>
+                            <input class="mb-2" type="text"></input>
+                            <input class="mb-2" type="text"></input>
+                            <input class="mb-2" type="text"></input>
+                            <div class="entry-buttons">
+                                <input type="button" value="Add Entry"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 col-md-6 col-lg-4">
+                        <div class="box d-flex flex-column">
+                            <div class="spec-header">
+                                <h6>Location</h6>
+                            </div>
+                            <input class="mb-2" type="text"></input>
+                            <input class="mb-2" type="text"></input>
+                            <input class="mb-2" type="text"></input>
+                            <input class="mb-2" type="text"></input>
+                            <input class="mb-2" type="text"></input>
+                            <input class="mb-2" type="text"></input>
+                            <div class="entry-buttons">
+                                <input type="button" value="Add Entry"></input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <div id="save_product_button" class="d-flex flex-column">
+                <input type="button" class="black-button mt-2 ml-auto" value="Save" </input>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="page-footer mt-5">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="title">Help</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="contact.html">Contact</a>
+                        </li>
+                        <li>
+                            <a href="faq.html">FAQs</a>
+                        </li>
+                        <li>
+                            <a href="about.html">About</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6 d-flex justify-content-end align-items-end">
+                    <p>© Copyright 2018 Sweven. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+</body>
+
+</html>

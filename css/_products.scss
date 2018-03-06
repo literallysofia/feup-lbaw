@@ -1,0 +1,47 @@
+nav .pagination {
+    margin: 0;
+    .page-link {
+        background-color: transparent;
+        border: none;
+        color: $black;
+        &:hover {
+            color: $medium-grey;
+        }
+    }
+}
+
+.filters {
+    background-color: $white;
+    padding: 2em;
+    max-height: min-content;
+    h5 {
+        text-align: center;
+    }
+    h6 {
+        margin-top: 2em;
+    }
+    .form-check-label>p {
+        font-size: 0.9em;
+        margin: 0;
+        padding-top: 0.2em;
+    }
+    .range-slider {
+        span {
+            margin-left: 0.5em;
+        }
+    }
+}
+
+.products {
+    .selectpicker {
+        background-color: transparent;
+        color: $black;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        &:hover {
+            color: $medium-grey;
+        }
+    }
+}

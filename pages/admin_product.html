@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Product</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <script defer src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="../js/product.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md fixed-top navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="homepage.html">Sweven</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Products
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="row col-divider">
+                                    <div class="mt-4 col-sm-4">
+                                        <h6 class="dropdown-header">Shop By Category</h6>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="products.html">Smartphones</a>
+                                        <a class="dropdown-item" href="products.html">Tablets</a>
+                                        <a class="dropdown-item" href="products.html">Computers</a>
+                                        <a class="dropdown-item" href="products.html">Monitors</a>
+                                        <a class="dropdown-item" href="products.html">Acessories</a>
+                                    </div>
+                                    <div class="mt-4 col-sm-4">
+                                        <h6 class="dropdown-header">Shop By Brand</h6>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="products.html">Apple</a>
+                                        <a class="dropdown-item" href="products.html">Samsung</a>
+                                        <a class="dropdown-item" href="products.html">Huawei</a>
+                                        <a class="dropdown-item" href="products.html">Google</a>
+                                    </div>
+                                    <div class="mt-4 col-sm-4">
+                                        <h6 class="dropdown-header">Sales</h6>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="products.html">Apple</a>
+                                        <a class="dropdown-item" href="products.html">Samsung</a>
+                                        <a class="dropdown-item" href="products.html">Huawei</a>
+                                        <a class="dropdown-item" href="products.html">Google</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <form class="search-container" action="">
+                                <input id="search-box" type="text" class="search-box" name="q" />
+                                <label for="search-box">
+                                    <i class="fas fa-search search-icon"></i>
+                                </label>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="wishlist.html">
+                                <i class="fas fa-heart"></i>
+                                <span>Wishlist</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cart.html">
+                                <i class="fas fa-shopping-bag"></i>
+                                <span>Cart</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin.html">
+                              <i class="fas fa-user"></i>
+                              <span>Profile</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <nav class="breadcrumb container">
+        <a class="breadcrumb-item" href="#">
+            <i class="fas fa-home"></i> Home</a>
+        <a class="breadcrumb-item" href="#">
+            Computers</a>
+        <span class="breadcrumb-item active">Apple MacBook Pro 13'' Retina i5-2,3GHz</span>
+    </nav>
+
+    <main>
+        <section class="mt-4">
+            <div class="container">
+                <div class="section-container">
+                    <div class="row">
+                        <div id="productCarouselIndicators" class="col-md-6 col-sm-12 carousel slide align-self-center" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="../assets/laptop.jpg" alt="Item 1" class="img-fluid">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="../assets/laptop.jpg" alt="Item 1" class="img-fluid">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="../assets/laptop.jpg" alt="Item 1" class="img-fluid">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#productCarouselIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#productCarouselIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12 d-flex flex-column align-items-center align-self-center">
+                            <h1 class="text-center">Apple MacBook Pro 13'' Retina i5-2,3GHz</h1>
+                            <div class="stars mt-2">
+                                <div class="stars_outer">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <div class="stars_inner">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-1">1 549 €</p>
+                            <input type="button" class="black-button col-6 mt-4" value="Edit Product" onclick="window.location='add_product.html'"></input>
+                            <input type="button" class="col-6 mt-4" value="Delete Product"></input>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="mt-5">
+            <div class="container">
+
+                <h2>Tech Specs</h2>
+
+                <div class="section-container">
+                    <div class="container product-spec">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <p class="product-property">Storage</p>
+                                <hr class="specs-title-line">
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <p class="row-specs">256GB</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-1 specs-break-line">
+                    <div class="container product-spec">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <p class="product-property">Chip</p>
+                                <hr class="specs-title-line">
+                            </div>
+                            <hr class="specs-title-line">
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <p class="row-specs">A11 Bionic chip with 64-bit architecture</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-1 specs-break-line">
+                    <div class="container product-spec">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <p class="product-property">Location</p>
+                                <hr class="specs-title-line">
+                            </div>
+                            <hr class="specs-title-line">
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <p class="row-specs">Assisted GPS, GLONASS, Galileo, and QZSS</p>
+                                <p class="row-specs">Digital compass</p>
+                                <p class="row-specs">Wi-Fi</p>
+                                <p class="row-specs">Cellular</p>
+                                <p class="row-specs">iBeacon microlocation</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-1 specs-break-line">
+                    <div class="container product-spec">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <p class="product-property">Power and Battery</p>
+                                <hr class="specs-title-line">
+                            </div>
+                            <hr class="mt-1 specs-title-line">
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <p class="row-specs">Up to 21h (wireless)</p>
+                                <p class="row-specs">Up to 50% charge 30 minutes</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-1 specs-break-line">
+                    <div class="container product-spec">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <p class="product-property">Sensors</p>
+                                <hr class="specs-title-line">
+                            </div>
+                            <hr class="specs-title-line">
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <p class="row-specs">Face ID</p>
+                                <p class="row-specs">Barometer</p>
+                                <p class="row-specs">Three-axis gyro</p>
+                                <p class="row-specs">Accelerometer</p>
+                                <p class="row-specs">Proximity sensor</p>
+                                <p class="row-specs">Ambient light sensor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="mt-5">
+            <div class="container">
+                <div class="d-flex">
+                    <h2>Reviews</h2>
+                    <h2 id="reviews_counter">/2</h2>
+                </div>
+
+                <div class="section-container">
+                    <div class="container">
+                        <div class="review_item row col-12 ml-0">
+                            <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                                <div class="d-flex flex-column align-items-start">
+                                    <div class="stars">
+                                        <div class="stars_outer">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <div class="stars_inner">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review_info">
+                                    <p>By
+                                        <strong>John Doe</strong>
+                                    </p>
+                                    <p>26 Dec 2017</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-md-9 col-sm-8 col-xs-12">
+                                <div class="d-flex flex-column align-items-start review_comment">
+                                    <h1>Title</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel ultricies lacus.
+                                        Praesent fermentum vehicula augue a convallis. Nulla vel cursus augue. Integer ut
+                                        sem sapien. Duis fermentum facilisis nisi, eu finibus urna viverra ac. Proin non
+                                        sapien vitae lacus finibus porta eget nec justo. Sed est ante, interdum eget nunc
+                                        sit amet, malesuada ultricies purus. In molestie nunc ut neque finibus, nec blandit
+                                        tellus tincidunt. Maecenas iaculis ipsum at nisi maximus lobortis. Fusce rutrum mi
+                                        bibendum odio hendrerit porttitor. Morbi semper felis hendrerit neque varius malesuada.
+                                        Maecenas rutrum, mauris vel sagittis suscipit, turpis odio malesuada leo, non cursus
+                                        urna arcu vitae felis.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row justify-content-end col-12">
+                                <input type="button" class="col-lg-3 col-xl-2 col-md-5 col-sm-6 col-xs-12 black-button" value="Delete Review"></input>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                        <div class="review_item row col-12  ml-0">
+                            <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                                <div class="d-flex flex-column align-items-start">
+                                    <div class="stars">
+                                        <div class="stars_outer">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <div class="stars_inner">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review_info">
+                                    <p>By
+                                        <strong>John Doe</strong>
+                                    </p>
+                                    <p>26 Dec 2017</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-md-9 col-sm-8 col-xs-12">
+                                <div class="d-flex flex-column align-items-start review_comment">
+                                    <h1>Title</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel ultricies lacus.
+                                        Praesent fermentum vehicula augue a convallis. Nulla vel cursus augue. Integer ut
+                                        sem sapien. Duis fermentum facilisis nisi, eu finibus urna viverra ac. Proin non
+                                        sapien vitae lacus finibus porta eget nec justo. Sed est ante, interdum eget nunc
+                                        sit amet, malesuada ultricies purus. In molestie nunc ut neque finibus, nec blandit
+                                        tellus tincidunt. Maecenas iaculis ipsum at nisi maximus lobortis. Fusce rutrum mi
+                                        bibendum odio hendrerit porttitor. Morbi semper felis hendrerit neque varius malesuada.
+                                        Maecenas rutrum, mauris vel sagittis suscipit, turpis odio malesuada leo, non cursus
+                                        urna arcu vitae felis.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row justify-content-end col-12">
+                                <input type="button" class="col-lg-3 col-xl-2 col-md-5 col-sm-6 col-xs-12 black-button" value="Delete Review"></input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+        </section>
+
+        <div class="modal fade" id="giveOpinionModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Give your opinion</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body section-container" id="review_body">
+                        <form>
+                            <div class="form-group">
+                                <label for="rate_review">Global rate:</label>
+                                <div class="d-flex justify-content-center">
+                                    <div id="review_stars">
+                                        <div class="stars_outer">
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <div class="stars_inner">
+                                                <i class="fas fa-star fa-lg" data-alt="5" title="Excellent"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="4" title="Good"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="3" title="Average"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="2" title="Poor"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="1" title="Terrible"></i>
+                                            </div>
+                                        </div>
+                                        <p id="rate_text">rate</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="review_title">Title</label>
+                                <input type="text" class="form-control" id="review_title" placeholder="Your title">
+                            </div>
+                            <div class="form-group">
+                                <label for="review_text">Review</label>
+                                <textarea rows="4" cols="10" id="review_text" placeholder="Your review"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" data-dismiss="modal" value="Close"></input>
+                        <input type="button" class="black-button" value="Save"></input>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="page-footer mt-5">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="title">Help</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="contact.html">Contact</a>
+                        </li>
+                        <li>
+                            <a href="faq.html">FAQs</a>
+                        </li>
+                        <li>
+                            <a href="about.html">About</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6 d-flex justify-content-end align-items-end">
+                    <p>© Copyright 2018 Sweven. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+</body>
+
+</html>
