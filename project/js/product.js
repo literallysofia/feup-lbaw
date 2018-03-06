@@ -27,7 +27,7 @@ function rateText() {
 }
 
 function resetRateText() {
-    let text = document.querySelector("#review_stars .stars_outer .stars_inner .selected_star");
+    let text = document.querySelector("#review_stars .stars_inner .selected_star");
     if(rate_text == null)
         return;
     if(text != null) {
