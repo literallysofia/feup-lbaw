@@ -108,6 +108,10 @@ main {
     input[type="button"].black-button {
         color: white;
         background-color: black;
+        &:hover {
+            background-color: $dark-grey;
+            border-color: $dark-grey;
+        }
     }
      ::placeholder {
         color: $dark-grey;

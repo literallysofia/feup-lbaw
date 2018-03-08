@@ -29,116 +29,87 @@ header nav {
         font-weight: 500;
     }
     &.navbar-light {
-        .navbar-nav .nav-link {
-            font-family: $font-title;
-            font-weight: 500;
-            color: $black;
-            &:hover {
-                color: $medium-grey;
+        .navbar-nav {
+            h6 {
+                font-family: $font-title;
+                color: $dark-grey;
+                text-transform: uppercase;
+                margin-top: 1em;
+            }
+            .nav-link {
+                font-family: $font-title;
+                font-weight: 500;
+                color: $black;
+                &:hover {
+                    color: $medium-grey;
+                }
             }
         }
         .navbar-toggler {
             border: none;
+            outline: none;
+            margin-right: 0.5em;
         }
-    }
-    .nav-item {
-        &:last-child {
-            .nav-link {
-                padding-right: 0;
-            }
-        }
-        span {
-            display: none;
+        .nav-item {
             padding-left: 1em;
+            &:last-child {
+                .nav-link {
+                    padding-right: 0;
+                }
+            }
         }
     }
     .dropdown {
-        position: static;
         .dropdown-toggle::after {
             display: none;
         }
-    }
-    .container {
-        position: relative;
-    }
-    .dropdown-menu {
-        background-color: $extra-light-grey;
-        border: none;
-        border-radius: 0;
-        width: 100%;
-        margin-top: 0.5em;
-        padding: 2em;
-        .col-divider [class*="col-"]:not(:last-child):after {
-            background: $light-grey;
-            width: 1px;
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            min-height: 70px;
-        }
-        .mt-4 {
-            margin-top: 0 !important;
-        }
-        .col-sm-4 {
-            padding: 0 2em;
-        }
-        .dropdown-header {
-            font-family: $font-title;
-            color: $dark-grey;
-            text-transform: uppercase;
-            padding: 0;
-        }
-        .dropdown-divider {
-            border-top: 1px solid $dark-grey;
-        }
-        .dropdown-item {
-            &:hover {
-                background-color: $white;
+        .dropdown-menu {
+            background-color: $extra-light-grey;
+            border: none;
+            width: 300px;
+            margin-top: 1.5em;
+            padding: 2em;
+            .triangle {
+                width: 0;
+                height: 0;
+                position: absolute;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                border-bottom: 8px solid $extra-light-grey;
+                top: -8px;
+            }
+            .dropdown-header {
+                font-family: $font-title;
+                color: $dark-grey;
+                text-transform: uppercase;
+                padding: 0;
+                margin: 0 !important;
+            }
+            .dropdown-divider {
+                border-top: 1px solid $dark-grey;
+            }
+            .dropdown-item {
+                &:hover {
+                    background-color: $white;
+                }
             }
         }
     }
     .search-container {
-        .search-box {
-            transition: width $tl, border-radius $tl, background $tl, box-shadow $tl;
-            width: 2.5em;
-            height: 2.5em;
-            border-radius: 10em;
-            border: none;
-            cursor: pointer;
-            &:hover {
-                &+label .search-icon {
-                    color: $medium-grey;
-                }
-            }
-            &:focus {
-                transition: width $tl cubic-bezier(0, 1.22, .66, 1.39), border-radius $tl, background $tl;
-                border: none;
-                outline: none;
-                box-shadow: none;
-                padding: 0 2.2em 0 1em;
-                cursor: text;
-                width: 300px;
-                border-radius: auto;
-                background: $background;
-                color: black;
-                &+label .search-icon {
-                    color: black;
-                }
-            }
-            &:not(:focus) {
-                text-indent: -5000px;
-            }
-        }
-        label {
-            width: 0;
+        margin: 0 1em;
+        input {
+            padding: 0.5em 1em 0.5em 2.6em;
         }
         .search-icon {
             position: relative;
-            left: -30px;
-            cursor: pointer;
+            left: 30px;
+        }
+    }
+    .btn {
+        background-color: $black;
+        color: white;
+        &:hover {
+            background-color: $dark-grey;
         }
     }
 }
@@ -165,64 +136,10 @@ footer {
     }
 }
 
-@media (min-width: 768px) {
-    .navbar-expand-md .navbar-nav .nav-link {
-        padding: 0.5em 1em;
-    }
-}
-
 @media (max-width: 767px) {
     footer {
         .justify-content-end {
             justify-content: center !important;
-        }
-    }
-    header nav {
-        .nav-item {
-            span {
-                display: inline;
-            }
-        }
-        .dropdown {
-            position: relative;
-            .dropdown-toggle::after {
-                display: inline-block;
-            }
-        }
-        .navbar-collapse {
-            max-height: 100vh !important;
-            overflow-y: scroll !important;
-            overflow-x: hidden !important;
-        }
-        .dropdown-menu {
-            background-color: $white;
-            padding: 1em;
-            .col-divider [class*="col-"]:not(:last-child):after {
-                display: none;
-            }
-            .mt-4:not(:first-child) {
-                margin-top: 2em !important;
-            }
-            .col-sm-4 {
-                padding: 0;
-            }
-        }
-        .search-container {
-            .search-box {
-                transition: width $tl cubic-bezier(0, 1.22, .66, 1.39), border-radius $tl, background $tl;
-                border: none;
-                outline: none;
-                box-shadow: none;
-                padding-left: 15px;
-                cursor: text;
-                width: 300px;
-                border-radius: auto;
-                background: rgb(235, 235, 235);
-                color: black;
-                &+label .search-icon {
-                    color: black;
-                }
-            }
         }
     }
 }
