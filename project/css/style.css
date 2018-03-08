@@ -648,10 +648,12 @@ main .register-form {
     margin: 2em 0 0 0; }
     main .register-form form input[type="button"] {
       min-width: 100%; }
+    main .register-form form #register {
+      margin-top: 0.5em; }
 
 @media (max-width: 767px) {
   main .register {
-    height: min-content; }
+    height: auto; }
     main .register figure {
       margin: 2em 0; }
   main .register-form {

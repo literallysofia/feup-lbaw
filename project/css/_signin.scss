@@ -12,6 +12,9 @@ main {
             input[type="button"] {
                 min-width: 100%;
             }
+            #register{
+                margin-top : 0.5em;
+            }
         }
     }
 }
@@ -19,7 +22,7 @@ main {
 @media (max-width: 767px) {
     main {
         .register {
-            height: min-content;
+            height: auto;
             figure {
                 margin: 2em 0;
             }
