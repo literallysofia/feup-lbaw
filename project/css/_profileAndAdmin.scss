@@ -118,11 +118,15 @@ main {
       }
 
       .entry-buttons {
-        width: 50%;
+        width: 25%;
         margin-top: auto;
         margin-left: auto;
 
         input[type="button"] {
+          width: 100%;
+        }
+
+        @media (max-width: 700px) {
           width: 100%;
         }
       }
