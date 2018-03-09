@@ -4,12 +4,12 @@ var bvTireRating = 2;
 // multiply by 20 to get percentage
 var starRating = (bvTireRating+0.05)*20;
 // set the width of the stars
-$('.review_item .stars_inner').width(starRating+'%'); 
+$('.review-item .stars-inner').width(starRating+'%'); 
 
 
 
 
-let stars_rate = document.querySelectorAll("#review_stars .stars_outer .stars_inner i");
+let stars_rate = document.querySelectorAll("#review_stars .stars-outer .stars-inner i");
 let rate_text = document.getElementById("rate_text");
 if(stars_rate != null) {
     for(let i=0; i<stars_rate.length; i++) {
@@ -27,7 +27,7 @@ function rateText() {
 }
 
 function resetRateText() {
-    let text = document.querySelector("#review_stars .stars_inner .selected_star");
+    let text = document.querySelector("#review_stars .stars-outer .stars-inner .selected-star");
     if(rate_text == null)
         return;
     if(text != null) {
@@ -46,19 +46,19 @@ function setRate() {
     if($(this).attr("data-alt") != null) {
         let rate = $(this).attr("data-alt");
         console.log(rate);
-        if(document.querySelector('#review_stars .stars_inner') != null) {
-            if($(this).prevAll('.fas').hasClass('selected_star')) {
-                $(this).prevAll('.fas').removeClass('selected_star');
+        if(document.querySelector('#review_stars .stars-inner') != null) {
+            if($(this).prevAll('.fas').hasClass('selected-star')) {
+                $(this).prevAll('.fas').removeClass('selected-star');
             }
-            $(this).addClass('selected_star');
-            $(this).nextAll('.fas').addClass('selected_star');
+            $(this).addClass('selected-star');
+            $(this).nextAll('.fas').addClass('selected-star');
         }
     }
 }
 
 $("#giveOpinionModal").on("hidden.bs.modal", function(){
-    if($(stars_rate).hasClass('selected_star'))
-        $(stars_rate).removeClass('selected_star');
+    if($(stars_rate).hasClass('selected-star'))
+        $(stars_rate).removeClass('selected-star');
     
     rate_text.innerHTML = "";
     $('#giveOpinionModal input[type="text"]').val("");
