@@ -131,6 +131,17 @@ main {
       }
     }
 
+    .address-header {
+      border-bottom: 0.15em solid black;
+      margin-bottom: 1em;
+      h6 {
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: start;
+        margin: 0;
+      }
+    }
+
     &.categories-cards,
     &.specs-cards,
     &.photo-cards {
@@ -170,9 +181,9 @@ main {
             display: block;
             position: relative;
             padding-left: 25px;
-            padding-top:0;
+            padding-top: 0;
             margin-bottom: 12px;
-            margin-top:5px;
+            margin-top: 5px;
             cursor: pointer;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -187,8 +198,8 @@ main {
               background-color: black;
             }
 
-             /* On mouse-over, add a grey background color */
-             &:hover input ~ .checkmark {
+            /* On mouse-over, add a grey background color */
+            &:hover input ~ .checkmark {
               background-color: #bbb;
             }
 
@@ -236,7 +247,6 @@ main {
                 transform: rotate(45deg);
               }
             }
-           
           }
         }
       }
