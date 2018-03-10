@@ -28,7 +28,7 @@
   }
 }
 
-.info_item {
+.info-item {
   height: 100%;
   p.mb-auto {
     font-weight: bold;
@@ -38,9 +38,9 @@
     padding-right: 2em;
     margin-top: 0.5em;
   }
-  p.mt-auto.mb-0.ml-auto {
-    font-weight: bold;
-    font-size: 1.1em;
+  p.mt-auto.ml-auto {
+    font-weight: 500;
+    font-size: 1em;
   }
 }
 
