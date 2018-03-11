@@ -1,7 +1,7 @@
 main {
     .faq {
-        
         .question {
+            text-align: justify;
             &:not(:first-child) {
                 margin-top: 2em;
             }

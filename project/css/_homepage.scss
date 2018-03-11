@@ -99,10 +99,25 @@ header nav {
         margin: 0 1em;
         input {
             padding: 0.5em 1em 0.5em 2.6em;
+            &:focus {
+                outline: none;
+                border-color: $light-grey;
+                box-shadow: 0 0 0.7em transparent;
+            }
         }
         .search-icon {
             position: relative;
             left: 30px;
+        }
+    }
+    .search-container-mobile {
+        width: 100%;
+        input {
+            &:focus {
+                outline: none;
+                border-color: $light-grey;
+                box-shadow: 0 0 0.7em transparent;
+            }
         }
     }
     .btn {

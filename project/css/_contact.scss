@@ -1,5 +1,8 @@
 main {
     .contact {
+        p {
+            text-align: justify;
+        }
         .contact-form {
             margin-top: 2em;
             .form-group {
@@ -9,7 +12,7 @@ main {
                 width: 17%;
             }
         }
-        .contact-info{
+        .contact-info {
             margin-top: 2em;
         }
     }

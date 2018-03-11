@@ -82,7 +82,7 @@ main {
         &:focus {
             outline: none;
             border-color: $light-grey;
-            color: $medium-grey;
+            color: $black;
             box-shadow: 0 0 0.7em $light-grey;
         }
     }
@@ -109,11 +109,17 @@ main {
         color: white;
         background-color: black;
         &:hover {
-            background-color: $dark-grey;
-            border-color: $dark-grey;
+            background-color: $highlight;
+            border-color: $highlight;
         }
     }
      ::placeholder {
         color: $dark-grey;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        padding-top: 126px;
     }
 }
