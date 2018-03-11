@@ -4,9 +4,17 @@ body {
     color: $black;
 }
 
+html {
+    height: 100%;
+}
+
 body {
+    position: relative;
     padding-top: 56px;
     background-color: $background;
+    padding-bottom: 15rem;
+    min-height: 100%;
+    padding: 56px 0 15em 0;
 }
 
 input {
@@ -60,6 +68,7 @@ main {
             font-weight: 700;
             letter-spacing: 0.1em;
             margin-top: 1em;
+            text-align: center;
         }
     }
     input[type="text"],

@@ -69,6 +69,7 @@ header nav {
             width: 300px;
             margin-top: 1.5em;
             padding: 2em;
+            box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
             .triangle {
                 width: 0;
                 height: 0;
@@ -130,6 +131,10 @@ header nav {
 }
 
 footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
     font-family: $font-title;
     background-color: $white;
     padding: 2em 0;
@@ -153,6 +158,9 @@ footer {
 
 @media (max-width: 767px) {
     footer {
+        .container {
+            text-align: center;
+        }
         .justify-content-end {
             justify-content: center !important;
         }
