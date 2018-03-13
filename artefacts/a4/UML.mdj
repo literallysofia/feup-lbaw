@@ -8077,11 +8077,11 @@
 											"containerExtending": false,
 											"left": 237,
 											"top": 263,
-											"width": 115.603515625,
+											"width": 123.7412109375,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "Category Property",
+											"text": "Category's Property",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -8149,7 +8149,7 @@
 									"containerExtending": false,
 									"left": 232,
 									"top": 256,
-									"width": 125.603515625,
+									"width": 133.7412109375,
 									"height": 25,
 									"autoResize": false,
 									"stereotypeLabel": {
@@ -8185,7 +8185,7 @@
 									"containerExtending": false,
 									"left": 232,
 									"top": 281,
-									"width": 125.603515625,
+									"width": 133.7412109375,
 									"height": 10,
 									"autoResize": false
 								},
@@ -8209,7 +8209,7 @@
 									"containerExtending": false,
 									"left": 232,
 									"top": 291,
-									"width": 125.603515625,
+									"width": 133.7412109375,
 									"height": 10,
 									"autoResize": false
 								},
@@ -8273,7 +8273,7 @@
 							"containerExtending": false,
 							"left": 232,
 							"top": 256,
-							"width": 125.603515625,
+							"width": 133.7412109375,
 							"height": 45,
 							"autoResize": false,
 							"stereotypeDisplay": "label",
@@ -12924,11 +12924,11 @@
 											"containerExtending": false,
 											"left": -90,
 											"top": 0,
-											"width": 143.76171875,
+											"width": 152.74365234375,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "(from Category Property)",
+											"text": "(from Category's Property)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -13152,7 +13152,7 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 454,
+									"left": 458,
 									"top": 251,
 									"width": 0,
 									"height": 13,
@@ -13186,7 +13186,7 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 454,
+									"left": 458,
 									"top": 236,
 									"width": 0,
 									"height": 13,
@@ -13220,7 +13220,7 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 454,
+									"left": 458,
 									"top": 281,
 									"width": 0,
 									"height": 13,
@@ -13254,7 +13254,7 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 382,
+									"left": 390,
 									"top": 251,
 									"width": 0,
 									"height": 13,
@@ -13288,7 +13288,7 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 385,
+									"left": 393,
 									"top": 237,
 									"width": 0,
 									"height": 13,
@@ -13322,7 +13322,7 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 376,
+									"left": 384,
 									"top": 278,
 									"width": 5.05908203125,
 									"height": 13,
@@ -13507,7 +13507,7 @@
 								"$ref": "AAAAAAFiBVEK/PdhKho="
 							},
 							"lineStyle": 0,
-							"points": "357:272;552:272",
+							"points": "365:272;552:272",
 							"stereotypeDisplay": "label",
 							"showVisibility": true,
 							"showProperty": true,
@@ -13572,7 +13572,7 @@
 								"$ref": "AAAAAAFiIM2aCe1nq38="
 							},
 							"lineStyle": 0,
-							"points": "454:305;454:273"
+							"points": "454:305;454:273;457:273"
 						},
 						{
 							"_type": "UMLAssociationView",
@@ -15336,7 +15336,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFiBTBqC4OKoe4="
 							},
-							"name": "Category Property",
+							"name": "Category's Property",
 							"ownedElements": [
 								{
 									"_type": "UMLAssociation",
