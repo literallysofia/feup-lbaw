@@ -23,81 +23,98 @@
   <header>
     <nav class="navbar navbar-expand-md fixed-top navbar-light">
       <div class="container">
-        <a class="navbar-brand" href="homepage.html">Sweven</a>
+        <!-- HAMBURGER -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false"
           aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav mr-auto w-100 justify-content-end">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                Products
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <div class="row col-divider">
-                  <div class="mt-4 col-sm-4">
-                    <h6 class="dropdown-header">Shop By Category</h6>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="products.html">Smartphones</a>
-                    <a class="dropdown-item" href="products.html">Tablets</a>
-                    <a class="dropdown-item" href="products.html">Computers</a>
-                    <a class="dropdown-item" href="products.html">Monitors</a>
-                    <a class="dropdown-item" href="products.html">Acessories</a>
-                  </div>
-                  <div class="mt-4 col-sm-4">
-                    <h6 class="dropdown-header">Shop By Brand</h6>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="products.html">Apple</a>
-                    <a class="dropdown-item" href="products.html">Samsung</a>
-                    <a class="dropdown-item" href="products.html">Huawei</a>
-                    <a class="dropdown-item" href="products.html">Google</a>
-                  </div>
-                  <div class="mt-4 col-sm-4">
-                    <h6 class="dropdown-header">Sales</h6>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="products.html">Apple</a>
-                    <a class="dropdown-item" href="products.html">Samsung</a>
-                    <a class="dropdown-item" href="products.html">Huawei</a>
-                    <a class="dropdown-item" href="products.html">Google</a>
-                  </div>
-                </div>
+        <!-- LOGO -->
+        <a class="navbar-brand mr-auto" href="homepage.html">Sweven</a>
 
-              </div>
-            </li>
-            <li class="nav-item">
-              <form class="search-container" action="">
-                <input id="search-box" type="text" class="search-box" name="q" />
-                <label for="search-box">
-                  <i class="fas fa-search search-icon"></i>
-                </label>
-              </form>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="wishlist.html">
-                <i class="fas fa-heart"></i>
-                <span>Wishlist</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="cart.html">
-                <i class="fas fa-shopping-bag"></i>
-                <span>Cart</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="admin.html">
-                <i class="fas fa-power-off"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
-          </ul>
+        <ul class="navbar-nav d-flex flex-row align-items-center">
+          <!-- DROPDOWN -->
+          <li class="nav-item dropdown d-none d-md-block">
+            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Products
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <div class="triangle"></div>
+              <h6 class="dropdown-header">Shop By Category</h6>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="products.html">Smartphones</a>
+              <a class="dropdown-item" href="products.html">Tablets</a>
+              <a class="dropdown-item" href="products.html">Computers</a>
+              <a class="dropdown-item" href="products.html">Monitors</a>
+              <a class="dropdown-item" href="products.html">Acessories</a>
+
+            </div>
+          </li>
+          <!-- SEARCH -->
+          <li>
+            <form class="form-inline search-container d-none d-md-flex">
+              <i class="fas fa-search search-icon"></i>
+              <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            </form>
+          </li>
+          <!-- ICONS -->
+          <li class="nav-item">
+            <a class="nav-link" href="wishlist.html">
+              <i class="fas fa-heart"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html">
+              <i class="fas fa-shopping-bag"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin.html">
+              <i class="fas fa-user"></i>
+            </a>
+          </li>
+        </ul>
+
+        <!-- MOBILE MENU -->
+        <div class="d-block d-md-none w-100">
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <h6>Shop By Category</h6>
+                <hr>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="products.html">Smartphones</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="products.html">Tablets</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="products.html">Computers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="products.html">Monitors</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="products.html">Acessories</a>
+              </li>
+            </ul>
+          </div>
         </div>
+        <form class="search-container-mobile d-flex flex-row flex-nowrap d-md-none form-inline my-2 my-lg-0">
+          <input class="form-control mr-2 w-100" type="text" placeholder="Search">
+          <button class="btn my-2 my-sm-0" type="submit">
+            <i class="fas fa-search search-icon"></i>
+          </button>
+        </form>
+
       </div>
     </nav>
   </header>
+
 
 
   <nav class="breadcrumb container">
@@ -180,20 +197,20 @@
         <div class="cards row">
           <div class="mt-4 col-md-6 col-lg-3">
             <div class="box d-flex flex-column">
+              <div class="d-flex flex-row address-header">
+                <h6>Home</h6>
+                <i class="fas fa-trash-alt ml-auto"></i>
+              </div>
               <h6>R. Dr. Roberto Frias, 4200-465 Porto, Portugal </h6>
-              <i class="fas fa-trash-alt align-self-end mt-auto"></i>
             </div>
           </div>
           <div class="mt-4 col-md-6 col-lg-3">
             <div class="box d-flex flex-column">
+              <div class="d-flex flex-row address-header">
+                <h6>Work</h6>
+                <i class="fas fa-trash-alt ml-auto"></i>
+              </div>
               <h6>R. Dr. Virgílio Taborda 43, 5180-169 Freixo de Espada À Cinta, Portugal </h6>
-              <i class="fas fa-trash-alt align-self-end mt-auto"></i>
-            </div>
-          </div>
-          <div class="mt-4 col-md-6 col-lg-3">
-            <div class="box d-flex flex-column">
-              <h6>Rua de Álvares Cabral 72, 4050 Porto, Portugal</h6>
-              <i class="fas fa-trash-alt align-self-end mt-auto"></i>
             </div>
           </div>
           <div class="mt-4 col-md-6 col-lg-3">
@@ -215,7 +232,29 @@
             </button>
           </div>
           <div class="modal-body section-container mt-0">
-            <input type="text" class="form-control" id="new_address" placeholder="New Address">
+            <form>
+              <div class="form-group">
+                <label for="review_title">Name</label>
+                <input type="text" class="form-control" placeholder="Address Name">
+              </div>
+              <div class="form-group">
+                <label for="review_title">Street</label>
+                <input type="text" class="form-control" placeholder="Your street">
+              </div>
+              <div class="form-group">
+                <label for="review_title">Postal Code</label>
+                <input type="text" class="form-control" placeholder="Your postal code">
+              </div>
+              <div class="form-group">
+                <label for="review_title">City</label>
+                <input type="text" class="form-control" placeholder="Your city">
+              </div>
+              <div class="form-group">
+                <label for="review_title">Country</label>
+                <input type="text" class="form-control" placeholder="Your country">
+              </div>
+
+            </form>
           </div>
           <div class="modal-footer">
             <input type="button" data-dismiss="modal" value="Close"></input>
@@ -251,7 +290,7 @@
               <tr>
                 <td colspan="3" class="collapse-line">
                   <div id="purchase-1" class="collapse-div collapse">
-                    <p class="products_list_title">Products</p>
+                    <p class="accordion_list_title">Products</p>
                     <div class="product_list container">
                       <div class="row" onclick="window.location='product.html'">
                         <p class="col-lg-auto col-md-auto col-sm-auto">Apple iPhone X - 256GB Silver</p>
@@ -273,6 +312,8 @@
                         <p class="col-lg-auto col-md-auto col-sm-auto">1549€</p>
                       </div>
                     </div>
+                    <p class="accordion_list_title mt-3">Address</p>
+                    <p> R. Dr. Roberto Frias, 4200-465 Porto, Portugal </p>
                   </div>
                 </td>
               </tr>
@@ -284,7 +325,7 @@
               <tr>
                 <td colspan="3" class="collapse-line">
                   <div id="purchase-2" class="collapse-div collapse">
-                    <p class="products_list_title">Products</p>
+                    <p class="accordion_list_title">Products</p>
                     <div class="product_list container">
                       <div class="row" onclick="window.location='product.html'">
                         <p class="col-lg-auto col-md-auto col-sm-auto">Apple iPhone X - 256GB Silver</p>
@@ -306,6 +347,8 @@
                         <p class="col-lg-auto col-md-auto col-sm-auto">1549€</p>
                       </div>
                     </div>
+                    <p class="accordion_list_title mt-3">Address</p>
+                    <p> R. Dr. Roberto Frias, 4200-465 Porto, Portugal </p>
                   </div>
                 </td>
               </tr>
@@ -317,7 +360,7 @@
               <tr>
                 <td colspan="3" class="collapse-line">
                   <div id="purchase-3" class="collapse-div collapse">
-                    <p class="products_list_title">Products</p>
+                    <p class="accordion_list_title">Products</p>
                     <div class="product_list container">
                       <div class="row" onclick="window.location='product.html'">
                         <p class="col-lg-auto col-md-auto col-sm-auto">Apple iPhone X - 256GB Silver</p>
@@ -339,6 +382,8 @@
                         <p class="col-lg-auto col-md-auto col-sm-auto">1549€</p>
                       </div>
                     </div>
+                    <p class="accordion_list_title mt-3">Address</p>
+                    <p> R. Dr. Roberto Frias, 4200-465 Porto, Portugal </p>
                   </div>
                 </td>
               </tr>
@@ -350,7 +395,7 @@
               <tr>
                 <td colspan="3" class="collapse-line">
                   <div id="purchase-4" class="collapse-div collapse">
-                    <p class="products_list_title">Products</p>
+                    <p class="accordion_list_title">Products</p>
                     <div class="product_list container">
                       <div class="row" onclick="window.location='product.html'">
                         <p class="col-lg-auto col-md-auto col-sm-auto">Apple iPhone X - 256GB Silver</p>
@@ -372,6 +417,8 @@
                         <p class="col-lg-auto col-md-auto col-sm-auto">1549€</p>
                       </div>
                     </div>
+                    <p class="accordion_list_title mt-3">Address</p>
+                    <p> R. Dr. Roberto Frias, 4200-465 Porto, Portugal </p>
                   </div>
                 </td>
               </tr>
@@ -383,7 +430,7 @@
               <tr>
                 <td colspan="3" class="collapse-line">
                   <div id="purchase-5" class="collapse-div collapse">
-                    <p class="products_list_title">Products</p>
+                    <p class="accordion_list_title">Products</p>
                     <div class="product_list container">
                       <div class="row" onclick="window.location='product.html'">
                         <p class="col-lg-auto col-md-auto col-sm-auto">Apple iPhone X - 256GB Silver</p>
@@ -405,6 +452,8 @@
                         <p class="col-lg-auto col-md-auto col-sm-auto">1549€</p>
                       </div>
                     </div>
+                    <p class="accordion_list_title mt-3">Address</p>
+                    <p> R. Dr. Roberto Frias, 4200-465 Porto, Portugal </p>
                   </div>
                 </td>
               </tr>
@@ -416,7 +465,7 @@
               <tr>
                 <td colspan="3" class="collapse-line">
                   <div id="purchase-6" class="collapse-div collapse">
-                    <p class="products_list_title">Products</p>
+                    <p class="accordion_list_title">Products</p>
                     <div class="product_list container">
                       <div class="row" onclick="window.location='product.html'">
                         <p class="col-lg-auto col-md-auto col-sm-auto">Apple iPhone X - 256GB Silver</p>
@@ -438,6 +487,8 @@
                         <p class="col-lg-auto col-md-auto col-sm-auto">1549€</p>
                       </div>
                     </div>
+                    <p class="accordion_list_title mt-3">Address</p>
+                    <p> R. Dr. Roberto Frias, 4200-465 Porto, Portugal </p>
                   </div>
                 </td>
               </tr>
@@ -474,7 +525,7 @@
               <tr>
                 <td colspan="3" class="collapse-line">
                   <div id="purchase-7" class="collapse-div collapse">
-                    <p class="products_list_title">Products</p>
+                    <p class="accordion_list_title">Products</p>
                     <div class="product_list container">
                       <div class="row" onclick="window.location='product.html'">
                         <p class="col-lg-auto col-md-auto col-sm-auto">Apple iPhone X - 256GB Silver</p>
@@ -496,6 +547,8 @@
                         <p class="col-lg-auto col-md-auto col-sm-auto">1549€</p>
                       </div>
                     </div>
+                    <p class="accordion_list_title mt-3">Address</p>
+                    <p> R. Dr. Roberto Frias, 4200-465 Porto, Portugal </p>
                   </div>
                 </td>
               </tr>
@@ -507,7 +560,7 @@
               <tr>
                 <td colspan="3" class="collapse-line">
                   <div id="purchase-8" class="collapse-div collapse">
-                    <p class="products_list_title">Products</p>
+                    <p class="accordion_list_title">Products</p>
                     <div class="product_list container">
                       <div class="row" onclick="window.location='product.html'">
                         <p class="col-lg-auto col-md-auto col-sm-auto">Apple iPhone X - 256GB Silver</p>
@@ -529,6 +582,8 @@
                         <p class="col-lg-auto col-md-auto col-sm-auto">1549€</p>
                       </div>
                     </div>
+                    <p class="accordion_list_title mt-3">Address</p>
+                    <p> R. Dr. Roberto Frias, 4200-465 Porto, Portugal </p>
                   </div>
                 </td>
               </tr>
@@ -540,7 +595,7 @@
               <tr>
                 <td colspan="3" class="collapse-line">
                   <div id="purchase-9" class="collapse-div collapse">
-                    <p class="products_list_title">Products</p>
+                    <p class="accordion_list_title">Products</p>
                     <div class="product_list container">
                       <div class="row" onclick="window.location='product.html'">
                         <p class="col-lg-auto col-md-auto col-sm-auto">Apple iPhone X - 256GB Silver</p>
@@ -562,6 +617,8 @@
                         <p class="col-lg-auto col-md-auto col-sm-auto">1549€</p>
                       </div>
                     </div>
+                    <p class="accordion_list_title mt-3">Address</p>
+                    <p> R. Dr. Roberto Frias, 4200-465 Porto, Portugal </p>
                   </div>
                 </td>
               </tr>
@@ -573,7 +630,7 @@
               <tr>
                 <td colspan="3" class="collapse-line">
                   <div id="purchase-10" class="collapse-div collapse">
-                    <p class="products_list_title">Products</p>
+                    <p class="accordion_list_title">Products</p>
                     <div class="product_list container">
                       <div class="row" onclick="window.location='product.html'">
                         <p class="col-lg-auto col-md-auto col-sm-auto">Apple iPhone X - 256GB Silver</p>
@@ -595,6 +652,8 @@
                         <p class="col-lg-auto col-md-auto col-sm-auto">1549€</p>
                       </div>
                     </div>
+                    <p class="accordion_list_title mt-3">Address</p>
+                    <p> R. Dr. Roberto Frias, 4200-465 Porto, Portugal </p>
                   </div>
                 </td>
               </tr>
@@ -606,7 +665,7 @@
               <tr>
                 <td colspan="3" class="collapse-line">
                   <div id="purchase-11" class="collapse-div collapse">
-                    <p class="products_list_title">Products</p>
+                    <p class="accordion_list_title">Products</p>
                     <div class="product_list container">
                       <div class="row" onclick="window.location='product.html'">
                         <p class="col-lg-auto col-md-auto col-sm-auto">Apple iPhone X - 256GB Silver</p>
@@ -628,6 +687,8 @@
                         <p class="col-lg-auto col-md-auto col-sm-auto">1549€</p>
                       </div>
                     </div>
+                    <p class="accordion_list_title mt-3">Address</p>
+                    <p> R. Dr. Roberto Frias, 4200-465 Porto, Portugal </p>
                   </div>
                 </td>
               </tr>
@@ -639,7 +700,7 @@
               <tr>
                 <td colspan="3" class="collapse-line">
                   <div id="purchase-12" class="collapse-div collapse">
-                    <p class="products_list_title">Products</p>
+                    <p class="accordion_list_title">Products</p>
                     <div class="product_list container">
                       <div class="row" onclick="window.location='product.html'">
                         <p class="col-lg-auto col-md-auto col-sm-auto">Apple iPhone X - 256GB Silver</p>
@@ -661,6 +722,8 @@
                         <p class="col-lg-auto col-md-auto col-sm-auto">1549€</p>
                       </div>
                     </div>
+                    <p class="accordion_list_title mt-3">Address</p>
+                    <p> R. Dr. Roberto Frias, 4200-465 Porto, Portugal </p>
                   </div>
                 </td>
               </tr>
@@ -672,7 +735,7 @@
               <tr>
                 <td colspan="3" class="collapse-line">
                   <div id="purchase-13" class="collapse-div collapse">
-                    <p class="products_list_title">Products</p>
+                    <p class="accordion_list_title">Products</p>
                     <div class="product_list container">
                       <div class="row" onclick="window.location='product.html'">
                         <p class="col-lg-auto col-md-auto col-sm-auto">Apple iPhone X - 256GB Silver</p>
@@ -694,6 +757,8 @@
                         <p class="col-lg-auto col-md-auto col-sm-auto">1549€</p>
                       </div>
                     </div>
+                    <p class="accordion_list_title mt-3">Address</p>
+                    <p> R. Dr. Roberto Frias, 4200-465 Porto, Portugal </p>
                   </div>
                 </td>
               </tr>
@@ -706,8 +771,7 @@
 
   </main>
 
-  <footer class="page-footer mt-5">
-
+  <footer>
     <div class="container">
       <div class="row">
         <div class="col-md-6">
@@ -730,7 +794,6 @@
         </div>
       </div>
     </div>
-
   </footer>
 </body>
 

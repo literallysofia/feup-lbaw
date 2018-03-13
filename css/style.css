@@ -4,9 +4,16 @@ body {
   font-family: "Roboto", sans-serif;
   color: black; }
 
+html {
+  height: 100%; }
+
 body {
+  position: relative;
   padding-top: 56px;
-  background-color: #F1F1F1; }
+  background-color: #F1F1F1;
+  padding-bottom: 15rem;
+  min-height: 100%;
+  padding: 56px 0 15em 0; }
 
 input {
   outline: none; }
@@ -48,7 +55,8 @@ main .section-container {
     font-family: "Raleway", sans-serif;
     font-weight: 700;
     letter-spacing: 0.1em;
-    margin-top: 1em; }
+    margin-top: 1em;
+    text-align: center; }
 main input[type="text"],
 main input[type="password"],
 main input[type="email"],
@@ -76,7 +84,7 @@ main #message {
   main #message:focus {
     outline: none;
     border-color: #D9D9D9;
-    color: #949494;
+    color: black;
     box-shadow: 0 0 0.7em #D9D9D9; }
 main textarea,
 main #message {
@@ -97,9 +105,15 @@ main input[type="button"] {
 main input[type="button"].black-button {
   color: white;
   background-color: black; }
+  main input[type="button"].black-button:hover {
+    background-color: #6174AA;
+    border-color: #6174AA; }
 main ::placeholder {
   color: #646464; }
 
+@media (max-width: 767px) {
+  body {
+    padding-top: 126px; } }
 /* SOFIA */
 .breadcrumb {
   background-color: transparent;
@@ -125,6 +139,11 @@ header nav {
     font-family: "Raleway", sans-serif;
     text-transform: uppercase;
     font-weight: 500; }
+  header nav.navbar-light .navbar-nav h6 {
+    font-family: "Raleway", sans-serif;
+    color: #646464;
+    text-transform: uppercase;
+    margin-top: 1em; }
   header nav.navbar-light .navbar-nav .nav-link {
     font-family: "Raleway", sans-serif;
     font-weight: 500;
@@ -132,80 +151,68 @@ header nav {
     header nav.navbar-light .navbar-nav .nav-link:hover {
       color: #949494; }
   header nav.navbar-light .navbar-toggler {
-    border: none; }
-  header nav .nav-item:last-child .nav-link {
-    padding-right: 0; }
-  header nav .nav-item span {
-    display: none;
+    border: none;
+    outline: none;
+    margin-right: 0.5em; }
+  header nav.navbar-light .nav-item {
     padding-left: 1em; }
-  header nav .dropdown {
-    position: static; }
-    header nav .dropdown .dropdown-toggle::after {
-      display: none; }
-  header nav .container {
-    position: relative; }
-  header nav .dropdown-menu {
+    header nav.navbar-light .nav-item:last-child .nav-link {
+      padding-right: 0; }
+  header nav .dropdown .dropdown-toggle::after {
+    display: none; }
+  header nav .dropdown .dropdown-menu {
     background-color: #f9f9f9;
     border: none;
-    border-radius: 0;
-    width: 100%;
-    margin-top: 0.5em;
-    padding: 2em; }
-    header nav .dropdown-menu .col-divider [class*="col-"]:not(:last-child):after {
-      background: #D9D9D9;
-      width: 1px;
-      content: "";
-      display: block;
+    width: 300px;
+    margin-top: 1.5em;
+    padding: 2em;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2); }
+    header nav .dropdown .dropdown-menu .triangle {
+      width: 0;
+      height: 0;
       position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      min-height: 70px; }
-    header nav .dropdown-menu .mt-4 {
-      margin-top: 0 !important; }
-    header nav .dropdown-menu .col-sm-4 {
-      padding: 0 2em; }
-    header nav .dropdown-menu .dropdown-header {
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid #f9f9f9;
+      top: -8px; }
+    header nav .dropdown .dropdown-menu .dropdown-header {
       font-family: "Raleway", sans-serif;
       color: #646464;
       text-transform: uppercase;
-      padding: 0; }
-    header nav .dropdown-menu .dropdown-divider {
+      padding: 0;
+      margin: 0 !important; }
+    header nav .dropdown .dropdown-menu .dropdown-divider {
       border-top: 1px solid #646464; }
-    header nav .dropdown-menu .dropdown-item:hover {
+    header nav .dropdown .dropdown-menu .dropdown-item:hover {
       background-color: white; }
-  header nav .search-container .search-box {
-    transition: width 0.6s, border-radius 0.6s, background 0.6s, box-shadow 0.6s;
-    width: 2.5em;
-    height: 2.5em;
-    border-radius: 10em;
-    border: none;
-    cursor: pointer; }
-    header nav .search-container .search-box:hover + label .search-icon {
-      color: #949494; }
-    header nav .search-container .search-box:focus {
-      transition: width 0.6s cubic-bezier(0, 1.22, 0.66, 1.39), border-radius 0.6s, background 0.6s;
-      border: none;
+  header nav .search-container {
+    margin: 0 1em; }
+    header nav .search-container input {
+      padding: 0.5em 1em 0.5em 2.6em; }
+      header nav .search-container input:focus {
+        outline: none;
+        border-color: #D9D9D9;
+        box-shadow: 0 0 0.7em transparent; }
+    header nav .search-container .search-icon {
+      position: relative;
+      left: 30px; }
+  header nav .search-container-mobile {
+    width: 100%; }
+    header nav .search-container-mobile input:focus {
       outline: none;
-      box-shadow: none;
-      padding: 0 2.2em 0 1em;
-      cursor: text;
-      width: 300px;
-      border-radius: auto;
-      background: #F1F1F1;
-      color: black; }
-      header nav .search-container .search-box:focus + label .search-icon {
-        color: black; }
-    header nav .search-container .search-box:not(:focus) {
-      text-indent: -5000px; }
-  header nav .search-container label {
-    width: 0; }
-  header nav .search-container .search-icon {
-    position: relative;
-    left: -30px;
-    cursor: pointer; }
+      border-color: #D9D9D9;
+      box-shadow: 0 0 0.7em transparent; }
+  header nav .btn {
+    background-color: black;
+    color: white; }
+    header nav .btn:hover {
+      background-color: #646464; }
 
 footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
   font-family: "Raleway", sans-serif;
   background-color: white;
   padding: 2em 0; }
@@ -222,45 +229,11 @@ footer {
   footer p {
     font-size: 0.9em; }
 
-@media (min-width: 768px) {
-  .navbar-expand-md .navbar-nav .nav-link {
-    padding: 0.5em 1em; } }
 @media (max-width: 767px) {
+  footer .container {
+    text-align: center; }
   footer .justify-content-end {
-    justify-content: center !important; }
-
-  header nav .nav-item span {
-    display: inline; }
-  header nav .dropdown {
-    position: relative; }
-    header nav .dropdown .dropdown-toggle::after {
-      display: inline-block; }
-  header nav .navbar-collapse {
-    max-height: 100vh !important;
-    overflow-y: scroll !important;
-    overflow-x: hidden !important; }
-  header nav .dropdown-menu {
-    background-color: white;
-    padding: 1em; }
-    header nav .dropdown-menu .col-divider [class*="col-"]:not(:last-child):after {
-      display: none; }
-    header nav .dropdown-menu .mt-4:not(:first-child) {
-      margin-top: 2em !important; }
-    header nav .dropdown-menu .col-sm-4 {
-      padding: 0; }
-  header nav .search-container .search-box {
-    transition: width 0.6s cubic-bezier(0, 1.22, 0.66, 1.39), border-radius 0.6s, background 0.6s;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    padding-left: 15px;
-    cursor: text;
-    width: 300px;
-    border-radius: auto;
-    background: #ebebeb;
-    color: black; }
-    header nav .search-container .search-box + label .search-icon {
-      color: black; } }
+    justify-content: center !important; } }
 nav .pagination {
   margin: 0; }
   nav .pagination .page-link {
@@ -310,7 +283,7 @@ main .scroll_nav {
     font-weight: bold;
     font-size: 1em;
     color: black;
-    padding-left: 0.75em;
+    padding-left: 1.2em;
     text-decoration: none;
     padding-right: 0; }
     main .scroll_nav a:hover {
@@ -349,9 +322,8 @@ main .cards {
     cursor: pointer;
     color: #646464; }
   main .cards .last-card {
-    color: black;
-    opacity: 0.5;
-    background-color: white;
+    color: #777777;
+    background-color: #f8f8f8;
     text-transform: uppercase;
     font-weight: 700;
     font-size: 1.3em;
@@ -360,7 +332,6 @@ main .cards {
     justify-content: center;
     text-align: center; }
     main .cards .last-card:hover {
-      opacity: 1;
       background-color: black;
       color: white;
       cursor: pointer; }
@@ -372,34 +343,106 @@ main .cards {
   main .cards.navigation-cards select {
     margin-bottom: 1em; }
   main .cards.navigation-cards .entry-buttons {
-    width: 50%;
+    width: 25%;
     margin-top: auto;
     margin-left: auto; }
     main .cards.navigation-cards .entry-buttons input[type="button"] {
       width: 100%; }
-  main .cards.categories-cards .category-header, main .cards.categories-cards .spec-header, main .cards.specs-cards .category-header, main .cards.specs-cards .spec-header, main .cards.photo-cards .category-header, main .cards.photo-cards .spec-header {
+    @media (max-width: 700px) {
+      main .cards.navigation-cards .entry-buttons {
+        width: 100%; } }
+  main .cards .address-header {
     border-bottom: 0.15em solid black;
     margin-bottom: 1em; }
-    main .cards.categories-cards .category-header h6, main .cards.categories-cards .spec-header h6, main .cards.specs-cards .category-header h6, main .cards.specs-cards .spec-header h6, main .cards.photo-cards .category-header h6, main .cards.photo-cards .spec-header h6 {
+    main .cards .address-header h6 {
+      text-transform: uppercase;
+      font-weight: bold;
+      text-align: start;
+      margin: 0; }
+  main .cards.categories-cards .category-header,
+  main .cards.categories-cards .spec-header, main .cards.specs-cards .category-header,
+  main .cards.specs-cards .spec-header, main .cards.photo-cards .category-header,
+  main .cards.photo-cards .spec-header {
+    border-bottom: 0.15em solid black;
+    margin-bottom: 1em; }
+    main .cards.categories-cards .category-header h6,
+    main .cards.categories-cards .spec-header h6, main .cards.specs-cards .category-header h6,
+    main .cards.specs-cards .spec-header h6, main .cards.photo-cards .category-header h6,
+    main .cards.photo-cards .spec-header h6 {
       text-transform: uppercase;
       font-weight: bold;
       text-align: start;
       margin: 0; }
   main .cards.categories-cards .select-checkbox, main .cards.specs-cards .select-checkbox, main .cards.photo-cards .select-checkbox {
-    margin-bottom: 0.7em; }
+    margin-bottom: 0.2em; }
     main .cards.categories-cards .select-checkbox select, main .cards.specs-cards .select-checkbox select, main .cards.photo-cards .select-checkbox select {
       margin-bottom: 0.1em;
       width: 100%; }
     main .cards.categories-cards .select-checkbox div, main .cards.specs-cards .select-checkbox div, main .cards.photo-cards .select-checkbox div {
       padding-left: 0;
-      padding-top: 0.2em; }
-      main .cards.categories-cards .select-checkbox div .form-check-input, main .cards.specs-cards .select-checkbox div .form-check-input, main .cards.photo-cards .select-checkbox div .form-check-input {
+      padding-top: 0.2em;
+      /*.form-check-input {
         margin: 0;
         width: 0.75em;
-        align-self: center; }
-      main .cards.categories-cards .select-checkbox div label, main .cards.specs-cards .select-checkbox div label, main .cards.photo-cards .select-checkbox div label {
+        align-self: center;
+      }
+      label {
         padding-left: 1.4em;
-        font-size: 0.7em; }
+        font-size: 0.7em;
+      }*/ }
+      main .cards.categories-cards .select-checkbox div.checkbox-container, main .cards.specs-cards .select-checkbox div.checkbox-container, main .cards.photo-cards .select-checkbox div.checkbox-container {
+        display: block;
+        position: relative;
+        padding-left: 25px;
+        padding-top: 0;
+        margin-bottom: 12px;
+        margin-top: 5px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        /* On mouse-over, add a grey background color */
+        /* Hide the browser's default checkbox */
+        /* Create a custom checkbox */ }
+        main .cards.categories-cards .select-checkbox div.checkbox-container label, main .cards.specs-cards .select-checkbox div.checkbox-container label, main .cards.photo-cards .select-checkbox div.checkbox-container label {
+          font-size: 0.7em; }
+        main .cards.categories-cards .select-checkbox div.checkbox-container:hover input:checked ~ .checkmark, main .cards.specs-cards .select-checkbox div.checkbox-container:hover input:checked ~ .checkmark, main .cards.photo-cards .select-checkbox div.checkbox-container:hover input:checked ~ .checkmark {
+          background-color: black; }
+        main .cards.categories-cards .select-checkbox div.checkbox-container:hover input ~ .checkmark, main .cards.specs-cards .select-checkbox div.checkbox-container:hover input ~ .checkmark, main .cards.photo-cards .select-checkbox div.checkbox-container:hover input ~ .checkmark {
+          background-color: #bbb; }
+        main .cards.categories-cards .select-checkbox div.checkbox-container input, main .cards.specs-cards .select-checkbox div.checkbox-container input, main .cards.photo-cards .select-checkbox div.checkbox-container input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+          /* When the checkbox is checked, add a blue background */ }
+          main .cards.categories-cards .select-checkbox div.checkbox-container input:checked ~ .checkmark, main .cards.specs-cards .select-checkbox div.checkbox-container input:checked ~ .checkmark, main .cards.photo-cards .select-checkbox div.checkbox-container input:checked ~ .checkmark {
+            background-color: black;
+            /* Show the checkmark when checked */ }
+            main .cards.categories-cards .select-checkbox div.checkbox-container input:checked ~ .checkmark:after, main .cards.specs-cards .select-checkbox div.checkbox-container input:checked ~ .checkmark:after, main .cards.photo-cards .select-checkbox div.checkbox-container input:checked ~ .checkmark:after {
+              display: block; }
+        main .cards.categories-cards .select-checkbox div.checkbox-container .checkmark, main .cards.specs-cards .select-checkbox div.checkbox-container .checkmark, main .cards.photo-cards .select-checkbox div.checkbox-container .checkmark {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 17px;
+          width: 17px;
+          background-color: #ddd;
+          /* Create the checkmark/indicator (hidden when not checked) */ }
+          main .cards.categories-cards .select-checkbox div.checkbox-container .checkmark:after, main .cards.specs-cards .select-checkbox div.checkbox-container .checkmark:after, main .cards.photo-cards .select-checkbox div.checkbox-container .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            /* Style the checkmark/indicator */
+            left: 6px;
+            top: 3px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg); }
   main .cards.categories-cards .entry-buttons, main .cards.specs-cards .entry-buttons, main .cards.photo-cards .entry-buttons {
     width: 100%;
     margin-top: auto;
@@ -444,7 +487,7 @@ main .table {
     background: #f9f9f9; }
     main .table .collapse-line div.collapse-div {
       padding: 0.75em; }
-      main .table .collapse-line div.collapse-div .products_list_title {
+      main .table .collapse-line div.collapse-div .accordion_list_title {
         text-transform: uppercase;
         font-weight: 700; }
       main .table .collapse-line div.collapse-div p {
@@ -495,35 +538,37 @@ main .modal .modal-footer input[type="button"] {
     border: 0em;
     font-weight: bold; }
 
-.info_item {
+.info-item {
   height: 100%; }
-  .info_item p.mb-auto {
+  .info-item p.mb-auto {
     font-weight: bold; }
-  .info_item input[type="button"] {
+  .info-item input[type="button"] {
     padding-left: 2em;
     padding-right: 2em;
     margin-top: 0.5em; }
-  .info_item p.mt-auto.mb-0.ml-auto {
-    font-weight: bold;
-    font-size: 1.1em; }
+  .info-item p.mt-auto.ml-auto {
+    font-weight: 500;
+    font-size: 1em; }
 
 .price_item_cart {
   padding-right: 1em; }
   .price_item_cart p {
     margin-bottom: 0em; }
 
-#end_cart p {
-  font-size: 1.2em; }
-  #end_cart p:first-child {
-    font-family: "Raleway", sans-serif; }
-  #end_cart p:last-child {
-    margin-left: 1.3em;
-    font-weight: bold; }
-    @media (max-width: 450px) {
-      #end_cart p:last-child {
-        font-size: 1em;
-        width: 60%;
-        text-align: end; } }
+#end_cart {
+  padding: 0; }
+  #end_cart p {
+    font-size: 1.2em; }
+    #end_cart p:first-child {
+      font-family: "Raleway", sans-serif; }
+    #end_cart p:last-child {
+      margin-left: 1.3em;
+      font-weight: bold; }
+      @media (max-width: 450px) {
+        #end_cart p:last-child {
+          font-size: 1em;
+          width: 60%;
+          text-align: end; } }
 
 .remove-item-cart > a {
   font-size: 0.8em;
@@ -542,7 +587,8 @@ main .modal .modal-footer input[type="button"] {
       #checkout_cart input {
         width: 100%; } }
 
-#checkoutModal select, #checkoutModal p {
+#checkoutModal select,
+#checkoutModal p {
   margin-bottom: 2em; }
 #checkoutModal p:last-child {
   font-weight: bold;
@@ -597,37 +643,38 @@ main {
     font-weight: bold;
     font-size: 1em;
     text-transform: uppercase; }
-  main .review_info {
+  main #product_price {
+    font-size: 1.3em;
+    font-weight: 500; }
+  main .review-item .review-info {
     font-family: "Raleway", sans-serif; }
-  main #product_stars i {
-    -webkit-text-stroke: 0.08em #F1F1F1; }
   main #reviews_counter {
     font-weight: normal;
     padding-left: 0.3em; }
-  main .stars_outer {
+  main .stars-outer {
     display: inline-block;
     position: relative;
     color: #e9e9e9;
     white-space: nowrap; }
-    main .stars_outer i {
+    main .stars-outer i {
       -webkit-text-stroke: 0.08em white; }
-    main .stars_outer .stars_inner {
+    main .stars-outer .stars-inner {
       position: absolute;
       top: 0;
       left: 0;
       white-space: nowrap;
       overflow: hidden;
       color: #f7d633; }
-  main #review_stars .stars_outer {
+  main #review_stars .stars-outer {
     unicode-bidi: bidi-override;
     direction: rtl;
     font-size: 1.15em; }
-    main #review_stars .stars_outer .stars_inner {
+    main #review_stars .stars-outer .stars-inner {
       color: transparent; }
-      main #review_stars .stars_outer .stars_inner i:hover,
-      main #review_stars .stars_outer .stars_inner i:hover ~ i {
+      main #review_stars .stars-outer .stars-inner i:hover,
+      main #review_stars .stars-outer .stars-inner i:hover ~ i {
         color: #f7d633; }
-      main #review_stars .stars_outer .stars_inner .selected_star {
+      main #review_stars .stars-outer .stars-inner .selected-star {
         color: #f7d633; }
   main #rate_text {
     visibility: hidden;
@@ -643,8 +690,7 @@ main {
   main #review_body input {
     margin-top: 0.5em; }
   main .review_comment {
-    text-align: justify;
-    text-justify: inter-word; }
+    text-align: left; }
 
 .photo-cards span.uploadspan {
   font-weight: normal; }
@@ -667,9 +713,11 @@ main .contact p {
 main .contact .contact-form {
   margin-top: 2em; }
   main .contact .contact-form .form-group {
-    width: 65%; }
+    width: 70%; }
   main .contact .contact-form input[type="button"] {
     width: 17%; }
+main .contact .contact-info {
+  margin-top: 2em; }
 
 @media (max-width: 767px) {
   main .contact .contact-form .form-group {
@@ -678,39 +726,43 @@ main .contact .contact-form {
     width: 100%; }
   main .contact .contact-info {
     margin-top: 3em; } }
-main .about figure {
-  text-align: center; }
-  main .about figure img {
-    width: 30%; }
-  main .about figure figcaption {
-    margin: 2em 0 3em 0; }
-main .about p {
+main .about {
   text-align: justify; }
+  main .about figure {
+    text-align: center; }
+    main .about figure img {
+      width: 30%; }
+    main .about figure figcaption {
+      margin: 2em 0 3em 0; }
 
 @media (max-width: 767px) {
   main .about figure img {
     width: 60%; } }
-main .faq p {
+main .faq .question {
   text-align: justify; }
-main .faq .question:not(:first-child) {
-  margin-top: 2em; }
-main .faq .question:not(:last-child) {
-  border-bottom: 1px solid #D9D9D9; }
+  main .faq .question:not(:first-child) {
+    margin-top: 2em; }
+  main .faq .question:not(:last-child) {
+    border-bottom: 1px solid #D9D9D9; }
 
-main .register {
-  height: 60vh; }
-  main .register .row {
-    height: 100%; }
+main .register .row {
+  height: 100%; }
 main .register-form {
   width: 100%; }
+  main .register-form span {
+    font-family: "Raleway", sans-serif; }
+  main .register-form a {
+    color: #6174AA; }
   main .register-form form {
-    margin: 2em 0 0 0; }
+    margin: 2em 0; }
     main .register-form form input[type="button"] {
       min-width: 100%; }
+    main .register-form form #register {
+      margin-top: 0.5em; }
 
 @media (max-width: 767px) {
   main .register {
-    height: min-content; }
+    height: auto; }
     main .register figure {
       margin: 2em 0; }
   main .register-form {

@@ -22,84 +22,100 @@
     <header>
         <nav class="navbar navbar-expand-md fixed-top navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="homepage.html">Sweven</a>
+                <!-- HAMBURGER -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav mr-auto w-100 justify-content-end">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                Products
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <div class="row col-divider">
-                                    <div class="mt-4 col-sm-4">
-                                        <h6 class="dropdown-header">Shop By Category</h6>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="products.html">Smartphones</a>
-                                        <a class="dropdown-item" href="products.html">Tablets</a>
-                                        <a class="dropdown-item" href="products.html">Computers</a>
-                                        <a class="dropdown-item" href="products.html">Monitors</a>
-                                        <a class="dropdown-item" href="products.html">Acessories</a>
-                                    </div>
-                                    <div class="mt-4 col-sm-4">
-                                        <h6 class="dropdown-header">Shop By Brand</h6>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="products.html">Apple</a>
-                                        <a class="dropdown-item" href="products.html">Samsung</a>
-                                        <a class="dropdown-item" href="products.html">Huawei</a>
-                                        <a class="dropdown-item" href="products.html">Google</a>
-                                    </div>
-                                    <div class="mt-4 col-sm-4">
-                                        <h6 class="dropdown-header">Sales</h6>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="products.html">Apple</a>
-                                        <a class="dropdown-item" href="products.html">Samsung</a>
-                                        <a class="dropdown-item" href="products.html">Huawei</a>
-                                        <a class="dropdown-item" href="products.html">Google</a>
-                                    </div>
-                                </div>
+                <!-- LOGO -->
+                <a class="navbar-brand mr-auto" href="homepage.html">Sweven</a>
 
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <form class="search-container" action="">
-                                <input id="search-box" type="text" class="search-box" name="q" />
-                                <label for="search-box">
-                                    <i class="fas fa-search search-icon"></i>
-                                </label>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="wishlist.html">
-                                <i class="fas fa-heart"></i>
-                                <span>Wishlist</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="cart.html">
-                                <i class="fas fa-shopping-bag"></i>
-                                <span>Cart</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="admin.html">
-                              <i class="fas fa-user"></i>
-                              <span>Profile</span>
-                            </a>
-                        </li>
-                    </ul>
+                <ul class="navbar-nav d-flex flex-row align-items-center">
+                    <!-- DROPDOWN -->
+                    <li class="nav-item dropdown d-none d-md-block">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Products
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="triangle"></div>
+                            <h6 class="dropdown-header">Shop By Category</h6>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="products.html">Smartphones</a>
+                            <a class="dropdown-item" href="products.html">Tablets</a>
+                            <a class="dropdown-item" href="products.html">Computers</a>
+                            <a class="dropdown-item" href="products.html">Monitors</a>
+                            <a class="dropdown-item" href="products.html">Acessories</a>
+
+                        </div>
+                    </li>
+                    <!-- SEARCH -->
+                    <li>
+                        <form class="form-inline search-container d-none d-md-flex">
+                            <i class="fas fa-search search-icon"></i>
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                        </form>
+                    </li>
+                    <!-- ICONS -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="wishlist.html">
+                            <i class="fas fa-heart"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="fas fa-shopping-bag"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin.html">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- MOBILE MENU -->
+                <div class="d-block d-md-none w-100">
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <h6>Shop By Category</h6>
+                                <hr>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="products.html">Smartphones</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="products.html">Tablets</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="products.html">Computers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="products.html">Monitors</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="products.html">Acessories</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+                <form class="search-container-mobile d-flex flex-row flex-nowrap d-md-none form-inline my-2 my-lg-0">
+                    <input class="form-control mr-2 w-100" type="text" placeholder="Search">
+                    <button class="btn my-2 my-sm-0" type="submit">
+                        <i class="fas fa-search search-icon"></i>
+                    </button>
+                </form>
+
             </div>
         </nav>
     </header>
 
     <nav class="breadcrumb container">
-        <a class="breadcrumb-item" href="homepage.html">
+        <a class="breadcrumb-item" href="#">
             <i class="fas fa-home"></i> Home</a>
         <a class="breadcrumb-item" href="products.html">
             Computers</a>
@@ -136,13 +152,13 @@
                         <div class="col-md-6 col-sm-12 d-flex flex-column align-items-center align-self-center">
                             <h1 class="text-center">Apple MacBook Pro 13'' Retina i5-2,3GHz</h1>
                             <div class="stars mt-2">
-                                <div class="stars_outer">
+                                <div class="stars-outer">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
-                                    <div class="stars_inner">
+                                    <div class="stars-inner">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -256,17 +272,17 @@
 
                 <div class="section-container">
                     <div class="container">
-                        <div class="review_item row col-12 ml-0">
+                        <div class="review-item row col-12 ml-0">
                             <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-xs-12">
                                 <div class="d-flex flex-column align-items-start">
                                     <div class="stars">
-                                        <div class="stars_outer">
+                                        <div class="stars-outer">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
-                                            <div class="stars_inner">
+                                            <div class="stars-inner">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -302,17 +318,17 @@
                             </div>
                         </div>
                         <hr class="my-4">
-                        <div class="review_item row col-12  ml-0">
+                        <div class="review-item row col-12  ml-0">
                             <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-xs-12">
                                 <div class="d-flex flex-column align-items-start">
                                     <div class="stars">
-                                        <div class="stars_outer">
+                                        <div class="stars-outer">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
-                                            <div class="stars_inner">
+                                            <div class="stars-inner">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -369,13 +385,13 @@
                                 <label for="rate_review">Global rate:</label>
                                 <div class="d-flex justify-content-center">
                                     <div id="review_stars">
-                                        <div class="stars_outer">
+                                        <div class="stars-outer">
                                             <i class="fas fa-star fa-lg"></i>
                                             <i class="fas fa-star fa-lg"></i>
                                             <i class="fas fa-star fa-lg"></i>
                                             <i class="fas fa-star fa-lg"></i>
                                             <i class="fas fa-star fa-lg"></i>
-                                            <div class="stars_inner">
+                                            <div class="stars-inner">
                                                 <i class="fas fa-star fa-lg" data-alt="5" title="Excellent"></i>
                                                 <i class="fas fa-star fa-lg" data-alt="4" title="Good"></i>
                                                 <i class="fas fa-star fa-lg" data-alt="3" title="Average"></i>
@@ -406,8 +422,7 @@
         </div>
     </main>
 
-    <footer class="page-footer mt-5">
-
+    <footer>
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -430,7 +445,6 @@
                 </div>
             </div>
         </div>
-
     </footer>
 </body>
 

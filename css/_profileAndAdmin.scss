@@ -18,7 +18,7 @@ main {
       font-size: 1em;
       color: black;
 
-      padding-left: 0.75em;
+      padding-left: 1.2em;
       text-decoration: none;
 
       padding-right: 0;
@@ -45,10 +45,9 @@ main {
     }
   }
   form + div {
-
     input[type="button"] {
       width: 20%;
-      margin-left:auto;
+      margin-left: auto;
 
       @media (max-width: 1000px) {
         width: 30%;
@@ -88,9 +87,8 @@ main {
     }
 
     .last-card {
-      color: black;
-      opacity: 0.5;
-      background-color: $white;
+      color: #777777;
+      background-color: #f8f8f8;
       text-transform: uppercase;
       font-weight: 700;
       font-size: 1.3em;
@@ -98,8 +96,9 @@ main {
       flex-direction: column;
       justify-content: center;
       text-align: center;
+      // border: 1px solid #777777;
+
       &:hover {
-        opacity: 1;
         background-color: $black;
         color: $white;
         cursor: pointer;
@@ -118,18 +117,36 @@ main {
       }
 
       .entry-buttons {
-        width: 50%;
+        width: 25%;
         margin-top: auto;
         margin-left: auto;
 
         input[type="button"] {
           width: 100%;
         }
+
+        @media (max-width: 700px) {
+          width: 100%;
+        }
       }
     }
 
-    &.categories-cards, &.specs-cards, &.photo-cards {
-      .category-header, .spec-header {
+    .address-header {
+      border-bottom: 0.15em solid black;
+      margin-bottom: 1em;
+      h6 {
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: start;
+        margin: 0;
+      }
+    }
+
+    &.categories-cards,
+    &.specs-cards,
+    &.photo-cards {
+      .category-header,
+      .spec-header {
         border-bottom: 0.15em solid black;
         margin-bottom: 1em;
         h6 {
@@ -141,7 +158,7 @@ main {
       }
 
       .select-checkbox {
-        margin-bottom: 0.7em;
+        margin-bottom: 0.2em;
         select {
           margin-bottom: 0.1em;
           width: 100%;
@@ -150,7 +167,7 @@ main {
         div {
           padding-left: 0;
           padding-top: 0.2em;
-          .form-check-input {
+          /*.form-check-input {
             margin: 0;
             width: 0.75em;
             align-self: center;
@@ -158,6 +175,78 @@ main {
           label {
             padding-left: 1.4em;
             font-size: 0.7em;
+          }*/
+
+          &.checkbox-container {
+            display: block;
+            position: relative;
+            padding-left: 25px;
+            padding-top: 0;
+            margin-bottom: 12px;
+            margin-top: 5px;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            label {
+              font-size: 0.7em;
+            }
+
+            &:hover input:checked ~ .checkmark {
+              background-color: black;
+            }
+
+            /* On mouse-over, add a grey background color */
+            &:hover input ~ .checkmark {
+              background-color: #bbb;
+            }
+
+            /* Hide the browser's default checkbox */
+            input {
+              position: absolute;
+              opacity: 0;
+              cursor: pointer;
+
+              /* When the checkbox is checked, add a blue background */
+              &:checked ~ .checkmark {
+                background-color: black;
+
+                /* Show the checkmark when checked */
+                &:after {
+                  display: block;
+                }
+              }
+            }
+
+            /* Create a custom checkbox */
+            .checkmark {
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 17px;
+              width: 17px;
+              background-color: #ddd;
+
+              /* Create the checkmark/indicator (hidden when not checked) */
+              &:after {
+                content: "";
+                position: absolute;
+                display: none;
+
+                /* Style the checkmark/indicator */
+                left: 6px;
+                top: 3px;
+                width: 5px;
+                height: 10px;
+                border: solid white;
+                border-width: 0 3px 3px 0;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+              }
+            }
           }
         }
       }
@@ -235,7 +324,7 @@ main {
       background: $extra-light-grey;
       div.collapse-div {
         padding: 0.75em;
-        .products_list_title {
+        .accordion_list_title {
           text-transform: uppercase;
           font-weight: 700;
         }

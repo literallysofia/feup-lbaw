@@ -6,11 +6,14 @@ main {
         .contact-form {
             margin-top: 2em;
             .form-group {
-                width: 65%;
+                width: 70%;
             }
             input[type="button"] {
                 width: 17%;
             }
+        }
+        .contact-info {
+            margin-top: 2em;
         }
     }
 }
