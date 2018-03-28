@@ -6,11 +6,11 @@ CREATE TABLE addresses (
     street text NOT NULL,
     "postal_code" text NOT NULL,
     "city_id" integer NOT NULL REFERENCES cities(id) ON DELETE CASCADE,
-    "user_id" integer NOT NULL REFERENCES "users"(id) ON DELETE CASCADE
+    "user_id" integer NOT NULL REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE admins (
-    "user_id" integer PRIMARY KEY REFERENCES "users"(id) ON DELETE CASCADE
+    "user_id" integer PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE archived_products (
@@ -73,7 +73,7 @@ CREATE TABLE products (
 
 CREATE TABLE product_carts (
     id integer PRIMARY KEY,
-    "user_id" integer NOT NULL REFERENCES "users"(id) ON DELETE CASCADE,
+    "user_id" integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     quantity integer NOT NULL,
     CONSTRAINT quantity CHECK ((quantity > 0))
 );
@@ -96,7 +96,7 @@ CREATE TABLE purchases (
     id integer PRIMARY KEY,
     "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
     total double precision NOT NULL,
-    "user_id" integer NOT NULL REFERENCES "users"(id) ON DELETE CASCADE,
+    "user_id" integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     "address_id" integer NOT NULL REFERENCES addresses(id) ON DELETE CASCADE,
     status text DEFAULT 'Processing'::text NOT NULL,
     CONSTRAINT status CHECK ((TYPE = ANY (ARRAY['Processing'::text, 'Shipped'::text, 'Delivered'::text]))),
@@ -104,7 +104,7 @@ CREATE TABLE purchases (
 );
 
 CREATE TABLE reviews (
-    "user_id" integer PRIMARY KEY REFERENCES "users"(id) ON DELETE CASCADE,
+    "user_id" integer PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
     "product_id" integer PRIMARY KEY REFERENCES products(id) ON DELETE CASCADE,
     score integer NOT NULL,
     title text NOT NULL,
@@ -112,7 +112,7 @@ CREATE TABLE reviews (
     CONSTRAINT score CHECK (((score >= 0) AND (score <= 5)))
 );
 
-CREATE TABLE "users" (
+CREATE TABLE users (
     id integer PRIMARY KEY,
     name text NOT NULL,
     username text NOT NULL UNIQUE,
@@ -133,6 +133,6 @@ CREATE TABLE values_lists (
 );
 
 CREATE TABLE wishlists (
-    "user_id" integer PRIMARY KEY REFERENCES "users"(id) ON DELETE CASCADE,
+    "user_id" integer PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
     "product_id" integer PRIMARY KEY REFERENCES products(id) ON DELETE CASCADE
 );
