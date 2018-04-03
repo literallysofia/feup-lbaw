@@ -1,15 +1,15 @@
-/* INSERT FAQ */
+/* INSERT FAQ   DONE*/
 INSERT INTO faqs (question, answer)
 VALUES ($question, $answer);
 
-/* DROPDOWN NAVIGATION ADMIN */
+/* DROPDOWN NAVIGATION ADMIN    DONE*/
 SELECT Categories.name
 FROM categories AS Categories, 
 WHERE  (SELECT COUNT(*)
         FROM products AS Products
         WHERE Products.category_id = Categories.id) > 1;
 
-/* INSERT REVIEW */
+/* INSERT REVIEW  DONE*/
 INSERT INTO reviews (score, title, content)
 VALUES ($score, $title, $content)
 
