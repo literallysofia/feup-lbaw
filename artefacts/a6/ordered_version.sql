@@ -2,18 +2,18 @@ CREATE DOMAIN "Today" AS date NOT NULL DEFAULT ('now'::text)::date;
 
 
 CREATE TABLE countries (
-    id integer PRIMARY KEY,
+    id serial PRIMARY KEY,
     name text NOT NULL UNIQUE
 );
 
 CREATE TABLE cities (
-    id integer PRIMARY KEY,
+    id serial PRIMARY KEY,
     name text NOT NULL UNIQUE,
     "country_id" integer NOT NULL REFERENCES countries(id) ON DELETE CASCADE
 );
 
 CREATE TABLE users (
-    id integer PRIMARY KEY,
+    id serial PRIMARY KEY,
     name text NOT NULL,
     username text NOT NULL UNIQUE,
     email text NOT NULL UNIQUE,
@@ -21,7 +21,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE addresses (
-    id integer PRIMARY KEY,
+    id serial PRIMARY KEY,
     name text NOT NULL,
     street text NOT NULL,
     "postal_code" text NOT NULL,
@@ -34,27 +34,27 @@ CREATE TABLE admins (
 );
 
 CREATE TABLE categories (
-    id integer PRIMARY KEY,
+    id serial PRIMARY KEY,
     name text NOT NULL UNIQUE,
     "is_navbar_category" boolean DEFAULT false NOT NULL
 );
 
 
 CREATE TABLE properties (
-    id integer PRIMARY KEY,
+    id serial PRIMARY KEY,
     name text NOT NULL UNIQUE
 );
 
 
 CREATE TABLE category_properties (
-    id integer PRIMARY KEY,
+    id serial PRIMARY KEY,
     "category_id" integer NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
     "property_id" integer NOT NULL REFERENCES properties(id) ON DELETE CASCADE,
     "is_required_property" boolean DEFAULT false NOT NULL
 );
 
 CREATE TABLE products (
-    id integer PRIMARY KEY,
+    id serial PRIMARY KEY,
     name text NOT NULL,
     price double precision NOT NULL,
     quantity_available integer NOT NULL,
@@ -70,32 +70,32 @@ CREATE TABLE archived_products (
 );
 
 CREATE TABLE delivery_types (
-    id integer PRIMARY KEY,
+    id serial PRIMARY KEY,
     name text NOT NULL UNIQUE,
     cost double precision NOT NULL UNIQUE
 );
 
 CREATE TABLE faqs (
-    id integer PRIMARY KEY,
+    id serial PRIMARY KEY,
     question text NOT NULL UNIQUE,
     answer text NOT NULL
 );
 
 CREATE TABLE photos (
-    id integer PRIMARY KEY,
+    id serial PRIMARY KEY,
     path text NOT NULL,
     "product_id" integer NOT NULL REFERENCES products(id) ON DELETE CASCADE
 );
 
 CREATE TABLE product_carts (
-    id integer PRIMARY KEY,
+    id serial PRIMARY KEY,
     "user_id" integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     quantity integer NOT NULL,
     CONSTRAINT quantity CHECK ((quantity > 0))
 );
 
 CREATE TABLE purchases (
-    id integer PRIMARY KEY,
+    id serial PRIMARY KEY,
     "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
     total double precision NOT NULL,
     "user_id" integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -126,13 +126,13 @@ CREATE TABLE reviews (
 );
 
 CREATE TABLE values_lists (
-    id integer PRIMARY KEY,
+    id serial PRIMARY KEY,
     "category_id" integer NOT NULL REFERENCES category_properties(id) ON DELETE CASCADE,
     "product_id" integer NOT NULL REFERENCES products(id) ON DELETE CASCADE
 );
 
 CREATE TABLE values (
-    id integer PRIMARY KEY,
+    id serial PRIMARY KEY,
     name text,
     "values_list_id" integer NOT NULL REFERENCES values_lists(id) ON DELETE CASCADE
 );
