@@ -32,11 +32,11 @@ SELECT products.id,products.name,products.price FROM products WHERE category_id=
 /*UPDATE ON HOLD PURCHASE STATUS DONE*/
 UPDATE purchases SET status=$status WHERE purchase_id =$purchaseId
 
-/*GET PRODUCT INFO*/
+/*GET PRODUCT INFO  DONE*/
 SELECT products.* FROM products;
 SELECT path FROM photos WHERE product_id = $productId ORDER BY id LIMIT 1;
 
-/*ADD PHOTO TO PRODUCT*/
+/*ADD PHOTO TO PRODUCT DONE*/
 INSERT INTO photos(path,product_id) VALUES ($pathname,$productId);
 
 /*GET TECH SPECS                            TODO*/
