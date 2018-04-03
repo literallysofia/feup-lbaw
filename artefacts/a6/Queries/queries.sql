@@ -72,10 +72,10 @@ SELECT category_properties.property_id,category_properties.is_required_property
     FROM category_properties WHERE category_id =$category_id;
 SELECT name FROM properties WHERE properties.id = $id;
 
---get faqs dozens per day
-SELECT question,answer FROM faqs; /*units per day*/      
+--get faqs units per day
+SELECT question,answer FROM faqs;      
 
--- DROPDOWN NAVIGATION ADMIN
+-- DROPDOWN NAVIGATION ADMIN dozens per day
 SELECT Categories.name
 FROM categories AS Categories 
 WHERE  (SELECT COUNT(*)
@@ -86,22 +86,22 @@ WHERE  (SELECT COUNT(*)
 
                             --OTHER RELATED  QUERIES SELECTORS       
 
---get all products from category
-SELECT id FROM categories WHERE name=$categoryName;
+--get all products from category 
+SELECT id FROM categories WHERE name=$categoryName; 
 SELECT products.id,products.name,products.price FROM products WHERE category_id=$categoryId AND products.id NOT IN(SELECT * FROM archived_products)
 
 --GET PRODUCTS FROM A CATEGORY THAT ARE IN SPECIFIED PRICE RANGE
 SELECT products.id,products.name,products.price FROM products WHERE category_id = $categoryId AND price < $maxPrice  AND products.id NOT IN(SELECT * FROM archived_products)
   /*GET PHOTOS AS IS IN PRODUCT RELATED QUERIES*/
 
---SEARCH PRODUCTS DONE
+--SEARCH PRODUCTS --hundreds per day
 SELECT * FROM products WHERE LOWER(products.name) LIKE $search AND products.id NOT IN(SELECT * FROM archived_products)
 
---Homepage product
+--Homepage product --hundreds per day
 SELECT name, price FROM products WHERE id = $prod_id 
 	/* get also photos*/
  
---get isNavBar categories
+--get isNavBar categories --hundreds per day
 SELECT id, name FROM categories WHERE is_navbar_category = TRUE
 
 --get Categories product  - get simple product not archived 
@@ -114,43 +114,43 @@ SELECT V.id, V.name FROM
      WHERE CP.is_required_property = true 
      LIMIT 5
 
---get Checkout
+--get Checkout dozens per day
 SELECT name,cost FROM delivery_types
 
---get cart
+--get cart hundred per day
 SELECT product_id, quantity FROM product_carts WHERE user_id = $user_id
 
---get wishlist
+--get wishlist hundreds per day
 SELECT product_id FROM wishlists WHERE user_id = $user_id
 
---get city and coutries
+--get city and coutries units per day
 SELECT * FROM countries
 SELECT name FROM cities WHERE country_id =$countryId
 
                             --PRODUCT RELATED  QUERIES SELECTOR
 --get info product page
 
-    /* Get product*/
+    -- Get product hundreds per day
 	SELECT name, price, score, brand,quantity FROM products WHERE id = $prod_id
 
-     /*Get photos*/
+     --Get photos hundreds per day
     SELECT path FROM photos WHERE product_id = $prod_id
 
-     /*Get properties*/
+    --Get properties hundreds per day
 	SELECT V.name, P.name FROM values AS V, values_lists AS VL, category_properties AS CP, properties AS P 
     WHERE VL.product_id = $prod_id AND V.values_list_id = VL.id AND VL.category_property_id = CP.id AND CP.property_id = P.id
 
-    /* Get reviews*/
+    --Get reviews hundreds per day
 	SELECT R.title, R.content, R.date, R.score, U.name FROM reviews AS R, users AS U WHERE R.user_id = U.id AND R.product_id = $prod_id 
 
     --get add/edit product page
-    --get product
+    --get product units per month
        --*SAME as in info product page
 
-    --get photos
+    --get photos units per month
       --*SAME as in info product page
     
-    --get properties
+    --get properties units per month
         --*SAME as in info product page
 
 
@@ -242,23 +242,23 @@ INSERT INTO "values" (name,values_list_id) VALUES ($name,$values_list_id)
 
                             --USER RELATED QUERIES DELETES
 
---delete user review 
+--delete user review  dozens per day
 DELETE FROM reviews where user_id=$user_id AND product_id=$product_id
 
 
                             --ADMIN RELATED QUERIES DELETES
 
---delete properties
+--delete properties units per month
 DELETE FROM properties WHERE properties.name = $name;
 
---delete faqs
+--delete faqs units per year
 DELETE FROM faqs WHERE question=$question;
 
 
                             --OTHER RELATED QUERIES DELETES
 
--- delete product Wishlist
+-- delete product Wishlist units per day
 DELETE FROM whishlist WHERE user_id=$user_id AND product_id=$product_id
 
---Remove Cart
+--Remove Cart dozens per day
 DELETE FROM product_carts WHERE product_id=$prodId AND user_id=$id;
