@@ -88,3 +88,12 @@ INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") values
 INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") values ('work', 'Thierer', '88000-000', 18, 14);
 INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") values ('work', 'Meadow Vale', '456209', 19, 13);
 INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") values ('home', 'Veith', '18740-000', 20, 10);
+
+/*FAQS*/
+INSERT INTO faqs (question, answer) values ('Sed sagittis?', 'Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.');
+INSERT INTO faqs (question, answer) values ('Nullam varius?', 'Aliquam quis turpis eget elit sodales scelerisque.');
+INSERT INTO faqs (question, answer) values ('Ut tellus. Nulla ut erat id mauris vulputate elementum?', 'Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat.');
+INSERT INTO faqs (question, answer) values ('Suspendisse accumsan tortor quis turpi?', 'Aenean fermentum.');
+INSERT INTO faqs (question, answer) values ('Curabitur at ipsum ac tellus semper interdum?', 'Morbi porttitor lorem id ligula.');
+INSERT INTO faqs (question, answer) values ('Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum?', 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.');
+INSERT INTO faqs (question, answer) values ('Nullam sit amet turpis elementum ligula vehicula consequat?', 'Suspendisse potenti. In eleifend quam a odio.');
