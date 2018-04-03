@@ -1,5 +1,5 @@
 /*1 - GET ALL FAQS*/
-SELECT * FROM faqs;
+SELECT question, answer FROM faqs;
 
 /*2 - SIGN IN*/
 SELECT id
@@ -28,13 +28,14 @@ WHERE id=$id;
 /*5 - GET USER ADRESSES*/
 SELECT A.id, A.name, A.street, A."postal_code", CTY.name, CNTR.name
 FROM addresses AS A, cities AS CTY, countries AS CNTR
-WHERE A."user_id" = $id,
-AND A."city_id" = CTY.id,
+WHERE A."user_id" = $id
+AND A."city_id" = CTY.id
 AND CTY."country_id" = CNTR.id;
 
 DELETE FROM addresses
 WHERE id=$id;
 
+/*-------------------------------------------------------------NOT TESTED-------------------------------------------------------------*/
 /*6 - GET OH HOLD USER PURCHASES*/
 SELECT PRCHS.id, PRCHS."date", PRCHS.status, PRCHS.total
 FROM users AS U, purchases AS PRCHS
