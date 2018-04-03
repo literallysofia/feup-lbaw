@@ -30,25 +30,21 @@ SELECT A.id, A.name, A.street, A."postal_code", CTY.name, CNTR.name
 FROM addresses AS A, cities AS CTY, countries AS CNTR
 WHERE A."user_id" = $id
 AND A."city_id" = CTY.id
-AND CTY."country_id" = CNTR.id;
+AND CTY."country_id" = CNTR.id
+AND A.archived NOT(true);
 
-DELETE FROM addresses
-WHERE id=$id;
+UPDATE addresses
+SET archived=$archived
+WHERE id=$id
 
 /*-------------------------------------------------------------NOT TESTED-------------------------------------------------------------*/
-/*6 - GET OH HOLD USER PURCHASES DONE*/
+/*6 - GET USER PURCHASES OF A CERTAIN TYPE*/
 SELECT PRCHS.id, PRCHS."date", PRCHS.status, PRCHS.total
 FROM users AS U, purchases AS PRCHS
 WHERE PRCHS."user_id" = $id,
-AND PRCHS.status in ('Processing', 'Shipped');
+AND PRCHS.status = $type
 
-/*7 - GET FINISHED USER PURCHASES DONE*/
-SELECT PRCHS.id, PRCHS."date", PRCHS.status, PRCHS.total
-FROM users AS U, purchases AS PRCHS
-WHERE PRCHS."user_id" = $id,
-AND PRCHS.status = 'Delivered';
-
-/*8 - GET PURCHASE PRODUCTS DONE*/
+/*8 - GET PURCHASE PRODUCTS*/
 SELECT PRDCT.id, PRDCT.name, PP.price, PP.quantity
 FROM purchases AS PRCHS, products AS PRDCT, product_purchases AS PP,
 WHERE PRCHS.id = $id,
