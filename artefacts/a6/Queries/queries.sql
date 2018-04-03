@@ -161,10 +161,31 @@ SELECT V.id, V.name FROM
      WHERE CP.is_required_property = true 
      LIMIT 5
 
+--Get/Add/Remove Wishlist
+SELECT product_id FROM wishlists WHERE user_id = $user_id
+INSERT INTO wishlists (user_id,product_id) VALUES ($userid,$productid)
+DELETE FROM whishlist WHERE user_id=$user_id AND product_id=$product_id
+
+--Get/Add/Remove Cart
+SELECT product_id, quantity FROM product_carts WHERE user_id = $user_id
+INSERT INTO product_carts (product_id,user_id,quantity) VALUES ($proId,$id,$quantity)
+DELETE FROM product_carts WHERE product_id=$prodId AND user_id=$id;
+UPDATE product_carts SET quantity=$quantity WHERE product_id=$prodId AND user_id=$id;
+
+--get Checkout
+SELECT name,cost FROM delivery_types
+
+--add purchase and products of that purchase
+INSERT INTO purchases (total,user_id,address_id) VALUES ($total,$userid,$address_id)
+INSERT INTO product_purchases (product_id,purchase_id,quantity,price) VALUES ($proId,$purchId,$quantity,$price)
+
+
+                                              --PRODUCT RELATED QUERIES
+
 --get info product page
 
     /* Get product*/
-	SELECT name, price, score, brand FROM products WHERE id = $prod_id
+	SELECT name, price, score, brand,quantity FROM products WHERE id = $prod_id
 
      /*Get photos*/
      SELECT path FROM photos WHERE product_id = $prod_id
@@ -176,11 +197,24 @@ SELECT V.id, V.name FROM
     /* Get reviews*/
 	SELECT R.title, R.content, R.date, R.score, U.name FROM reviews AS R, users AS U WHERE R.user_id = U.id AND R.product_id = $prod_id  
 
---Get Wishlist
-SELECT product_id FROM wishlists WHERE user_id = $user_id
+--get add/edit product page
+    --get product
+       --*SAME as in info product page
 
---Get Cart
-SELECT product_id, quantity FROM product_carts WHERE user_id = $user_id
+    --get photos
+      --*SAME as in info product page
+    
+    --get properties
+        --*SAME as in info product page
+    
+    --change products values
+    UPDATE products SET name=$name,price=$price,quantity=$quantity,brand=$brand WHERE id=$id
+    UPDATE photos SET path=$pathname WHERE product_id=$prod_id
+    UPDATE "values" SET name=$name WHERE values_list_id IN (SELECT * FROM values_lists WHERE product_id=$product_id)
 
---get Checkout
-SELECT name,cost FROM delivery_types
+
+    --insert products
+    INSERT INTO products (name,price,quantity_available,score,category_id,brand) VALUES ($name,$price,$quantity_available,$score,$category_id,$brand)
+    INSERT INTO photos (path,product_id) VALUES ($pathname,$proID)
+    INSERT INTO "values" (name,values_list_id) VALUES ($name,$values_list_id)
+
