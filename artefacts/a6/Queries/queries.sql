@@ -12,7 +12,7 @@ WHERE A."user_id" = $id
 AND A."city_id" = CTY.id
 AND CTY."country_id" = CNTR.id;                           
                            
---sign in /*hundreds per day*/
+--sign in hundreds per day
 SELECT id
 FROM users
 WHERE username = $username
@@ -49,7 +49,7 @@ AND A.isArchived = false;
 
                            --ADMIN RELATED QUERIES SELECTORS
 
---get   purchases from any user from specific type(EXTREMELY SIMILAR TO THE ONE IN USER SECTION)
+--get   purchases from any user from specific type (EXTREMELY SIMILAR TO THE ONE IN USER SECTION) dozens per day
 SELECT PRCHS.id, PRCHS."date", PRCHS.status, PRCHS.total,PRCHS.user_id
 FROM users AS U, purchases AS PRCHS
 WHERE PRCHS.status =$type
@@ -63,16 +63,16 @@ WHERE PRCHS.status =$type
 --get purchase user name dozens per day
 SELECT users.username FROM purchases WHERE purchases.user_id =$userId
 
---get properties
+--get properties dozens per day
 SELECT name FROM properties
 
---GET ALL PROPERTIES NAMES FROM EACH CATEGORY
+--GET ALL PROPERTIES NAMES FROM EACH CATEGORY dozens per day
 SELECT categories.id,categories.name FROM categories
 SELECT category_properties.property_id,category_properties.is_required_property
     FROM category_properties WHERE category_id =$category_id;
 SELECT name FROM properties WHERE properties.id = $id;
 
---get faqs
+--get faqs dozens per day
 SELECT question,answer FROM faqs; /*units per day*/      
 
 -- DROPDOWN NAVIGATION ADMIN
@@ -92,7 +92,7 @@ SELECT products.id,products.name,products.price FROM products WHERE category_id=
 
 --GET PRODUCTS FROM A CATEGORY THAT ARE IN SPECIFIED PRICE RANGE
 SELECT products.id,products.name,products.price FROM products WHERE category_id = $categoryId AND price < $maxPrice  AND products.id NOT IN(SELECT * FROM archived_products)
-SELECT path FROM photos WHERE product_id = $productId;
+  /*GET PHOTOS AS IS IN PRODUCT RELATED QUERIES*/
 
 --SEARCH PRODUCTS DONE
 SELECT * FROM products WHERE LOWER(products.name) LIKE $search AND products.id NOT IN(SELECT * FROM archived_products)
@@ -123,6 +123,9 @@ SELECT product_id, quantity FROM product_carts WHERE user_id = $user_id
 --get wishlist
 SELECT product_id FROM wishlists WHERE user_id = $user_id
 
+--get city and coutries
+SELECT * FROM countries
+SELECT name FROM cities WHERE country_id =$countryId
 
                             --PRODUCT RELATED  QUERIES SELECTOR
 --get info product page
@@ -154,7 +157,7 @@ SELECT product_id FROM wishlists WHERE user_id = $user_id
 
                             --USER RELATED QUERIES UPDATES
 
---update user info /*units per day*/
+--update user info units per day
 UPDATE users
 SET name=$name, username=$username, email=$email, password=$hashedPassword
 WHERE id=$id;
@@ -167,64 +170,71 @@ WHERE id=$id;
 
                             --ADMIN RELATED QUERIES UPDATES
 
---UPDATE ON HOLD PURCHASE STATUS
+--UPDATE ON HOLD PURCHASE STATUS hundreds per day
 UPDATE purchases SET status=$status WHERE purchase_id =$purchaseId
 
 
                             --OTHER RELATED QUERIES UPDATES
 
---Update product from cart quantity
+--Update product from cart quantity units per day
 UPDATE product_carts SET quantity=$quantity WHERE product_id=$prodId AND user_id=$id;
 
 
                             --PRODUCT RELATED QUERIES UPDATES
 
---change products values
+--change products values units per month
 UPDATE products SET name=$name,price=$price,quantity=$quantity,brand=$brand WHERE id=$id
 UPDATE photos SET path=$pathname WHERE product_id=$prod_id
 UPDATE "values" SET name=$name WHERE values_list_id IN (SELECT * FROM values_lists WHERE product_id=$product_id)
 
 
                             --USER RELATED QUERIES INSERTS
---Add address
+
+--Add address units per year
 INSERT INTO addresses (name,street,postal_code,city_id,user_id) VALUES ($name,$street,$postal_code,$city_id,$id);
 
---sign up  /*units per day*/
+--sign up  units per day
 INSERT INTO users (name, username, email, password)
 VALUES ($name, $username, $email, $hashedPassword);
 
-/*insert review*/
+--insert review dozens per day
 INSERT INTO reviews (user_id,product_id,score,title,content) VALUES ($userID,$productID,$score,$title,$content);       
 
 
                             --ADMIN RELATED QUERIES INSERTS         
 
---add property                            
+--add property  dozens per year                    
 INSERT INTO properties (name) VALUES ($name);
 
---add category
+--add category units per year
 INSERT INTO categories (name,is_navbar_category) VALUES ($name,$required)
 
---insert new  faq
+--add category properties dozens per year
+INSERT INTO category_properties (category_id,property_id) VALUES ($category_id,$property_id)
+
+--insert new  faq units per year
 INSERT INTO faqs (question,answer) VALUES ($question,$answer);
+
+--delete product units per year
+INSERT INTO archived_products(product_id) VALUES ($productId);
 
                            
                             --OTHER RELATED QUERIES INSERTS
 
---insert wishlist
+--insert wishlist units per day
 INSERT INTO wishlists (user_id,product_id) VALUES ($userid,$productid)
 
---insert new product to cart
+--insert new product to cart hundreds per day
 INSERT INTO product_carts (product_id,user_id,quantity) VALUES ($proId,$id,$quantity)
 
---add purchase and products of that purchase
+--add purchase and products of that purchase dozens per day
 INSERT INTO purchases (total,user_id,address_id) VALUES ($total,$userid,$address_id)
 INSERT INTO product_purchases (product_id,purchase_id,quantity,price) VALUES ($proId,$purchId,$quantity,$price)
 
 
                             --PRODUCT RELATED QUERIES INSERTS
 
- --insert products
+ --insert products units per month
 INSERT INTO products (name,price,quantity_available,score,category_id,brand) VALUES ($name,$price,$quantity_available,$score,$category_id,$brand)
 INSERT INTO photos (path,product_id) VALUES ($pathname,$proID)
 INSERT INTO "values" (name,values_list_id) VALUES ($name,$values_list_id)
@@ -232,7 +242,7 @@ INSERT INTO "values" (name,values_list_id) VALUES ($name,$values_list_id)
 
                             --USER RELATED QUERIES DELETES
 
---delete user review
+--delete user review 
 DELETE FROM reviews where user_id=$user_id AND product_id=$product_id
 
 
