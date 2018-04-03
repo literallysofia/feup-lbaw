@@ -52,7 +52,7 @@ DELETE FROM reviews where user_id=$user_id AND product_id=$product_id
 
 
 /*SEARCH PRODUCTS*/
-SELECT * FROM products WHERE products.name LIKE $search
+SELECT * FROM products WHERE products.name LIKE $search AND products.id NOT IN(SELECT * FROM archived_products)
 
 /**
 SELECT * FROM values_lists WHERE category_property_id=$category_property_id
