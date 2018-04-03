@@ -29,10 +29,12 @@ SELECT name FROM properties WHERE properties.id = $id;
 SELECT id FROM categories WHERE name=$categoryName;
 SELECT products.id,products.name,products.price FROM products WHERE category_id=$categoryId
 
+/*UPDATE ON HOLD PURCHASE STATUS*/
+UPDATE purchases SET status=$status WHERE purchase_id =$purchaseId
 
 /*GET PRODUCT INFO*/
 SELECT products.* FROM products;
-SELECT path FROM photos WHERE product_id = $productId;
+SELECT path FROM photos WHERE product_id = $productId ORDER BY id LIMIT 1;
 
 /*ADD PHOTO TO PRODUCT*/
 INSERT INTO photos(path,product_id) VALUES($pathname,$productId);
@@ -59,29 +61,31 @@ SELECT name FROM values WHERE values_list_id = $values_list_id;  */
 
 
 
-
 /************************************LUIS**********************************/
-/*Homepage product*/
+/*Homepage product TESTED*/
 	
 
-	SELECT name, price FROM products WHERE product_id = $prod_id
+	SELECT name, price FROM products WHERE id = $prod_id 
 
 	/* get also photos*/
-/*get isNavBar categories*/
+/*get isNavBar categories TESTED*/
 
 	SELECT id, name FROM categories WHERE is_navbar_category = TRUE
 
 
 /*get Categories product  - get simple product not archived*/
 
-	SELECT P.id, P.name, P.price FROM products AS P WHERE category_id = $cat_id, P.id NOT IN (SELECT product_id FROM archived_products)
+	SELECT P.id, P.name, P.price FROM products AS P WHERE category_id = $cat_id AND P.id NOT IN (SELECT product_id FROM archived_products)
 
-	SELECT path FROM photos WHERE product_id = $prod_id ORBER BY id LIMIT 1
+	SELECT path FROM photos WHERE product_id = $prod_id ORDER BY id LIMIT 1
 
 
 /*get for each category (required properties-only x first) - get categories’ properties values*/
 
-	SELECT V.id, V.name FROM values AS V JOIN values_lists AS VL JOIN category_properties AS CP WHERE CP.is_required_property = true LIMIT 5
+	SELECT V.id, V.name FROM 
+            values AS V JOIN values_lists AS VL JOIN category_properties AS CP 
+            WHERE CP.is_required_property = true 
+            LIMIT 5
 
 /*get info product page*/
 
