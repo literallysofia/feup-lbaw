@@ -127,7 +127,7 @@ CREATE TABLE reviews (
 
 CREATE TABLE values_lists (
     id serial PRIMARY KEY,
-    "category_id" integer NOT NULL REFERENCES category_properties(id) ON DELETE CASCADE,
+    "category_property_id" integer NOT NULL REFERENCES category_properties(id) ON DELETE CASCADE,
     "product_id" integer NOT NULL REFERENCES products(id) ON DELETE CASCADE
 );
 
