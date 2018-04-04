@@ -17,7 +17,8 @@ CREATE TABLE users (
     name text NOT NULL,
     username text NOT NULL UNIQUE,
     email text NOT NULL UNIQUE,
-    password text NOT NULL
+    password text NOT NULL,
+    nif integer UNIQUE
 );
 
 CREATE TABLE addresses (
@@ -58,7 +59,7 @@ CREATE TABLE products (
     name text NOT NULL,
     price double precision NOT NULL,
     quantity_available integer NOT NULL,
-    score integer NOT NULL,
+    score double precision NOT NULL,
     "category_id" integer NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
     CONSTRAINT price CHECK ((price > (0)::double precision)),
     CONSTRAINT quantity_available CHECK ((quantity_available >= 0)),
@@ -90,6 +91,7 @@ CREATE TABLE photos (
 CREATE TABLE product_carts (
     id serial PRIMARY KEY,
     "user_id" integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    "product_id" integer NOT NULL REFERENCES products(id) ON DELETE CASCADE,
     quantity integer NOT NULL,
     CONSTRAINT quantity CHECK ((quantity > 0))
 );
@@ -128,7 +130,8 @@ CREATE TABLE reviews (
 CREATE TABLE values_lists (
     id serial PRIMARY KEY,
     "category_property_id" integer NOT NULL REFERENCES category_properties(id) ON DELETE CASCADE,
-    "product_id" integer NOT NULL REFERENCES products(id) ON DELETE CASCADE
+    "product_id" integer NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+    UNIQUE("category_property_id", "product_id")
 );
 
 CREATE TABLE values (
