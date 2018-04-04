@@ -10,7 +10,8 @@ SELECT A.id, A.name, A.street, A."postal_code", CTY.name, CNTR.name
 FROM addresses AS A, cities AS CTY, countries AS CNTR
 WHERE A."user_id" = $id
 AND A."city_id" = CTY.id
-AND CTY."country_id" = CNTR.id;                           
+AND CTY."country_id" = CNTR.id
+AND A.isArchived = false;                           
                            
 --sign in hundreds per day
 SELECT id
@@ -42,8 +43,7 @@ FROM purchases AS P, addresses AS A, cities AS CTY, countries AS CNTR
 WHERE P.id = $id
 AND P."address_id" = A.id
 AND A."city_id" = CTY.id
-AND CTY."country_id" = CNTR.id
-AND A.isArchived = false;                  
+AND CTY."country_id" = CNTR.id                
                            
                            
 
@@ -59,6 +59,7 @@ WHERE PRCHS.status =$type
 
 --get purchase address dozens per day
     --*SEE IN USER SECTION
+    
 
 --get purchase user name dozens per day
 SELECT users.username FROM purchases WHERE purchases.user_id =$userId
