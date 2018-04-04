@@ -180,43 +180,43 @@ INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (12, 12, 1)
 INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (13, 4, 2);
 
 /*PRODUCT-PURCHASES*/
-INSERT INTO product_purchases ("product_id", purchase_id, quantity, price) VALUES (1, 14, 1, 1106.96);
-INSERT INTO product_purchases ("product_id", purchase_id, quantity, price) VALUES (2, 4, 2, 717.73);
-INSERT INTO product_purchases ("product_id", purchase_id, quantity, price) VALUES (3, 8, 1, 1072.94);
-INSERT INTO product_purchases ("product_id", purchase_id, quantity, price) VALUES (4, 8, 1, 1107.96);
-INSERT INTO product_purchases ("product_id", purchase_id, quantity, price) VALUES (5, 12, 2, 556.97);
-INSERT INTO product_purchases ("product_id", purchase_id, quantity, price) VALUES (6, 15, 1, 910.6);
-INSERT INTO product_purchases ("product_id", purchase_id, quantity, price) VALUES (7, 9, 1, 1015.66);
-INSERT INTO product_purchases ("product_id", purchase_id, quantity, price) VALUES (8, 7, 2, 1064.08);
-INSERT INTO product_purchases ("product_id", purchase_id, quantity, price) VALUES (9, 14, 2, 840.37);
-INSERT INTO product_purchases ("product_id", purchase_id, quantity, price) VALUES (10, 3, 2, 885.43);
-INSERT INTO product_purchases ("product_id", purchase_id, quantity, price) VALUES (11, 9, 1, 462.09);
-INSERT INTO product_purchases ("product_id", purchase_id, quantity, price) VALUES (12, 5, 2, 666.96);
-INSERT INTO product_purchases ("product_id", purchase_id, quantity, price) VALUES (13, 5, 2, 689.05);
-INSERT INTO product_purchases ("product_id", purchase_id, quantity, price) VALUES (14, 5, 2, 1180.96);
-INSERT INTO product_purchases ("product_id", purchase_id, quantity, price) VALUES (15, 15, 1, 596.35);
+INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (1, 14, 1, 1106.96);
+INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (2, 4, 2, 717.73);
+INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (3, 8, 1, 1072.94);
+INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (4, 8, 1, 1107.96);
+INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (5, 12, 2, 556.97);
+INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (6, 15, 1, 910.6);
+INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (7, 9, 1, 1015.66);
+INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (8, 7, 2, 1064.08);
+INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (9, 14, 2, 840.37);
+INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (10, 3, 2, 885.43);
+INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (11, 9, 1, 462.09);
+INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (12, 5, 2, 666.96);
+INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (13, 5, 2, 689.05);
+INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (14, 5, 2, 1180.96);
+INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (15, 15, 1, 596.35);
 
 /*PRODUCTS*/
-INSERT INTO products (name, price, quantity_available, score, category_id, brand) VALUES ('Apple iPhone X - 64GB - Space Grey', '1179.00', 100, 3, 1, 'Apple');
-INSERT INTO products (name, price, quantity_available, score, category_id, brand) VALUES ('Apple iPhone 8 - 64GB - Gold', '829.00', 60, 4, 1, 'Apple');
-INSERT INTO products (name, price, quantity_available, score, category_id, brand) VALUES ('Samsung Galaxy S9+ - 64GB - Midnight Black', '969.90', 100, 3, 1, 'Samsung');
-INSERT INTO products (name, price, quantity_available, score, category_id, brand) VALUES ('Samsung Galaxy S9 - 64GB - Blue', '869.99', 90, 4, 1, 'Samsung');
+INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Apple iPhone X - 64GB - Space Grey', '1179.00', 100, 3, 1, 'Apple');
+INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Apple iPhone 8 - 64GB - Gold', '829.00', 60, 4, 1, 'Apple');
+INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Samsung Galaxy S9+ - 64GB - Midnight Black', '969.90', 100, 3, 1, 'Samsung');
+INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Samsung Galaxy S9 - 64GB - Blue', '869.99', 90, 4, 1, 'Samsung');
 
-INSERT INTO products (name, price, quantity_available, score, category_id, brand) VALUES ('Apple iPad Pro 12,9" - 256GB - Space Grey', '1249.00', 100, 5, 2, 'Apple');
-INSERT INTO products (name, price, quantity_available, score, category_id, brand) VALUES ('Samsung Galaxy Tab S2 9.7" - T819 - Black', '529.99', 90, 5, 2, 'Samsung');
-INSERT INTO products (name, price, quantity_available, score, category_id, brand) VALUES ('Asus ZenPad 10" Z301MF-1H011A - Grey', '219.99', 20, 5, 2, 'Asus');
-INSERT INTO products (name, price, quantity_available, score, category_id, brand) VALUES ('Huawei MediaPad M3 8.4"', '321.00', 100, 1, 2, 'Huawei');
+INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Apple iPad Pro 12,9" - 256GB - Space Grey', '1249.00', 100, 5, 2, 'Apple');
+INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Samsung Galaxy Tab S2 9.7" - T819 - Black', '529.99', 90, 5, 2, 'Samsung');
+INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Asus ZenPad 10" Z301MF-1H011A - Grey', '219.99', 20, 5, 2, 'Asus');
+INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Huawei MediaPad M3 8.4"', '321.00', 100, 1, 2, 'Huawei');
 
-INSERT INTO products (name, price, quantity_available, score, category_id, brand) VALUES ('Apple MacBook Pro 13" Retina i5-2,3GHz - 128GB - Space Gray', '1549.00', 50, 2, 3, 'Apple');
-INSERT INTO products (name, price, quantity_available, score, category_id, brand) VALUES ('Apple MacBook Air 13" i5-1,8GHz - 256GB', '1379.00', 50, 1, 3, 'Apple');
-INSERT INTO products (name, price, quantity_available, score, category_id, brand) VALUES ('Asus Zenbook UX430UA-57CHDCB1', '949.99', 80, 1, 3, 'Asus');
+INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Apple MacBook Pro 13" Retina i5-2,3GHz - 128GB - Space Gray', '1549.00', 50, 2, 3, 'Apple');
+INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Apple MacBook Air 13" i5-1,8GHz - 256GB', '1379.00', 50, 1, 3, 'Apple');
+INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Asus Zenbook UX430UA-57CHDCB1', '949.99', 80, 1, 3, 'Asus');
 
-INSERT INTO products (name, price, quantity_available, score, category_id, brand) VALUES ('Gaming Asus FHD VP278QG - 27"', '259.99', 80, 3, 4, 'Asus');
-INSERT INTO products (name, price, quantity_available, score, category_id, brand) VALUES ('iMac 21,5" Retina 5K - 2,3 GHz - 1 TB', '1349.00', 90, 3, 4, 'Apple');
-INSERT INTO products (name, price, quantity_available, score, category_id, brand) VALUES ('iMac 27" Retina 5K - 3,8 GHz - 2 TB', '2699.00', 15, 1, 4, 'Apple');
+INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Gaming Asus FHD VP278QG - 27"', '259.99', 80, 3, 4, 'Asus');
+INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('iMac 21,5" Retina 5K - 2,3 GHz - 1 TB', '1349.00', 90, 3, 4, 'Apple');
+INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('iMac 27" Retina 5K - 3,8 GHz - 2 TB', '2699.00', 15, 1, 4, 'Apple');
 
-INSERT INTO products (name, price, quantity_available, score, category_id, brand) VALUES ('Headphones Beats Studio3 Wireless - Black Shadow', '349.99', 10, 2, 5, 'Beats');
-INSERT INTO products (name, price, quantity_available, score, category_id, brand) VALUES ('Power Bank Xiaomi Mi Power 20000mAh - White', '45.99', 50, 1, 5, 'Xiaomi');
+INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Headphones Beats Studio3 Wireless - Black Shadow', '349.99', 10, 2, 5, 'Beats');
+INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Power Bank Xiaomi Mi Power 20000mAh - White', '45.99', 50, 1, 5, 'Xiaomi');
 
 /*PROPERTIES*/
 INSERT INTO properties (name) VALUES ('Finish');

@@ -27,7 +27,8 @@ CREATE TABLE addresses (
     street text NOT NULL,
     "postal_code" text NOT NULL,
     "city_id" integer NOT NULL REFERENCES cities(id) ON DELETE CASCADE,
-    "user_id" integer NOT NULL REFERENCES users(id) ON DELETE CASCADE
+    "user_id" integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    "is_archived" boolean DEFAULT false NOT NULL
 );
 
 CREATE TABLE admins (
@@ -58,7 +59,7 @@ CREATE TABLE products (
     id serial PRIMARY KEY,
     name text NOT NULL,
     price double precision NOT NULL,
-    quantity_available integer NOT NULL,
+    "quantity_available" integer NOT NULL,
     score double precision NOT NULL,
     "category_id" integer NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
     CONSTRAINT price CHECK ((price > (0)::double precision)),
@@ -108,12 +109,13 @@ CREATE TABLE purchases (
 );
 
 CREATE TABLE product_purchases (
-    "product_id" integer PRIMARY KEY REFERENCES products(id) ON DELETE CASCADE,
+    "product_id" integer NOT NULL REFERENCES products(id) ON DELETE CASCADE,
     "purchase_id" integer NOT NULL REFERENCES purchases(id) ON DELETE CASCADE,
     quantity integer NOT NULL,
     price double precision NOT NULL,
     CONSTRAINT price CHECK ((price > (0)::double precision)),
-    CONSTRAINT quantity CHECK ((quantity > 0))
+    CONSTRAINT quantity CHECK ((quantity > 0)),
+    PRIMARY KEY ("product_id", "purchase_id")
 );
 
 
