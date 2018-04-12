@@ -1,0 +1,47 @@
+version: '3'
+services:
+
+  php:
+      container_name: lbaw_php
+      build:
+        context: .
+        dockerfile: ./Dockerfile-dev
+      volumes:
+        - ".:/app"
+      working_dir: /app
+      ports:
+        - "8000:8000"
+      depends_on:
+        - postgres
+
+  postgres:
+    container_name: lbaw_postgres
+    image: postgres:9.4
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pg!fcp
+    logging:
+      driver: "none"
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    container_name: lbaw_pgadmin
+    image: thajeztah/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres
+      PGADMIN_DEFAULT_PASSWORD: pg!fcp
+      PGADMIN_ENABLE_TLS: "False"
+    logging:
+      driver: "none"
+    ports:
+      - "5050:5050"
+    depends_on:
+      - postgres
+
+  mailhog:
+      image: mailhog/mailhog
+      logging:
+        driver: "none"
+      ports:
+        - 8025:8025

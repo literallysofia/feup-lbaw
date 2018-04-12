@@ -1,0 +1,21 @@
+FROM php:7.1
+
+#Install dependencies
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends libpq-dev git zlib1g-dev
+RUN docker-php-ext-install pgsql pdo_pgsql pdo mbstring zip
+
+# Install Composer
+# RUN curl --silent --show-error https://getcomposer.org/installer | php
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer config --global process-timeout 2000 # Prevents timeout issues
+
+# We'll need to know when PostgreSQL is ready to start php server.
+RUN apt-get install -y postgresql-client
+
+# Install Xdebug
+RUN pecl install xdebug
+RUN docker-php-ext-enable xdebug
+
+COPY ./docker_run-dev.sh /docker_run-dev.sh
+CMD /docker_run-dev.sh
