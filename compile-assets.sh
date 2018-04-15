@@ -1,5 +1,5 @@
 #!/bin/bash
 
 while true; do 
-  php vendor/bin/lessc -w resources/assets/less/app.less public/css/app.css
+  sass --watch resources/assets/sass/app.scss:public/css/app.css
 done

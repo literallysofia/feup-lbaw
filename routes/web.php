@@ -12,8 +12,11 @@
 */
 
 Route::get('/', function () {
-    return redirect('login');
+    return redirect('homepage');
 });
+
+//Homepage
+Route::view('/homepage', 'pages/homepage');
 
 // Cards
 Route::get('cards', 'CardController@list');
@@ -28,8 +31,13 @@ Route::delete('api/item/{id}', 'ItemController@delete');
 
 // Authentication
 
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
+Route::get('signin', 'Auth\LoginController@showSignInForm')->name('signin');
+Route::post('signin', 'Auth\LoginController@signin');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
+
+//profile
+Route::get('profile/{id}', 'UserController@showProfile')->name('profile');
+
+

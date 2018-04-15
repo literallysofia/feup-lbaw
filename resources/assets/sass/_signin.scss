@@ -1,0 +1,39 @@
+main {
+    .register {
+        .row {
+            height: 100%;
+        }
+    }
+    .register-form {
+        width: 100%;
+        span {
+            font-family: $font-title;
+        }
+        a {
+            color: $highlight;
+        }
+        form {
+            margin: 2em 0;
+            input[type="button"], input[type="submit"] {
+                min-width: 100%;
+            }
+            #register{
+                margin-top : 0.5em;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    main {
+        .register {
+            height: auto;
+            figure {
+                margin: 2em 0;
+            }
+        }
+        .register-form {
+            margin: 2em 0;
+        }
+    }
+}

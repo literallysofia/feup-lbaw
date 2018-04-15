@@ -1,0 +1,168 @@
+.breadcrumb {
+    background-color: transparent !important;
+    box-shadow: none;
+    margin-bottom: 2em;
+    .breadcrumb-item {
+        color: $black;
+        font-size: 0.9em;
+        letter-spacing: 1px;
+        &.active {
+            color: $medium-grey;
+        }
+        &:hover:not(.active) {
+            text-decoration: none;
+            color: $medium-grey;
+        }
+        &+.breadcrumb-item::before {
+            color: $medium-grey;
+            content: ">";
+        }
+    }
+}
+
+header nav {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+    background-color: $white;
+    .navbar-brand {
+        font-family: $font-title;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+    &.navbar-light {
+        .navbar-nav {
+            h6 {
+                font-family: $font-title;
+                color: $dark-grey;
+                text-transform: uppercase;
+                margin-top: 1em;
+            }
+            .nav-link {
+                font-family: $font-title;
+                font-weight: 500;
+                color: $black;
+                &:hover {
+                    color: $medium-grey;
+                }
+            }
+        }
+        .navbar-toggler {
+            border: none;
+            outline: none;
+            margin-right: 0.5em;
+        }
+        .nav-item {
+            padding-left: 1em;
+            &:last-child {
+                .nav-link {
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+    .dropdown {
+        .dropdown-toggle::after {
+            display: none;
+        }
+        .dropdown-menu {
+            background-color: $extra-light-grey;
+            border: none;
+            width: 300px;
+            margin-top: 1.5em;
+            padding: 2em;
+            box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+            .triangle {
+                width: 0;
+                height: 0;
+                position: absolute;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                border-bottom: 8px solid $extra-light-grey;
+                top: -8px;
+            }
+            .dropdown-header {
+                font-family: $font-title;
+                color: $dark-grey;
+                text-transform: uppercase;
+                padding: 0;
+                margin: 0 !important;
+            }
+            .dropdown-divider {
+                border-top: 1px solid $dark-grey;
+            }
+            .dropdown-item {
+                &:hover {
+                    background-color: $white;
+                }
+            }
+        }
+    }
+    .search-container {
+        margin: 0 1em;
+        input {
+            padding: 0.5em 1em 0.5em 2.6em;
+            &:focus {
+                outline: none;
+                border-color: $light-grey;
+                box-shadow: 0 0 0.7em transparent;
+            }
+        }
+        .search-icon {
+            position: relative;
+            left: 30px;
+        }
+    }
+    .search-container-mobile {
+        width: 100%;
+        input {
+            &:focus {
+                outline: none;
+                border-color: $light-grey;
+                box-shadow: 0 0 0.7em transparent;
+            }
+        }
+    }
+    .btn {
+        background-color: $black;
+        color: white;
+        &:hover {
+            background-color: $dark-grey;
+        }
+    }
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-family: $font-title;
+    background-color: $white;
+    padding: 2em 0;
+    .title {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1em;
+    }
+    .list-unstyled a {
+        color: $black;
+        font-size: 0.9em;
+        &:hover {
+            color: $medium-grey;
+            text-decoration: none;
+        }
+    }
+    p {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 767px) {
+    footer {
+        .container {
+            text-align: center;
+        }
+        .justify-content-end {
+            justify-content: center !important;
+        }
+    }
+}

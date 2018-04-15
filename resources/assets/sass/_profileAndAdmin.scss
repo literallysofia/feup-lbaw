@@ -1,0 +1,374 @@
+.bottom-buffer {
+  margin-bottom: 2em;
+}
+
+main {
+  .scroll_nav {
+    border-bottom: 0.1em solid black;
+    padding-bottom: 0.3em;
+
+    h1 {
+      margin: 0;
+      padding-left: 0;
+    }
+
+    a {
+      font-family: $font-title;
+      font-weight: bold;
+      font-size: 1em;
+      color: black;
+
+      padding-left: 1.2em;
+      text-decoration: none;
+
+      padding-right: 0;
+
+      &:hover {
+        color: $dark-grey;
+        cursor: pointer;
+      }
+      @media (max-width: 770px) {
+        padding-left: 0;
+      }
+    }
+  }
+
+  div.jumptarget {
+    padding-top: 5em !important;
+    margin-top: -5em;
+  }
+
+  form {
+    label {
+      padding-left: 1.1em;
+      font-weight: 700;
+    }
+  }
+  form + div {
+    input[type="button"] {
+      width: 20%;
+      margin-left: auto;
+
+      @media (max-width: 1000px) {
+        width: 30%;
+      }
+
+      @media (max-width: 800px) {
+        width: 40%;
+      }
+
+      @media (max-width: 600px) {
+        width: 100%;
+      }
+    }
+  }
+
+  .cards {
+    padding: 0;
+    h6 {
+      line-height: 150%;
+    }
+
+    .question-card {
+      h6 {
+        text-align: start;
+      }
+
+      p {
+        text-align: justify;
+      }
+    }
+
+    .fa-trash-alt {
+      &:hover {
+        cursor: pointer;
+        color: $dark-grey;
+      }
+    }
+
+    .last-card {
+      color: #777777;
+      background-color: #f8f8f8;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 1.3em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      // border: 1px solid #777777;
+
+      &:hover {
+        background-color: $black;
+        color: $white;
+        cursor: pointer;
+      }
+    }
+
+    &.navigation-cards {
+      h6 {
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: start;
+        border-bottom: 0.15em solid black;
+      }
+      select {
+        margin-bottom: 1em;
+      }
+
+      .entry-buttons {
+        width: 25%;
+        margin-top: auto;
+        margin-left: auto;
+
+        input[type="button"] {
+          width: 100%;
+        }
+
+        @media (max-width: 700px) {
+          width: 100%;
+        }
+      }
+    }
+
+    .address-header {
+      border-bottom: 0.15em solid black;
+      margin-bottom: 1em;
+      h6 {
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: start;
+        margin: 0;
+      }
+    }
+
+    &.categories-cards,
+    &.specs-cards,
+    &.photo-cards {
+      .category-header,
+      .spec-header {
+        border-bottom: 0.15em solid black;
+        margin-bottom: 1em;
+        h6 {
+          text-transform: uppercase;
+          font-weight: bold;
+          text-align: start;
+          margin: 0;
+        }
+      }
+
+      .select-checkbox {
+        margin-bottom: 0.2em;
+        select {
+          margin-bottom: 0.1em;
+          width: 100%;
+        }
+
+        div {
+          padding-left: 0;
+          padding-top: 0.2em;
+          /*.form-check-input {
+            margin: 0;
+            width: 0.75em;
+            align-self: center;
+          }
+          label {
+            padding-left: 1.4em;
+            font-size: 0.7em;
+          }*/
+
+          &.checkbox-container {
+            display: block;
+            position: relative;
+            padding-left: 25px;
+            padding-top: 0;
+            margin-bottom: 12px;
+            margin-top: 5px;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            label {
+              font-size: 0.7em;
+            }
+
+            &:hover input:checked ~ .checkmark {
+              background-color: black;
+            }
+
+            /* On mouse-over, add a grey background color */
+            &:hover input ~ .checkmark {
+              background-color: #bbb;
+            }
+
+            /* Hide the browser's default checkbox */
+            input {
+              position: absolute;
+              opacity: 0;
+              cursor: pointer;
+
+              /* When the checkbox is checked, add a blue background */
+              &:checked ~ .checkmark {
+                background-color: black;
+
+                /* Show the checkmark when checked */
+                &:after {
+                  display: block;
+                }
+              }
+            }
+
+            /* Create a custom checkbox */
+            .checkmark {
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 17px;
+              width: 17px;
+              background-color: #ddd;
+
+              /* Create the checkmark/indicator (hidden when not checked) */
+              &:after {
+                content: "";
+                position: absolute;
+                display: none;
+
+                /* Style the checkmark/indicator */
+                left: 6px;
+                top: 3px;
+                width: 5px;
+                height: 10px;
+                border: solid white;
+                border-width: 0 3px 3px 0;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+              }
+            }
+          }
+        }
+      }
+
+      .entry-buttons {
+        width: 100%;
+        margin-top: auto;
+        margin-left: auto;
+
+        input[type="button"] {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .table {
+    table-layout: fixed;
+
+    tr td,
+    tr th {
+      text-align: center;
+    }
+
+    tr td:first-child,
+    tr th:first-child {
+      text-align: start;
+    }
+
+    tr td:last-child,
+    tr th:last-child {
+      text-align: end;
+
+      :last-child {
+        text-align: start;
+      }
+    }
+
+    thead {
+      text-transform: uppercase;
+      font-weight: 700;
+      tr {
+        th {
+          border-bottom: 0.2em solid black;
+          border-top: none;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          border-top: 0.1em solid $light-grey;
+        }
+        &:hover {
+          background: $extra-light-grey;
+          cursor: pointer;
+        }
+        &.bold {
+          font-weight: bold;
+          background: $extra-light-grey;
+        }
+        & .select-status {
+          @media (max-width: 700px) {
+            width: 50%;
+          }
+        }
+      }
+    }
+
+    .collapse-line {
+      padding: 0em;
+      border-top: none;
+      text-align: start;
+      background: $extra-light-grey;
+      div.collapse-div {
+        padding: 0.75em;
+        .accordion_list_title {
+          text-transform: uppercase;
+          font-weight: 700;
+        }
+        p {
+          padding: 0;
+        }
+        hr {
+          margin: 0.75em 0.75em 0em 0.75em;
+          border-color: $dark-grey;
+        }
+        @media (max-width: 700px) {
+          p:first-child {
+            margin-bottom: 0;
+          }
+          hr {
+            display: none;
+          }
+          p:last-child {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  #table-save-button {
+    width: 20%;
+    @media (max-width: 700px) {
+      width: 100%;
+    }
+  }
+
+  .modal {
+    input[type="text"] {
+      width: 100%;
+    }
+    textarea {
+      margin-top: 1em;
+      width: 100%;
+    }
+    .modal-footer {
+      input[type="button"] {
+        width: 30%;
+      }
+    }
+  }
+}

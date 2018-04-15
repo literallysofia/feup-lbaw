@@ -32,7 +32,7 @@ class CardController extends Controller
      */
     public function list()
     {
-      if (!Auth::check()) return redirect('/login');
+      if (!Auth::check()) return redirect('/signin');
 
       $this->authorize('list', Card::class);
 

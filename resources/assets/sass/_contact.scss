@@ -1,0 +1,37 @@
+main {
+    .contact {
+        p {
+            text-align: justify;
+        }
+        .contact-form {
+            margin-top: 2em;
+            .form-group {
+                width: 70%;
+            }
+            input[type="button"] {
+                width: 17%;
+            }
+        }
+        .contact-info {
+            margin-top: 2em;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    main {
+        .contact {
+            .contact-form {
+                .form-group {
+                    width: 100%;
+                }
+                input[type="button"] {
+                    width: 100%;
+                }
+            }
+            .contact-info {
+                margin-top: 3em;
+            }
+        }
+    }
+}
