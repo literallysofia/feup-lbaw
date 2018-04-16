@@ -41,3 +41,8 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::get('profile/{id}', 'UserController@showProfile')->name('profile');
 
 
+//Static pages
+Route::get('faq','FaqController@showFaqs')->name('faq');
+Route::view('about','pages/about');
+
+

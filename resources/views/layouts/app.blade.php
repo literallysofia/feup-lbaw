@@ -148,7 +148,7 @@
                           <a href="{{ url('/contact') }}">Contact</a>
                       </li>
                       <li>
-                          <a href="{{ url('/faq') }}">FAQs</a>
+                          <a href="{{ route('faq') }}">FAQs</a>
                       </li>
                       <li>
                           <a href="{{ url('/about') }}">About</a>
