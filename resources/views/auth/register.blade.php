@@ -58,7 +58,7 @@
                     <input type="submit" class="black-button" value="Create Account"></input>
                 </form>
                 <span class="float-right">Have an account?
-                    <a href="{{ url('/signin')}}">Sign in.</a>
+                    <a href="{{ url('/login')}}">Login</a>
                 </span>
             </div>
         </div>
@@ -99,6 +99,6 @@
     <button type="submit">
       Register
     </button>
-    <a class="button button-outline" href="{{ route('signin') }}">Login</a>
+    <a class="button button-outline" href="{{ route('login') }}">Login</a>
 </form>--}}
 @endsection

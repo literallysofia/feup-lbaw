@@ -96,7 +96,7 @@
                         @endif
                     @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/signin')}}">Sign In</a>
+                        <a class="nav-link" href="{{route('login')}}">Login</a>
                     </li>
                     @endif
                 </ul>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@include('partials.breadcrumbs', $data = array('Sign In' => ''))
+@include('partials.breadcrumbs', $data = array('Login' => ''))
 <main>
 <div class="container">
     <div class="section-container register">
@@ -14,8 +14,8 @@
             </div>
             <div class="col-lg-5 col-md-6 col-sm-12 d-flex align-items-center">
                 <div class="register-form">
-                    <h3>Sign In</h3>
-                    <form method="POST" action="{{ route('signin') }}">
+                    <h3>Login</h3>
+                    <form method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="Email" required>
@@ -33,7 +33,7 @@
                                 </span>
                             @endif
                         </div>
-                        <input type="submit" class="black-button" value="Sign In"></input>
+                        <input type="submit" class="black-button" value="Login"></input>
                     </form>
                     <span class="float-right">New to Sweven?
                         <a href="{{ url('register') }}">Create an account.</a>
