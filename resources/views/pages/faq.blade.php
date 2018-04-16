@@ -10,10 +10,7 @@
             
             <div class="section-container faq">
             @foreach($faqs as $faq)
-                    <div class="question">
-                        <p class="font-weigth-bold">{{$faq->question}}</p>
-                        <p> {{$faq->answer}} </p>
-                    </div>
+                @each('partials.question', $faqs,'faq')
             @endforeach 
             </div>
 </div>
