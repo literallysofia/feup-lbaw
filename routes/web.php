@@ -46,5 +46,6 @@ Route::put('/profile/address', 'AddressController@deleteAddressResponse');
 //Static pages
 Route::get('faq','FaqController@showFaqs')->name('faq');
 Route::view('about','pages/about');
+Route::view('contact','pages/contact');
 
 
