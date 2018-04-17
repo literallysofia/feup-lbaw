@@ -1,10 +1,18 @@
+function clearAddressValues(){
+    var form = $("#addAddressModal .form-group input");
+    for(var i = 0; i < form.length;i++){
+        form.get(i).value='';
+    }
+}
+
+
 $(document).ready(function(){
 
     $("#btn-addAddress").click(function (e){
         
         
         var fullurl = window.location.href;
-        var my_url = fullurl.substring(fullurl.indexOf("/profile"),fullurl.length);
+        var my_url = '/profile/address'
    
 
         $.ajaxSetup({   
@@ -19,7 +27,6 @@ $(document).ready(function(){
         var formFills  = $("#addAddressModal .form-group input");
         var type = "POST";
         var my_data = {
-            'userId' : my_url.substring(my_url.lastIndexOf('/')+1,my_url.length),
             'addressName' : formFills.get(0).value,
             'street' : formFills.get(1).value,
             'postalCode' :formFills.get(2).value,
@@ -61,8 +68,10 @@ $(document).ready(function(){
 
                 $('#addAddressModal').modal('hide');
                 console.log($('#addresses_cards')[0].children);
+                clearAddressValues();
             },
-            error: function (data) {  
+            error: function (data) {
+                alert('Error adding address,please try again!');
                 console.log('Error: ',data);
             }
 
