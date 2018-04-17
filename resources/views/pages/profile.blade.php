@@ -75,7 +75,7 @@
           <h2>Addresses</h2>
         </div>
 
-        <div class="cards row">
+        <div class="cards row" id="addresses_cards">
           @each('partials.address', $addresses,'address')
           <div class="mt-4 col-md-6 col-lg-3">
             <div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#addAddressModal">
@@ -107,7 +107,7 @@
               </div>
               <div class="form-group">
                 <label for="review_title">Postal Code</label>
-                <input type="text" class="form-control" placeholder="Your postal code">
+                <input type="text" class="form-control" pattern="[0-9]{4}-[0-9]{3}" placeholder="Your postal code">
               </div>
               <div class="form-group">
                 <label for="review_title">City</label>
@@ -122,7 +122,7 @@
           </div>
           <div class="modal-footer">
             <input type="button" data-dismiss="modal" value="Close"></input>
-            <input type="button" class="black-button" value="Save"></input>
+            <input type="button" class="black-button" id="btn-addAddress" value="Save"></input>
           </div>
         </div>
       </div>

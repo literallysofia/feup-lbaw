@@ -20,7 +20,7 @@ class AddressController extends Controller{
             ['name' => $request->addressName,'street' => $request->street,
             'postal_code' => $request->postalCode,
             'city_id' => $cityId,
-            'user_id' => $request->userId]
+            'user_id' => Auth::id()]
         );
 
         if($addAddress){
