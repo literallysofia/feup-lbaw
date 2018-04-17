@@ -1,11 +1,16 @@
-$(document).ready(function () {
+function clearAddressValues() {
+    var form = $("#addAddressModal .form-group input");
+    for (var i = 0; i < form.length; i++) {
+        form.get(i).value = '';
+    }
+}
 
-    console.log($('#addresses_cards')[0].children);
+$(document).ready(function () {
 
     $("#btn-addAddress").click(function (e) {
 
         var fullurl = window.location.href;
-        var my_url = fullurl.substring(fullurl.indexOf("/profile"), fullurl.length);
+        var my_url = '/profile/address'
 
         $.ajaxSetup({
             headers: {
@@ -16,17 +21,16 @@ $(document).ready(function () {
         e.preventDefault();
 
         var formFills = $("#addAddressModal .form-group input");
+        var city = $("#addAddressModal .form-group cities_selector");
         var type = "POST";
         var my_data = {
-            'userId': my_url.substring(my_url.lastIndexOf('/') + 1, my_url.length),
             'addressName': formFills.get(0).value,
             'street': formFills.get(1).value,
             'postalCode': formFills.get(2).value,
-            'city': formFills.get(3).value.trim(''),
-            'country': formFills.get(4).value
+            'cityId': city.value
         }
 
-        if (my_data.addressName === '' || my_data.street === '' || my_data.postalCode === '' || my_data.city.equals === '' || my_data.country.equals === '') {
+        if (my_data.addressName === '' || my_data.street === '' || my_data.postalCode === '') {
             return false;
         }
 
@@ -58,10 +62,32 @@ $(document).ready(function () {
 
                 $('#addAddressModal').modal('hide');
                 console.log($('#addresses_cards')[0].children);
+                clearAddressValues();
             },
             error: function (data) {
+                alert('Error adding address,please try again!');
                 console.log('Error: ', data);
             }
         });
     });
 });
+
+function filterCities(country) {
+
+    let selector = document.getElementById("cities_selector");
+    selector.value = selector.options[0].value;
+    if (selector != null) {
+        let options = selector.getElementsByTagName("option");
+        if (options != null) {
+            for (let i = 0; i < options.length; i++) {
+                if (country.value != null && options[i].getAttribute('data-value') != country.value) {
+                    options[i].setAttribute("hidden", true);
+                    options[i].disabled = true;
+                } else if (options[i].getAttribute("hidden") == true) {
+                    options[i].setAttribute("hidden", false);
+                    options[i].disabled = false;
+                }
+            }
+        }
+    }
+}

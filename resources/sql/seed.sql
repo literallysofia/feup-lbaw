@@ -126,8 +126,8 @@ CREATE TABLE purchases (
     CONSTRAINT total CHECK ((total > (0)::double precision))
 );
 
-DROP TABLE IF EXISTS product_purchases CASCADE;
-CREATE TABLE product_purchases (
+DROP TABLE IF EXISTS product_purchase CASCADE;
+CREATE TABLE product_purchase (
     "product_id" integer NOT NULL REFERENCES products(id) ON DELETE CASCADE,
     "purchase_id" integer NOT NULL REFERENCES purchases(id) ON DELETE CASCADE,
     quantity integer NOT NULL,
@@ -438,21 +438,21 @@ INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('20
 INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-02-15', 1201.51, 10, 20, 'Shipped');
 
 /*PRODUCT-PURCHASES*/
-INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (1, 14, 1, 1106.96);
-INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (2, 4, 2, 717.73);
-INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (3, 8, 1, 1072.94);
-INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (4, 8, 1, 1107.96);
-INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (5, 12, 2, 556.97);
-INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (6, 15, 1, 910.6);
-INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (7, 9, 1, 1015.66);
-INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (8, 7, 2, 1064.08);
-INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (9, 14, 2, 840.37);
-INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (10, 3, 2, 885.43);
-INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (11, 9, 1, 462.09);
-INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (12, 5, 2, 666.96);
-INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (13, 5, 2, 689.05);
-INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (14, 5, 2, 1180.96);
-INSERT INTO product_purchases ("product_id", "purchase_id", quantity, price) VALUES (15, 15, 1, 596.35);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (1, 1, 1, 1106.96);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (2, 1, 2, 717.73);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (3, 2, 1, 1072.94);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (4, 3, 1, 1107.96);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (5, 4, 2, 556.97);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (6, 15, 1, 910.6);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (7, 9, 1, 1015.66);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (8, 7, 2, 1064.08);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (9, 14, 2, 840.37);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (10, 3, 2, 885.43);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (11, 9, 1, 462.09);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (12, 5, 2, 666.96);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (13, 5, 2, 689.05);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (14, 5, 2, 1180.96);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (15, 15, 1, 596.35);
 
 /*REVIEWS*/
 INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (9, 2, 1, 'Some title', 'Some content.', '2017-06-22');
