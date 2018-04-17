@@ -21,13 +21,14 @@ $(document).ready(function () {
         e.preventDefault();
 
         var formFills = $("#addAddressModal .form-group input");
-        var city = $("#addAddressModal .form-group cities_selector");
+        var city = $("#addAddressModal .form-group #cities_selector").get(0);
+        console.log(city.options[city.selectedIndex].value);
         var type = "POST";
         var my_data = {
             'addressName': formFills.get(0).value,
             'street': formFills.get(1).value,
             'postalCode': formFills.get(2).value,
-            'cityId': city.value
+            'cityId': city.options[city.selectedIndex].value
         }
 
         if (my_data.addressName === '' || my_data.street === '' || my_data.postalCode === '') {
