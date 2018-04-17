@@ -111,7 +111,7 @@
               </div>
               <div class="form-group">
                 <label for="review_title">Country</label>
-                <select class="form-control" onchange="filterCities(this)">
+                <select class="form-control" onchange="filterCities(this)" >
                   <option value="" disabled selected>Select your country</option>
                   @foreach($countries as $country)
                   <option value="{{$country->id}}" placeholder="Your country">{{$country->name}}</option>

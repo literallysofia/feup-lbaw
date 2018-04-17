@@ -25,16 +25,16 @@ $(document).ready(function(){
      
 
         var formFills  = $("#addAddressModal .form-group input");
+        var city = $("#addAddressModal .form-group cities_selector");
         var type = "POST";
         var my_data = {
             'addressName' : formFills.get(0).value,
             'street' : formFills.get(1).value,
             'postalCode' :formFills.get(2).value,
-            'city' : formFills.get(3).value.trim(''),
-            'country' : formFills.get(4).value
+            'cityId' : city.value
         }
 
-        if(my_data.addressName === '' || my_data.street === '' || my_data.postalCode === '' || my_data.city.equals === '' || my_data.country.equals === ''){
+        if(my_data.addressName === '' || my_data.street === '' || my_data.postalCode === ''){
             return false;
         }
 
