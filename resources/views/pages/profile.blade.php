@@ -110,12 +110,22 @@
                 <input type="text" class="form-control" placeholder="Your postal code">
               </div>
               <div class="form-group">
-                <label for="review_title">City</label>
-                <input type="text" class="form-control" placeholder="Your city">
+                <label for="review_title">Country</label>
+                <select class="form-control" onchange="filterCities(this)">
+                  <option value="" disabled selected>Select your country</option>
+                  @foreach($countries as $country)
+                  <option value="{{$country->id}}" placeholder="Your country">{{$country->name}}</option>
+                  @endforeach
+                </select>
               </div>
               <div class="form-group">
-                <label for="review_title">Country</label>
-                <input type="text" class="form-control" placeholder="Your country">
+                <label for="review_title">City</label>
+                <select class="form-control" id="cities_selector">
+                  <option value="" disabled selected>Select your city</option>
+                  @foreach($cities as $city)
+                  <option value="{{$city->id}}" data-value="{{$city->country_id}}" placeholder="Your city">{{$city->name}}</option>
+                  @endforeach
+                </select>
               </div>
 
             </form>

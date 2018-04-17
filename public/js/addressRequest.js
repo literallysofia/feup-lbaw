@@ -1,7 +1,5 @@
 $(document).ready(function(){
 
-    console.log($('#addresses_cards')[0].children);
-
     $("#btn-addAddress").click(function (e){
         
         
@@ -68,43 +66,27 @@ $(document).ready(function(){
                 console.log('Error: ',data);
             }
 
-
-
-
-
-
-
-
         });
 
     });
-
-
-
-
-
-        
-
-        
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 });
+
+function filterCities(country){
+
+    let selector = document.getElementById("cities_selector");
+    selector.value = selector.options[0].value;
+    if(selector != null){
+        let options = selector.getElementsByTagName("option");
+        if (options != null){
+            for(let i=0; i<options.length; i++) {
+                if(country.value != null && options[i].getAttribute('data-value') != country.value){
+                    options[i].setAttribute("hidden", true);
+                    options[i].disabled = true;
+                } else if(options[i].getAttribute("hidden") == true) {
+                    options[i].setAttribute("hidden", false);
+                    options[i].disabled = false;
+                }
+            }
+        }
+    }
+}
