@@ -40,15 +40,15 @@
           <form>
             <div class="form-group">
               <label for="profile_name">Name</label>
-              <input type="text" class="form-control" id="profile_name" placeholder="John Doe">
+              <input type="text" class="form-control" id="profile_name" placeholder={{$user->name}}>
             </div>
             <div class="form-group">
               <label for="profile_username">Username</label>
-              <input type="text" class="form-control" id="profile_username" placeholder="johndoe">
+              <input type="text" class="form-control" id="profile_username" placeholder={{$user->username}}>
             </div>
             <div class="form-group">
               <label for="profile_email">Email</label>
-              <input type="text" class="form-control" id="profile_email" placeholder="johndoe@email.com">
+              <input type="text" class="form-control" id="profile_email" placeholder={{$user->email}}>
             </div>
             <label>Optional</label>
             <div class="form-group">
