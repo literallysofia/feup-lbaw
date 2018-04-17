@@ -233,13 +233,15 @@ INSERT INTO users (name, username, email, password) VALUES ('Ulises Reubel', 'ur
 INSERT INTO users (name, username, email, password) VALUES ('Edy MacMenamin', 'emacmenaminh', 'emacmenaminh@ed.gov', 'pvwtW3DT');
 INSERT INTO users (name, username, email, password) VALUES ('Zachariah Chadburn', 'zchadburni', 'zchadburni@typepad.com', 'Wcjj8vZSA');
 INSERT INTO users (name, username, email, password) VALUES ('Jorry MacAndie', 'jmacandiej', 'jmacandiej@wordpress.com', 'Q9oAsh5');
+INSERT INTO users (name, username, email, password) VALUES ('Test', 'test', 'test@test.com', '$2y$10$v.JHOjwkOhrK1ZsTY4Mgf.9zY.7MziX8KhtgofT6kaQpNvx1j07NO'); /*password: testtest*/
+
 
 /*ADDRESSES*/
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('home', 'Dennis', '18740-000', 1, 7);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('country house', 'Dahle', '18740-000', 2, 3);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('company', 'Luster', '22205', 3, 18);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('home', 'Monica', '88000-000', 4, 2);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('work', 'Manitowish', '151287', 5, 16);
+INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('home', 'Dennis', '18740-000', 1, 21);
+INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('country house', 'Dahle', '18740-000', 2, 21);
+INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('company', 'Luster', '22205', 3, 21);
+INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('home', 'Monica', '88000-000', 4, 21);
+INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('work', 'Manitowish', '151287', 5, 21);
 INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('work', 'Dovetail', '22205', 6, 19);
 INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('home', 'Garrison', '88000-000', 7, 2);
 INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('home', 'Loeprich', '88000-000', 8, 13);
