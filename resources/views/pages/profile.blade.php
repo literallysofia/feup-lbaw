@@ -2,6 +2,8 @@
 
 @section('content')
 @include('partials.breadcrumbs', $data = array('Client Area' => ''))
+<script src="../js/profile_purchases.js"></script>
+
 <main>
     <div class="container">
       <div class="container scroll_nav">
@@ -74,24 +76,7 @@
         </div>
 
         <div class="cards row">
-          <div class="mt-4 col-md-6 col-lg-3">
-            <div class="box d-flex flex-column">
-              <div class="d-flex flex-row address-header">
-                <h6>Home</h6>
-                <i class="fas fa-trash-alt ml-auto"></i>
-              </div>
-              <h6>R. Dr. Roberto Frias, 4200-465 Porto, Portugal </h6>
-            </div>
-          </div>
-          <div class="mt-4 col-md-6 col-lg-3">
-            <div class="box d-flex flex-column">
-              <div class="d-flex flex-row address-header">
-                <h6>Work</h6>
-                <i class="fas fa-trash-alt ml-auto"></i>
-              </div>
-              <h6>R. Dr. Virgílio Taborda 43, 5180-169 Freixo de Espada À Cinta, Portugal </h6>
-            </div>
-          </div>
+          @each('partials.address', $addresses,'address')
           <div class="mt-4 col-md-6 col-lg-3">
             <div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#addAddressModal">
               Add Address
@@ -161,7 +146,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr data-toggle="collapse" data-target="#purchase-1" class="clickable unbold" onclick="boldUnboldLine(this)">
+              @each('partials.purchase', $purchases,'purchase')
+             
+              <!--<tr data-toggle="collapse" data-target="#purchase-1" class="clickable unbold" onclick="boldUnboldLine(this)">
                 <td>18/02/17</td>
                 <td>Processing</td>
                 <td>2000€</td>
@@ -370,7 +357,7 @@
                     <p> R. Dr. Roberto Frias, 4200-465 Porto, Portugal </p>
                   </div>
                 </td>
-              </tr>
+              </tr>-->
             </tbody>
           </table>
         </div>

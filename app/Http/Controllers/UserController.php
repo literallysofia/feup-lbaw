@@ -21,9 +21,22 @@ class UserController extends Controller
     {
       $user = User::find($id);
 
+      $addresses = DB::select(
+                        DB::raw('SELECT A.id AS id, A.name AS name, A.street AS street, A."postal_code" AS postal_code, CTY.name AS city, CNTR.name AS country
+                                    FROM addresses AS A, cities AS CTY,countries AS CNTR 
+                                    WHERE A."user_id" = :id 
+                                    AND A."city_id" = CTY.id 
+                                    AND CTY."country_id" = CNTR.id 
+                                    AND A.is_archived = false'), 
+                        array( 'id'=> $id)
+      );
+
       $this->authorize('show', $user);
 
-      return view('pages.profile', ['user' => $user]);
+      $purchases = $user->purchases()->get();
+
+      return view('pages.profile', ['user' => $user, 'addresses' => $addresses, 'purchases'=>$purchases]);
+
     }
 
     public function __construct() 
