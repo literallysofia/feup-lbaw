@@ -25,17 +25,8 @@ class UserController extends Controller
 
       $this->authorize('show', $user);
 
-      $addresses = DB::select(
-        DB::raw('SELECT A.id AS id, A.name AS name, A.street AS street, A."postal_code" AS postal_code, CTY.name AS city, CNTR.name AS country
-                    FROM addresses AS A, cities AS CTY,countries AS CNTR 
-                    WHERE A."user_id" = :id 
-                    AND A."city_id" = CTY.id 
-                    AND CTY."country_id" = CNTR.id 
-                    AND A.is_archived = false'), 
-        array( 'id'=> $id)
-        );
-
       $purchases = $user->purchases()->get();
+      $addresses = $user->addresses()->get();
 
       $countries = Country::get();
       $cities = City::get();
