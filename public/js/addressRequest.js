@@ -6,6 +6,51 @@ function clearAddressValues() {
 }
 
 $(document).ready(function () {
+    console.log($('#addresses_cards')[0].children[0].children[0].id);
+    for(let i = 0; i< $('.btn-deleteAddress').length;i++){
+        $('.btn-deleteAddress')[i].addEventListener('click',function(e){
+
+            console.log("Apaga");
+
+            var my_url = '/profile/address';
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            e.preventDefault();
+            var addressId = e.target.parentElement.parentElement.id;
+            var my_data = {
+                'addressId' : addressId
+            }
+            var type = 'PUT';
+           
+            $.ajax({
+                type: type,
+                url: my_url,
+                data: my_data,
+                success: function (data) {
+                    console.log(data);
+                    var cards = $('#addresses_cards')[0].children;
+                    console.log(cards);
+                    for(let i = 0; i < cards.length ; i++){
+                        if(cards[i].children[0].id == addressId){
+                            console.log(i);
+                            cards[i].remove();
+                        }
+                    }
+                },
+                error: function (data) {
+                    alert('Error deleting address,please try again!');
+                    console.log('Error: ', data);
+                }
+            });
+
+            
+        });
+    }
 
     $("#btn-addAddress").click(function (e) {
 

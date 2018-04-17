@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Middleware\Authenticate;
 
 use App\User;
+use App\Address;
 
 class AddressController extends Controller{
 
@@ -32,8 +33,14 @@ class AddressController extends Controller{
     }
 
     public function deleteAddressResponse(Request $request){
-        $removedAddress = DB::table('addresses')->where('id',$request->id)->update(['is_archived' => true]);
-        return response()->json(array('deleted' => $removedAddress),200);
+
+         Auth::check();
+         $address = Address::find($request->addressId);
+
+         $address->is_archived = true;
+
+         $address->save();
+        
     }
 
 }

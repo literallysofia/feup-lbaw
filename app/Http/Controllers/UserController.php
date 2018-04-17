@@ -24,7 +24,7 @@ class UserController extends Controller {
 
       $this->authorize('show', $user);
       $purchases = $user->purchases()->get();
-      $addresses = $user->addresses()->get();
+      $addresses = $user->addresses()->where('is_archived',false)->get();
 
       $countries = Country::get();
       $cities = City::get();
