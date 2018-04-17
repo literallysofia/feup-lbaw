@@ -5,6 +5,7 @@
 @section('content')
 
 @include('partials.breadcrumbs', $data = array('About' => ''))
+<main>
 <div class="container">
             <h1>About</h1>
 
@@ -25,3 +26,4 @@
                 </p>
             </div>
 </div>
+</main>
