@@ -12,14 +12,11 @@ class AddressController extends Controller{
 
     public function addAddressResponse(Request $request){
         
-        $city = DB::table('cities')->select('id','country_id')->where('name',$request->city)->get()[0];
-        $cityId = $city->id;
-
-        $countryName = DB::table('countries')->select('name')->where('id',$city->country_id)->get()[0]->name;
+        
         $addAddress = DB::table('addresses')->insert(
             ['name' => $request->addressName,'street' => $request->street,
             'postal_code' => $request->postalCode,
-            'city_id' => $cityId,
+            'city_id' => $request->cityId,
             'user_id' => Auth::id()]
         );
 

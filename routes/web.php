@@ -39,6 +39,7 @@ Route::post('register', 'Auth\RegisterController@register');
 
 //profile
 Route::get('profile/{id}', 'UserController@showProfile')->name('profile');
+Route::put('/profile/edit', 'UserController@editProfile');
 Route::post('/profile/address', 'AddressController@addAddressResponse');
 Route::put('/profile/address', 'AddressController@deleteAddressResponse');
 

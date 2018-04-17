@@ -5,8 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
     use Notifiable;
 
     // Don't add create and update timestamps in database.
@@ -33,6 +32,10 @@ class User extends Authenticatable
 
     public function purchases() {
         return $this->hasMany('App\Purchase','user_id');
+    }
+
+    public function addresses() {
+        return $this->hasMany('App\Address','user_id');
     }
 
 }

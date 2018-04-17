@@ -37,7 +37,7 @@
         </div>
 
         <div class="section-container">
-          <form>
+          <form id="profile-form">
             <div class="form-group">
               <label for="profile_name">Name</label>
               <input type="text" class="form-control" id="profile_name" placeholder={{$user->name}}>
@@ -52,14 +52,17 @@
             </div>
             <label>Optional</label>
             <div class="form-group">
+              <input type="password" class="form-control" id="profile_oldpassword" placeholder="Current Password">
+            </div>
+            <div class="form-group">
               <input type="password" class="form-control" id="profile_newpassword" placeholder="New Password">
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" id="profile_newpassword_confirmation" placeholder="New Password Confirmation">
+              <input type="password" class="form-control" id="profile_newpassword_confirmation" placeholder="Repeat New Password">
             </div>
           </form>
           <div class="d-flex flex-column">
-            <input type="button" value="Save"></input>
+            <input id="btn-saveProfile" type="button" value="Save"></input>
             <input type="button" class="black-button mt-3" value="Delete Account"></input>
           </div>
         </div>
@@ -111,7 +114,7 @@
               </div>
               <div class="form-group">
                 <label for="review_title">Country</label>
-                <select class="form-control" onchange="filterCities(this)">
+                <select class="form-control" onchange="filterCities(this)" >
                   <option value="" disabled selected>Select your country</option>
                   @foreach($countries as $country)
                   <option value="{{$country->id}}" placeholder="Your country">{{$country->name}}</option>
