@@ -9,7 +9,7 @@
                     <p class="accordion_list_title">Products</p>
                     @each('partials.purchase_product', $purchase->products()->get(),'purchase_product')
                     <p class="accordion_list_title mt-3">Address</p>
-                    <p> R. Dr. Roberto Frias, 4200-465 Porto, Portugal </p>
+                    <p> {{$purchase->address->street}}, {{$purchase->address->postal_code}}, {{$purchase->address->city->name}}, {{$purchase->address->city->country->name}} </p>
                   </div>
                 </td>
               </tr>

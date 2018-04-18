@@ -14,12 +14,12 @@ class Purchase extends Model
     return $this->belongsTo('App\User', 'id');
   }
 
-  /*public function purchase_products() {
-    return $this->hasMany('App\Purchase_Product', 'purchase_id');
-  }*/
-
   public function products(){
       return $this->belongsToMany('App\Product')
         ->withPivot('quantity', 'price');
+  }
+
+  public function address(){
+    return $this->belongsTo('App\Address', 'id');
   }
 }

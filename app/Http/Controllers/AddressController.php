@@ -48,11 +48,9 @@ class AddressController extends Controller{
             'user_id' => Auth::id()]
         );*/
 
-        /*if($addAddress){
-            $newAddress = DB::table('addresses')->select('id','name','postal_code','street')->orderBy('id','desc')->first();
-            $newAddress->city_name = $request->city;
-            $newAddress->country_name = $countryName;
-        }*/
+        if($addAddress){
+            $newAddress = DB::table('addresses')->select('id','name','postal_code','street')->where('user_id',Auth::id())->orderBy('id','desc')->first();
+        }
 
         
 

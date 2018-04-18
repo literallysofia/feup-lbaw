@@ -18,4 +18,8 @@ class Address extends Model
     return $this->belongsTo('App\User', 'id');
   }
 
+  public function purchases() {
+    return $this->hasMany('App\Purchase', 'address_id', 'id');
+  }
+
 }
