@@ -4,6 +4,6 @@
             <h6>{{$address->name}}</h6>
             <i class="fas fa-trash-alt ml-auto"></i>
         </div>
-        <h6>{{$address->street}}, {{$address->postal_code}}, {{$address->city->name}}, {{$address->city->country->name}}</h6>
+        <h6>{{$address->street}}, {{$address->postal_code}}</h6>
     </div>
 </div>

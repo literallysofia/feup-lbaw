@@ -30,7 +30,7 @@ $(document).ready(function () {
             'postalCode': formFills.get(2).value,
             'cityId': city.options[city.selectedIndex].value
         }
-
+        console.log()
         if (my_data.addressName === '' || my_data.street === '' || my_data.postalCode === '') {
             return false;
         }
@@ -66,6 +66,7 @@ $(document).ready(function () {
                 clearAddressValues();
             },
             error: function (data) {
+
                 alert('Error adding address,please try again!');
                 console.log('Error: ', data);
             }
