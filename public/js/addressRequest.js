@@ -5,52 +5,57 @@ function clearAddressValues() {
     }
 }
 
-$(document).ready(function () {
-    console.log($('#addresses_cards')[0].children[0].children[0].id);
-    for(let i = 0; i< $('.btn-deleteAddress').length;i++){
-        $('.btn-deleteAddress')[i].addEventListener('click',function(e){
+function deleteAddress(e){
+    console.log("Apaga");
 
-            console.log("Apaga");
+    var my_url = '/profile/address';
 
-            var my_url = '/profile/address';
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            e.preventDefault();
-            var addressId = e.target.parentElement.parentElement.id;
-            var my_data = {
-                'addressId' : addressId
-            }
-            var type = 'PUT';
-           
-            $.ajax({
-                type: type,
-                url: my_url,
-                data: my_data,
-                success: function (data) {
-                    console.log(data);
-                    var cards = $('#addresses_cards')[0].children;
-                    console.log(cards);
-                    for(let i = 0; i < cards.length ; i++){
-                        if(cards[i].children[0].id == addressId){
-                            console.log(i);
-                            cards[i].remove();
-                        }
-                    }
-                },
-                error: function (data) {
-                    alert('Error deleting address,please try again!');
-                    console.log('Error: ', data);
-                }
-            });
-
-            
-        });
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    
+    e.preventDefault();
+    var address = e.target.parentElement.parentElement.id;
+    var addressId = address.substring(address.indexOf('-')+1,address.length);
+    console.log(addressId);
+    var my_data = {
+        'addressId' : addressId
     }
+    var type = 'PUT';
+   
+    $.ajax({
+        type: type,
+        url: my_url,
+        data: my_data,
+        success: function (data) {
+            console.log(data);
+            var cards = $('#addresses_cards')[0].children;
+            console.log(cards);
+            for(let i = 0; i < cards.length ; i++){
+                if(cards[i].children[0].id === address){
+                    console.log(i);
+                    cards[i].remove();
+                }
+            }
+        },
+        error: function (data) {
+            alert('Error deleting address,please try again!');
+            console.log('Error: ', data);
+        }
+    });
+}
+
+function addDeleteAction(){
+    for(let i = 0; i< $('.btn-deleteAddress').length;i++){
+        $('.btn-deleteAddress')[i].addEventListener('click',deleteAddress);
+    }
+}
+
+$(document).ready(function () {
+    
+    addDeleteAction();
 
     $("#btn-addAddress").click(function (e) {
 
@@ -91,11 +96,11 @@ $(document).ready(function () {
                 $('#addresses_cards')[0].children[$('#addresses_cards')[0].children.length - 1].remove();
 
                 $('#addresses_cards')[0].innerHTML += '<div class="mt-4 col-md-6 col-lg-3">'
-                    + '<div class="box d-flex flex-column">'
+                    + '<div id="address-' + data.address.id+ '"class="box d-flex flex-column">'
                     + '<div class="d-flex flex-row address-header">'
                     + '<h6>' + data.address.name + '</h6>'
-                    + '<i class="fas fa-trash-alt ml-auto"></i></div>'
-                    + '<h6>' + data.address.street + ',' + data.address.postal_code + '</h6>';
+                    + '<i class="fas fa-trash-alt ml-auto btn-deleteAddress"></i></div>'
+                    + '<h6>' + data.address.street + ', ' + data.address.postal_code + '</h6>';
                 + '</div></div>';
 
                 var addCard = '<div class="mt-4 col-md-6 col-lg-3">' +
@@ -106,8 +111,10 @@ $(document).ready(function () {
 
                 $('#addresses_cards')[0].innerHTML += addCard;
 
+
                 $('#addAddressModal').modal('hide');
                 console.log($('#addresses_cards')[0].children);
+                addDeleteAction();
                 clearAddressValues();
             },
             error: function (data) {
