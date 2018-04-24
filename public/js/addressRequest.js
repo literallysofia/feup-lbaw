@@ -6,7 +6,6 @@ function clearAddressValues() {
 }
 
 function deleteAddress(e){
-    console.log("Apaga");
 
     var my_url = '/profile/address';
 
@@ -74,15 +73,17 @@ $(document).ready(function () {
 
         var formFills = $("#add_address_modal .form-group input");
         var city = $("#add_address_modal .form-group #cities_selector").get(0);
+        var country = $("#add_address_modal .form-group #countries_selector").get(0);
         console.log(city.options[city.selectedIndex].value);
         var type = "POST";
         var my_data = {
             'addressName': formFills.get(0).value,
             'street': formFills.get(1).value,
             'postalCode': formFills.get(2).value,
+            'countryId': country.options[country.selectedIndex].value,
             'cityId': city.options[city.selectedIndex].value
         }
-        console.log()
+
         if (my_data.addressName === '' || my_data.street === '' || my_data.postalCode === '') {
             return false;
         }
@@ -120,7 +121,6 @@ $(document).ready(function () {
                 clearAddressValues();
             },
             error: function (data) {
-
                 alert('Error adding address,please try again!');
                 console.log('Error: ', data);
             }

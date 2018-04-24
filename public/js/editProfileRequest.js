@@ -28,7 +28,7 @@ $(document).ready(function () {
             'confirm_password': formFills.get(5).value
         }
 
-        console.log(my_data.old_password + '\n' + my_data.new_password + '\n' + my_data.confirm_password + '\n')
+        console.log(my_data.old_password + '\n' + my_data.new_password + '\n' + my_data.confirm_password + '\n');
 
         if (my_data.old_password !== '')
             if (my_data.new_password === '' || my_data.new_password !== my_data.confirm_password)
@@ -40,9 +40,11 @@ $(document).ready(function () {
             data: my_data,
             dataType: 'text',
             success: function (data) {
+                alert("Done: "+data);
                 console.log(data);
             },
             error: function (data) {
+                alert("Error: "+data.responseText);
                 console.log('Error: ', data);
             }
         });

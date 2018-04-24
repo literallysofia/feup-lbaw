@@ -111,11 +111,11 @@
               <div class="form-group">
                 <label for="review_title">Postal Code</label>
                 <input type="text" class="form-control" oninvalid="this.setCustomValidity('Please enter a valid postal code \n(eg: NNNN-NNN)')"
-    oninput="this.setCustomValidity('')"  pattern="[0-9]{4}-[0-9]{3}" placeholder="Your postal code" required>
+    oninput="this.setCustomValidity('')" pattern="[0-9]{4}-[0-9]{3}" placeholder="Your postal code" required>
               </div>
               <div class="form-group">
                 <label for="review_title">Country</label>
-                <select required class="form-control" onchange="filterCities(this)" >
+                <select required class="form-control" onchange="filterCities(this)" id="countries_selector">
                   <option value="" disabled selected>Select your country</option>
                   @foreach($countries as $country)
                   <option value="{{$country->id}}" placeholder="Your country">{{$country->name}}</option>

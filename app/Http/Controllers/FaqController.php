@@ -13,7 +13,12 @@ class FaqController extends Controller{
 
     public function showFaqs(){
 
-        $faqs = DB::table('faqs')->get();
+        try {
+            $faqs = DB::table('faqs')->get();
+        }catch(\Exception $e) {
+            $e->getMessage();
+            redirect('erros/404');
+        }
         return view('pages.faq',['faqs'=>$faqs]);
     }
 

@@ -23,12 +23,16 @@ class UserController extends Controller {
       $user = User::findOrFail($id);
 
       $this->authorize('show', $user);
-      
-      $purchases = $user->purchases()->get();
-      $addresses = $user->addresses()->where('is_archived',false)->get();
+      try {
+        $purchases = $user->purchases()->get();
+        $addresses = $user->addresses()->where('is_archived',false)->get();
+        $countries = Country::get();
+        $cities = City::get();
+      }catch(\Exception $e) {
+        $e->getMessage();
+        return response()->setStatusCode(400);
 
-      $countries = Country::get();
-      $cities = City::get();
+      }
 
       return view('pages.profile', ['user' => $user, 'addresses' => $addresses, 'purchases'=>$purchases, 'countries'=>$countries, 'cities'=>$cities]);
 
@@ -40,22 +44,42 @@ class UserController extends Controller {
            if(Hash::check($request->old_password, Auth::user()->password)) {
                 $password = Hash::make($request->new_password);
                 Auth::user()->password = $password;
-                Auth::user()->save();
-            } else return false;
+                try {
+                    Auth::user()->save();
+                }catch(\Exception $e) {
+                    $e->getMessage();
+                    return response("Error updating password", 400);  
+                }
+            } else return response("Old password is incorrect", 400);
         }
         if($request->name != null) {
             Auth::user()->name = $request->name;
-            Auth::user()->save();
+            try {
+                Auth::user()->save();
+            }catch(\Exception $e) {
+                $e->getMessage();
+                return response("Error updating name", 400);
+            }
         }
         if($request->username != null) {
             Auth::user()->username = $request->username;
-            Auth::user()->save();
+            try {
+                Auth::user()->save();
+            }catch(\Exception $e) {
+                $e->getMessage();
+                return response("Error updating username", 400);  
+            }
         }
         if($request->email != null) {
             Auth::user()->email = $request->email;
-            Auth::user()->save();
+            try {
+                Auth::user()->save();
+            }catch(\Exception $e) {
+                $e->getMessage();
+                return response("Error updating email", 400);  
+            }
         }
-        //return response()->setStatusCods(200);
+        return response("User updated with success", 200);
     }
 
     public function __construct() {
