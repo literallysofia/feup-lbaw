@@ -1,5 +1,5 @@
 function clearAddressValues() {
-    var form = $("#addAddressModal .form-group input");
+    var form = $("#add_address_modal .form-group input");
     for (var i = 0; i < form.length; i++) {
         form.get(i).value = '';
     }
@@ -52,7 +52,9 @@ $(document).ready(function () {
         });
     }
 
-    $("#btn-addAddress").click(function (e) {
+    $("#add_address_form").submit(function (e) {
+
+        e.preventDefault();
 
         var fullurl = window.location.href;
         var my_url = '/profile/address'
@@ -65,8 +67,8 @@ $(document).ready(function () {
 
         e.preventDefault();
 
-        var formFills = $("#addAddressModal .form-group input");
-        var city = $("#addAddressModal .form-group #cities_selector").get(0);
+        var formFills = $("#add_address_modal .form-group input");
+        var city = $("#add_address_modal .form-group #cities_selector").get(0);
         console.log(city.options[city.selectedIndex].value);
         var type = "POST";
         var my_data = {
@@ -99,14 +101,14 @@ $(document).ready(function () {
                 + '</div></div>';
 
                 var addCard = '<div class="mt-4 col-md-6 col-lg-3">' +
-                    '<div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#addAddressModal">' +
+                    '<div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#add_address_modal">' +
                     'Add Address' +
                     '</div>' +
                     '</div>';
 
                 $('#addresses_cards')[0].innerHTML += addCard;
 
-                $('#addAddressModal').modal('hide');
+                $('#add_address_modal').modal('hide');
                 console.log($('#addresses_cards')[0].children);
                 clearAddressValues();
             },

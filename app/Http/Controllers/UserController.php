@@ -20,9 +20,10 @@ class UserController extends Controller {
      * @return Response
      */
     public function showProfile($id) {
-      $user = User::find($id);
+      $user = User::findOrFail($id);
 
       $this->authorize('show', $user);
+      
       $purchases = $user->purchases()->get();
       $addresses = $user->addresses()->where('is_archived',false)->get();
 

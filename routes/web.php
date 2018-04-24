@@ -38,8 +38,10 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 
 //profile
-Route::get('profile/{id}', 'UserController@showProfile')->name('profile');
+Route::get('profile/{id}', 'UserController@showProfile')->name('profile')->where('id','[0-9]+');
+Route::view('/profile/edit', 'errors/404');
 Route::put('/profile/edit', 'UserController@editProfile');
+Route::view('/profile/address', 'errors/404');
 Route::post('/profile/address', 'AddressController@addAddressResponse');
 Route::put('/profile/address', 'AddressController@deleteAddressResponse');
 

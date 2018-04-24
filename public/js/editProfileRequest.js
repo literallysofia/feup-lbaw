@@ -1,6 +1,11 @@
 $(document).ready(function () {
 
-    $("#btn-saveProfile").click(function (e) {
+    
+    $("#profile_form").submit(function (e) {
+
+        e.preventDefault();
+
+        //TODO check profile update labels restrictions as email password restricitions with regex
 
         my_url = '/profile/edit';
 
@@ -12,7 +17,7 @@ $(document).ready(function () {
 
         e.preventDefault();
 
-        var formFills = $("#profile-form .form-group input");
+        var formFills = $("#profile_form .form-group input");
         var type = "PUT";
         var my_data = {
             'name': formFills.get(0).value,
