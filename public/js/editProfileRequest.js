@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    
+
     $("#profile_form").submit(function (e) {
 
         e.preventDefault();
