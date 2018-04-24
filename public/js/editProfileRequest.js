@@ -28,25 +28,11 @@ $(document).ready(function () {
             'confirm_password': formFills.get(5).value
         }
 
-        console.log(my_data.old_password + '\n' + my_data.new_password + '\n' + my_data.confirm_password + '\n')
-
-        if (my_data.name != '' && !my_data.name.match("/^[a-z ,.'-]+$/i")) {
-            //todo error
-            return false;
-        }
-
-        if (my_data.username != '' && !my_data.username.match('/^[a-zA-Z0-9]+$/')) {
-            //todo error
-            return false;
-        }
+        console.log(my_data.old_password + '\n' + my_data.new_password + '\n' + my_data.confirm_password + '\n');
 
         if (my_data.old_password !== '')
             if (my_data.new_password === '' || my_data.new_password !== my_data.confirm_password)
                 return false;
-        if (!my_data.new_password.match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/')) {
-            //todo error
-            return false;
-        }
 
         $.ajax({
             type: type,

@@ -40,11 +40,13 @@
           <form id="profile_form">
             <div class="form-group">
               <label for="profile_name">Name</label>
-              <input type="text" class="form-control" id="profile_name" placeholder={{$user->name}}>
+              <input type="text" class="form-control" oninvalid="this.setCustomValidity('Please enter a valid name')"
+    oninput="this.setCustomValidity('')" pattern="^[\p{L}\s'.-]+$" id="profile_name" placeholder={{$user->name}}>
             </div>
             <div class="form-group">
               <label for="profile_username">Username</label>
-              <input type="text" class="form-control" id="profile_username" placeholder={{$user->username}}>
+              <input type="text" class="form-control" oninvalid="this.setCustomValidity('Username must have at least 6 characters')"
+    oninput="this.setCustomValidity('')" pattern="^[a-zA-Z0-9]{6,20}$" id="profile_username" placeholder={{$user->username}}>
             </div>
             <div class="form-group">
               <label for="profile_email">Email</label>
@@ -55,7 +57,8 @@
               <input type="password" class="form-control" id="profile_oldpassword" placeholder="Current Password">
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" id="profile_newpassword" placeholder="New Password">
+              <input type="password" class="form-control" oninvalid="this.setCustomValidity('Password must have one uppercase letter, one number and at least 8 characters')"
+    oninput="this.setCustomValidity('')" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$" id="profile_newpassword" placeholder="New Password">
             </div>
             <div class="form-group">
               <input type="password" class="form-control" id="profile_newpassword_confirmation" placeholder="Repeat New Password">
