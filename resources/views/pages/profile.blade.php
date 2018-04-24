@@ -37,7 +37,7 @@
         </div>
 
         <div class="section-container">
-          <form id="profile-form">
+          <form id="profile_form">
             <div class="form-group">
               <label for="profile_name">Name</label>
               <input type="text" class="form-control" id="profile_name" placeholder={{$user->name}}>
@@ -48,7 +48,7 @@
             </div>
             <div class="form-group">
               <label for="profile_email">Email</label>
-              <input type="text" class="form-control" id="profile_email" placeholder={{$user->email}}>
+              <input type="email" class="form-control" id="profile_email" placeholder={{$user->email}}>
             </div>
             <label>Optional</label>
             <div class="form-group">
@@ -60,11 +60,11 @@
             <div class="form-group">
               <input type="password" class="form-control" id="profile_newpassword_confirmation" placeholder="Repeat New Password">
             </div>
-          </form>
-          <div class="d-flex flex-column">
-            <input id="btn-saveProfile" type="button" value="Save"></input>
-            <input type="button" class="black-button mt-3" value="Delete Account"></input>
+            <div class="d-flex flex-column">
+              <input id="btn-saveProfile" type="submit" value="Save"></input>
+              <input type="button" class="black-button mt-3" value="Delete Account"></input>
           </div>
+          </form>
         </div>
 
       </section>
@@ -81,7 +81,7 @@
         <div class="cards row" id="addresses_cards">
           @each('partials.address', $addresses,'address')
           <div class="mt-4 col-md-6 col-lg-3">
-            <div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#addAddressModal">
+            <div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#add_address_modal">
               Add Address
             </div>
           </div>
@@ -89,7 +89,7 @@
       </section>
     </div>
 
-    <div class="modal fade" id="addAddressModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="add_address_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -99,22 +99,23 @@
             </button>
           </div>
           <div class="modal-body section-container mt-0">
-            <form>
+            <form id="add_address_form">
               <div class="form-group">
                 <label for="review_title">Name</label>
-                <input type="text" class="form-control" placeholder="Address Name">
+                <input type="text" class="form-control" placeholder="Address Name" required>
               </div>
               <div class="form-group">
                 <label for="review_title">Street</label>
-                <input type="text" class="form-control" placeholder="Your street">
+                <input type="text" class="form-control" placeholder="Your street" required>
               </div>
               <div class="form-group">
                 <label for="review_title">Postal Code</label>
-                <input type="text" class="form-control" pattern="[0-9]{4}-[0-9]{3}" placeholder="Your postal code">
+                <input type="text" class="form-control" oninvalid="this.setCustomValidity('Please enter a valid postal code \n(eg: NNNN-NNN)')"
+    oninput="this.setCustomValidity('')"  pattern="[0-9]{4}-[0-9]{3}" placeholder="Your postal code" required>
               </div>
               <div class="form-group">
                 <label for="review_title">Country</label>
-                <select class="form-control" onchange="filterCities(this)" >
+                <select required class="form-control" onchange="filterCities(this)" >
                   <option value="" disabled selected>Select your country</option>
                   @foreach($countries as $country)
                   <option value="{{$country->id}}" placeholder="Your country">{{$country->name}}</option>
@@ -123,19 +124,18 @@
               </div>
               <div class="form-group">
                 <label for="review_title">City</label>
-                <select class="form-control" id="cities_selector">
+                <select required class="form-control" id="cities_selector">
                   <option value="" disabled selected>Select your city</option>
                   @foreach($cities as $city)
                   <option value="{{$city->id}}" data-value="{{$city->country_id}}" placeholder="Your city">{{$city->name}}</option>
                   @endforeach
                 </select>
               </div>
-
+              <div class="modal-footer">
+                <input type="button" data-dismiss="modal" value="Close"></input>
+                <input type="submit" class="black-button" value="Save"></input>
+              </div>
             </form>
-          </div>
-          <div class="modal-footer">
-            <input type="button" data-dismiss="modal" value="Close"></input>
-            <input type="button" class="black-button" id="btn-addAddress" value="Save"></input>
           </div>
         </div>
       </div>
