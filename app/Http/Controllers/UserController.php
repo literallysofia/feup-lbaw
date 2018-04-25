@@ -48,9 +48,9 @@ class UserController extends Controller {
                     Auth::user()->save();
                 }catch(\Exception $e) {
                     $e->getMessage();
-                    return response("Error updating password", 400);  
+                    return response(json_encode("Error updating password"), 400);  
                 }
-            } else return response("Old password is incorrect", 400);
+            } else return response(json_encode("Old password is incorrect"), 400);
         }
         if($request->name != null) {
             Auth::user()->name = $request->name;
@@ -58,7 +58,7 @@ class UserController extends Controller {
                 Auth::user()->save();
             }catch(\Exception $e) {
                 $e->getMessage();
-                return response("Error updating name", 400);
+                return response(json_encode("Error updating name"), 400);
             }
         }
         if($request->username != null) {
@@ -67,7 +67,7 @@ class UserController extends Controller {
                 Auth::user()->save();
             }catch(\Exception $e) {
                 $e->getMessage();
-                return response("Error updating username", 400);  
+                return response(json_encode("Error updating username"), 400);  
             }
         }
         if($request->email != null) {
@@ -76,10 +76,10 @@ class UserController extends Controller {
                 Auth::user()->save();
             }catch(\Exception $e) {
                 $e->getMessage();
-                return response("Error updating email", 400);  
+                return response(json_encode("Error updating email"), 400);  
             }
         }
-        return response("User updated with success", 200);
+        return response(json_encode("User updated with success"), 200);
     }
 
     public function __construct() {
