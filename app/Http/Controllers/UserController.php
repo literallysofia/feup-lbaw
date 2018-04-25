@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Middleware\Authenticate;
+use Illuminate\Support\Facades\Validator;
 
 use App\User;
 use App\Country;
@@ -38,8 +39,25 @@ class UserController extends Controller {
 
     }
 
+    public function validator(array $data) {
+
+        return Validator::make($data, [
+            'name' => "sometimes|regex:/^[\p{L}\s'.-]+$/u|max:30",
+            'username' => 'sometimes|regex:/^[a-zA-Z0-9]{6,20}$/u|unique:users',
+            'email' => 'sometimes|string|email|max:255|unique:users',
+            'old_password' => 'sometimes|regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/u',
+            'new_password' => 'sometimes|regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/u'
+        ]);
+
+    }
+
     public function editProfile(Request $request) {
         Auth::check();
+
+        $validator = $this->validator($request->all());
+        if($validator->fails()) {
+            return response()->json("Bad request", 400);
+        }
         if($request->old_password != null) {
            if(Hash::check($request->old_password, Auth::user()->password)) {
                 $password = Hash::make($request->new_password);

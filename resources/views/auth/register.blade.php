@@ -20,7 +20,8 @@
                 <form method="POST" action="{{ route('register') }}">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="Name" required>
+                        <input type="text" class="form-control" name="name" oninvalid="this.setCustomValidity('Please enter a valid name')"
+    oninput="this.setCustomValidity('')" pattern="^[\p{L}\s'.-]+$" id="name" value="{{ old('name') }}" placeholder="Name" required>
                         @if ($errors->has('name'))
                         <span class="error">
                             {{ $errors->first('name') }}
@@ -28,7 +29,8 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}" placeholder="Username" required>
+                        <input type="text" class="form-control" id="username" oninvalid="this.setCustomValidity('Username must have at least 6 characters')"
+    oninput="this.setCustomValidity('')" pattern="^[a-zA-Z0-9]{6,20}$" name="username" value="{{ old('username') }}" placeholder="Username" required>
                         @if ($errors->has('username'))
                         <span class="error">
                             {{ $errors->first('username') }}
@@ -44,7 +46,8 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password" aria-describedby="passwordAdvice" placeholder="Password" required>
+                        <input type="password" class="form-control" oninvalid="this.setCustomValidity('Password must have one uppercase letter, one number and at least 8 characters')"
+    oninput="this.setCustomValidity('')" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$" name="password" aria-describedby="passwordAdvice" placeholder="Password" required>
                         <!--<small id="passwordAdvice" class="form-text text-muted">Your password must be atleast 8 char long, blablabla</small>-->
                         @if ($errors->has('password'))
                         <span class="error">
@@ -53,7 +56,8 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password_confirmation" placeholder="Repeat password" required>
+                        <input type="password" class="form-control" oninvalid="this.setCustomValidity('Password must have one uppercase letter, one number and at least 8 characters')"
+    oninput="this.setCustomValidity('')" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$" name="password_confirmation" placeholder="Repeat password" required>
                     </div>
                     <input type="submit" class="black-button" value="Create Account"></input>
                 </form>
@@ -66,39 +70,4 @@
     </div>
 </div>
 </main>
-{{--<form method="POST" action="{{ route('register') }}">
-    {{ csrf_field() }}
-
-    <label for="name">Teste</label>
-    <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
-    @if ($errors->has('name'))
-      <span class="error">
-          {{ $errors->first('name') }}
-      </span>
-    @endif
-
-    <label for="email">E-Mail Address</label>
-    <input id="email" type="email" name="email" value="{{ old('email') }}" required>
-    @if ($errors->has('email'))
-      <span class="error">
-          {{ $errors->first('email') }}
-      </span>
-    @endif
-
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password" required>
-    @if ($errors->has('password'))
-      <span class="error">
-          {{ $errors->first('password') }}
-      </span>
-    @endif
-
-    <label for="password-confirm">Confirm Password</label>
-    <input id="password-confirm" type="password" name="password_confirmation" required>
-
-    <button type="submit">
-      Register
-    </button>
-    <a class="button button-outline" href="{{ route('login') }}">Login</a>
-</form>--}}
 @endsection
