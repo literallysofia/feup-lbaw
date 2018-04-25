@@ -421,10 +421,10 @@ INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (12, 12, 1)
 INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (13, 4, 2);
 
 /*PURCHASES*/
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-08-07', 2914.73, 21, 4, 'Processing');
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-10-31', 1709.06, 21, 1, 'Shipped');
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-10-04', 3964.32, 21, 1, 'Delivered');
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-08-18', 1408.06, 21, 16, 'Processing');
+INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-08-07', 2542.42, 21, 4, 'Processing');
+INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-10-31', 1072.94, 21, 1, 'Shipped');
+INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-10-04', 2878.82, 21, 1, 'Delivered');
+INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-08-18', 1119.94, 21, 16, 'Processing');
 INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-04-11', 1115.11, 8, 9, 'Shipped');
 INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-12-12', 4507.83, 8, 9, 'Shipped');
 INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2018-01-20', 899.21, 14, 18, 'Processing');
