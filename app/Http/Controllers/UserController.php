@@ -42,7 +42,7 @@ class UserController extends Controller {
     public function validator(array $data) {
 
         return Validator::make($data, [
-            'name' => "sometimes|regex:/^[\p{L}\s'.-]+$/u|max:30",
+            'name' => "sometimes|regex:/^[A-Z][a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/u|max:255",
             'username' => 'sometimes|regex:/^[a-zA-Z0-9]{6,20}$/u|unique:users',
             'email' => 'sometimes|string|email|max:255|unique:users',
             'old_password' => 'sometimes',

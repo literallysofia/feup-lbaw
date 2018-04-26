@@ -38,16 +38,16 @@
           <div class="form-group">
             <label for="profile_name">Name</label>
             <input type="text" class="form-control" oninvalid="this.setCustomValidity('Please enter a valid name')" oninput="this.setCustomValidity('')"
-              pattern="^[\p{L}\s'.-]+$" id="profile_name" placeholder={{$user->name}}>
+              pattern="^[A-Z][a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" id="profile_name" value="{{$user->name}}">
           </div>
           <div class="form-group">
             <label for="profile_username">Username</label>
             <input type="text" class="form-control" oninvalid="this.setCustomValidity('Username must have at least 6 characters')" oninput="this.setCustomValidity('')"
-              pattern="^[a-zA-Z0-9]{6,20}$" id="profile_username" placeholder={{$user->username}}>
+              pattern="^[a-zA-Z0-9]{6,20}$" id="profile_username" value={{$user->username}}>
           </div>
           <div class="form-group">
             <label for="profile_email">Email</label>
-            <input type="email" class="form-control" id="profile_email" placeholder={{$user->email}}>
+            <input type="email" class="form-control" id="profile_email" value={{$user->email}}>
           </div>
           <label>Change Password</label>
           <span>(optional)</span>
