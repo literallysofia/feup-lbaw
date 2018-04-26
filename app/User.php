@@ -31,11 +31,11 @@ class User extends Authenticatable {
 
 
     public function purchases() {
-        return $this->hasMany('App\Purchase','user_id', 'id');
+        return $this->hasMany('App\Purchase');
     }
 
     public function addresses() {
-        return $this->hasMany('App\Address','user_id', 'id');
+        return $this->hasMany('App\Address');
     }
 
 }

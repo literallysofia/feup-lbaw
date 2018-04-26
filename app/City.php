@@ -11,10 +11,10 @@ class City extends Model
   protected $table = 'cities';
 
   public function addresses() {
-    return $this->hasMany('App\Address', 'city_id', 'id');
+    return $this->hasMany('App\Address');
   }
 
   public function country() {
-    return $this->belongsTo('App\Country', 'id');
+    return $this->belongsTo('App\Country');
   }
 }
