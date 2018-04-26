@@ -45,7 +45,7 @@ class UserController extends Controller {
             'name' => "sometimes|regex:/^[\p{L}\s'.-]+$/u|max:30",
             'username' => 'sometimes|regex:/^[a-zA-Z0-9]{6,20}$/u|unique:users',
             'email' => 'sometimes|string|email|max:255|unique:users',
-            'old_password' => 'sometimes|regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/u',
+            'old_password' => 'sometimes',
             'new_password' => 'sometimes|regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/u'
         ]);
 
@@ -56,7 +56,7 @@ class UserController extends Controller {
 
         $validator = $this->validator($request->all());
         if($validator->fails()) {
-            return response()->json("Bad request", 400);
+            return response(json_encode("Error validating user data"), 400);
         }
         if($request->old_password != null) {
            if(Hash::check($request->old_password, Auth::user()->password)) {

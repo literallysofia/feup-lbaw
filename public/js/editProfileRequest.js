@@ -23,11 +23,12 @@ $(document).ready(function () {
         if (formFills.get(2).value !== '') my_data.email = formFills.get(2).value;
         if (formFills.get(3).value !== '') my_data.old_password = formFills.get(3).value;
         if (formFills.get(4).value !== '') my_data.new_password = formFills.get(4).value;
+        if (formFills.get(5).value !== '') var confirm_password = formFills.get(5).value;
 
-        console.log(my_data.old_password + '\n' + my_data.new_password + '\n' + my_data.confirm_password + '\n');
+        console.log(my_data.old_password + '\n' + my_data.new_password + '\n' + confirm_password + '\n');
 
         if (my_data.old_password !== '')
-            if (my_data.new_password === '' || my_data.new_password !== my_data.confirm_password)
+            if (my_data.new_password === '' || my_data.new_password !== confirm_password)
                 return false;
 
         $.ajax({

@@ -60,7 +60,7 @@
               placeholder="New Password">
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" id="profile_newpassword_confirmation" placeholder="Repeat New Password">
+            <input type="password" class="form-control" id="password_confirmation" placeholder="Repeat New Password">
           </div>
           <div class="d-flex flex-column">
             <input id="btn-saveProfile" type="submit" value="Save"></input>
