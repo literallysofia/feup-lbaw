@@ -64,7 +64,7 @@ main textarea,
 main #message {
   margin: 0;
   background-color: white;
-  color: #646464;
+  color: black;
   padding-left: 1em;
   text-transform: none;
   font-weight: 400;
@@ -89,7 +89,8 @@ main #message {
 main textarea,
 main #message {
   border-radius: 1em; }
-main input[type="button"], main input[type="submit"] {
+main input[type="button"],
+main input[type="submit"] {
   outline: none;
   color: black;
   background-color: white;
@@ -98,14 +99,17 @@ main input[type="button"], main input[type="submit"] {
   text-transform: uppercase;
   font-weight: 500;
   border: 2px solid black; }
-  main input[type="button"]:hover, main input[type="submit"]:hover {
+  main input[type="button"]:hover,
+  main input[type="submit"]:hover {
     background-color: black;
     color: white;
     cursor: pointer; }
-main input[type="button"].black-button, main input[type="submit"].black-button {
+main input[type="button"].black-button,
+main input[type="submit"].black-button {
   color: white;
   background-color: black; }
-  main input[type="button"].black-button:hover, main input[type="submit"].black-button:hover {
+  main input[type="button"].black-button:hover,
+  main input[type="submit"].black-button:hover {
     background-color: #6174AA;
     border-color: #6174AA; }
 main ::placeholder {

@@ -78,7 +78,7 @@ main {
     #message {
         margin: 0;
         background-color: white;
-        color: $dark-grey;
+        color: $black;
         padding-left: 1em;
         text-transform: none;
         font-weight: 400;
@@ -99,7 +99,8 @@ main {
     #message {
         border-radius: 1em;
     }
-    input[type="button"], input[type="submit"] {
+    input[type="button"],
+    input[type="submit"] {
         outline: none;
         color: black;
         background-color: $white;
@@ -114,7 +115,8 @@ main {
             cursor: pointer;
         }
     }
-    input[type="button"].black-button, input[type="submit"].black-button {
+    input[type="button"].black-button,
+    input[type="submit"].black-button {
         color: white;
         background-color: black;
         &:hover {
@@ -122,7 +124,7 @@ main {
             border-color: $highlight;
         }
     }
-     ::placeholder {
+    ::placeholder {
         color: $dark-grey;
     }
 }
