@@ -10,9 +10,12 @@ class Product extends Model
   public $timestamps  = false;
   protected $table = 'products';
 
-
   public function purchase(){
     return $this->belongsToMany('App\Purchase')
         ->withPivot('quantity', 'price');
+  }
+
+  public function category(){
+    return $this->belongsTo('App\Category');
   }
 }

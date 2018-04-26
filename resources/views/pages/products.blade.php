@@ -4,11 +4,11 @@
 
 @section('content')
 
-@include('partials.breadcrumbs', $data = array('FAQs' => ''))
+@include('partials.breadcrumbs', $data = array($category_name => ''))
 <main>
     <div class="container">
         <div class="products d-flex justify-content-between align-items-center flex-wrap">
-            <h1>Smartphones</h1>
+            <h1>{{$category_name}}</h1>
             <span>200 Products</span>
             <select class="selectpicker">
                 <option>Sort by</option>

@@ -50,4 +50,5 @@ Route::get('faq','FaqController@showFaqs')->name('faq');
 Route::view('about','pages/about');
 Route::view('contact','pages/contact');
 
-
+//Products
+Route::get('{category_name}','ProductsController@showProducts');

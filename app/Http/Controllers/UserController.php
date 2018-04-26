@@ -32,7 +32,6 @@ class UserController extends Controller {
       }catch(\Exception $e) {
         $e->getMessage();
         return response()->setStatusCode(400);
-
       }
 
       return view('pages.profile', ['user' => $user, 'addresses' => $addresses, 'purchases'=>$purchases, 'countries'=>$countries, 'cities'=>$cities]);
