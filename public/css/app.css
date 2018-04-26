@@ -298,17 +298,23 @@ main div.jumptarget {
 main form label {
   padding-left: 1.1em;
   font-weight: 700; }
-main form + div input[type="button"] {
+main form span {
+  font-size: 0.7em; }
+main form input[type="button"],
+main form input[type="submit"] {
   width: 20%;
   margin-left: auto; }
   @media (max-width: 1000px) {
-    main form + div input[type="button"] {
+    main form input[type="button"],
+    main form input[type="submit"] {
       width: 30%; } }
   @media (max-width: 800px) {
-    main form + div input[type="button"] {
+    main form input[type="button"],
+    main form input[type="submit"] {
       width: 40%; } }
   @media (max-width: 600px) {
-    main form + div input[type="button"] {
+    main form input[type="button"],
+    main form input[type="submit"] {
       width: 100%; } }
 main .cards {
   padding: 0; }
@@ -380,16 +386,7 @@ main .cards {
       width: 100%; }
     main .cards.categories-cards .select-checkbox div, main .cards.specs-cards .select-checkbox div, main .cards.photo-cards .select-checkbox div {
       padding-left: 0;
-      padding-top: 0.2em;
-      /*.form-check-input {
-        margin: 0;
-        width: 0.75em;
-        align-self: center;
-      }
-      label {
-        padding-left: 1.4em;
-        font-size: 0.7em;
-      }*/ }
+      padding-top: 0.2em; }
       main .cards.categories-cards .select-checkbox div.checkbox-container, main .cards.specs-cards .select-checkbox div.checkbox-container, main .cards.photo-cards .select-checkbox div.checkbox-container {
         display: block;
         position: relative;
@@ -512,8 +509,11 @@ main .modal input[type="text"] {
 main .modal textarea {
   margin-top: 1em;
   width: 100%; }
-main .modal .modal-footer input[type="button"] {
-  width: 30%; }
+main .modal .modal-footer {
+  padding-right: 0; }
+  main .modal .modal-footer input[type="button"],
+  main .modal .modal-footer input[type="submit"] {
+    width: 30%; }
 
 /* LUIS */
 .cart-item h5 {
