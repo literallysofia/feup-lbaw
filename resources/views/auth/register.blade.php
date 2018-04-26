@@ -21,7 +21,7 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                         <input type="text" class="form-control" name="name" oninvalid="this.setCustomValidity('Please enter a valid name')"
-    oninput="this.setCustomValidity('')" pattern="^[\p{L}\s'.-]+$" id="name" value="{{ old('name') }}" placeholder="Name" required>
+    oninput="this.setCustomValidity('')" pattern="^[A-Z][a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" id="name" value="{{ old('name') }}" placeholder="Name" required>
                         @if ($errors->has('name'))
                         <span class="error">
                             {{ $errors->first('name') }}

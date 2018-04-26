@@ -38,10 +38,11 @@
 
         <div class="section-container">
           <form id="profile_form">
+          
             <div class="form-group">
               <label for="profile_name">Name</label>
               <input type="text" class="form-control" oninvalid="this.setCustomValidity('Please enter a valid name')"
-    oninput="this.setCustomValidity('')" pattern="^[\p{L}\s'.-]+$" id="profile_name" placeholder={{$user->name}}>
+    oninput="this.setCustomValidity('')" pattern="^[A-Z][a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" id="profile_name" placeholder={{$user->name}}> 
             </div>
             <div class="form-group">
               <label for="profile_username">Username</label>
