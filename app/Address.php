@@ -11,15 +11,15 @@ class Address extends Model
   protected $table = 'addresses';
 
   public function city() {
-    return $this->belongsTo('App\City', 'id');
+    return $this->belongsTo('App\City');
   }
 
   public function user() {
-    return $this->belongsTo('App\User', 'id');
+    return $this->belongsTo('App\User');
   }
 
   public function purchases() {
-    return $this->hasMany('App\Purchase', 'address_id', 'id');
+    return $this->hasMany('App\Purchase');
   }
 
 }

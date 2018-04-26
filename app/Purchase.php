@@ -11,7 +11,7 @@ class Purchase extends Model
   protected $table = 'purchases';
 
   public function user() {
-    return $this->belongsTo('App\User', 'id');
+    return $this->belongsTo('App\User');
   }
 
   public function products(){
@@ -20,6 +20,6 @@ class Purchase extends Model
   }
 
   public function address(){
-    return $this->belongsTo('App\Address', 'id');
+    return $this->belongsTo('App\Address');
   }
 }
