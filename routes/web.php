@@ -52,3 +52,10 @@ Route::view('contact','pages/contact');
 
 //Products
 Route::get('{category_name}','ProductsController@showProducts');
+
+
+//Add Product
+Route::get('/add_product/{category_name}','ProductsController@showAddProduct')->name('add_product');
+
+//Edit Product
+Route::get('/product/{id}/edit','ProductsController@showEditProduct')->name('edit_product');
