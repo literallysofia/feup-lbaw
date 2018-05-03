@@ -27,9 +27,9 @@ class UserController extends Controller {
 
       $this->authorize('show', $user);
       try {
-        $shipped_purchases = $user->purchases()->where('status','Shipped')->get();
-        $processing_purchases = $user->purchases()->where('status','Processing')->get();
-        $delivered_purchases = $user->purchases()->where('status', 'Delivered')->get();
+        $shipped_purchases = $user->purchases()->where('status','Shipped')->orderBy('date')->get();
+        $processing_purchases = $user->purchases()->where('status','Processing')->orderBy('date')->get();
+        $delivered_purchases = $user->purchases()->where('status', 'Delivered')->orderBy('date')->get();
         
 
         $addresses = $user->addresses()->where('is_archived',false)->get();
@@ -116,8 +116,8 @@ class UserController extends Controller {
 
 
         try {
-            $shipped_purchases = Purchase::where('status','Shipped')->get();
-            $processing_purchases = Purchase::where('status','Processing')->get();
+            $shipped_purchases = Purchase::where('status','Shipped')->orderBy('date')->get();
+            $processing_purchases = Purchase::where('status','Processing')->orderBy('date')->get();
         }catch(\Exception $e) {
             $e->getMessage();
             return response()->setStatusCode(400);
