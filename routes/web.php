@@ -37,13 +37,17 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
-//profile
+//Profile
 Route::get('profile/{id}', 'UserController@showProfile')->name('profile')->where('id','[0-9]+');
 Route::view('/profile/edit', 'errors/404');
 Route::put('/profile/edit', 'UserController@editProfile');
 Route::view('/profile/address', 'errors/404');
 Route::post('/profile/address', 'AddressController@addAddressResponse');
 Route::put('/profile/address', 'AddressController@deleteAddressResponse');
+
+//Admin
+Route::get('admin', 'UserController@showAdmin')->name('admin');
+
 
 //Static pages
 Route::get('faq','FaqController@showFaqs')->name('faq');

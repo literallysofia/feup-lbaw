@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Validator;
 use App\User;
 use App\Country;
 use App\City;
+use App\Purchase;
+
 
 class UserController extends Controller {
     /**
@@ -25,7 +27,11 @@ class UserController extends Controller {
 
       $this->authorize('show', $user);
       try {
-        $purchases = $user->purchases()->get();
+        $shipped_purchases = $user->purchases()->where('status','Shipped')->get();
+        $processing_purchases = $user->purchases()->where('status','Processing')->get();
+        $delivered_purchases = $user->purchases()->where('status', 'Delivered')->get();
+        
+
         $addresses = $user->addresses()->where('is_archived',false)->get();
         $countries = Country::get();
         $cities = City::get();
@@ -34,7 +40,9 @@ class UserController extends Controller {
         return response()->setStatusCode(400);
       }
 
-      return view('pages.profile', ['user' => $user, 'addresses' => $addresses, 'purchases'=>$purchases, 'countries'=>$countries, 'cities'=>$cities]);
+      return view('pages.profile', ['user' => $user, 'addresses' => $addresses, 
+      'shipped_purchases'=> $shipped_purchases, 'processing_purchases'=> $processing_purchases, 'delivered_purchases'=> $delivered_purchases, 
+      'countries'=>$countries, 'cities'=>$cities]);
 
     }
 
@@ -102,4 +110,23 @@ class UserController extends Controller {
     public function __construct() {
         $this->middleware('auth');
     }
+
+
+    public function showAdmin(){
+
+
+        try {
+            $shipped_purchases = Purchase::where('status','Shipped')->get();
+            $processing_purchases = Purchase::where('status','Processing')->get();
+        }catch(\Exception $e) {
+            $e->getMessage();
+            return response()->setStatusCode(400);
+        }
+
+        return view('pages.admin',['shipped_purchases'=> $shipped_purchases, 'processing_purchases'=> $processing_purchases] );
+        
+    }
+
+
+
 }

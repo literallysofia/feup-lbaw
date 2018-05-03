@@ -161,8 +161,8 @@
             </tr>
           </thead>
           <tbody>
-            @each('partials.purchase', $purchases->where('status','=','Shipped'),'purchase') @each('partials.purchase', $purchases->where('status',
-            '=', 'Processing'),'purchase')
+            @each('partials.purchase', $shipped_purchases,'purchase')
+            @each('partials.purchase', $processing_purchases,'purchase')
           </tbody>
         </table>
       </div>
@@ -188,7 +188,7 @@
             </tr>
           </thead>
           <tbody>
-            @each('partials.purchase', $purchases->where('status', '=', 'Delivered'),'purchase')
+            @each('partials.purchase', $delivered_purchases,'purchase')
           </tbody>
         </table>
       </div>
