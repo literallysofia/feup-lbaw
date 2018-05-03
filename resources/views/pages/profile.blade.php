@@ -1,4 +1,6 @@
-@extends('layouts.app') @section('content') @include('partials.breadcrumbs', $data = array('Client Area' => ''))
+@extends('layouts.app')
+@section('content')
+@include('partials.breadcrumbs', $data = array('Client Area' => ''))
 <script src="../js/profile_purchases.js"></script>
 
 <main>
