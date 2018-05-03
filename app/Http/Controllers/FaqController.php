@@ -8,13 +8,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Middleware\Authenticate;
 use App\Http\Controllers\Controller;
 
+use App\Faq;
 
 class FaqController extends Controller{
 
     public function showFaqs(){
 
         try {
-            $faqs = DB::table('faqs')->get();
+            $faqs = Faq::get();
         }catch(\Exception $e) {
             $e->getMessage();
             redirect('erros/404');

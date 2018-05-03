@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Validator;
 use App\User;
 use App\Country;
 use App\City;
+use App\Purchase;
+use App\Property;
+
 
 class UserController extends Controller {
     /**
@@ -25,7 +28,11 @@ class UserController extends Controller {
 
       $this->authorize('show', $user);
       try {
-        $purchases = $user->purchases()->get();
+        $shipped_purchases = $user->purchases()->where('status','Shipped')->orderBy('date')->get();
+        $processing_purchases = $user->purchases()->where('status','Processing')->orderBy('date')->get();
+        $delivered_purchases = $user->purchases()->where('status', 'Delivered')->orderBy('date')->get();
+        
+
         $addresses = $user->addresses()->where('is_archived',false)->get();
         $countries = Country::get();
         $cities = City::get();
@@ -34,7 +41,9 @@ class UserController extends Controller {
         return response()->setStatusCode(400);
       }
 
-      return view('pages.profile', ['user' => $user, 'addresses' => $addresses, 'purchases'=>$purchases, 'countries'=>$countries, 'cities'=>$cities]);
+      return view('pages.profile', ['user' => $user, 'addresses' => $addresses, 
+      'shipped_purchases'=> $shipped_purchases, 'processing_purchases'=> $processing_purchases, 'delivered_purchases'=> $delivered_purchases, 
+      'countries'=>$countries, 'cities'=>$cities]);
 
     }
 
@@ -102,4 +111,25 @@ class UserController extends Controller {
     public function __construct() {
         $this->middleware('auth');
     }
+
+
+    public function showAdmin(){
+
+
+        try {
+            $shipped_purchases = Purchase::where('status','Shipped')->orderBy('date')->get();
+            $processing_purchases = Purchase::where('status','Processing')->orderBy('date')->get();
+            $properties=Property::get();
+        }catch(\Exception $e) {
+            $e->getMessage();
+            return response()->setStatusCode(400);
+        }
+
+        return view('pages.admin',['shipped_purchases'=> $shipped_purchases, 'processing_purchases'=> $processing_purchases,
+        'properties'=>$properties] );
+        
+    }
+
+
+
 }

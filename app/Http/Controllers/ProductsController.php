@@ -15,7 +15,7 @@ class ProductsController extends Controller {
 
     public function showProducts($category_name) {
         try {
-            $category = Category:: where('name', $category_name);
+            $category = Category::where('name', $category_name);
         } catch (\Exception $e) {
             $e -> getMessage();
             return response() -> setStatusCode(400);
