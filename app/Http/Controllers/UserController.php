@@ -13,6 +13,7 @@ use App\User;
 use App\Country;
 use App\City;
 use App\Purchase;
+use App\Property;
 
 
 class UserController extends Controller {
@@ -118,12 +119,14 @@ class UserController extends Controller {
         try {
             $shipped_purchases = Purchase::where('status','Shipped')->orderBy('date')->get();
             $processing_purchases = Purchase::where('status','Processing')->orderBy('date')->get();
+            $properties=Property::get();
         }catch(\Exception $e) {
             $e->getMessage();
             return response()->setStatusCode(400);
         }
 
-        return view('pages.admin',['shipped_purchases'=> $shipped_purchases, 'processing_purchases'=> $processing_purchases] );
+        return view('pages.admin',['shipped_purchases'=> $shipped_purchases, 'processing_purchases'=> $processing_purchases,
+        'properties'=>$properties] );
         
     }
 

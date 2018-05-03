@@ -63,25 +63,20 @@
         <h2>Properties</h2>
     </div>
 
+
+    
+    
+    
+
     <div class="cards row">
-        <div class="mt-4 col-md-6 col-lg-3">
-        <div class="box d-flex flex-column">
-            <h6>Price</h6>
-            <i class="fas fa-trash-alt align-self-end mt-auto"></i>
-        </div>
-        </div>
-        <div class="mt-4 col-md-6 col-lg-3">
-        <div class="box d-flex flex-column">
-            <h6>Storage</h6>
-            <i class="fas fa-trash-alt align-self-end mt-auto"></i>
-        </div>
-        </div>
-        <div class="mt-4 col-md-6 col-lg-3">
-        <div class="box d-flex flex-column">
-            <h6>Brand</h6>
-            <i class="fas fa-trash-alt align-self-end mt-auto"></i>
-        </div>
-        </div>
+        @foreach ($properties as $property)
+            <div class="mt-4 col-md-6 col-lg-3">
+            <div class="box d-flex flex-column">
+                <h6>{{$property->name}}</h6>
+                <i class="fas fa-trash-alt align-self-end mt-auto"></i>
+            </div>
+            </div>
+        @endforeach
         <div class="mt-4 col-md-6 col-lg-3">
         <div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#addPropertyModal">
             Add Property
@@ -267,7 +262,7 @@
             </div>
         </div>
         </div>
-        
+
         <div class="mt-4 col-md-6 col-lg-4">
         <div class="box d-flex flex-column">
             <div class="d-flex flex-row category-header">
