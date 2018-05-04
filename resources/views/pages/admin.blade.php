@@ -374,33 +374,15 @@
             <h2>FAQs</h2>
         </div>
         <div class="cards">
-            <div class="mt-4">
-            <div class="box d-flex flex-column question-card">
-                <h6 class="font-weight-bold"> Q: Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h6>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel ultricies lacus. Praesent fermentum
-                vehicula augue a convallis. Nulla vel cursus augue. Integer ut sem sapien. Duis fermentum facilisis nisi,
-                eu finibus urna viverra ac. Proin non sapien vitae lacus finibus porta eget nec justo. </p>
-                <i class="fas fa-trash-alt align-self-end mt-auto"></i>
-            </div>
-            </div>
-            <div class="mt-4">
-            <div class="box d-flex flex-column question-card">
-                <h6 class="font-weight-bold"> Q: Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h6>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel ultricies lacus. Praesent fermentum
-                vehicula augue a convallis. Nulla vel cursus augue. Integer ut sem sapien. Duis fermentum facilisis nisi,
-                eu finibus urna viverra ac. Proin non sapien vitae lacus finibus porta eget nec justo. </p>
-                <i class="fas fa-trash-alt align-self-end mt-auto"></i>
-            </div>
-            </div>
-            <div class="mt-4">
-            <div class="box d-flex flex-column question-card">
-                <h6 class="font-weight-bold"> Q: Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h6>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel ultricies lacus. Praesent fermentum
-                vehicula augue a convallis. Nulla vel cursus augue. Integer ut sem sapien. Duis fermentum facilisis nisi,
-                eu finibus urna viverra ac. Proin non sapien vitae lacus finibus porta eget nec justo. </p>
-                <i class="fas fa-trash-alt align-self-end mt-auto"></i>
-            </div>
-            </div>
+            @foreach ($faqs as $faq)
+                <div class="mt-4">
+                <div class="box d-flex flex-column question-card">
+                    <h6 class="font-weight-bold"> {{$faq->question}}</h6>
+                    <p>{{$faq->answer}} </p>
+                    <i class="fas fa-trash-alt align-self-end mt-auto"></i>
+                </div>
+                </div>
+            @endforeach
             <div class="mt-4">
             <div class="col box d-flex flex-column last-card" data-toggle="modal" data-target="#addFaqModal">
                 Add FAQ
