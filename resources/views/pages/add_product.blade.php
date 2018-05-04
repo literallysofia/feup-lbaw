@@ -80,60 +80,7 @@
                 <h2>Tech Specs</h2>
 
                 <div class="cards specs-cards row">
-                    <div class="mt-4 col-md-6 col-lg-4">
-                        <div class="box d-flex flex-column ">
-                            <div class="spec-header">
-                                <h6>Storage *</h6>
-                            </div>
-                            <input class="mb-2" type="text"></input>
-                            <div class="entry-buttons">
-                                <input type="button" value="Add Entry"></input>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 col-md-6 col-lg-4">
-                        <div class="box d-flex flex-column ">
-                            <div class="spec-header">
-                                <h6>Chip</h6>
-                            </div>
-                            <input class="mb-2" type="text"></input>
-                            <div class="entry-buttons">
-                                <input type="button" value="Add Entry"></input>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 col-md-6 col-lg-4">
-                        <div class="box d-flex flex-column">
-                            <div class="spec-header">
-                                <h6>Sensors *</h6>
-                            </div>
-                            <input class="mb-2" type="text"></input>
-                            <input class="mb-2" type="text"></input>
-                            <input class="mb-2" type="text"></input>
-                            <input class="mb-2" type="text"></input>
-                            <input class="mb-2" type="text"></input>
-                            <input class="mb-2" type="text"></input>
-                            <div class="entry-buttons">
-                                <input type="button" value="Add Entry"></input>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 col-md-6 col-lg-4">
-                        <div class="box d-flex flex-column">
-                            <div class="spec-header">
-                                <h6>Location</h6>
-                            </div>
-                            <input class="mb-2" type="text"></input>
-                            <input class="mb-2" type="text"></input>
-                            <input class="mb-2" type="text"></input>
-                            <input class="mb-2" type="text"></input>
-                            <input class="mb-2" type="text"></input>
-                            <input class="mb-2" type="text"></input>
-                            <div class="entry-buttons">
-                                <input type="button" value="Add Entry"></input>
-                            </div>
-                        </div>
-                    </div>
+                    @each('partials.add_spec',$properties,'property')           
                 </div>
 
             </section>

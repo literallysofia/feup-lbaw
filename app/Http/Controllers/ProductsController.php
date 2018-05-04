@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 
 use App\Category;
 use App\Product;
+use App\Property;
 
 class ProductsController extends Controller {
 
@@ -36,12 +37,12 @@ class ProductsController extends Controller {
     public function showEditProduct($id){
 
         $product = Product::where('id',$id)->first();
-        $category_name = Category::where('id',$product->category_id)->get()->name;
+        $category = $product->category()->first();
 
         $photos = Photo::where('product_id',$id)->get();
 
-
-        return view('pages.add_product',['category_name'=>$category_name,'product'=>$product,'photos'=>$photos]);
+        $properties = $category->properties()->get();
+        return view('pages.add_product',['category_name'=>$category->name,'product'=>$product,'photos'=>$photos,'properties' =>$properties]);
         
 
     }

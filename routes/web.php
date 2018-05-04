@@ -53,6 +53,7 @@ Route::get('admin', 'UserController@showAdmin')->name('admin');
 Route::get('faq','FaqController@showFaqs')->name('faq');
 Route::view('about','pages/about');
 Route::view('contact','pages/contact');
+Route::post('contact','ContactController@sendEmail')->name('sendemail');
 
 //Products
 Route::get('{category_name}','ProductsController@showProducts');
