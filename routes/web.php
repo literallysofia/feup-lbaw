@@ -37,7 +37,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
-//profile
+//Profile
 Route::get('profile/{id}', 'UserController@showProfile')->name('profile')->where('id','[0-9]+');
 Route::view('/profile/edit', 'errors/404');
 Route::put('/profile/edit', 'UserController@editProfile');
@@ -45,10 +45,15 @@ Route::view('/profile/address', 'errors/404');
 Route::post('/profile/address', 'AddressController@addAddressResponse');
 Route::put('/profile/address', 'AddressController@deleteAddressResponse');
 
+//Admin
+Route::get('admin', 'UserController@showAdmin')->name('admin');
+
+
 //Static pages
 Route::get('faq','FaqController@showFaqs')->name('faq');
 Route::view('about','pages/about');
 Route::view('contact','pages/contact');
+Route::post('contact','ContactController@sendEmail')->name('sendemail');
 
 //Cart and wishlist
 Route::get('wishlist','CartWishlistController@showWishlist')->name('wishlist');
@@ -62,3 +67,9 @@ Route::get('product/{product_id}', 'ProductsController@showProduct')->name('prod
 //Products
 Route::get('{category_name}','ProductsController@showProducts')->name('category_products');
 
+
+//Add Product
+Route::get('/add_product/{category_name}','ProductsController@showAddProduct')->name('add_product');
+
+//Edit Product
+Route::get('/product/{id}/edit','ProductsController@showEditProduct')->name('edit_product');

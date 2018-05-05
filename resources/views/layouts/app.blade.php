@@ -57,12 +57,7 @@
                             <div class="triangle"></div>
                             <h6 class="dropdown-header">Shop By Category</h6>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="products.html">Smartphones</a>
-                            <a class="dropdown-item" href="products.html">Tablets</a>
-                            <a class="dropdown-item" href="products.html">Computers</a>
-                            <a class="dropdown-item" href="products.html">Monitors</a>
-                            <a class="dropdown-item" href="products.html">Acessories</a>
-
+                            @each('partials.navigation', $categories,'category')
                         </div>
                     </li>
                     <!-- SEARCH -->
@@ -112,22 +107,7 @@
                                 <h6>Shop By Category</h6>
                                 <hr>
                             </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="products.html">Smartphones</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="products.html">Tablets</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="products.html">Computers</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="products.html">Monitors</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="products.html">Acessories</a>
-                            </li>
+                            @each('partials.navigation_mobile', $categories,'category')
                         </ul>
                     </div>
                 </div>

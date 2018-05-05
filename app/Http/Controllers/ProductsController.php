@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 
 use App\Category;
 use App\Product;
+use App\Property;
 
 class ProductsController extends Controller {
 
@@ -34,6 +35,29 @@ class ProductsController extends Controller {
         } catch (\Exception $e) {
             return response(json_encode($e->getMessage()), 400);
         }
+    }
+    
+    public function showAddProduct($category_name){
+        try{
+            $category = Category::where('name',$category_name);
+        }catch(\Exception $e){
+            $e -> getMessage();
+            return response() -> setStatusCode(400);
+        }
+        return view('pages.add_product',['category_name'=>$category_name]);
+    }
+
+    public function showEditProduct($id){
+
+        $product = Product::where('id',$id)->first();
+        $category = $product->category()->first();
+
+        $photos = Photo::where('product_id',$id)->get();
+
+        $properties = $category->properties()->get();
+        return view('pages.add_product',['category_name'=>$category->name,'product'=>$product,'photos'=>$photos,'properties' =>$properties]);
+        
+
     }
 
 }

@@ -4,20 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Property extends Model
 {
   // Don't add create and update timestamps in database.
   public $timestamps  = false;
-  protected $table = 'categories';
+  protected $table = 'properties';
 
-  public function products(){
-    return $this->hasMany('App\Product');
+  public function categories(){
+    return $this->belongsToMany('App\Category');
   }
-
-  public function properties(){
-    return $this->belongsToMany('App\Property');
-  }
-
   public function category_properties(){
     return $this->belongsToMany('App\Category_Property');
   }

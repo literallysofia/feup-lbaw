@@ -20,24 +20,31 @@
 
                     <div class="col-lg-9 col-md-9 col-sm-12">
 
-                        <form action="" class="contact-form">
+                    <form action="{{route('sendemail')}}" class="contact-form" method="post">
+                        @if(Session::has('success'))
+                            <div class="alert alert-success">{{Session::get('success')}}</div>
+                        @elseif(Session::has('error'))
+                            <div class="alert alert-danger">{{Session::get('error')}}</div>
+                        @endif
+
+                            <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                             <div class="form-group">
                                 <label for="name">YOUR NAME (required)</label>
-                                <input type="text" class="form-control" id="name" placeholder="Full Name">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Full Name">
                             </div>
                             <div class="form-group">
                                 <label for="email">YOUR EMAIL (required)</label>
-                                <input type="email" class="form-control" id="email" placeholder="Email">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                             </div>
                             <div class="form-group">
                                 <label for="subject">SUBJECT</label>
-                                <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
                             </div>
                             <div class="form-group">
                                 <label for="message">YOUR MESSAGE</label>
-                                <textarea class="form-control" id="message" rows="5" placeholder="Explain your problems or concerns."></textarea>
+                                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Explain your problems or concerns."></textarea>
                             </div>
-                            <input type="button" class="black-button" value="Send"></input>
+                            <input type="submit" class="black-button" value="Send"></input>
                         </form>
                     </div>
 
