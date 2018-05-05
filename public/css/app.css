@@ -246,12 +246,12 @@ footer {
     justify-content: center !important; } }
 nav .pagination {
   margin: 0; }
-  nav .pagination .page-link {
-    background-color: transparent;
-    border: none;
-    color: black; }
-    nav .pagination .page-link:hover {
-      color: #949494; }
+  nav .pagination * {
+    padding-left: 1em; }
+    nav .pagination *:hover {
+      text-decoration: none; }
+  nav .pagination a {
+    color: #6174AA; }
 
 .filters {
   background-color: white;

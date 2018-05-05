@@ -1,12 +1,13 @@
 nav .pagination {
     margin: 0;
-    .page-link {
-        background-color: transparent;
-        border: none;
-        color: $black;
+    * {
+        padding-left: 1em;
         &:hover {
-            color: $medium-grey;
+            text-decoration: none;
         }
+    }
+    a {
+        color: $highlight;
     }
 }
 

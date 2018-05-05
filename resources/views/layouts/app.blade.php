@@ -57,7 +57,9 @@
                             <div class="triangle"></div>
                             <h6 class="dropdown-header">Shop By Category</h6>
                             <div class="dropdown-divider"></div>
-                            @each('partials.navigation', $categories,'category')
+                            @foreach ($categories as $category)
+                                <a class="dropdown-item" href="{{route('category_products', ['id' => $category->id])}}">{{$category->name}}</a>
+                            @endforeach
                         </div>
                     </li>
                     <!-- SEARCH -->
@@ -107,7 +109,11 @@
                                 <h6>Shop By Category</h6>
                                 <hr>
                             </li>
-                            @each('partials.navigation_mobile', $categories,'category')
+                            @foreach ($categories as $category)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('category_products', ['id' => $category->id])}}">{{$category->name}}</a>
+                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

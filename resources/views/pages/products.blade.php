@@ -4,12 +4,12 @@
 
 @section('content')
 
-@include('partials.breadcrumbs', $data = array($category_name => ''))
+@include('partials.breadcrumbs', $data = array($category->name => ''))
 <main>
     <div class="container">
         <div class="products d-flex justify-content-between align-items-center flex-wrap">
-            <h1>{{$category_name}}</h1>
-            <span>200 Products</span>
+            <h1>{{$category->name}}</h1>
+            <span><?php echo $products->total() ?> Products</span>
             <select class="selectpicker">
                 <option>Sort by</option>
                 <option>Price low to high</option>
@@ -18,27 +18,7 @@
             </select>
             <nav aria-label="Page navigation">
                 <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
+                    {{ $products->links() }}
                 </ul>
             </nav>
         </div>
@@ -94,82 +74,13 @@
             </div>
             <div class="col-md-8 col-lg-9">
                 <div class="row">
-                    <div class="mt-4 col-md-12 col-lg-4">
-                        <div class="box d-flex flex-column align-items-center">
-                            <img src="../assets/phone.jpg" alt="Item 1" class="img-fluid" onclick="window.location='product.html'" style="cursor:pointer;">
-                            <h6 onclick="window.location='product.html'" style="cursor:pointer;">Apple iPhone X - 256GB - Silver</h6>
-                            <span>1 359,99 €</span>
-                            <input type="button" value="Add To Cart">
-                        </div>
-                    </div>
-                    <div class="mt-4 col-md-12 col-lg-4">
-                        <div class="box d-flex flex-column align-items-center">
-                            <img src="../assets/phone.jpg" alt="Item 1" class="img-fluid" onclick="window.location='product.html'" style="cursor:pointer;">
-                            <h6 onclick="window.location='product.html'" style="cursor:pointer;">Apple iPhone X - 256GB - Silver</h6>
-                            <span>1 359,99 €</span>
-                            <input type="button" value="Add To Cart">
-                        </div>
-                    </div>
-                    <div class="mt-4 col-md-12 col-lg-4">
-                        <div class="box d-flex flex-column align-items-center">
-                            <img src="../assets/phone.jpg" alt="Item 1" class="img-fluid" onclick="window.location='product.html'" style="cursor:pointer;">
-                            <h6 onclick="window.location='product.html'" style="cursor:pointer;">Apple iPhone X - 256GB - Silver</h6>
-                            <span>1 359,99 €</span>
-                            <input type="button" value="Add To Cart">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="mt-4 col-md-12 col-lg-4">
-                        <div class="box d-flex flex-column align-items-center">
-                            <img src="../assets/phone.jpg" alt="Item 1" class="img-fluid" onclick="window.location='product.html'" style="cursor:pointer;">
-                            <h6 onclick="window.location='product.html'" style="cursor:pointer;">Apple iPhone X - 256GB - Silver</h6>
-                            <span>1 359,99 €</span>
-                            <input type="button" value="Add To Cart">
-                        </div>
-                    </div>
-                    <div class="mt-4 col-md-12 col-lg-4">
-                        <div class="box d-flex flex-column align-items-center">
-                            <img src="../assets/phone.jpg" alt="Item 1" class="img-fluid" onclick="window.location='product.html'" style="cursor:pointer;">
-                            <h6 onclick="window.location='product.html'" style="cursor:pointer;">Apple iPhone X - 256GB - Silver</h6>
-                            <span>1 359,99 €</span>
-                            <input type="button" value="Add To Cart">
-                        </div>
-                    </div>
-                    <div class="mt-4 col-md-12 col-lg-4">
-                        <div class="box d-flex flex-column align-items-center">
-                            <img src="../assets/phone.jpg" alt="Item 1" class="img-fluid" onclick="window.location='product.html'" style="cursor:pointer;">
-                            <h6 onclick="window.location='product.html'" style="cursor:pointer;">Apple iPhone X - 256GB - Silver</h6>
-                            <span>1 359,99 €</span>
-                            <input type="button" value="Add To Cart">
-                        </div>
-                    </div>
+                    @each('partials.product', $products,'product')
                 </div>
             </div>
         </div>
         <nav class="mt-4 d-flex justify-content-end" aria-label="Page navigation">
             <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </li>
+                {{ $products->links() }}
             </ul>
         </nav>
     </div>

@@ -14,13 +14,14 @@ use App\Property;
 
 class ProductsController extends Controller {
 
-    public function showProducts($category_name) {
+    public function showProducts($category_id) {
         try {
-            $category = Category::where('name', $category_name);
+            $category = Category::where('id', $category_id)->first();
+            $products = Product::where('category_id', $category->id)->paginate(3);
         } catch (\Exception $e) {
             return response(json_encode($e->getMessage()), 400);
         }
-        return view('pages.products', ['category_name'=>$category_name,'category'=> $category]);
+        return view('pages.products', ['category'=>$category, 'products'=>$products]);
     }
 
     public function showProduct($product_id) {

@@ -1,1 +1,0 @@
-<a class="dropdown-item" href="products.html">{{$category->name}}</a>
