@@ -11,9 +11,9 @@ class Property extends Model
   protected $table = 'properties';
 
   public function categories(){
-    return $this->belongsToMany('App\Category');
+    return $this->belongsToMany('App\Category')
+                ->using('App\CategoryProperty');
   }
-  public function category_properties(){
-    return $this->belongsToMany('App\Category_Property');
-  }
+  
+
 }

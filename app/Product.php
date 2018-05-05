@@ -15,9 +15,18 @@ class Product extends Model
         ->withPivot('quantity', 'price');
   }
 
-  public function category(){
+  /*public function category(){
     return $this->belongsTo('App\Category');
-  }
+  }*/
+
+  public function category_properties(){
+    return $this->belongsToMany('App\CategoryProperty', 'values_lists', 'product_id', 'category_property_id')
+                ->using('App\ValuesLists');
+}
+
+public function values_lists() {
+  return $this->hasMany('App\ValuesLists');
+}
 
   public function user_wishlist() {
     return $this->belongsToMany('App\User', 'wishlists');
