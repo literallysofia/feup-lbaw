@@ -14,4 +14,8 @@ class UserPolicy {
       // Only an authenticated user can see it
       return $user->id == $user2->id;
     }
+
+    public function edit(User $user, User $user2) {
+      return $user->id == $user2->id;
+    }
 }

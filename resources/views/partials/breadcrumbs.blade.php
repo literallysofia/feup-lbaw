@@ -5,7 +5,7 @@
         @if($route == '')
             <span class="breadcrumb-item active">{{ $name }}</span>
         @else
-            <a class="breadcrumb-item" href="{{ url('$route') }}">$name</a>
+            <a class="breadcrumb-item" href="{{ url($route) }}">{{ $name }}</a>
         @endif
     @endforeach
 </nav>

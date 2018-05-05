@@ -88,7 +88,7 @@ DROP TABLE IF EXISTS delivery_types CASCADE;
 CREATE TABLE delivery_types (
     id serial PRIMARY KEY,
     name text NOT NULL UNIQUE,
-    cost double precision NOT NULL UNIQUE
+    price double precision NOT NULL UNIQUE
 );
 
 DROP TABLE IF EXISTS faqs CASCADE;
@@ -170,6 +170,26 @@ CREATE TABLE wishlists (
     "product_id" integer REFERENCES products(id) ON DELETE CASCADE,
     PRIMARY KEY ("user_id", "product_id")
 );
+
+
+/** TRIGGERS **/
+
+DROP FUNCTION IF EXISTS remove_wishlist_product();
+CREATE FUNCTION remove_wishlist_product() RETURNS TRIGGER AS
+$$
+BEGIN
+	DELETE FROM wishlists
+	    WHERE "user_id" = NEW."user_id"
+        AND "product_id" = NEW."product_id";
+    RETURN NEW;
+END
+$$
+LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS remove_wishlist_product ON product_carts;  
+CREATE TRIGGER remove_wishlist_product AFTER INSERT
+ON product_carts
+FOR EACH ROW EXECUTE PROCEDURE remove_wishlist_product();
 
 
 /** POPULATE **/
@@ -374,9 +394,9 @@ INSERT INTO archived_products ("product_id") VALUES (10);
 INSERT INTO archived_products ("product_id") VALUES (12);
 
 /*DELIVERY_TYPES*/
-INSERT INTO delivery_types (name, cost) VALUES ('Standard Delivery', '0.99');
-INSERT INTO delivery_types (name, cost) VALUES ('Express Delivery', '9.99');
-INSERT INTO delivery_types (name, cost) VALUES ('Priority Delivery', '19.99');
+INSERT INTO delivery_types (name, price) VALUES ('Standard Delivery', '0.99');
+INSERT INTO delivery_types (name, price) VALUES ('Express Delivery', '9.99');
+INSERT INTO delivery_types (name, price) VALUES ('Priority Delivery', '19.99');
 
 /*FAQS*/
 INSERT INTO faqs (question, answer) VALUES ('Sed sagittis?', 'Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.');
@@ -406,9 +426,23 @@ INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.
 INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/dddddd/000000', 15);
 INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/ff4444/ffffff', 16);
 
+/*WISHLIST*/
+INSERT INTO wishlists ("user_id", "product_id") VALUES (2, 2);
+INSERT INTO wishlists ("user_id", "product_id") VALUES (5, 15);
+INSERT INTO wishlists ("user_id", "product_id") VALUES (6, 4);
+INSERT INTO wishlists ("user_id", "product_id") VALUES (7, 5);
+INSERT INTO wishlists ("user_id", "product_id") VALUES (8, 7);
+INSERT INTO wishlists ("user_id", "product_id") VALUES (10, 9);
+INSERT INTO wishlists ("user_id", "product_id") VALUES (10, 10);
+INSERT INTO wishlists ("user_id", "product_id") VALUES (10, 13);
+INSERT INTO wishlists ("user_id", "product_id") VALUES (21, 8);
+INSERT INTO wishlists ("user_id", "product_id") VALUES (21, 3);
+
+
 /*PRODUCT-CARTS*/
 INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (6, 16, 2);
 INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (6, 2, 2);
+INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (2, 2, 1);
 INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (19, 7, 1);
 INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (2, 9, 2);
 INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (3, 13, 3);
@@ -698,19 +732,6 @@ INSERT INTO values (name, "values_list_id") VALUES ('vivamus metus', 104);
 INSERT INTO values (name, "values_list_id") VALUES ('ante ipsum primis', 105);
 INSERT INTO values (name, "values_list_id") VALUES ('consequat morbi a', 106);
 INSERT INTO values (name, "values_list_id") VALUES ('dui proin', 107);
-
-/*WISHLIST*/
-INSERT INTO wishlists ("user_id", "product_id") VALUES (10, 8);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (7, 5);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (10, 9);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (10, 10);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (6, 3);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (10, 13);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (2, 2);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (8, 7);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (5, 15);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (6, 4);
-
 
 
 

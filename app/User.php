@@ -38,4 +38,12 @@ class User extends Authenticatable {
         return $this->hasMany('App\Address');
     }
 
+    public function wishlist() {
+        return $this->belongsToMany('App\Product', 'wishlists');
+    }
+
+    public function cart(){
+        return $this->belongsToMany('App\Product', 'product_carts')
+                    ->withPivot('quantity');
+    }
 }

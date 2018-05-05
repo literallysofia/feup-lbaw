@@ -31,7 +31,13 @@ main .box {
   background-color: white;
   padding: 2em;
   height: 100%; }
-  main .box .img-fluid {
+  main .box a {
+    color: inherit;
+    /* blue colors for links too */
+    text-decoration: inherit;
+    /* no underline */
+    text-align: center; }
+  main .box a .img-fluid, main .box .img-fluid {
     max-width: 70%; }
   main .box h6 {
     font-family: "Roboto", sans-serif;

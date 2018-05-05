@@ -30,8 +30,7 @@ class UserController extends Controller {
         $countries = Country::get();
         $cities = City::get();
       }catch(\Exception $e) {
-        $e->getMessage();
-        return response()->setStatusCode(400);
+        return response(json_encode($e->getMessage()), 400);
       }
 
       return view('pages.profile', ['user' => $user, 'addresses' => $addresses, 'purchases'=>$purchases, 'countries'=>$countries, 'cities'=>$cities]);

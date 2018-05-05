@@ -87,10 +87,9 @@ class AddressController extends Controller{
     }
 
     public function deleteAddressResponse(Request $request){
-
-         
+        
         Auth::check();
-         $address = Address::findOrFail($request->addressId);
+        $address = Address::findOrFail($request->addressId);
 
          $address->is_archived = true;
         try {

@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+<script type="text/javascript">
+function openProduct(name) {
+    var naame = name;
+    let string = JSON.parse("{{ json_encode(route('product', ['product_name'=>"+name+"])) }}");
+    window.location.href=string;
+}
+</script>
 <div id="carouselHomepage" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselHomepage" data-slide-to="0" class="active"></li>
@@ -34,8 +41,8 @@
     <div class="row">
         <div class="mt-4 col-md-6 col-lg-3">
             <div class="box d-flex flex-column align-items-center">
-                <img src="../assets/phone.jpg" alt="Item 1" class="img-fluid" onclick="window.location='product.html'" style="cursor:pointer;">
-                <h6 onclick="window.location='product.html'" style="cursor:pointer;">Apple iPhone X - 256GB - Silver</h6>
+                <a href="{{route('product', ['product_id'=> 1])}}"><img src="../assets/phone.jpg" alt="Item 1" class="img-fluid" style="cursor:pointer;"></a>
+                <a href="{{route('product', ['product_id'=> 1])}}"><h6 style="cursor:pointer;">Apple iPhone X - 256GB - Silver</h6></a>
                 <span>1 359,99 €</span>
                 <input type="button" value="Add To Cart">
             </div>

@@ -28,12 +28,9 @@
         // Fix for Firefox autofocus CSS bug
         // See: http://stackoverflow.com/questions/18943276/html-5-autofocus-messes-up-css-loading/18945951#18945951
     </script>
+
     
-    <script type="text/javascript" src={{ asset('js/addressRequest.js') }} defer></script>
-    <script type="text/javascript" src={{ asset('js/editProfileRequest.js') }} defer></script>
-    <script type="text/javascript" src={{ asset('js/app.js') }} defer>
-   
-</script>
+    <script type="text/javascript" src={{ asset('js/app.js') }} defer></script>
   </head>
   <body>
     <header>
@@ -77,7 +74,7 @@
                     </li>
                     <!-- ICONS -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/wishlist')}}">
+                        <a class="nav-link" href="{{ route('wishlist')}}">
                             <i class="fas fa-heart"></i>
                         </a>
                     </li>

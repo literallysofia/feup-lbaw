@@ -50,5 +50,15 @@ Route::get('faq','FaqController@showFaqs')->name('faq');
 Route::view('about','pages/about');
 Route::view('contact','pages/contact');
 
+//Cart and wishlist
+Route::get('wishlist','CartWishlistController@showWishlist')->name('wishlist');
+Route::delete('wishlist', 'CartWishlistController@removeWishlistProduct');
+Route::get('cart', 'CartWishlistController@showCart')->name('cart');
+Route::post('cart', 'CartWishlistController@addCartProduct');
+
+//Product
+Route::get('product/{product_id}', 'ProductsController@showProduct')->name('product');
+
 //Products
-Route::get('{category_name}','ProductsController@showProducts');
+Route::get('{category_name}','ProductsController@showProducts')->name('category_products');
+
