@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function($view) {
-            $view->with('categories', Category::where('is_navbar_category', true)->get());
+            $view->with('navCategories', Category::where('is_navbar_category', true)->get());
         });
     }
 

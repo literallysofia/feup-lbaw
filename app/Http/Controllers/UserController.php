@@ -14,6 +14,7 @@ use App\Country;
 use App\City;
 use App\Purchase;
 use App\Property;
+use App\Category;
 use App\Faq;
 
 
@@ -121,13 +122,14 @@ class UserController extends Controller {
             $processing_purchases = Purchase::where('status','Processing')->orderBy('date')->get();
             $properties=Property::get();
             $faqs=Faq::get();
+            $categories=Category::get();
         }catch(\Exception $e) {
             $e->getMessage();
             return response()->setStatusCode(400);
         }
 
         return view('pages.admin',['shipped_purchases'=> $shipped_purchases, 'processing_purchases'=> $processing_purchases,
-        'properties'=>$properties, 'faqs'=>$faqs] );
+        'properties'=>$properties, 'categories' => $categories,'faqs'=>$faqs] );
         
     }
 

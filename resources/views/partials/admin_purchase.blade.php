@@ -3,17 +3,18 @@
     <td data-toggle="collapse" data-target=<?php echo '#admin-purchase-'; echo $purchase->id;?> class="clickable" onclick="boldUnboldText(this)">{{date('d/m/Y', strtotime($purchase->date))}}</td>
     <td>
 
-          @if ($purchase->status == 'Processing')
-            <select class="select-status">
-                <option value="1" selected="selected">Processing</option>
-                <option value="2">Shipped</option>
-            </select>
-          @elseif($purchase->status == 'Shipped')
-            <select class="select-status">
-                <option value="1" selected="selected">Shipped</option>
-                <option value="2">Delivered</option>
-            </select>
-          @endif
+        @if ($purchase->status == 'Processing')
+        <select class="select-status">
+            <option value="1" selected="selected">Processing</option>
+            <option value="2">Shipped</option>
+        </select>
+        @elseif($purchase->status == 'Shipped')
+        <select class="select-status">
+            <option value="1" selected="selected">Shipped</option>
+            <option value="2">Delivered</option>
+        </select>
+        @endif
+
     </td>
     <td data-toggle="collapse" data-target=<?php echo '#admin-purchase-'; echo $purchase->id;?> class="clickable" onclick="boldUnboldText(this)">{{$purchase->total}}€</td>
 </tr>

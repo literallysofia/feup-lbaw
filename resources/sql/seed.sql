@@ -287,7 +287,7 @@ INSERT INTO admins ("user_id") VALUES (4);
 /*CATEGORIES*/
 INSERT INTO categories (name, "is_navbar_category") VALUES ('Smartphones', true);
 INSERT INTO categories (name, "is_navbar_category") VALUES ('Tablets', true);
-INSERT INTO categories (name, "is_navbar_category") VALUES ('Computers', true);
+INSERT INTO categories (name, "is_navbar_category") VALUES ('Computers', false);
 INSERT INTO categories (name, "is_navbar_category") VALUES ('Monitors', true);
 INSERT INTO categories (name, "is_navbar_category") VALUES ('Accessories', true);
 

@@ -63,11 +63,6 @@
         <h2>Properties</h2>
     </div>
 
-
-    
-    
-    
-
     <div class="cards row">
         @foreach ($properties as $property)
             <div class="mt-4 col-md-6 col-lg-3">
@@ -116,231 +111,15 @@
     </div>
 
     <div class="cards categories-cards row">
-        <div class="mt-4 col-md-6 col-lg-4">
-        <div class="box d-flex flex-column">
-            <div class="d-flex flex-row category-header">
-            <h6>Smartphones</h6>
-            <i class="fas fa-trash-alt ml-auto"></i>
-            </div>
-            <div class="select-checkbox">
-            <select>
-                <option disabled selected value>Choose Property</option>
-                <option value="1">Price</option>
-                <option value="2">Brand</option>
-                <option value="3">Storage</option>
-                <option value="4">None</option>
-            </select>
-            <div class="checkbox-container form-check d-flex">
-                <label class="form-check-label">Required Property
-                <input type="checkbox" class="form-check-input">
-                <span class="checkmark"></span>
-                </label>
-            </div>
-            </div>
-            <div class="select-checkbox">
-            <select>
-                <option disabled selected value>Choose Property</option>
-                <option value="1">Price</option>
-                <option value="2">Brand</option>
-                <option value="3">Storage</option>
-                <option value="4">None</option>
-            </select>
-            <div class="checkbox-container form-check d-flex">
-                <label class="form-check-label">Required Property
-                <input type="checkbox" class="form-check-input">
-                <span class="checkmark"></span>
-                </label>
-            </div>
-            </div>
-            <div class="select-checkbox">
-            <select>
-                <option disabled selected value>Choose Property</option>
-                <option value="1">Price</option>
-                <option value="2">Brand</option>
-                <option value="3">Storage</option>
-                <option value="4">None</option>
-            </select>
-            <div class="checkbox-container form-check d-flex">
-                <label class="form-check-label">Required Property
-                <input type="checkbox" class="form-check-input">
-                <span class="checkmark"></span>
-                </label>
-            </div>
-            </div>
-            <div class="select-checkbox">
-            <select>
-                <option disabled selected value>Choose Property</option>
-                <option value="1">Price</option>
-                <option value="2">Brand</option>
-                <option value="3">Storage</option>
-                <option value="4">None</option>
-            </select>
-            <div class="checkbox-container form-check d-flex">
-                <label class="form-check-label">Required Property
-                <input type="checkbox" class="form-check-input">
-                <span class="checkmark"></span>
-                </label>
-            </div>
-            </div>
-            <div class="select-checkbox">
-            <select>
-                <option disabled selected value>Choose Property</option>
-                <option value="1">Price</option>
-                <option value="2">Brand</option>
-                <option value="3">Storage</option>
-                <option value="4">None</option>
-            </select>
-            <div class="checkbox-container form-check d-flex">
-                <label class="form-check-label">Required Property
-                <input type="checkbox" class="form-check-input">
-                <span class="checkmark"></span>
-                </label>
-            </div>
-            </div>
-            <div class="entry-buttons">
-            <input type="button" value="Add Entry"></input>
-            <input type="button" value="Add Product" onclick="window.location='add_product.html'"></input>
-            <input type="button" class="black-button" value="Save"></input>
-            </div>
-        </div>
-        </div>
-        <div class="mt-4 col-md-6 col-lg-4">
-        <div class="box d-flex flex-column">
-            <div class="d-flex flex-row category-header">
-            <h6>Tablets</h6>
-            <i class="fas fa-trash-alt ml-auto"></i>
-            </div>
-            <div class="select-checkbox">
-            <select>
-                <option disabled selected value>Choose Property</option>
-                <option value="1">Price</option>
-                <option value="2">Brand</option>
-                <option value="3">Storage</option>
-                <option value="4">None</option>
-            </select>
-            <div class="checkbox-container form-check d-flex">
-                <label class="form-check-label">Required Property
-                <input type="checkbox" class="form-check-input">
-                <span class="checkmark"></span>
-                </label>
-            </div>
-            </div>
-            <div class="select-checkbox">
-            <select>
-                <option disabled selected value>Choose Property</option>
-                <option value="1">Price</option>
-                <option value="2">Brand</option>
-                <option value="3">Storage</option>
-                <option value="4">None</option>
-            </select>
-            <div class="checkbox-container form-check d-flex">
-                <label class="form-check-label">Required Property
-                <input type="checkbox" class="form-check-input">
-                <span class="checkmark"></span>
-                </label>
-            </div>
-            </div>
-            <div class="select-checkbox">
-            <select>
-                <option disabled selected value>Choose Property</option>
-                <option value="1">Price</option>
-                <option value="2">Brand</option>
-                <option value="3">Storage</option>
-                <option value="4">None</option>
-            </select>
-            <div class="checkbox-container form-check d-flex">
-                <label class="form-check-label">Required Property
-                <input type="checkbox" class="form-check-input">
-                <span class="checkmark"></span>
-                </label>
-            </div>
-            </div>
-            <div class="entry-buttons">
-            <input type="button" value="Add Entry"></input>
-            <input type="button" value="Add Product" onclick="window.location='add_product.html'"></input>
-            <input type="button" class="black-button" value="Save"></input>
-            </div>
-        </div>
-        </div>
+
+        @include('partials.admin_category', ['categories'=>$categories, 'properties'=>$properties])
 
         <div class="mt-4 col-md-6 col-lg-4">
-        <div class="box d-flex flex-column">
-            <div class="d-flex flex-row category-header">
-            <h6>Computers</h6>
-            <i class="fas fa-trash-alt ml-auto"></i>
-            </div>
-            <div class="select-checkbox">
-            <select>
-                <option disabled selected value>Choose Property</option>
-                <option value="1">Price</option>
-                <option value="2">Brand</option>
-                <option value="3">Storage</option>
-                <option value="4">None</option>
-            </select>
-            <div class="checkbox-container form-check d-flex">
-                <label class="form-check-label">Required Property
-                <input type="checkbox" class="form-check-input">
-                <span class="checkmark"></span>
-                </label>
-            </div>
-            </div>
-            <div class="select-checkbox">
-            <select>
-                <option disabled selected value>Choose Property</option>
-                <option value="1">Price</option>
-                <option value="2">Brand</option>
-                <option value="3">Storage</option>
-                <option value="4">None</option>
-            </select>
-            <div class="checkbox-container form-check d-flex">
-                <label class="form-check-label">Required Property
-                <input type="checkbox" class="form-check-input">
-                <span class="checkmark"></span>
-                </label>
-            </div>
-            </div>
-            <div class="select-checkbox">
-            <select>
-                <option disabled selected value>Choose Property</option>
-                <option value="1">Price</option>
-                <option value="2">Brand</option>
-                <option value="3">Storage</option>
-                <option value="4">None</option>
-            </select>
-            <div class="checkbox-container form-check d-flex">
-                <label class="form-check-label">Required Property
-                <input type="checkbox" class="form-check-input">
-                <span class="checkmark"></span>
-                </label>
-            </div>
-            </div>
-            <div class="select-checkbox">
-            <select>
-                <option disabled selected value>Choose Property</option>
-                <option value="1">Price</option>
-                <option value="2">Brand</option>
-                <option value="3">Storage</option>
-                <option value="4">None</option>
-            </select>
-            <div class="checkbox-container form-check d-flex">
-                <label class="form-check-label">Required Property
-                <input type="checkbox" class="form-check-input">
-                <span class="checkmark"></span>
-                </label>
-            </div>
-            </div>
-            <div class="entry-buttons">
-            <input type="button" value="Add Entry"></input>
-            <input type="button" value="Add Product" onclick="window.location='add_product.html'"></input>
-            <input type="button" class="black-button" value="Save"></input>
+            <div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#addCategoryModal">
+                Add Category
             </div>
         </div>
-        </div>
-        <div class="mt-4 col-md-6 col-lg-4">
-        <div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#addCategoryModal">
-            Add Category
-        </div>
-        </div>
+
     </div>
 
     </section>
@@ -416,56 +195,33 @@
 
     <div class="container">
         <section class="mt-5">
-        <div id="manage_navigation_title" class="jumptarget">
-            <h2>Navigation</h2>
-        </div>
+            <div id="manage_navigation_title" class="jumptarget">
+                <h2>Navigation</h2>
+            </div>
 
-        <div class="cards navigation-cards row">
-            <div class="mt-4 col-12">
-            <div class="box d-flex flex-column">
-                <h6>Categories</h6>
-                <select>
-                <option disabled selected value>Choose Category</option>
-                <option value="1">Computer</option>
-                <option value="2">Tablet</option>
-                <option value="3">Smartphone</option>
-                <option value="4">None</option>
-                </select>
-                <select>
-                <option disabled selected value>Choose Category</option>
-                <option value="1">Computer</option>
-                <option value="2">Tablet</option>
-                <option value="3">Smartphone</option>
-                <option value="4">None</option>
-                </select>
-                <select>
-                <option disabled selected value>Choose Category</option>
-                <option value="1">Computer</option>
-                <option value="2">Tablet</option>
-                <option value="3">Smartphone</option>
-                <option value="4">None</option>
-                </select>
-                <select>
-                <option disabled selected value>Choose Category</option>
-                <option value="1">Computer</option>
-                <option value="2">Tablet</option>
-                <option value="3">Smartphone</option>
-                <option value="4">None</option>
-                </select>
-                <select>
-                <option disabled selected value>Choose Category</option>
-                <option value="1">Computer</option>
-                <option value="2">Tablet</option>
-                <option value="3">Smartphone</option>
-                <option value="4">None</option>
-                </select>
-                <div class="entry-buttons">
-                <input type="button" value="Add Entry"></input>
-                <input type="button" class="black-button" value="Save"></input>
+            <div class="cards navigation-cards row">
+                <div class="mt-4 col-12">
+                <div class="box d-flex flex-column">
+                    <h6>Categories</h6>
+                    @foreach($categories->where("is_navbar_category", true) as $navCategory)
+                        <select>    
+                                @foreach($categories as $category)
+                                        @if ($category->name == $navCategory->name)
+                                            <option selected value>{{$category->name}}</option>
+                                        @else 
+                                            <option value="{{$category->name}}">{{$category->name}}</option>
+                                        @endif
+                                @endforeach
+                            <option value="None" style="font-style:italic;" >None</option>
+                        </select>
+                    @endforeach
+                    <div class="entry-buttons">
+                    <input type="button" value="Add Entry"></input>
+                    <input type="button" class="black-button" value="Save"></input>
+                    </div>
+                </div>
                 </div>
             </div>
-            </div>
-        </div>
 
         </section>
     </div>
