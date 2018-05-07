@@ -1,15 +1,27 @@
 @foreach($categories as $category)
     <div class="mt-4 col-md-6 col-lg-4">
         <div class="box d-flex flex-column">
-            <div class="d-flex flex-row category-header">
+            <div class="category-header">
                 <h6>{{$category->name}}</h6>
-                <i class="fas fa-trash-alt ml-auto"></i>
+                <div class="d-flex flex-row">
+                    <div class="checkbox-container form-check d-flex">
+                        <label class="form-check-label">Show on the navigation menu
+                            @if ($category->is_navbar_category)
+                                <input type="checkbox" class="form-check-input" checked>
+                            @else 
+                                <input type="checkbox" class="form-check-input">
+                            @endif
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <i class="fas fa-trash-alt ml-auto"></i> 
+                </div>
             </div>
-
+            
+            
             @foreach($category->properties as $catProperty)
             <div class="select-checkbox">
                 <select>
-                    {{--<option selected value>{{$catProperty->name}}</option>--}}
                     @foreach($properties as $property)
                         @if ($property->name == $catProperty->name)
                             <option selected value>{{$property->name}}</option>
@@ -22,7 +34,13 @@
 
                 <div class="checkbox-container form-check d-flex">
                     <label class="form-check-label">Required Property
-                        <input type="checkbox" class="form-check-input">
+                     
+                        @if ($catProperty->category_properties->where('category_id', $category->id)->first()->is_required_property == 1)
+                            <input type="checkbox" class="form-check-input" checked>
+                        @else 
+                            <input type="checkbox" class="form-check-input">
+                        @endif
+                       
                         <span class="checkmark"></span>
                     </label>
                 </div>

@@ -48,6 +48,13 @@
     <p> {{$pcategory->id}} </p>
 @endforeach
 
+<h6>> PROPERTY -> CATEGORY_PROPERTY <h6>
+<h6> {{$property->id}} <h6>
+<h6> {{$property->name}} <h6>
+@foreach($property->category_properties as $pcp)
+    <p> {{$pcp->id}} </p>
+@endforeach
+
 
 <div class="container">
             <h1>Frequently Asked Questions</h1>

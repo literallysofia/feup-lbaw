@@ -1,7 +1,8 @@
 @extends('layouts.app') 
 @section('content') 
 @include('partials.breadcrumbs', $data = array('Management Area' => ''))
-<script src="../js/profile_purchases.js"></script>
+
+<script type="text/javascript" src={{ asset('js/profile.js') }} defer></script>
 <main>
 <div class="container">
     <div class="container scroll_nav">
@@ -12,17 +13,14 @@
         <a href="#manage_purchases_title" class="col-lg-auto col-md-auto col-sm-12 text-sm-left">
         Purchases
         </a>
-        <a href="#manage_categories_title" class="col-lg-auto col-md-auto col-sm-12 text-sm-left">
-        Categories
-        </a>
         <a href="#manage_properties_title" class="col-lg-auto col-md-auto col-sm-12 text-sm-left">
         Properties
         </a>
+        <a href="#manage_categories_title" class="col-lg-auto col-md-auto col-sm-12 text-sm-left">
+        Categories
+        </a>
         <a href="#manage_faqs_title" class="col-lg-auto col-md-auto col-sm-12 text-sm-left">
         FAQs
-        </a>
-        <a href="#manage_navigation_title" class="col-lg-auto col-md-auto col-sm-12 text-sm-left">
-        Navigation
         </a>
     </div>
     </div>
@@ -190,40 +188,6 @@
             </div>
         </div>
         </div>
-    </div>
-
-
-    <div class="container">
-        <section class="mt-5">
-            <div id="manage_navigation_title" class="jumptarget">
-                <h2>Navigation</h2>
-            </div>
-
-            <div class="cards navigation-cards row">
-                <div class="mt-4 col-12">
-                <div class="box d-flex flex-column">
-                    <h6>Categories</h6>
-                    @foreach($categories->where("is_navbar_category", true) as $navCategory)
-                        <select>    
-                                @foreach($categories as $category)
-                                        @if ($category->name == $navCategory->name)
-                                            <option selected value>{{$category->name}}</option>
-                                        @else 
-                                            <option value="{{$category->name}}">{{$category->name}}</option>
-                                        @endif
-                                @endforeach
-                            <option value="None" style="font-style:italic;" >None</option>
-                        </select>
-                    @endforeach
-                    <div class="entry-buttons">
-                    <input type="button" value="Add Entry"></input>
-                    <input type="button" class="black-button" value="Save"></input>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-        </section>
     </div>
 
 </main>
