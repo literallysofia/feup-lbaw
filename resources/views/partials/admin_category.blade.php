@@ -14,7 +14,7 @@
                             <span class="checkmark"></span>
                         </label>
                     </div>
-                    <i class="fas fa-trash-alt ml-auto"></i> 
+                    <i class="fas fa-trash-alt ml-auto btn-deleteCategory"></i> 
                 </div>
             </div>
             

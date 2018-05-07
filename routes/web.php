@@ -47,6 +47,7 @@ Route::put('/profile/address', 'AddressController@deleteAddressResponse');
 
 //Admin
 Route::get('admin', 'UserController@showAdmin')->name('admin');
+Route::post('admin/category', 'AdminController@addCategoryResponse');
 
 
 //Static pages

@@ -2,7 +2,8 @@
 @section('content') 
 @include('partials.breadcrumbs', $data = array('Management Area' => ''))
 
-<script type="text/javascript" src={{ asset('js/profile.js') }} defer></script>
+<script type="text/javascript" src={{ asset('js/profileRequest.js') }} defer></script>
+<script type="text/javascript" src={{ asset('js/categoryRequest.js') }} defer></script>
 <main>
 <div class="container">
     <div class="container scroll_nav">
@@ -113,7 +114,7 @@
         @include('partials.admin_category', ['categories'=>$categories, 'properties'=>$properties])
 
         <div class="mt-4 col-md-6 col-lg-4">
-            <div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#addCategoryModal">
+            <div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#add_category_modal">
                 Add Category
             </div>
         </div>
@@ -123,7 +124,7 @@
     </section>
 </div>
 
-    <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="add_category_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -132,12 +133,15 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
+
             <div class="modal-body section-container mt-0">
-            <input type="text" class="form-control" id="new_category" placeholder="New Category">
-            </div>
-            <div class="modal-footer">
-            <input type="button" data-dismiss="modal" value="Close"></input>
-            <input type="button" class="black-button" value="Save"></input>
+                <form  id="add_category_form">
+                    <input type="text" class="form-control" id="new_category" placeholder="New Category">
+                    <div class="modal-footer">
+                        <input type="button" data-dismiss="modal" value="Close"></input>
+                        <input type="submit" class="black-button" value="Save"></input>
+                    </div>
+                </form>
             </div>
         </div>
         </div>
@@ -179,7 +183,7 @@
             </button>
             </div>
             <div class="modal-body section-container mt-0">
-            <input type="text" id="new_category" placeholder="Question"></input>
+            <input type="text" id="new_question" placeholder="Question"></input>
             <textarea rows="5" placeholder="Answer"></textarea>
             </div>
             <div class="modal-footer">
