@@ -5,16 +5,32 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
+use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
 
-    public function showProducts($category_id)
+    public function showProducts(Request $request, $category_id)
     {
         try {
             $category = Category::where('id', $category_id)->first();
             $all_products = Product::where('category_id', $category->id)->get();
-            $products = Product::where('category_id', $category->id)->paginate(3);
+
+            $sort = $request->get('sort', null);
+
+            $products = Product::where('category_id', $category->id)->when($sort, function ($query) use ($sort) {
+                switch ($sort) {
+                    case 1:
+                        $query->orderBy('price', 'asc');
+                        break;
+                    case 2:
+                        $query->orderBy('price', 'desc');
+                        break;
+                    case 3:
+                        $query->orderBy('score', 'desc');
+                        break;
+                }
+            })->paginate(3);
 
             $brands = array();
             foreach ($all_products as $product) {

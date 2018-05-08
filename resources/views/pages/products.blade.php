@@ -16,15 +16,14 @@
             <div class="dropdown show">
                 <a class="dropdown-toggle" href="https://example.com" id="dropdownSort" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort by</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownSort">
-                    <!-- <a class="dropdown-item" href="#">Price low to high</a>
-                    <a class="dropdown-item" href="#">Price high to low</a>
-                    <a class="dropdown-item" href="#">Highest rating</a> -->
-                    <a class="dropdown-item" href="#" >ASC</a>
+                    <a class="dropdown-item" href="{{ route('category_products', ['category_id' => $category->id, 'sort' => '1']) }}">Price low to high</a>
+                    <a class="dropdown-item" href="{{ route('category_products', ['category_id' => $category->id, 'sort' => '2']) }}">Price high to low</a>
+                    <a class="dropdown-item" href="{{ route('category_products', ['category_id' => $category->id, 'sort' => '3']) }}">Highest rating</a>
                 </div>
             </div>
             <nav aria-label="Page navigation">
                 <ul class="pagination">
-                    {{ $products->links() }}
+                    {{ $products->appends(request()->query())->links() }}
                 </ul>
             </nav>
         </div>
@@ -52,7 +51,7 @@
         </div>
         <nav class="mt-4 d-flex justify-content-end" aria-label="Page navigation">
             <ul class="pagination">
-                {{ $products->links() }}
+                {{ $products->appends(request()->query())->links() }}
             </ul>
         </nav>
     </div>
