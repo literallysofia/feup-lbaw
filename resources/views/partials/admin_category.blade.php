@@ -1,6 +1,6 @@
 @foreach($categories as $category)
     <div class="mt-4 col-md-6 col-lg-4">
-        <div class="box d-flex flex-column">
+        <div id="category-{{$category->id}}" class="box d-flex flex-column ">
             <div class="category-header">
                 <h6>{{$category->name}}</h6>
                 <div class="d-flex flex-row">
