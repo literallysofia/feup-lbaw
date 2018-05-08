@@ -13,12 +13,15 @@
         <div class="products d-flex justify-content-between align-items-center flex-wrap">
             <h1>{{ $category->name }}</h1>
             <span>{{ $products->total() }} Products</span>
-            <select class="selectpicker">
-                <option>Sort by</option>
-                <option>Price low to high</option>
-                <option>Price high to low </option>
-                <option>Highest rating</option>
-            </select>
+            <div class="dropdown show">
+                <a class="dropdown-toggle" href="https://example.com" id="dropdownSort" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort by</a>
+                <div class="dropdown-menu" aria-labelledby="dropdownSort">
+                    <!-- <a class="dropdown-item" href="#">Price low to high</a>
+                    <a class="dropdown-item" href="#">Price high to low</a>
+                    <a class="dropdown-item" href="#">Highest rating</a> -->
+                    <a class="dropdown-item" href="#" >ASC</a>
+                </div>
+            </div>
             <nav aria-label="Page navigation">
                 <ul class="pagination">
                     {{ $products->links() }}

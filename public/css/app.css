@@ -268,14 +268,12 @@ nav .pagination {
   .filters .range-slider input {
     width: 100%; }
 
-.products .selectpicker {
+.products #dropdownSort {
   background-color: transparent;
+  text-decoration: none;
   color: black;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  margin: 0; }
-  .products .selectpicker:hover {
+  cursor: pointer; }
+  .products #dropdownSort:focus {
     color: #949494; }
 
 /* JULIETA */
