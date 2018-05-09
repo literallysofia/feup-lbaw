@@ -3,6 +3,7 @@
 @include('partials.breadcrumbs', $data = array('Management Area' => ''))
 
 <script type="text/javascript" src={{ asset('js/profileRequest.js') }} defer></script>
+<script type="text/javascript" src={{ asset('js/propertyRequest.js') }} defer></script>
 <script type="text/javascript" src={{ asset('js/categoryRequest.js') }} defer></script>
 <main>
 <div class="container">
@@ -62,17 +63,17 @@
         <h2>Properties</h2>
     </div>
 
-    <div class="cards row">
+    <div class="cards row properties-cards">
         @foreach ($properties as $property)
             <div class="mt-4 col-md-6 col-lg-3">
-            <div class="box d-flex flex-column">
+            <div id="property-{{$property->id}}" class="box d-flex flex-column">
                 <h6>{{$property->name}}</h6>
-                <i class="fas fa-trash-alt align-self-end mt-auto"></i>
+                <i class="fas fa-trash-alt align-self-end mt-auto btn-deleteProperty"></i>
             </div>
             </div>
         @endforeach
         <div class="mt-4 col-md-6 col-lg-3">
-        <div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#addPropertyModal">
+        <div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#add_property_modal">
             Add Property
         </div>
         </div>
@@ -81,23 +82,28 @@
     </section>
 </div>
 
-<div class="modal fade" id="addPropertyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="add_property_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add Property</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add Property</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+
+            <div class="modal-body section-container mt-0">
+                <form  id="add_property_form">
+                    <input type="text" class="form-control" id="new_property" placeholder="New Property">
+                    <div class="modal-footer">
+                        <input type="button" data-dismiss="modal" value="Close"></input>
+                        <input type="submit" class="black-button" value="Save"></input>
+                    </div>
+                </form>
+            </div>
+
         </div>
-        <div class="modal-body section-container mt-0">
-        <input type="text" class="form-control" id="new_property" placeholder="New Property">
-        </div>
-        <div class="modal-footer">
-        <input type="button" data-dismiss="modal" value="Close"></input>
-        <input type="button" class="black-button" value="Save"></input>
-        </div>
-    </div>
     </div>
 </div>
 

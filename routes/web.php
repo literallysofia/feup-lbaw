@@ -47,6 +47,8 @@ Route::put('/profile/address', 'AddressController@deleteAddressResponse');
 
 //Admin
 Route::get('admin', 'AdminController@showAdmin')->name('admin');
+Route::post('admin/property', 'AdminController@addPropertyResponse');
+Route::delete('admin/property', 'AdminController@deletePropertyResponse');
 Route::post('admin/category', 'AdminController@addCategoryResponse');
 Route::put('admin/category', 'AdminController@deleteCategoryResponse');
 

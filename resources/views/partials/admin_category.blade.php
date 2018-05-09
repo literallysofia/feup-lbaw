@@ -24,9 +24,9 @@
                 <select>
                     @foreach($properties as $property)
                         @if ($property->name == $catProperty->name)
-                            <option selected value>{{$property->name}}</option>
+                            <option selected value="property-{{$property->id}}">{{$property->name}}</option>
                         @else 
-                            <option value="{{$property->name}}">{{$property->name}}</option>
+                            <option value="property-{{$property->id}}">{{$property->name}}</option>
                         @endif
                     @endforeach
                     <option value="None" style="font-style:italic;" >None</option>

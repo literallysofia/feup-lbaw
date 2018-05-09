@@ -73,8 +73,44 @@ class AdminController extends Controller{
         }
     }
 
+
+    public function addPropertyResponse(Request $request){
+       
+        $addProperty = new Property;
+        $addProperty->name = $request->propertyName;
+        try {
+            $addProperty->save();
+        }catch(\Exception $e) {
+            echo $e->getMessage();
+        }
+
+        if($addProperty){
+            try {
+                $newProperty = Property::where('name',$request->propertyName)->first();
+        
+            }catch(\Exception $e) {
+                $e->getMessage();
+            }
+        }
+
+        return response()->json(array('property'=> $newProperty), 200);
+
+    }
+
+    public function deletePropertyResponse(Request $request){
+
+        $property = Property::findOrFail($request->propertyId);
+
+        try {
+         $property->delete();
+        }catch(\Exception $e) {
+            $e->getMessage();
+        }
+
+        return response()->json('Success', 200);
+    
+    }
+
 }
-
-
 
 ?>
