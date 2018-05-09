@@ -1,5 +1,3 @@
-
-
 function deleteCategory(e){
 
   var my_url = '/admin/category';
@@ -48,9 +46,24 @@ function addDeleteAction(){
     }
 }
 
+function addEntryAction(){
+    for(let i = 0; i< $('.btn-addEntryCategory').length;i++){
+        $('.btn-addEntryCategory')[i].addEventListener('click', event => {
+            var entryDefault = event.target.parentElement.previousElementSibling;
+            var newEntry =  entryDefault.cloneNode(true);
+            newEntry.style.visibility="visible";    
+            buttons = event.target.parentElement;
+            $(newEntry).insertBefore(entryDefault);
+       });
+     
+    }
+}
+
 $(document).ready(function () {
     
     addDeleteAction();
+
+    addEntryAction();
 
     $("#add_category_form").submit(function (e) {
 
