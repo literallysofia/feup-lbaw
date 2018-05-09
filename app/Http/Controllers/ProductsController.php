@@ -43,6 +43,15 @@ class ProductsController extends Controller
         } catch (\Exception $e) {
             return response(json_encode($e->getMessage()), 400);
         }
+
+        if ($request->ajax()) {
+            $response = array(
+                'products' => view('partials.product', ['products' => $products])->render(),
+                'links' => view('partials.pagination', ['products' => $products])->render(),
+            );
+            return response(json_encode($response), 200);
+        }
+
         return view('pages.products', ['category' => $category, 'products' => $products, 'brands' => $brands, 'max_price' => $max_price]);
     }
 

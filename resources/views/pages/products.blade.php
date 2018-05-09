@@ -21,10 +21,8 @@
                     <a class="dropdown-item" href="{{ route('category_products', ['category_id' => $category->id, 'sort' => '3']) }}">Highest rating</a>
                 </div>
             </div>
-            <nav aria-label="Page navigation">
-                <ul class="pagination">
-                    {{ $products->appends(request()->query())->links() }}
-                </ul>
+            <nav class="pagination-links" aria-label="Page navigation">
+            @include('partials.pagination')
             </nav>
         </div>
         <hr>
@@ -37,22 +35,20 @@
                         @each('partials.filter', $brands,'brand')
                     @endif
                     <h6>Max Price</h6>
-                    <div class="range-slider">
-                        <input class="range-slider__range" type="range" value="0" min="0" max="{{ $max_price }}">
+                    <form class="range-slider" action="{{ route('category_products', ['category_id' => $category->id, 'max_price' => '800']) }}" method="get">
+                        <input class="range-slider__range" name="max_price" type="range" value="0" min="0" max="{{ $max_price }}">
                         <span class="range-slider__value"></span>
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="col-md-8 col-lg-9">
-                <div class="row">
-                    @each('partials.product', $products,'product')
+                <div id="product-listing" class="row">
+                    @include('partials.product')
                 </div>
             </div>
         </div>
-        <nav class="mt-4 d-flex justify-content-end" aria-label="Page navigation">
-            <ul class="pagination">
-                {{ $products->appends(request()->query())->links() }}
-            </ul>
+        <nav class="mt-4 d-flex justify-content-end pagination-links" aria-label="Page navigation">
+        @include('partials.pagination')
         </nav>
     </div>
 </main>

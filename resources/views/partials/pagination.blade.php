@@ -1,0 +1,1 @@
+<pagination>{{ $products->links() }}</pagination>

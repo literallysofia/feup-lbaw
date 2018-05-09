@@ -5,7 +5,7 @@ function clearAddressValues() {
     }
 }
 
-function deleteAddress(e){
+function deleteAddress(e) {
 
     var my_url = '/profile/address';
 
@@ -14,16 +14,16 @@ function deleteAddress(e){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    
+
     e.preventDefault();
     var address = e.target.parentElement.parentElement.id;
-    var addressId = address.substring(address.indexOf('-')+1,address.length);
+    var addressId = address.substring(address.indexOf('-') + 1, address.length);
     console.log(addressId);
     var my_data = {
-        'addressId' : addressId
+        'addressId': addressId
     }
     var type = 'PUT';
-   
+
     $.ajax({
         type: type,
         url: my_url,
@@ -32,8 +32,8 @@ function deleteAddress(e){
             console.log(data);
             var cards = $('#addresses_cards')[0].children;
             console.log(cards);
-            for(let i = 0; i < cards.length ; i++){
-                if(cards[i].children[0].id === address){
+            for (let i = 0; i < cards.length; i++) {
+                if (cards[i].children[0].id === address) {
                     console.log(i);
                     cards[i].remove();
                 }
@@ -46,14 +46,14 @@ function deleteAddress(e){
     });
 }
 
-function addDeleteAction(){
-    for(let i = 0; i< $('.btn-deleteAddress').length;i++){
-        $('.btn-deleteAddress')[i].addEventListener('click',deleteAddress);
+function addDeleteAction() {
+    for (let i = 0; i < $('.btn-deleteAddress').length; i++) {
+        $('.btn-deleteAddress')[i].addEventListener('click', deleteAddress);
     }
 }
 
 $(document).ready(function () {
-    
+
     addDeleteAction();
 
     $("#add_address_form").submit(function (e) {
@@ -99,7 +99,7 @@ $(document).ready(function () {
                 $('#addresses_cards')[0].children[$('#addresses_cards')[0].children.length - 1].remove();
 
                 $('#addresses_cards')[0].innerHTML += '<div class="mt-4 col-md-6 col-lg-3">'
-                    + '<div id="address-' + data.address.id+ '"class="box d-flex flex-column">'
+                    + '<div id="address-' + data.address.id + '"class="box d-flex flex-column">'
                     + '<div class="d-flex flex-row address-header">'
                     + '<h6>' + data.address.name + '</h6>'
                     + '<i class="fas fa-trash-alt ml-auto btn-deleteAddress"></i></div>'
