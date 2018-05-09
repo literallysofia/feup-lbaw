@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\Property;
+use App\Review;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -60,8 +62,11 @@ class ProductsController extends Controller
 
         try {
             $product = Product::findOrFail($product_id);
-            if ($product != null) {
-                return view('pages.product', ['product' => $product]);
+
+            $reviews = Review::where('product_id', $product_id)->paginate(2);
+            
+            if($product != null) {
+                return view('pages.product', ['product'=>$product, 'reviews'=>$reviews]);
             } else {
                 return response(json_encode("This product does not exist"), 404);
             }
@@ -92,6 +97,46 @@ class ProductsController extends Controller
         $properties = $category->properties()->get();
         return view('pages.add_product', ['category_name' => $category->name, 'product' => $product, 'photos' => $photos, 'properties' => $properties]);
 
+    }
+
+    public function deleteReview(Request $request) {
+
+       try {
+            $user = Auth::user();
+            $review = $user->reviews->where('id', $request->id)->first();
+            if($review != null){
+                $review->delete();
+                $product = Product::findOrFail($request->product_id);
+                return response(json_encode(array('Message'=>'Review deleted', 'Reviews'=>count($product->reviews))), 200);
+            } else
+                return response(json_encode(array("Message"=>"You can not delete this review or it does not exist", 'Reviews'=>null)), 404);
+       }catch(\Exception $e){
+           return response(json_encode($e->getMessage()), 400);
+       }
+       
+    }
+
+    public function addReview($product_id, Request $request) {
+
+        try {
+            $user = Auth::user();
+            $product = Product::findOrFail($product_id);
+            $this->authorize('review', $product_id);
+            $review = new Review();
+            $review->title = $request->title;
+            if(is_int($request->score) && $request->score >= 1 && $request->score <= 5) {
+                return response(json_encode(array("Message"=>"Score value is not valid", "Content"=>null)), 400);
+            }
+            $review->score = $request->score;
+            $review->content = $request->content;
+            if($review->save()) {
+                return response(json_encode(array("Message"=>"Review added", "Content"=>$review)), 200);
+            } else {
+                return response(json_encode(array("Message"=>"Error adding review", "Content"=>null)), 400);
+            }
+        }catch(\Exception $e) {
+            return response(json_encode(array("Message"=>"Error adding review", "Content"=>null)), 400);
+        }
     }
 
 }

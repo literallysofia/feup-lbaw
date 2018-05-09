@@ -162,7 +162,7 @@ DROP TABLE IF EXISTS values CASCADE;
 CREATE TABLE values (
     id serial PRIMARY KEY,
     name text,
-    "values_list_id" integer NOT NULL REFERENCES values_lists(id) ON DELETE CASCADE
+    "values_lists_id" integer NOT NULL REFERENCES values_lists(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS wishlists CASCADE;
@@ -491,6 +491,8 @@ INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALU
 
 /*REVIEWS*/
 INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (9, 2, 1, 'Some title', 'Some content.', '2017-06-22');
+INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (21, 1, 1, 'Some title', 'Some content.', '2017-06-22');
+INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (9, 1, 1, 'Some title', 'Yo', '2017-08-22');
 INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (10, 6, 5, 'Some title', 'Some content.', '2017-08-12');
 INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (16, 3, 4, 'Some title', 'Some content.', '2018-02-04');
 INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (19, 11, 2, 'Some title', 'Some content.', '2017-03-13');
@@ -626,155 +628,111 @@ INSERT INTO values_lists ("category_property_id", "product_id") VALUES (44, 14);
 INSERT INTO values_lists ("category_property_id", "product_id") VALUES (50, 16);
 
 /*VALUES*/
-INSERT INTO values (name, "values_list_id") VALUES ('cubilia curae', 1);
-INSERT INTO values (name, "values_list_id") VALUES ('parturient montes', 2);
-INSERT INTO values (name, "values_list_id") VALUES ('platea', 3);
-INSERT INTO values (name, "values_list_id") VALUES ('adipiscing lorem', 4);
-INSERT INTO values (name, "values_list_id") VALUES ('nulla tellus in', 5);
-INSERT INTO values (name, "values_list_id") VALUES ('imperdiet', 6);
-INSERT INTO values (name, "values_list_id") VALUES ('justo eu', 7);
-INSERT INTO values (name, "values_list_id") VALUES ('vestibulum vestibulum', 8);
-INSERT INTO values (name, "values_list_id") VALUES ('id justo', 9);
-INSERT INTO values (name, "values_list_id") VALUES ('rutrum rutrum neque', 10);
-INSERT INTO values (name, "values_list_id") VALUES ('vel', 11);
-INSERT INTO values (name, "values_list_id") VALUES ('curabitur in libero', 12);
-INSERT INTO values (name, "values_list_id") VALUES ('maecenas ut', 13);
-INSERT INTO values (name, "values_list_id") VALUES ('curabitur at ipsum', 14);
-INSERT INTO values (name, "values_list_id") VALUES ('sed accumsan felis', 15);
-INSERT INTO values (name, "values_list_id") VALUES ('in magna', 16);
-INSERT INTO values (name, "values_list_id") VALUES ('quisque', 17);
-INSERT INTO values (name, "values_list_id") VALUES ('nulla ultrices', 18);
-INSERT INTO values (name, "values_list_id") VALUES ('ac consequat metus', 19);
-INSERT INTO values (name, "values_list_id") VALUES ('ac lobortis', 20);
-INSERT INTO values (name, "values_list_id") VALUES ('quis', 21);
-INSERT INTO values (name, "values_list_id") VALUES ('varius', 22);
-INSERT INTO values (name, "values_list_id") VALUES ('vivamus vestibulum', 23);
-INSERT INTO values (name, "values_list_id") VALUES ('sed', 24);
-INSERT INTO values (name, "values_list_id") VALUES ('suscipit', 25);
-INSERT INTO values (name, "values_list_id") VALUES ('est quam pharetra', 26);
-INSERT INTO values (name, "values_list_id") VALUES ('luctus ultricies', 27);
-INSERT INTO values (name, "values_list_id") VALUES ('quisque id', 28);
-INSERT INTO values (name, "values_list_id") VALUES ('sapien cursus vestibulum', 29);
-INSERT INTO values (name, "values_list_id") VALUES ('ultrices aliquet maecenas', 30);
-INSERT INTO values (name, "values_list_id") VALUES ('in faucibus', 31);
-INSERT INTO values (name, "values_list_id") VALUES ('quis', 32);
-INSERT INTO values (name, "values_list_id") VALUES ('dui', 33);
-INSERT INTO values (name, "values_list_id") VALUES ('luctus et', 34);
-INSERT INTO values (name, "values_list_id") VALUES ('nulla', 35);
-INSERT INTO values (name, "values_list_id") VALUES ('diam', 36);
-INSERT INTO values (name, "values_list_id") VALUES ('id pretium iaculis', 37);
-INSERT INTO values (name, "values_list_id") VALUES ('lacus at', 38);
-INSERT INTO values (name, "values_list_id") VALUES ('nibh quisque id', 39);
-INSERT INTO values (name, "values_list_id") VALUES ('posuere', 40);
-INSERT INTO values (name, "values_list_id") VALUES ('molestie nibh', 41);
-INSERT INTO values (name, "values_list_id") VALUES ('ultrices vel augue', 42);
-INSERT INTO values (name, "values_list_id") VALUES ('turpis sed ante', 43);
-INSERT INTO values (name, "values_list_id") VALUES ('in', 44);
-INSERT INTO values (name, "values_list_id") VALUES ('sit', 45);
-INSERT INTO values (name, "values_list_id") VALUES ('tempus', 46);
-INSERT INTO values (name, "values_list_id") VALUES ('nonummy', 47);
-INSERT INTO values (name, "values_list_id") VALUES ('nec dui luctus', 48);
-INSERT INTO values (name, "values_list_id") VALUES ('vel lectus in', 49);
-INSERT INTO values (name, "values_list_id") VALUES ('ultrices erat tortor', 50);
-INSERT INTO values (name, "values_list_id") VALUES ('at', 51);
-INSERT INTO values (name, "values_list_id") VALUES ('quis orci eget', 52);
-INSERT INTO values (name, "values_list_id") VALUES ('porta', 53);
-INSERT INTO values (name, "values_list_id") VALUES ('ut', 54);
-INSERT INTO values (name, "values_list_id") VALUES ('est quam pharetra', 55);
-INSERT INTO values (name, "values_list_id") VALUES ('erat', 56);
-INSERT INTO values (name, "values_list_id") VALUES ('ac', 57);
-INSERT INTO values (name, "values_list_id") VALUES ('luctus tincidunt', 58);
-INSERT INTO values (name, "values_list_id") VALUES ('tortor', 59);
-INSERT INTO values (name, "values_list_id") VALUES ('at turpis donec', 60);
-INSERT INTO values (name, "values_list_id") VALUES ('interdum', 61);
-INSERT INTO values (name, "values_list_id") VALUES ('in lectus', 62);
-INSERT INTO values (name, "values_list_id") VALUES ('pede', 63);
-INSERT INTO values (name, "values_list_id") VALUES ('et magnis dis', 64);
-INSERT INTO values (name, "values_list_id") VALUES ('amet lobortis sapien', 65);
-INSERT INTO values (name, "values_list_id") VALUES ('morbi', 66);
-INSERT INTO values (name, "values_list_id") VALUES ('luctus cum', 67);
-INSERT INTO values (name, "values_list_id") VALUES ('donec', 68);
-INSERT INTO values (name, "values_list_id") VALUES ('faucibus', 69);
-INSERT INTO values (name, "values_list_id") VALUES ('pretium iaculis justo', 70);
-INSERT INTO values (name, "values_list_id") VALUES ('integer ac leo', 71);
-INSERT INTO values (name, "values_list_id") VALUES ('nulla sed', 72);
-INSERT INTO values (name, "values_list_id") VALUES ('cubilia curae', 73);
-INSERT INTO values (name, "values_list_id") VALUES ('est donec odio', 74);
-INSERT INTO values (name, "values_list_id") VALUES ('et commodo vulputate', 75);
-INSERT INTO values (name, "values_list_id") VALUES ('sapien urna', 76);
-INSERT INTO values (name, "values_list_id") VALUES ('amet consectetuer', 77);
-INSERT INTO values (name, "values_list_id") VALUES ('ante', 78);
-INSERT INTO values (name, "values_list_id") VALUES ('amet eleifend', 79);
-INSERT INTO values (name, "values_list_id") VALUES ('rutrum', 80);
-INSERT INTO values (name, "values_list_id") VALUES ('aliquam', 81);
-INSERT INTO values (name, "values_list_id") VALUES ('mus', 82);
-INSERT INTO values (name, "values_list_id") VALUES ('tristique in tempus', 83);
-INSERT INTO values (name, "values_list_id") VALUES ('at', 84);
-INSERT INTO values (name, "values_list_id") VALUES ('phasellus', 85);
-INSERT INTO values (name, "values_list_id") VALUES ('id consequat', 86);
-INSERT INTO values (name, "values_list_id") VALUES ('pellentesque', 87);
-INSERT INTO values (name, "values_list_id") VALUES ('auctor sed', 88);
-INSERT INTO values (name, "values_list_id") VALUES ('bibendum', 89);
-INSERT INTO values (name, "values_list_id") VALUES ('interdum', 90);
-INSERT INTO values (name, "values_list_id") VALUES ('nec dui luctus', 91);
-INSERT INTO values (name, "values_list_id") VALUES ('vehicula condimentum curabitur', 92);
-INSERT INTO values (name, "values_list_id") VALUES ('sit amet lobortis', 93);
-INSERT INTO values (name, "values_list_id") VALUES ('vivamus vestibulum sagittis', 94);
-INSERT INTO values (name, "values_list_id") VALUES ('duis ac', 95);
-INSERT INTO values (name, "values_list_id") VALUES ('erat quisque', 96);
-INSERT INTO values (name, "values_list_id") VALUES ('nam', 97);
-INSERT INTO values (name, "values_list_id") VALUES ('aliquam', 98);
-INSERT INTO values (name, "values_list_id") VALUES ('sapien', 99);
-INSERT INTO values (name, "values_list_id") VALUES ('sit amet cursus', 100);
-INSERT INTO values (name, "values_list_id") VALUES ('tempus semper', 101);
-INSERT INTO values (name, "values_list_id") VALUES ('in', 102);
-INSERT INTO values (name, "values_list_id") VALUES ('tortor quis turpis', 103);
-INSERT INTO values (name, "values_list_id") VALUES ('vivamus metus', 104);
-INSERT INTO values (name, "values_list_id") VALUES ('ante ipsum primis', 105);
-INSERT INTO values (name, "values_list_id") VALUES ('consequat morbi a', 106);
-INSERT INTO values (name, "values_list_id") VALUES ('dui proin', 107);
+INSERT INTO values (name, "values_lists_id") VALUES ('cubilia curae', 1);
+INSERT INTO values (name, "values_lists_id") VALUES ('parturient montes', 2);
+INSERT INTO values (name, "values_lists_id") VALUES ('platea', 3);
+INSERT INTO values (name, "values_lists_id") VALUES ('adipiscing lorem', 4);
+INSERT INTO values (name, "values_lists_id") VALUES ('nulla tellus in', 5);
+INSERT INTO values (name, "values_lists_id") VALUES ('imperdiet', 6);
+INSERT INTO values (name, "values_lists_id") VALUES ('justo eu', 7);
+INSERT INTO values (name, "values_lists_id") VALUES ('vestibulum vestibulum', 8);
+INSERT INTO values (name, "values_lists_id") VALUES ('id justo', 9);
+INSERT INTO values (name, "values_lists_id") VALUES ('rutrum rutrum neque', 10);
+INSERT INTO values (name, "values_lists_id") VALUES ('vel', 11);
+INSERT INTO values (name, "values_lists_id") VALUES ('curabitur in libero', 12);
+INSERT INTO values (name, "values_lists_id") VALUES ('maecenas ut', 13);
+INSERT INTO values (name, "values_lists_id") VALUES ('curabitur at ipsum', 14);
+INSERT INTO values (name, "values_lists_id") VALUES ('sed accumsan felis', 15);
+INSERT INTO values (name, "values_lists_id") VALUES ('in magna', 16);
+INSERT INTO values (name, "values_lists_id") VALUES ('quisque', 17);
+INSERT INTO values (name, "values_lists_id") VALUES ('nulla ultrices', 18);
+INSERT INTO values (name, "values_lists_id") VALUES ('ac consequat metus', 19);
+INSERT INTO values (name, "values_lists_id") VALUES ('ac lobortis', 20);
+INSERT INTO values (name, "values_lists_id") VALUES ('quis', 21);
+INSERT INTO values (name, "values_lists_id") VALUES ('varius', 22);
+INSERT INTO values (name, "values_lists_id") VALUES ('vivamus vestibulum', 23);
+INSERT INTO values (name, "values_lists_id") VALUES ('sed', 24);
+INSERT INTO values (name, "values_lists_id") VALUES ('suscipit', 25);
+INSERT INTO values (name, "values_lists_id") VALUES ('est quam pharetra', 26);
+INSERT INTO values (name, "values_lists_id") VALUES ('luctus ultricies', 27);
+INSERT INTO values (name, "values_lists_id") VALUES ('quisque id', 28);
+INSERT INTO values (name, "values_lists_id") VALUES ('sapien cursus vestibulum', 29);
+INSERT INTO values (name, "values_lists_id") VALUES ('ultrices aliquet maecenas', 30);
+INSERT INTO values (name, "values_lists_id") VALUES ('in faucibus', 31);
+INSERT INTO values (name, "values_lists_id") VALUES ('quis', 32);
+INSERT INTO values (name, "values_lists_id") VALUES ('dui', 33);
+INSERT INTO values (name, "values_lists_id") VALUES ('luctus et', 34);
+INSERT INTO values (name, "values_lists_id") VALUES ('nulla', 35);
+INSERT INTO values (name, "values_lists_id") VALUES ('diam', 36);
+INSERT INTO values (name, "values_lists_id") VALUES ('id pretium iaculis', 37);
+INSERT INTO values (name, "values_lists_id") VALUES ('lacus at', 38);
+INSERT INTO values (name, "values_lists_id") VALUES ('nibh quisque id', 39);
+INSERT INTO values (name, "values_lists_id") VALUES ('posuere', 40);
+INSERT INTO values (name, "values_lists_id") VALUES ('molestie nibh', 41);
+INSERT INTO values (name, "values_lists_id") VALUES ('ultrices vel augue', 42);
+INSERT INTO values (name, "values_lists_id") VALUES ('turpis sed ante', 43);
+INSERT INTO values (name, "values_lists_id") VALUES ('in', 44);
+INSERT INTO values (name, "values_lists_id") VALUES ('sit', 45);
+INSERT INTO values (name, "values_lists_id") VALUES ('tempus', 46);
+INSERT INTO values (name, "values_lists_id") VALUES ('nonummy', 47);
+INSERT INTO values (name, "values_lists_id") VALUES ('nec dui luctus', 48);
+INSERT INTO values (name, "values_lists_id") VALUES ('vel lectus in', 49);
+INSERT INTO values (name, "values_lists_id") VALUES ('ultrices erat tortor', 50);
+INSERT INTO values (name, "values_lists_id") VALUES ('at', 51);
+INSERT INTO values (name, "values_lists_id") VALUES ('quis orci eget', 52);
+INSERT INTO values (name, "values_lists_id") VALUES ('porta', 53);
+INSERT INTO values (name, "values_lists_id") VALUES ('ut', 54);
+INSERT INTO values (name, "values_lists_id") VALUES ('est quam pharetra', 55);
+INSERT INTO values (name, "values_lists_id") VALUES ('erat', 56);
+INSERT INTO values (name, "values_lists_id") VALUES ('ac', 57);
+INSERT INTO values (name, "values_lists_id") VALUES ('luctus tincidunt', 58);
+INSERT INTO values (name, "values_lists_id") VALUES ('tortor', 59);
+INSERT INTO values (name, "values_lists_id") VALUES ('at turpis donec', 60);
+INSERT INTO values (name, "values_lists_id") VALUES ('interdum', 61);
+INSERT INTO values (name, "values_lists_id") VALUES ('in lectus', 62);
+INSERT INTO values (name, "values_lists_id") VALUES ('pede', 63);
+INSERT INTO values (name, "values_lists_id") VALUES ('et magnis dis', 64);
+INSERT INTO values (name, "values_lists_id") VALUES ('amet lobortis sapien', 65);
+INSERT INTO values (name, "values_lists_id") VALUES ('morbi', 66);
+INSERT INTO values (name, "values_lists_id") VALUES ('luctus cum', 67);
+INSERT INTO values (name, "values_lists_id") VALUES ('donec', 68);
+INSERT INTO values (name, "values_lists_id") VALUES ('faucibus', 69);
+INSERT INTO values (name, "values_lists_id") VALUES ('pretium iaculis justo', 70);
+INSERT INTO values (name, "values_lists_id") VALUES ('integer ac leo', 71);
+INSERT INTO values (name, "values_lists_id") VALUES ('nulla sed', 72);
+INSERT INTO values (name, "values_lists_id") VALUES ('cubilia curae', 73);
+INSERT INTO values (name, "values_lists_id") VALUES ('est donec odio', 74);
+INSERT INTO values (name, "values_lists_id") VALUES ('et commodo vulputate', 75);
+INSERT INTO values (name, "values_lists_id") VALUES ('sapien urna', 76);
+INSERT INTO values (name, "values_lists_id") VALUES ('amet consectetuer', 77);
+INSERT INTO values (name, "values_lists_id") VALUES ('ante', 78);
+INSERT INTO values (name, "values_lists_id") VALUES ('amet eleifend', 79);
+INSERT INTO values (name, "values_lists_id") VALUES ('rutrum', 80);
+INSERT INTO values (name, "values_lists_id") VALUES ('aliquam', 81);
+INSERT INTO values (name, "values_lists_id") VALUES ('mus', 82);
+INSERT INTO values (name, "values_lists_id") VALUES ('tristique in tempus', 83);
+INSERT INTO values (name, "values_lists_id") VALUES ('at', 84);
+INSERT INTO values (name, "values_lists_id") VALUES ('phasellus', 85);
+INSERT INTO values (name, "values_lists_id") VALUES ('id consequat', 86);
+INSERT INTO values (name, "values_lists_id") VALUES ('pellentesque', 87);
+INSERT INTO values (name, "values_lists_id") VALUES ('auctor sed', 88);
+INSERT INTO values (name, "values_lists_id") VALUES ('bibendum', 89);
+INSERT INTO values (name, "values_lists_id") VALUES ('interdum', 90);
+INSERT INTO values (name, "values_lists_id") VALUES ('nec dui luctus', 91);
+INSERT INTO values (name, "values_lists_id") VALUES ('vehicula condimentum curabitur', 92);
+INSERT INTO values (name, "values_lists_id") VALUES ('sit amet lobortis', 93);
+INSERT INTO values (name, "values_lists_id") VALUES ('vivamus vestibulum sagittis', 94);
+INSERT INTO values (name, "values_lists_id") VALUES ('duis ac', 95);
+INSERT INTO values (name, "values_lists_id") VALUES ('erat quisque', 96);
+INSERT INTO values (name, "values_lists_id") VALUES ('nam', 97);
+INSERT INTO values (name, "values_lists_id") VALUES ('aliquam', 98);
+INSERT INTO values (name, "values_lists_id") VALUES ('sapien', 99);
+INSERT INTO values (name, "values_lists_id") VALUES ('sit amet cursus', 100);
+INSERT INTO values (name, "values_lists_id") VALUES ('tempus semper', 101);
+INSERT INTO values (name, "values_lists_id") VALUES ('in', 102);
+INSERT INTO values (name, "values_lists_id") VALUES ('tortor quis turpis', 103);
+INSERT INTO values (name, "values_lists_id") VALUES ('vivamus metus', 104);
+INSERT INTO values (name, "values_lists_id") VALUES ('ante ipsum primis', 105);
+INSERT INTO values (name, "values_lists_id") VALUES ('consequat morbi a', 106);
+INSERT INTO values (name, "values_lists_id") VALUES ('dui proin', 107);
 
-
-
-
-
-
-/*DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS cards CASCADE;
-DROP TABLE IF EXISTS items CASCADE;
-
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR NOT NULL,
-  email VARCHAR UNIQUE NOT NULL,
-  password VARCHAR NOT NULL,
-  remember_token VARCHAR
-);
-
-CREATE TABLE cards (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR NOT NULL,
-  user_id INTEGER REFERENCES users NOT NULL
-);
-
-CREATE TABLE items (
-  id SERIAL PRIMARY KEY,
-  card_id INTEGER NOT NULL REFERENCES cards ON DELETE CASCADE,
-  description VARCHAR NOT NULL,
-  done BOOLEAN NOT NULL DEFAULT FALSE
-);
-
-INSERT INTO users VALUES (
-  DEFAULT,
-  'John Doe',
-  'john@example.com',
-  '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W'
-); -- Password is 1234. Generated using Hash::make('1234')
-
-INSERT INTO cards VALUES (DEFAULT, 'Things to do', 1);
-INSERT INTO items VALUES (DEFAULT, 1, 'Buy milk');
-INSERT INTO items VALUES (DEFAULT, 1, 'Walk the dog', true);
-
-INSERT INTO cards VALUES (DEFAULT, 'Things not to do', 1);
-INSERT INTO items VALUES (DEFAULT, 2, 'Break a leg');
-INSERT INTO items VALUES (DEFAULT, 2, 'Crash the car');*/
