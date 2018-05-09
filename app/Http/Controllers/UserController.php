@@ -14,6 +14,7 @@ use App\Country;
 use App\City;
 use App\Purchase;
 use App\Property;
+use App\Category;
 use App\Faq;
 
 
@@ -111,26 +112,5 @@ class UserController extends Controller {
     public function __construct() {
         $this->middleware('auth');
     }
-
-
-    public function showAdmin(){
-
-
-        try {
-            $shipped_purchases = Purchase::where('status','Shipped')->orderBy('date')->get();
-            $processing_purchases = Purchase::where('status','Processing')->orderBy('date')->get();
-            $properties=Property::get();
-            $faqs=Faq::get();
-        }catch(\Exception $e) {
-            $e->getMessage();
-            return response()->setStatusCode(400);
-        }
-
-        return view('pages.admin',['shipped_purchases'=> $shipped_purchases, 'processing_purchases'=> $processing_purchases,
-        'properties'=>$properties, 'faqs'=>$faqs] );
-        
-    }
-
-
 
 }

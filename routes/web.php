@@ -46,7 +46,10 @@ Route::post('/profile/address', 'AddressController@addAddressResponse');
 Route::put('/profile/address', 'AddressController@deleteAddressResponse');
 
 //Admin
-Route::get('admin', 'UserController@showAdmin')->name('admin');
+Route::get('admin', 'AdminController@showAdmin')->name('admin');
+Route::post('admin/category', 'AdminController@addCategoryResponse');
+Route::put('admin/category', 'AdminController@deleteCategoryResponse');
+
 
 
 //Static pages
@@ -65,7 +68,7 @@ Route::post('cart', 'CartWishlistController@addCartProduct');
 Route::get('product/{product_id}', 'ProductsController@showProduct')->name('product');
 
 //Products
-Route::get('{category_id}','ProductsController@showProducts')->name('category_products');
+Route::get('category/{category_id}','ProductsController@showProducts')->name('category_products');
 
 //Add Product
 Route::get('/add_product/{category_name}','ProductsController@showAddProduct')->name('add_product');

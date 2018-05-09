@@ -265,17 +265,15 @@ nav .pagination {
     font-size: 0.9em;
     margin: 0;
     padding-top: 0.2em; }
-  .filters .range-slider span {
-    margin-left: 0.5em; }
+  .filters .range-slider input {
+    width: 100%; }
 
-.products .selectpicker {
+.products #dropdownSort {
   background-color: transparent;
+  text-decoration: none;
   color: black;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  margin: 0; }
-  .products .selectpicker:hover {
+  cursor: pointer; }
+  .products #dropdownSort:focus {
     color: #949494; }
 
 /* JULIETA */
@@ -394,62 +392,59 @@ main .cards {
     main .cards.categories-cards .select-checkbox select, main .cards.specs-cards .select-checkbox select, main .cards.photo-cards .select-checkbox select {
       margin-bottom: 0.1em;
       width: 100%; }
-    main .cards.categories-cards .select-checkbox div, main .cards.specs-cards .select-checkbox div, main .cards.photo-cards .select-checkbox div {
-      padding-left: 0;
-      padding-top: 0.2em; }
-      main .cards.categories-cards .select-checkbox div.checkbox-container, main .cards.specs-cards .select-checkbox div.checkbox-container, main .cards.photo-cards .select-checkbox div.checkbox-container {
-        display: block;
-        position: relative;
-        padding-left: 25px;
-        padding-top: 0;
-        margin-bottom: 12px;
-        margin-top: 5px;
-        cursor: pointer;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        /* On mouse-over, add a grey background color */
-        /* Hide the browser's default checkbox */
-        /* Create a custom checkbox */ }
-        main .cards.categories-cards .select-checkbox div.checkbox-container label, main .cards.specs-cards .select-checkbox div.checkbox-container label, main .cards.photo-cards .select-checkbox div.checkbox-container label {
-          font-size: 0.7em; }
-        main .cards.categories-cards .select-checkbox div.checkbox-container:hover input:checked ~ .checkmark, main .cards.specs-cards .select-checkbox div.checkbox-container:hover input:checked ~ .checkmark, main .cards.photo-cards .select-checkbox div.checkbox-container:hover input:checked ~ .checkmark {
-          background-color: black; }
-        main .cards.categories-cards .select-checkbox div.checkbox-container:hover input ~ .checkmark, main .cards.specs-cards .select-checkbox div.checkbox-container:hover input ~ .checkmark, main .cards.photo-cards .select-checkbox div.checkbox-container:hover input ~ .checkmark {
-          background-color: #bbb; }
-        main .cards.categories-cards .select-checkbox div.checkbox-container input, main .cards.specs-cards .select-checkbox div.checkbox-container input, main .cards.photo-cards .select-checkbox div.checkbox-container input {
-          position: absolute;
-          opacity: 0;
-          cursor: pointer;
-          /* When the checkbox is checked, add a blue background */ }
-          main .cards.categories-cards .select-checkbox div.checkbox-container input:checked ~ .checkmark, main .cards.specs-cards .select-checkbox div.checkbox-container input:checked ~ .checkmark, main .cards.photo-cards .select-checkbox div.checkbox-container input:checked ~ .checkmark {
-            background-color: black;
-            /* Show the checkmark when checked */ }
-            main .cards.categories-cards .select-checkbox div.checkbox-container input:checked ~ .checkmark:after, main .cards.specs-cards .select-checkbox div.checkbox-container input:checked ~ .checkmark:after, main .cards.photo-cards .select-checkbox div.checkbox-container input:checked ~ .checkmark:after {
-              display: block; }
-        main .cards.categories-cards .select-checkbox div.checkbox-container .checkmark, main .cards.specs-cards .select-checkbox div.checkbox-container .checkmark, main .cards.photo-cards .select-checkbox div.checkbox-container .checkmark {
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 17px;
-          width: 17px;
-          background-color: #ddd;
-          /* Create the checkmark/indicator (hidden when not checked) */ }
-          main .cards.categories-cards .select-checkbox div.checkbox-container .checkmark:after, main .cards.specs-cards .select-checkbox div.checkbox-container .checkmark:after, main .cards.photo-cards .select-checkbox div.checkbox-container .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-            /* Style the checkmark/indicator */
-            left: 6px;
-            top: 3px;
-            width: 5px;
-            height: 10px;
-            border: solid white;
-            border-width: 0 3px 3px 0;
-            -webkit-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            transform: rotate(45deg); }
+  main .cards.categories-cards .checkbox-container, main .cards.specs-cards .checkbox-container, main .cards.photo-cards .checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    padding-top: 0;
+    margin-bottom: 12px;
+    margin-top: 5px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* On mouse-over, add a grey background color */
+    /* Hide the browser's default checkbox */
+    /* Create a custom checkbox */ }
+    main .cards.categories-cards .checkbox-container label, main .cards.specs-cards .checkbox-container label, main .cards.photo-cards .checkbox-container label {
+      font-size: 0.7em; }
+    main .cards.categories-cards .checkbox-container:hover input:checked ~ .checkmark, main .cards.specs-cards .checkbox-container:hover input:checked ~ .checkmark, main .cards.photo-cards .checkbox-container:hover input:checked ~ .checkmark {
+      background-color: black; }
+    main .cards.categories-cards .checkbox-container:hover input ~ .checkmark, main .cards.specs-cards .checkbox-container:hover input ~ .checkmark, main .cards.photo-cards .checkbox-container:hover input ~ .checkmark {
+      background-color: #bbb; }
+    main .cards.categories-cards .checkbox-container input, main .cards.specs-cards .checkbox-container input, main .cards.photo-cards .checkbox-container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      /* When the checkbox is checked, add a blue background */ }
+      main .cards.categories-cards .checkbox-container input:checked ~ .checkmark, main .cards.specs-cards .checkbox-container input:checked ~ .checkmark, main .cards.photo-cards .checkbox-container input:checked ~ .checkmark {
+        background-color: black;
+        /* Show the checkmark when checked */ }
+        main .cards.categories-cards .checkbox-container input:checked ~ .checkmark:after, main .cards.specs-cards .checkbox-container input:checked ~ .checkmark:after, main .cards.photo-cards .checkbox-container input:checked ~ .checkmark:after {
+          display: block; }
+    main .cards.categories-cards .checkbox-container .checkmark, main .cards.specs-cards .checkbox-container .checkmark, main .cards.photo-cards .checkbox-container .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 17px;
+      width: 17px;
+      background-color: #ddd;
+      /* Create the checkmark/indicator (hidden when not checked) */ }
+      main .cards.categories-cards .checkbox-container .checkmark:after, main .cards.specs-cards .checkbox-container .checkmark:after, main .cards.photo-cards .checkbox-container .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+        /* Style the checkmark/indicator */
+        left: 6px;
+        top: 3px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg); }
   main .cards.categories-cards .entry-buttons, main .cards.specs-cards .entry-buttons, main .cards.photo-cards .entry-buttons {
     width: 100%;
     margin-top: auto;

@@ -5,20 +5,25 @@
 @section('content')
 
 @include('partials.breadcrumbs', $data = array($category->name => ''))
+
+<script type="text/javascript" src={{ asset('js/price_slider.js') }} defer></script>
+
 <main>
     <div class="container">
         <div class="products d-flex justify-content-between align-items-center flex-wrap">
-            <h1>{{$category->name}}</h1>
-            <span><?php echo $products->total() ?> Products</span>
-            <select class="selectpicker">
-                <option>Sort by</option>
-                <option>Price low to high</option>
-                <option>Price high to low </option>
-                <option>Highest rating</option>
-            </select>
+            <h1>{{ $category->name }}</h1>
+            <span>{{ $products->total() }} Products</span>
+            <div class="dropdown show">
+                <a class="dropdown-toggle" href="https://example.com" id="dropdownSort" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort by</a>
+                <div class="dropdown-menu" aria-labelledby="dropdownSort">
+                    <a class="dropdown-item" href="{{ route('category_products', ['category_id' => $category->id, 'sort' => '1']) }}">Price low to high</a>
+                    <a class="dropdown-item" href="{{ route('category_products', ['category_id' => $category->id, 'sort' => '2']) }}">Price high to low</a>
+                    <a class="dropdown-item" href="{{ route('category_products', ['category_id' => $category->id, 'sort' => '3']) }}">Highest rating</a>
+                </div>
+            </div>
             <nav aria-label="Page navigation">
                 <ul class="pagination">
-                    {{ $products->links() }}
+                    {{ $products->appends(request()->query())->links() }}
                 </ul>
             </nav>
         </div>
@@ -27,48 +32,14 @@
             <div class="mt-4 col-md-4 col-lg-3">
                 <div class="filters d-flex flex-column">
                     <h5>Filters</h5>
-                    <h6>Brand</h6>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            <p>Apple</p>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            <p>Samsung</p>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            <p>Google</p>
-                        </label>
-                    </div>
-                    <h6>Storage</h6>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            <p>256 GB</p>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            <p>128 GB</p>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            <p>64 GB</p>
-                        </label>
-                    </div>
+                    @if (count($brands) >= 1)
+                        <h6>Brand</h6>
+                        @each('partials.filter', $brands,'brand')
+                    @endif
                     <h6>Max Price</h6>
                     <div class="range-slider">
-                        <input class="range-slider__range" type="range" value="500" min="0" max="2000">
-                        <span class="range-slider__value">0</span>
+                        <input class="range-slider__range" type="range" value="0" min="0" max="{{ $max_price }}">
+                        <span class="range-slider__value"></span>
                     </div>
                 </div>
             </div>
@@ -80,7 +51,7 @@
         </div>
         <nav class="mt-4 d-flex justify-content-end" aria-label="Page navigation">
             <ul class="pagination">
-                {{ $products->links() }}
+                {{ $products->appends(request()->query())->links() }}
             </ul>
         </nav>
     </div>

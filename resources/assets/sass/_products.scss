@@ -27,21 +27,19 @@ nav .pagination {
         padding-top: 0.2em;
     }
     .range-slider {
-        span {
-            margin-left: 0.5em;
+        input {
+            width: 100%;
         }
     }
 }
 
 .products {
-    .selectpicker {
+    #dropdownSort {
         background-color: transparent;
+        text-decoration: none;
         color: $black;
-        border: none;
         cursor: pointer;
-        padding: 0;
-        margin: 0;
-        &:hover {
+        &:focus {
             color: $medium-grey;
         }
     }

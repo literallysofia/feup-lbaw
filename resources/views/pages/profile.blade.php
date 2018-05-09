@@ -6,7 +6,6 @@
 
 <script type="text/javascript" src={{ asset('js/addressRequest.js') }} defer></script>
 <script type="text/javascript" src={{ asset('js/profileRequest.js') }} defer></script>
-
 <main>
   <div class="container">
     <div class="container scroll_nav">

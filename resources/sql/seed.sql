@@ -47,7 +47,8 @@ DROP TABLE IF EXISTS categories CASCADE;
 CREATE TABLE categories (
     id serial PRIMARY KEY,
     name text NOT NULL UNIQUE,
-    "is_navbar_category" boolean DEFAULT false NOT NULL
+    "is_navbar_category" boolean DEFAULT false NOT NULL,
+    "is_archived" boolean DEFAULT false NOT NULL
 );
 
 DROP TABLE IF EXISTS properties CASCADE;
@@ -287,7 +288,7 @@ INSERT INTO admins ("user_id") VALUES (4);
 /*CATEGORIES*/
 INSERT INTO categories (name, "is_navbar_category") VALUES ('Smartphones', true);
 INSERT INTO categories (name, "is_navbar_category") VALUES ('Tablets', true);
-INSERT INTO categories (name, "is_navbar_category") VALUES ('Computers', true);
+INSERT INTO categories (name, "is_navbar_category") VALUES ('Computers', false);
 INSERT INTO categories (name, "is_navbar_category") VALUES ('Monitors', true);
 INSERT INTO categories (name, "is_navbar_category") VALUES ('Accessories', true);
 

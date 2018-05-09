@@ -2,30 +2,54 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Auth\Middleware\Authenticate;
-use App\Http\Controllers\Controller;
-
 use App\Category;
+use App\Http\Controllers\Controller;
 use App\Product;
 use App\Property;
 use App\Review;
+use Illuminate\Http\Request;
 
-class ProductsController extends Controller {
+class ProductsController extends Controller
+{
 
-    public function showProducts($category_id) {
+    public function showProducts(Request $request, $category_id)
+    {
         try {
-            $category = Category::findOrFail($category_id)->first();
-            $products = Product::where('category_id', $category->id)->paginate(3);
+            $category = Category::where('id', $category_id)->first();
+            $all_products = Product::where('category_id', $category->id)->get();
+
+            $sort = $request->get('sort', null);
+
+            $products = Product::where('category_id', $category->id)->when($sort, function ($query) use ($sort) {
+                switch ($sort) {
+                    case 1:
+                        $query->orderBy('price', 'asc');
+                        break;
+                    case 2:
+                        $query->orderBy('price', 'desc');
+                        break;
+                    case 3:
+                        $query->orderBy('score', 'desc');
+                        break;
+                }
+            })->paginate(3);
+
+            $brands = array();
+            foreach ($all_products as $product) {
+                $brands[] = $product->brand;
+            }
+            $brands = array_unique($brands);
+
+            $max_price = $all_products->max('price');
+
         } catch (\Exception $e) {
             return response(json_encode($e->getMessage()), 400);
         }
-        return view('pages.products', ['category'=>$category, 'products'=>$products]);
+        return view('pages.products', ['category' => $category, 'products' => $products, 'brands' => $brands, 'max_price' => $max_price]);
     }
 
-    public function showProduct($product_id) {
+    public function showProduct($product_id)
+    {
 
         try {
             $product = Product::findOrFail($product_id);
@@ -41,27 +65,28 @@ class ProductsController extends Controller {
             return response(json_encode($e->getMessage()), 400);
         }
     }
-    
-    public function showAddProduct($category_name){
-        try{
-            $category = Category::where('name',$category_name);
-        }catch(\Exception $e){
-            $e -> getMessage();
-            return response() -> setStatusCode(400);
+
+    public function showAddProduct($category_name)
+    {
+        try {
+            $category = Category::where('name', $category_name);
+        } catch (\Exception $e) {
+            $e->getMessage();
+            return response()->setStatusCode(400);
         }
-        return view('pages.add_product',['category_name'=>$category_name]);
+        return view('pages.add_product', ['category_name' => $category_name]);
     }
 
-    public function showEditProduct($id){
+    public function showEditProduct($id)
+    {
 
-        $product = Product::where('id',$id)->first();
+        $product = Product::where('id', $id)->first();
         $category = $product->category()->first();
 
-        $photos = Photo::where('product_id',$id)->get();
+        $photos = Photo::where('product_id', $id)->get();
 
         $properties = $category->properties()->get();
-        return view('pages.add_product',['category_name'=>$category->name,'product'=>$product,'photos'=>$photos,'properties' =>$properties]);
-        
+        return view('pages.add_product', ['category_name' => $category->name, 'product' => $product, 'photos' => $photos, 'properties' => $properties]);
 
     }
 
@@ -106,5 +131,3 @@ class ProductsController extends Controller {
     }
 
 }
-
-?>

@@ -14,6 +14,10 @@ class Property extends Model
     return $this->belongsToMany('App\Category', 'category_properties')
                 ->using('App\CategoryProperty');
   }
+
+  public function category_properties() {
+    return $this->hasMany('App\CategoryProperty', 'property_id', 'id');
+  }
   
 
 }
