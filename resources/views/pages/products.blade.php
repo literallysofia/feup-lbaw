@@ -6,7 +6,7 @@
 
 @include('partials.breadcrumbs', $data = array($category->name => ''))
 
-<script type="text/javascript" src={{ asset('js/price_slider.js') }} defer></script>
+<script type="text/javascript" src={{ asset('js/products.js') }} defer></script>
 
 <main>
     <div class="container">
