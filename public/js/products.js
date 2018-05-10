@@ -1,7 +1,7 @@
 var rangeSlider = function () {
-    var slider = $('.range-slider'),
-        range = $('.range-slider__range'),
-        value = $('.range-slider__value');
+    var slider = $('.price-slider'),
+        range = $('.price-slider-range'),
+        value = $('.price-slider-value');
 
     slider.each(function () {
 

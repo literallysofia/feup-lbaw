@@ -35,10 +35,10 @@
                         @each('partials.filter', $brands,'brand')
                     @endif
                     <h6>Max Price</h6>
-                    <form class="range-slider" action="{{ route('category_products', ['category_id' => $category->id, 'max_price' => '800']) }}" method="get">
-                        <input class="range-slider__range" name="max_price" type="range" value="0" min="0" max="{{ $max_price }}">
-                        <span class="range-slider__value"></span>
-                    </form>
+                    <div class="price-slider">
+                        <input class="price-slider-range" name="max_price" type="range" value="0" min="0" max="{{ $max_price }}">
+                        <span class="price-slider-value"></span>
+                    </div>
                 </div>
             </div>
             <div class="col-md-8 col-lg-9">
