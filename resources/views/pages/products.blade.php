@@ -14,7 +14,7 @@
             <h1>{{ $category->name }}</h1>
             <span>{{ $products->total() }} Products</span>
             <div class="dropdown show">
-                <a class="dropdown-toggle" href="https://example.com" id="dropdownSort" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort by</a>
+                <a id="dropdownSort" class="dropdown-toggle" href="https://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort by</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownSort">
                     <a class="dropdown-item" href="{{ route('category_products', ['category_id' => $category->id, 'sort' => '1']) }}">Price low to high</a>
                     <a class="dropdown-item" href="{{ route('category_products', ['category_id' => $category->id, 'sort' => '2']) }}">Price high to low</a>
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <nav class="pagination-links" aria-label="Page navigation">
-            @include('partials.pagination')
+                @include('partials.pagination')
             </nav>
         </div>
         <hr>
@@ -48,7 +48,7 @@
             </div>
         </div>
         <nav class="mt-4 d-flex justify-content-end pagination-links" aria-label="Page navigation">
-        @include('partials.pagination')
+            @include('partials.pagination')
         </nav>
     </div>
 </main>

@@ -21,15 +21,21 @@ rangeSlider();
 $(document).ready(function () {
     $(document).on('click', '.pagination a', function (e) {
         e.preventDefault();
-        var page = $(this).attr('href').split('page=')[1];
         var url = $(this).attr('href');
-        getProducts(page);
+        getProducts(url);
         window.history.pushState('', '', url);
     });
+    $(document).on('click', '.dropdown-menu a', function (e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+        var sort = $(this).attr('href').split('sort=')[1];
+        getProducts(url, sort);
+        window.history.pushState('', '', url);
+    });
+
 });
 
-function getProducts(page) {
-    var my_url = '?page=' + page;
+function getProducts(my_url, sort = null) {
 
     $.ajaxSetup({
         headers: {
@@ -41,6 +47,7 @@ function getProducts(page) {
         url: my_url,
         type: 'GET',
         dataType: 'json',
+        //data: {marchi: marchi},
         success: function (response) {
             $('#product-listing').html(response.products);
             $('.pagination-links').html(response.links);
