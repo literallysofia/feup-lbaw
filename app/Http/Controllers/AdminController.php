@@ -111,6 +111,31 @@ class AdminController extends Controller{
     
     }
 
+    public function addCategoryPropertiesResponse(Request $request){
+      
+        $categoryId = $request->categoryId;
+        $isNavBar = $request->isNavBar;
+        $decode = json_decode($request->categoryProperties);
+
+        $category = Category::findOrFail($categoryId);
+        $category->is_navbar_category = $request->isNavBar;
+
+        try {
+            $category->save();
+        }catch(\Exception $e) {
+            $e->getMessage();
+        }
+      
+        /*foreach($decode as $elem){
+            $propertyId = $elem['propertyId'];
+            $is_required = $elem['required'];
+           
+        }*/
+
+        return response()->json(array('response'=> $categoryId, 200));
+    
+    }
+
 }
 
 ?>

@@ -29,7 +29,7 @@
                             <option value="property-{{$property->id}}">{{$property->name}}</option>
                         @endif
                     @endforeach
-                    <option value="None" style="font-style:italic;" >None</option>
+                    <option value="" style="font-style:italic;" >None</option>
                 </select>
 
                 <div class="checkbox-container form-check d-flex">
@@ -68,7 +68,7 @@
             <div class="entry-buttons">
                 <input class="btn-addEntryCategory" type="button" value="Add Entry"></input>
                 <input type="button" value="Add Product"></input>
-                <input type="button" class="black-button" value="Save"></input>
+                <input class="btn-saveCategory black-button" type="button" value="Save"></input>
             </div>
         </div>
     </div>

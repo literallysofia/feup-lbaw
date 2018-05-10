@@ -59,11 +59,83 @@ function addEntryAction(){
     }
 }
 
+
+function saveCategoryAction(){
+    for(let i = 0; i< $('.btn-saveCategory').length;i++){
+        $('.btn-saveCategory')[i].addEventListener('click', event => {
+
+            var category = event.target.parentElement.parentElement.id;
+            var categoryId = category.substring(category.indexOf('-')+1,category.length);
+
+            var isNavBar = $(event.target).parent().siblings('.category-header').find('div div label input[type="checkbox"]').is(':checked');        
+
+            var select_checkboxs = $(event.target).parent().siblings('.select-checkbox');
+            var data = [];
+
+            for(let j = 0; j< select_checkboxs.length;j++){
+
+                var propertyValue = select_checkboxs.eq(j).children('select').find(":selected").val().trim();
+                var required = select_checkboxs.eq(j).find('div label input[type="checkbox"]').is(':checked');
+
+                if(propertyValue != ""){
+                    var propertyId = propertyValue.substring(propertyValue.indexOf('-')+1,propertyValue.length);
+                    console.log("Property: " + propertyId + "    Required: " + required);
+                    
+                    data.push({
+                        'propertyId': propertyId,
+                        'required': required
+                    });
+                }
+               
+                
+            }
+
+            console.log(data);
+
+            var fullurl = window.location.href;
+            var my_url = '/admin/category_properties'
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            var type = "POST";
+    
+            $.ajax({
+                type: type,
+                url: my_url,
+                data: {
+                    'categoryId' : categoryId,
+                    'isNavBar' : isNavBar,
+                    'categoryProperties': JSON.stringify(data)},
+                dataType: 'json',
+                success: function (data) {
+
+                    console.log(data.response);
+
+                },
+                error: function (data) {
+
+                    console.log("ERROR: ")
+                    console.log(data.abc);
+
+                   
+                }
+            });
+
+        });
+    }
+}
+
 $(document).ready(function () {
     
     addDeleteAction();
 
     addEntryAction();
+
+    saveCategoryAction();
 
     $("#add_category_form").submit(function (e) {
 
@@ -77,8 +149,6 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
-        e.preventDefault();
 
         var nameFill = document.getElementById("new_category");
         var type = "POST";
