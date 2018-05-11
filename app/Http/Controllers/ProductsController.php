@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
-use App\Property;
 use App\Review;
 use Illuminate\Http\Request;
 
@@ -16,31 +15,42 @@ class ProductsController extends Controller
     {
         try {
             $category = Category::where('id', $category_id)->first();
-            $all_products = Product::where('category_id', $category->id)->get();
+            $all_products = Product::where('category_id', $category->id);
+            $price_max = $all_products->max('price');
 
             $sort = $request->get('sort', null);
+            $price_limit = $request->get('price_limit', null);
 
-            $products = Product::where('category_id', $category->id)->when($sort, function ($query) use ($sort) {
+            $query = $all_products;
+
+            if ($sort) {
                 switch ($sort) {
                     case 1:
-                        $query->orderBy('price', 'asc');
+                        $query = $query->orderBy('price', 'asc');
                         break;
                     case 2:
-                        $query->orderBy('price', 'desc');
+                        $query = $query->orderBy('price', 'desc');
                         break;
                     case 3:
-                        $query->orderBy('score', 'desc');
+                        $query = $query->orderBy('score', 'desc');
                         break;
                 }
-            })->paginate(3);
+            }
+
+            if ($price_limit) {
+                $query = $query->where('price', '<=', $price_limit);
+            }
+
+            $products = $query->paginate(3)->appends([
+                'sort' => request('sort'),
+                'price_limit' => request('price_limit'),
+            ]);
 
             $brands = array();
-            foreach ($all_products as $product) {
+            foreach ($all_products->get() as $product) {
                 $brands[] = $product->brand;
             }
             $brands = array_unique($brands);
-
-            $max_price = $all_products->max('price');
 
         } catch (\Exception $e) {
             return response(json_encode($e->getMessage()), 400);
@@ -48,13 +58,16 @@ class ProductsController extends Controller
 
         if ($request->ajax()) {
             $response = array(
-                'products' => view('partials.product', ['products' => $products])->render(),
-                'links' => view('partials.pagination', ['products' => $products])->render(),
+                'dropdown' => view('partials.products.dropdown', ['category' => $category, 'products' => $products, 'price_limit' => $price_limit])->render(),
+                'filters' => view('partials.products.filters', ['category' => $category, 'brands' => $brands, 'price_max' => $price_max, 'sort' => $sort, 'price_limit' => $price_limit])->render(),
+                'products' => view('partials.products.product', ['products' => $products])->render(),
+                'links' => view('partials.products.pagination', ['products' => $products])->render(),
+                'url' => $request->fullUrl(),
             );
             return response(json_encode($response), 200);
         }
 
-        return view('pages.products', ['category' => $category, 'products' => $products, 'brands' => $brands, 'max_price' => $max_price]);
+        return view('pages.products', ['category' => $category, 'products' => $products, 'brands' => $brands, 'price_max' => $price_max, 'sort' => $sort, 'price_limit' => $price_limit]);
     }
 
     public function showProduct($product_id)
@@ -64,9 +77,9 @@ class ProductsController extends Controller
             $product = Product::findOrFail($product_id);
 
             $reviews = Review::where('product_id', $product_id)->paginate(2);
-            
-            if($product != null) {
-                return view('pages.product', ['product'=>$product, 'reviews'=>$reviews]);
+
+            if ($product != null) {
+                return view('pages.product', ['product' => $product, 'reviews' => $reviews]);
             } else {
                 return response(json_encode("This product does not exist"), 404);
             }
@@ -99,24 +112,28 @@ class ProductsController extends Controller
 
     }
 
-    public function deleteReview(Request $request) {
+    public function deleteReview(Request $request)
+    {
 
-       try {
+        try {
             $user = Auth::user();
             $review = $user->reviews->where('id', $request->id)->first();
-            if($review != null){
+            if ($review != null) {
                 $review->delete();
                 $product = Product::findOrFail($request->product_id);
-                return response(json_encode(array('Message'=>'Review deleted', 'Reviews'=>count($product->reviews))), 200);
-            } else
-                return response(json_encode(array("Message"=>"You can not delete this review or it does not exist", 'Reviews'=>null)), 404);
-       }catch(\Exception $e){
-           return response(json_encode($e->getMessage()), 400);
-       }
-       
+                return response(json_encode(array('Message' => 'Review deleted', 'Reviews' => count($product->reviews))), 200);
+            } else {
+                return response(json_encode(array("Message" => "You can not delete this review or it does not exist", 'Reviews' => null)), 404);
+            }
+
+        } catch (\Exception $e) {
+            return response(json_encode($e->getMessage()), 400);
+        }
+
     }
 
-    public function addReview($product_id, Request $request) {
+    public function addReview(Request $request, $product_id)
+    {
 
         try {
             $user = Auth::user();
@@ -124,18 +141,18 @@ class ProductsController extends Controller
             $this->authorize('review', $product_id);
             $review = new Review();
             $review->title = $request->title;
-            if(is_int($request->score) && $request->score >= 1 && $request->score <= 5) {
-                return response(json_encode(array("Message"=>"Score value is not valid", "Content"=>null)), 400);
+            if (is_int($request->score) && $request->score >= 1 && $request->score <= 5) {
+                return response(json_encode(array("Message" => "Score value is not valid", "Content" => null)), 400);
             }
             $review->score = $request->score;
             $review->content = $request->content;
-            if($review->save()) {
-                return response(json_encode(array("Message"=>"Review added", "Content"=>$review)), 200);
+            if ($review->save()) {
+                return response(json_encode(array("Message" => "Review added", "Content" => $review)), 200);
             } else {
-                return response(json_encode(array("Message"=>"Error adding review", "Content"=>null)), 400);
+                return response(json_encode(array("Message" => "Error adding review", "Content" => null)), 400);
             }
-        }catch(\Exception $e) {
-            return response(json_encode(array("Message"=>"Error adding review", "Content"=>null)), 400);
+        } catch (\Exception $e) {
+            return response(json_encode(array("Message" => "Error adding review", "Content" => null)), 400);
         }
     }
 

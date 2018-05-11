@@ -261,12 +261,32 @@ nav .pagination {
     text-align: center; }
   .filters h6 {
     margin-top: 2em; }
+  .filters input {
+    cursor: pointer; }
   .filters .form-check-label > p {
     font-size: 0.9em;
+    font-weight: normal;
     margin: 0;
     padding-top: 0.2em; }
   .filters .price-slider input {
     width: 100%; }
+  .filters .price-slider span {
+    font-size: 0.9em; }
+  .filters a {
+    color: white;
+    background-color: black;
+    padding: 0.2em;
+    margin-top: 2em;
+    width: 100%;
+    border-radius: 0;
+    text-decoration: none;
+    text-align: center;
+    font-size: 0.9em; }
+    .filters a:hover {
+      background-color: #6174AA;
+      border-color: #6174AA;
+      color: white;
+      text-decoration: none; }
 
 .products #dropdownSort {
   background-color: transparent;

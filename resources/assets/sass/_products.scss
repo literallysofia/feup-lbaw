@@ -21,14 +21,38 @@ nav .pagination {
     h6 {
         margin-top: 2em;
     }
+    input {
+        cursor: pointer;
+    }
     .form-check-label>p {
         font-size: 0.9em;
+        font-weight: normal;
         margin: 0;
         padding-top: 0.2em;
     }
     .price-slider {
         input {
             width: 100%;
+        }
+        span {
+            font-size: 0.9em;
+        }
+    }
+    a {
+        color: $white;
+        background-color: $black;
+        padding: 0.2em;
+        margin-top: 2em;
+        width: 100%;
+        border-radius: 0;
+        text-decoration: none;
+        text-align: center;
+        font-size: 0.9em;
+        &:hover {
+            background-color: $highlight;
+            border-color: $highlight;
+            color: $white;
+            text-decoration: none;
         }
     }
 }
