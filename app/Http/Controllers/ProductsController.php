@@ -17,6 +17,11 @@ class ProductsController extends Controller
             $category = Category::where('id', $category_id)->first();
             $all_products = Product::where('category_id', $category->id);
             $price_max = $all_products->max('price');
+            
+            foreach ($all_products->get() as $product) {
+                $brands[] = $product->brand;
+            }
+            $brands = array_unique($brands);
 
             $sort = $request->get('sort', null);
             $price_limit = $request->get('price_limit', null);
@@ -45,12 +50,6 @@ class ProductsController extends Controller
                 'sort' => request('sort'),
                 'price_limit' => request('price_limit'),
             ]);
-
-            $brands = array();
-            foreach ($all_products->get() as $product) {
-                $brands[] = $product->brand;
-            }
-            $brands = array_unique($brands);
 
         } catch (\Exception $e) {
             return response(json_encode($e->getMessage()), 400);
