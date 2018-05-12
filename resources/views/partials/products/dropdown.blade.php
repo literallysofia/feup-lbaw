@@ -1,3 +1,3 @@
-<a class="dropdown-item" href="{{ route('category_products', ['category_id' => $category->id, 'sort' => '1', 'price_limit' => $price_limit]) }}">Price low to high</a>
-<a class="dropdown-item" href="{{ route('category_products', ['category_id' => $category->id, 'sort' => '2', 'price_limit' => $price_limit]) }}">Price high to low</a>
-<a class="dropdown-item" href="{{ route('category_products', ['category_id' => $category->id, 'sort' => '3', 'price_limit' => $price_limit]) }}">Highest rating</a>
+<a class="dropdown-item" href="{{ route('category_products', ['category_id' => $category->id, 'sort' => '1', 'brands' => json_encode($brands), 'price_limit' => $price_limit]) }}">Price low to high</a>
+<a class="dropdown-item" href="{{ route('category_products', ['category_id' => $category->id, 'sort' => '2', 'brands' => json_encode($brands), 'price_limit' => $price_limit]) }}">Price high to low</a>
+<a class="dropdown-item" href="{{ route('category_products', ['category_id' => $category->id, 'sort' => '3', 'brands' => json_encode($brands), 'price_limit' => $price_limit]) }}">Highest rating</a>

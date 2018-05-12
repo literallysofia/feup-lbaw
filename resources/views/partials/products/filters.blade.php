@@ -1,18 +1,22 @@
 @php
 if ($price_limit === NULL) {
-    $value = 0;
+    $value = $price_max;
 } else {
     $value = $price_limit;
 }
 @endphp
 <div class="filters d-flex flex-column">
     <h5>Filters</h5>
-    @if (count($brands) >= 1)
+    @if (count($available_brands) >= 1)
         <h6>Brand</h6>
-        @foreach($brands as $brand)
+        @foreach($available_brands as $brand)
         <div class="form-check">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input">
+            @if(!empty($brands) && in_array($brand, $brands))
+                <input class="form-check-input" type="checkbox" name="brands[]" value="{{ $brand }}" checked>
+            @else
+                <input class="form-check-input" type="checkbox" name="brands[]" value="{{ $brand }}">
+            @endif
                 <p>{{ $brand }}</p>
             </label>
         </div>

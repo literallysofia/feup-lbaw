@@ -33,7 +33,13 @@ $(document).ready(function () {
         e.preventDefault();
         var url = $(this).attr('href');
         var price = $('.price-slider-value').html().split(' ')[0];
-        filterProducts(url, price);
+
+        var brands = [];
+        $('input[name="brands[]"]:checked').each(function (i) {
+            brands[i] = $(this).val();
+        });
+
+        filterProducts(url, price, brands);
     });
 });
 
@@ -63,7 +69,7 @@ function getProducts(my_url) {
     });
 }
 
-function filterProducts(my_url, price) {
+function filterProducts(my_url, price, brands) {
 
     $.ajaxSetup({
         headers: {
@@ -77,6 +83,7 @@ function filterProducts(my_url, price) {
         dataType: 'json',
         data: {
             'price_limit': price,
+            'brands': JSON.stringify(brands)
         },
         success: function (response) {
             $('#dropdown-sortby').html(response.dropdown);

@@ -14,40 +14,48 @@ class ProductsController extends Controller
     public function showProducts(Request $request, $category_id)
     {
         try {
+            // GENERAL DATA //
             $category = Category::where('id', $category_id)->first();
-            $all_products = Product::where('category_id', $category->id);
-            $price_max = $all_products->max('price');
-            
-            foreach ($all_products->get() as $product) {
-                $brands[] = $product->brand;
-            }
-            $brands = array_unique($brands);
+            $products = Product::where('category_id', $category->id);
+            $price_max = $products->max('price');
 
+            if (!empty($products)) {
+                foreach ($products->get() as $product) {
+                    $available_brands[] = $product->brand;
+                }
+                $available_brands = array_unique($available_brands);
+            }
+
+            // FILTERS //
             $sort = $request->get('sort', null);
             $price_limit = $request->get('price_limit', null);
-
-            $query = $all_products;
+            $brands = $request->has('brands') ? json_decode($request->brands) : null;
 
             if ($sort) {
                 switch ($sort) {
                     case 1:
-                        $query = $query->orderBy('price', 'asc');
+                        $products = $products->orderBy('price', 'asc');
                         break;
                     case 2:
-                        $query = $query->orderBy('price', 'desc');
+                        $products = $products->orderBy('price', 'desc');
                         break;
                     case 3:
-                        $query = $query->orderBy('score', 'desc');
+                        $products = $products->orderBy('score', 'desc');
                         break;
                 }
             }
 
-            if ($price_limit) {
-                $query = $query->where('price', '<=', $price_limit);
+            if (!empty($brands)) {
+                $products = $products->whereIn('brand', $brands);
             }
 
-            $products = $query->paginate(3)->appends([
+            if ($price_limit) {
+                $products = $products->where('price', '<=', $price_limit);
+            }
+
+            $products = $products->paginate(3)->appends([
                 'sort' => request('sort'),
+                'brands' => request('brands'),
                 'price_limit' => request('price_limit'),
             ]);
 
@@ -57,8 +65,8 @@ class ProductsController extends Controller
 
         if ($request->ajax()) {
             $response = array(
-                'dropdown' => view('partials.products.dropdown', ['category' => $category, 'products' => $products, 'price_limit' => $price_limit])->render(),
-                'filters' => view('partials.products.filters', ['category' => $category, 'brands' => $brands, 'price_max' => $price_max, 'sort' => $sort, 'price_limit' => $price_limit])->render(),
+                'dropdown' => view('partials.products.dropdown', ['category' => $category, 'products' => $products, 'brands' => $brands, 'price_limit' => $price_limit])->render(),
+                'filters' => view('partials.products.filters', ['category' => $category, 'available_brands' => $available_brands, 'brands' => $brands, 'price_max' => $price_max, 'sort' => $sort, 'price_limit' => $price_limit])->render(),
                 'products' => view('partials.products.product', ['products' => $products])->render(),
                 'links' => view('partials.products.pagination', ['products' => $products])->render(),
                 'url' => $request->fullUrl(),
@@ -66,7 +74,7 @@ class ProductsController extends Controller
             return response(json_encode($response), 200);
         }
 
-        return view('pages.products', ['category' => $category, 'products' => $products, 'brands' => $brands, 'price_max' => $price_max, 'sort' => $sort, 'price_limit' => $price_limit]);
+        return view('pages.products', ['category' => $category, 'products' => $products, 'available_brands' => $available_brands, 'price_max' => $price_max, 'sort' => $sort, 'brands' => $brands, 'price_limit' => $price_limit]);
     }
 
     public function showProduct($product_id)
