@@ -5,6 +5,8 @@
 <script type="text/javascript" src={{ asset('js/profileRequest.js') }} defer></script>
 <script type="text/javascript" src={{ asset('js/propertyRequest.js') }} defer></script>
 <script type="text/javascript" src={{ asset('js/categoryRequest.js') }} defer></script>
+<script type="text/javascript" src={{ asset('js/faqsRequest.js') }} defer></script>
+
 <main>
 <div class="container">
     <div class="container scroll_nav">
@@ -163,15 +165,15 @@
         <div class="cards">
             @foreach ($faqs as $faq)
                 <div class="mt-4">
-                <div class="box d-flex flex-column question-card">
+                <div id="faq-{{$faq->id}}" class="box d-flex flex-column question-card">
                     <h6 class="font-weight-bold"> {{$faq->question}}</h6>
                     <p>{{$faq->answer}} </p>
-                    <i class="fas fa-trash-alt align-self-end mt-auto"></i>
+                    <i class="fas fa-trash-alt align-self-end mt-auto btn-deleteFaq"></i>
                 </div>
                 </div>
             @endforeach
             <div class="mt-4">
-            <div class="col box d-flex flex-column last-card" data-toggle="modal" data-target="#addFaqModal">
+            <div class="col box d-flex flex-column last-card" data-toggle="modal" data-target="#add_faq_modal">
                 Add FAQ
             </div>
             </div>
@@ -179,7 +181,7 @@
         </section>
     </div>
 
-    <div class="modal fade" id="addFaqModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="add_faq_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">

@@ -46,7 +46,7 @@ CREATE TABLE admins (
 DROP TABLE IF EXISTS categories CASCADE;
 CREATE TABLE categories (
     id serial PRIMARY KEY,
-    name text NOT NULL UNIQUE,
+    name text NOT NULL,
     "is_navbar_category" boolean DEFAULT false NOT NULL,
     "is_archived" boolean DEFAULT false NOT NULL
 );

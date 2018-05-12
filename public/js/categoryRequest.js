@@ -22,9 +22,7 @@ function deleteCategory(e){
         url: my_url,
         data: my_data,
         success: function (data) {
-            console.log(data);
             var cards = $('.categories-cards')[0].children;
-            console.log(cards);
             for(let i = 0; i < cards.length ; i++){
                 if(cards[i].children[0].id === category){
                     console.log(i);
@@ -40,7 +38,7 @@ function deleteCategory(e){
 }
 
 
-function addDeleteAction(){
+function addDeleteCategoryAction(){
     for(let i = 0; i< $('.btn-deleteCategory').length;i++){
         $('.btn-deleteCategory')[i].addEventListener('click',deleteCategory);
     }
@@ -51,6 +49,7 @@ function addEntryAction(){
         $('.btn-addEntryCategory')[i].addEventListener('click', event => {
             var entryDefault = event.target.parentElement.previousElementSibling;
             var newEntry =  entryDefault.cloneNode(true);
+            newEntry.classList.remove('default');
             newEntry.style.visibility="visible";    
             buttons = event.target.parentElement;
             $(newEntry).insertBefore(entryDefault);
@@ -79,15 +78,15 @@ function saveCategoryAction(){
 
                 if(propertyValue != ""){
                     var propertyId = propertyValue.substring(propertyValue.indexOf('-')+1,propertyValue.length);
+                    
                     console.log("Property: " + propertyId + "    Required: " + required);
                     
                     data.push({
                         'propertyId': propertyId,
                         'required': required
                     });
-                }
-               
-                
+                   
+                }    
             }
 
             console.log(data);
@@ -115,12 +114,13 @@ function saveCategoryAction(){
 
                     console.log(data.response);
 
+                    //TODO: add navbar category to navbar
+
                 },
                 error: function (data) {
 
-                    console.log("ERROR: ")
-                    console.log(data.abc);
-
+                    alert('Error saving category, please try again!');
+                    console.log('Error: ', data);
                    
                 }
             });
@@ -131,7 +131,7 @@ function saveCategoryAction(){
 
 $(document).ready(function () {
     
-    addDeleteAction();
+    addDeleteCategoryAction();
 
     addEntryAction();
 
@@ -172,14 +172,18 @@ $(document).ready(function () {
     
                     console.log(data);
                     $('.categories-cards')[0].children[$('.categories-cards')[0].children.length - 1].remove();
-    
+                    var newEntry = document.getElementsByClassName("select-checkbox default")[0];
+                    
                     $('.categories-cards')[0].innerHTML += ' <div class="mt-4 col-md-6 col-lg-4"> <div id="category-' +
                     data.category.id +
                     '" class="box d-flex flex-column"> <div class="category-header"><h6>' +
                     data.category.name +
                     '</h6><div class="d-flex flex-row"> <div class="checkbox-container form-check d-flex"> <label class="form-check-label">Show on the navigation menu <input type="checkbox" class="form-check-input"> <span class="checkmark"></span> </label> </div> <i class="fas fa-trash-alt ml-auto btn-deleteCategory"></i></div></div>' + 
-                    '<div class="entry-buttons"><input type="button" value="Add Entry"></input><input type="button" value="Add Product"></input><input type="button" class="black-button" value="Save"></input> </div>';
-    
+                    '<div class="select-checkbox default" style="visibility: hidden;">'+
+                    newEntry.innerHTML +
+                    '</div>'+
+                    '<div class="entry-buttons"><input class="btn-addEntryCategory" type="button" value="Add Entry"></input><input type="button" value="Add Product"></input><input class="btn-saveCategory black-button" type="button" value="Save"></input> </div>';
+
                     var addCard = '<div class="mt-4 col-md-6 col-lg-4"> <div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#add_category_modal"> Add Category </div> </div>';
     
                     $('.categories-cards')[0].innerHTML += addCard;
@@ -188,7 +192,10 @@ $(document).ready(function () {
     
                     console.log($('.categories-cards')[0].children);
                     nameFill.value='';
-                    addDeleteAction();
+
+                    addDeleteCategoryAction();
+                    addEntryAction();
+                    saveCategoryAction();
                 },
                 error: function (data) {
                     alert('Error adding category, please try again!');

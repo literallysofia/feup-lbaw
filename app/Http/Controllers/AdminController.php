@@ -14,6 +14,7 @@ use App\City;
 use App\Purchase;
 use App\Property;
 use App\Category;
+use App\CategoryProperty;
 use App\Faq;
 
 
@@ -114,25 +115,71 @@ class AdminController extends Controller{
     public function addCategoryPropertiesResponse(Request $request){
       
         $categoryId = $request->categoryId;
-        $isNavBar = $request->isNavBar;
-        $decode = json_decode($request->categoryProperties);
-
         $category = Category::findOrFail($categoryId);
+
         $category->is_navbar_category = $request->isNavBar;
+        $isNavBar = $request->isNavBar;
 
         try {
             $category->save();
         }catch(\Exception $e) {
             $e->getMessage();
         }
-      
-        /*foreach($decode as $elem){
-            $propertyId = $elem['propertyId'];
-            $is_required = $elem['required'];
-           
-        }*/
 
-        return response()->json(array('response'=> $categoryId, 200));
+        $requestProperties = json_decode($request->categoryProperties, true);
+        $propertiesIds = array();
+
+        foreach($requestProperties as $requestProperty){
+            $propertyId = $requestProperty['propertyId'];
+            $is_required = $requestProperty['required'];
+
+            array_push($propertiesIds, $propertyId);
+
+            $databaseCategoryProperty = CategoryProperty::where([
+                ['category_id', '=', $categoryId],
+                ['property_id', '=',  $propertyId]
+            ])->get();
+
+            if($databaseCategoryProperty->isEmpty()){
+
+                $addCategoryProperty = new CategoryProperty;
+                $addCategoryProperty->category_id = $categoryId;
+                $addCategoryProperty->property_id = $propertyId;
+                $addCategoryProperty->is_required_property = $is_required;
+                
+                try {
+                    $addCategoryProperty->save();
+                }catch(\Exception $e) {
+                    echo $e->getMessage();
+                }
+            }
+            else{
+                if($databaseCategoryProperty->first()->is_required_property != $is_required){
+                    try {
+                        $dbcpID = $databaseCategoryProperty->first()->id;
+                        CategoryProperty::find($dbcpID)->update(['is_required_property' => $is_required]);
+                    }catch(\Exception $e) {
+                        echo $e->getMessage();
+                    }
+                }
+
+            }
+           
+        }
+
+        foreach($category->category_properties as $catProp){
+
+            if (!in_array($catProp->property_id, $propertiesIds)) {
+                try {
+                    $catProp->delete();
+                   }catch(\Exception $e) {
+                       $e->getMessage();
+                }
+            }
+
+        }
+
+        return response()->json(array('response'=> $requestProperties, 200));
     
     }
 
