@@ -20,17 +20,43 @@ class ProductsController extends Controller
             $price_max = $products->max('price');
 
             if (!empty($products)) {
+
+                $properties_filter = [];
+
+                // BRAND AND REQUIRED PROPERTIES//
                 foreach ($products->get() as $product) {
-                    $available_brands[] = $product->brand;
+                    $brands_filter[] = $product->brand;
+
+                    foreach ($category->properties()->get() as $property) { //get required properties from category
+                        $required_properties[] = $property->category_properties->where('category_id', $category->id)->where('is_required_property', 'true')->first()['property_id'];
+                    }
                 }
-                $available_brands = array_unique($available_brands);
+                $brands_filter = array_unique($brands_filter);
+                $required_properties = array_unique($required_properties);
+
+                foreach ($products->get() as $product) {
+                    foreach ($product->category_properties()->get() as $property) { //get required properties values
+                        if (in_array($property->property->id, $required_properties)) {
+                            $property_values = $property->values_lists->where('product_id', $product->id)->first()->values;
+                            foreach ($property_values as $value) {
+                                $properties_filter[$property->property->name][] = $value->name;
+                            }
+                        }
+                    }
+                }
+
+                foreach ($properties_filter as $key => $values) { //remove repeated values
+                    $values = array_unique($values);
+                    $properties_filter[$key] = $values;
+                }
             }
 
-            // FILTERS //
+            // BASIC FILTERS //
             $sort = $request->get('sort', null);
             $price_limit = $request->get('price_limit', null);
             $brands = $request->has('brands') ? json_decode($request->brands) : null;
 
+            // APPLY QUERIES //
             if ($sort) {
                 switch ($sort) {
                     case 1:
@@ -66,7 +92,7 @@ class ProductsController extends Controller
         if ($request->ajax()) {
             $response = array(
                 'dropdown' => view('partials.products.dropdown', ['category' => $category, 'products' => $products, 'brands' => $brands, 'price_limit' => $price_limit])->render(),
-                'filters' => view('partials.products.filters', ['category' => $category, 'available_brands' => $available_brands, 'brands' => $brands, 'price_max' => $price_max, 'sort' => $sort, 'price_limit' => $price_limit])->render(),
+                'filters' => view('partials.products.filters', ['category' => $category, 'brands_filter' => $brands_filter, 'properties_filter' => $properties_filter, 'brands' => $brands, 'price_max' => $price_max, 'sort' => $sort, 'price_limit' => $price_limit])->render(),
                 'products' => view('partials.products.product', ['products' => $products])->render(),
                 'links' => view('partials.products.pagination', ['products' => $products])->render(),
                 'url' => $request->fullUrl(),
@@ -74,7 +100,7 @@ class ProductsController extends Controller
             return response(json_encode($response), 200);
         }
 
-        return view('pages.products', ['category' => $category, 'products' => $products, 'available_brands' => $available_brands, 'price_max' => $price_max, 'sort' => $sort, 'brands' => $brands, 'price_limit' => $price_limit]);
+        return view('pages.products', ['category' => $category, 'products' => $products, 'brands_filter' => $brands_filter, 'properties_filter' => $properties_filter, 'price_max' => $price_max, 'sort' => $sort, 'brands' => $brands, 'price_limit' => $price_limit]);
     }
 
     public function showProduct($product_id)
