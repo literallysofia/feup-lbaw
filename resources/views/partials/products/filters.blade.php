@@ -28,7 +28,7 @@ if ($price_limit === NULL) {
             @foreach($values as $value)
             <div class="form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" name="x" value="{{ $value }}">
+                    <input class="form-check-input" type="checkbox" name="properties[]" value="{{ $value }}">
                     <p>{{ $value }}</p>
                 </label>
             </div>
