@@ -64,12 +64,12 @@ class ProductsController extends Controller
     public function showAddProduct($category_name)
     {
         try {
-            $category = Category::where('name', $category_name);
+            $category = Category::where('name', $category_name)->first();
         } catch (\Exception $e) {
             $e->getMessage();
             return response()->setStatusCode(400);
         }
-        return view('pages.add_product', ['category_name' => $category_name]);
+        return view('pages.add_product', ['category' => $category,'photos'=>null,'product'=>null]);
     }
 
     public function showEditProduct($id)

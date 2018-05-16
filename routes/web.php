@@ -69,7 +69,7 @@ Route::get('product/{product_id}', 'ProductsController@showProduct')->name('prod
 Route::get('category/{category_id}','ProductsController@showProducts')->name('category_products');
 
 //Add Product
-Route::get('/add_product/{category_name}','ProductsController@showAddProduct')->name('add_product');
+Route::get('add_product/{category_name}','ProductsController@showAddProduct')->name('add_product');
 
 //Edit Product
 Route::get('/product/{id}/edit','ProductsController@showEditProduct')->name('edit_product');
