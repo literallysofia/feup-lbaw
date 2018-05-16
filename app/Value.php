@@ -9,7 +9,7 @@ class Value extends Model{
     protected $table = 'values';
 
     public function values_list(){
-        return $this->belongsTo('App\Values_Lists');
+        return $this->belongsTo('App\ValuesLists');
     }
 }
 

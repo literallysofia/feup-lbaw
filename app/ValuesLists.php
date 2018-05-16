@@ -18,7 +18,7 @@ class ValuesLists extends Pivot{
     }
 
     public function values(){
-        return $this->hasMany('App\Value');
+        return $this->hasMany('App\Value', 'values_lists_id');
     }
 
 }

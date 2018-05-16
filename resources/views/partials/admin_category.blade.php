@@ -1,6 +1,6 @@
 @foreach($categories as $category)
     <div class="mt-4 col-md-6 col-lg-4">
-        <div class="box d-flex flex-column">
+        <div id="category-{{$category->id}}" class="box d-flex flex-column ">
             <div class="category-header">
                 <h6>{{$category->name}}</h6>
                 <div class="d-flex flex-row">
@@ -24,12 +24,12 @@
                 <select>
                     @foreach($properties as $property)
                         @if ($property->name == $catProperty->name)
-                            <option selected value>{{$property->name}}</option>
+                            <option selected value="property-{{$property->id}}">{{$property->name}}</option>
                         @else 
-                            <option value="{{$property->name}}">{{$property->name}}</option>
+                            <option value="property-{{$property->id}}">{{$property->name}}</option>
                         @endif
                     @endforeach
-                    <option value="None" style="font-style:italic;" >None</option>
+                    <option value="" style="font-style:italic;" >None</option>
                 </select>
 
                 <div class="checkbox-container form-check d-flex">
@@ -47,10 +47,28 @@
             </div>
             @endforeach
 
+
+            <div class="select-checkbox default" style="visibility: hidden;">
+                <select>
+                    <option value="" disabled selected> Select property</option>
+                    @foreach($properties as $property)
+                        <option value="property-{{$property->id}}">{{$property->name}}</option>
+                    @endforeach
+                    <option value="None" style="font-style:italic;" >None</option>
+                </select>
+
+                <div class="checkbox-container form-check d-flex">
+                    <label class="form-check-label">Required Property
+                        <input type="checkbox" class="form-check-input">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+
             <div class="entry-buttons">
-            <input type="button" value="Add Entry"></input>
-            <input type="button" value="Add Product" onclick="window.location='add_product.html'"></input>
-            <input type="button" class="black-button" value="Save"></input>
+                <input class="btn-addEntryCategory" type="button" value="Add Entry"></input>
+                <input type="button" value="Add Product"></input>
+                <input class="btn-saveCategory black-button" type="button" value="Save"></input>
             </div>
         </div>
     </div>

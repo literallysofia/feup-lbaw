@@ -9,7 +9,6 @@ use Illuminate\Auth\Middleware\Authenticate;
 use App\Http\Controllers\Controller;
 use App\DeliveryType;
 
-
 class CartWishlistController extends Controller{
 
     public function showWishlist(){

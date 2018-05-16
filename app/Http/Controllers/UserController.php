@@ -113,26 +113,4 @@ class UserController extends Controller {
         $this->middleware('auth');
     }
 
-
-    public function showAdmin(){
-
-
-        try {
-            $shipped_purchases = Purchase::where('status','Shipped')->orderBy('date')->get();
-            $processing_purchases = Purchase::where('status','Processing')->orderBy('date')->get();
-            $properties=Property::get();
-            $faqs=Faq::get();
-            $categories=Category::get();
-        }catch(\Exception $e) {
-            $e->getMessage();
-            return response()->setStatusCode(400);
-        }
-
-        return view('pages.admin',['shipped_purchases'=> $shipped_purchases, 'processing_purchases'=> $processing_purchases,
-        'properties'=>$properties, 'categories' => $categories,'faqs'=>$faqs] );
-        
-    }
-
-
-
 }
