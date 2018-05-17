@@ -54,15 +54,13 @@ function addPhotoCard(e){
 
     var imagePreview = theFreshCard.firstChild.firstChild.firstChild;
 
-    /*console.log(imagePreview);
-    console.log(imageInput);*/
 
     list = $('.photo-cards')[0];
-    addPreviewListener(list);
+    //addPreviewListener(list);
 
-    /*imageInput.addEventListener('change',function(){
+    imageInput.addEventListener('change',function(){
         readUrl(imagePreview,this);
-    },false);*/
+    },false);
    
 
 
@@ -75,12 +73,13 @@ function readUrl(imagePreview,input){
         var reader = new FileReader();
 
         reader.onloadstart = function(e) {
-        
+          
           imagePreview.src =  e.target.result;
+          console.log("Before ", e.target.result);
         }
     
         reader.readAsDataURL(input.files[0]);
-        console.log(imagePreview.src);
+        console.log("After" ,imagePreview.src);
     }
 }
 
@@ -93,7 +92,6 @@ function addEntryInput(event){
 
 
 function addProduct(event){
-    console.log(event);
     event.preventDefault();
     var flag = false;
     if($('#product_name').is(":invalid")){
@@ -131,14 +129,44 @@ function addProduct(event){
     var product_quantity = $('#product_quantity').value;
     var product_brand = $('#product_brand').value;
 
-    if(flag = true) return;
-
+    if(flag == true) return;
     if(!checkProperties()) return;
     
 }
 
 function checkProperties(){
+    var correct = true;
+    var property_header = $('.spec-header');
+    var property_values = $('.spec-input');
+    console.log(property_header[1].innerText,property_values);
+    var is_required = false;
+    for(let i = 0 ; i < property_header.length; i++){
+        is_required  = property_header[i].innerText.endsWith('*');
+        correct = checkPropertyValue(property_values[i].children,is_required)[1]; 
+    }
 
+    return correct;
+
+}
+
+
+function checkPropertyValue(property_values,is_required){
+    var is_empty = true;
+    var values = [];
+    for(let i = 0; i < property_values.length;i++){
+       console.log(property_values[i].value);
+       if(property_values[i].value != ''){
+           is_empty = false;
+           values.push(property_values[i].value);
+       }
+    }
+
+    if(is_empty && is_required){
+        property_values[0].style = "border: 2px solid #ff5555;"
+        property_values[0].focus();
+        return [null,false];
+    }
+    return [values,true];
 }
 
 $(document).ready(function(){
