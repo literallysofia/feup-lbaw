@@ -114,12 +114,8 @@ class AdminController extends Controller{
 
     public function addCategoryPropertiesResponse(Request $request){
       
-        $categoryId = $request->categoryId;
-        $category = Category::findOrFail($categoryId);
-
+        $category = Category::findOrFail($request->categoryId);
         $category->is_navbar_category = $request->isNavBar;
-        $isNavBar = $request->isNavBar;
-
         try {
             $category->save();
         }catch(\Exception $e) {
@@ -127,8 +123,8 @@ class AdminController extends Controller{
         }
 
         $requestProperties = json_decode($request->categoryProperties, true);
+        
         $propertiesIds = array();
-
         foreach($requestProperties as $requestProperty){
             $propertyId = $requestProperty['propertyId'];
             $is_required = $requestProperty['required'];
@@ -136,10 +132,11 @@ class AdminController extends Controller{
             array_push($propertiesIds, $propertyId);
 
             $databaseCategoryProperty = CategoryProperty::where([
-                ['category_id', '=', $categoryId],
+                ['category_id', '=', $request->categoryId],
                 ['property_id', '=',  $propertyId]
             ])->get();
-
+            
+            //if the property doesn't exists in this category already (aka add property)
             if($databaseCategoryProperty->isEmpty()){
 
                 $addCategoryProperty = new CategoryProperty;
@@ -153,11 +150,13 @@ class AdminController extends Controller{
                     echo $e->getMessage();
                 }
             }
+            
+            //the property already exists (aka update property)
             else{
                 if($databaseCategoryProperty->first()->is_required_property != $is_required){
                     try {
-                        $dbcpID = $databaseCategoryProperty->first()->id;
-                        CategoryProperty::find($dbcpID)->update(['is_required_property' => $is_required]);
+                        $databaseCategoryPropertyId = $databaseCategoryProperty->first()->id;
+                        CategoryProperty::find($databaseCategoryPropertyId)->update(['is_required_property' => $is_required]);
                     }catch(\Exception $e) {
                         echo $e->getMessage();
                     }
@@ -166,7 +165,8 @@ class AdminController extends Controller{
             }
            
         }
-
+        
+        //deletes category property that aren't in the list
         foreach($category->category_properties as $catProp){
 
             if (!in_array($catProp->property_id, $propertiesIds)) {
@@ -179,7 +179,7 @@ class AdminController extends Controller{
 
         }
 
-        return response()->json(array('response'=> $requestProperties, 200));
+        return response()->json(array('category'=> $category, 200));
     
     }
 

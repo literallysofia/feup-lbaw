@@ -112,9 +112,43 @@ function saveCategoryAction(){
                 dataType: 'json',
                 success: function (data) {
 
-                    console.log(data.response);
+                    console.log(data.category);
+
+                    categoryUpdated = document.getElementById("category-"+ data.category.id);
+
+                                     
+
+                    categoryUpdated.innerHTML = 
+                    '<div class="category-header"><h6>' +
+                    data.category.name +
+                    '</h6><div class="d-flex flex-row"><div class="checkbox-container form-check d-flex"><label class="form-check-label"></label>';
+
+                    var navCheckbox = categoryUpdated.querySelector( 'label.form-check-label');
+
+                    if(data.category.is_navbar_category=="true")
+                        navCheckbox.innerHTML = 'Show on the navigation menu <input type="checkbox" class="form-check-input" checked> <span class="checkmark"></span>'; 
+                    else
+                        navCheckbox.innerHTML = 'Show on the navigation menu <input type="checkbox" class="form-check-input"> <span class="checkmark"></span>';  
+                    
+                    var el = categoryUpdated.querySelector( '.category-header div');
+
+                    el.innerHTML += '<i class="fas fa-trash-alt ml-auto btn-deleteCategory"></i>';
+
+                    //default entry
+                    var newEntry = document.getElementsByClassName("select-checkbox default")[0];  
+
+                    categoryUpdated.innerHTML += '<div class="select-checkbox default" style="visibility: hidden;">'+
+                    newEntry.innerHTML +
+                    '</div>'+
+                    '<div class="entry-buttons"><input class="btn-addEntryCategory" type="button" value="Add Entry"></input><input type="button" value="Add Product"></input><input class="btn-saveCategory black-button" type="button" value="Save"></input> </div>';
+
+                    addDeleteCategoryAction();
+                    addEntryAction();
+                    saveCategoryAction();
 
                     //TODO: add navbar category to navbar
+                    //TODO: delete das category properties que se colocaram a none
+                    //TODO: delete das repetidas
 
                 },
                 error: function (data) {
