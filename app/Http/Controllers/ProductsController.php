@@ -24,17 +24,13 @@ class ProductsController extends Controller
                 $properties_filter = [];
 
                 // BRAND AND REQUIRED PROPERTIES//
+                foreach ($category->properties()->get() as $property) { //get required properties from category
+                    $required_properties[] = $property->category_properties->where('category_id', $category->id)->where('is_required_property', 'true')->first()['property_id'];
+                }
+
                 foreach ($products->get() as $product) {
                     $brands_filter[] = $product->brand;
 
-                    foreach ($category->properties()->get() as $property) { //get required properties from category
-                        $required_properties[] = $property->category_properties->where('category_id', $category->id)->where('is_required_property', 'true')->first()['property_id'];
-                    }
-                }
-                $brands_filter = array_unique($brands_filter);
-                $required_properties = array_unique($required_properties);
-
-                foreach ($products->get() as $product) {
                     foreach ($product->category_properties()->get() as $property) { //get required properties values
                         if (in_array($property->property->id, $required_properties)) {
                             $property_values = $property->values_lists->where('product_id', $product->id)->first()->values;
@@ -44,6 +40,8 @@ class ProductsController extends Controller
                         }
                     }
                 }
+
+                $brands_filter = array_unique($brands_filter);
 
                 foreach ($properties_filter as $key => $values) { //remove repeated values
                     $values = array_unique($values);
@@ -129,7 +127,7 @@ class ProductsController extends Controller
             $e->getMessage();
             return response()->setStatusCode(400);
         }
-        return view('pages.add_product', ['category' => $category,'photos'=>null,'product'=>null]);
+        return view('pages.add_product', ['category' => $category, 'photos' => null, 'product' => null]);
     }
 
     public function showEditProduct($id)
