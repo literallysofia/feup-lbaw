@@ -53,7 +53,7 @@
                             Products
                         </a>
 
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <div id="nav-dropdown" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <div class="triangle"></div>
                             <h6 class="dropdown-header">Shop By Category</h6>
                             <div class="dropdown-divider"></div>

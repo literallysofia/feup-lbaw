@@ -65,31 +65,47 @@ function saveCategoryAction(){
 
             var category = event.target.parentElement.parentElement.id;
             var categoryId = category.substring(category.indexOf('-')+1,category.length);
-
             var isNavBar = $(event.target).parent().siblings('.category-header').find('div div label input[type="checkbox"]').is(':checked');        
 
+            //delete repeated properties and invalid options
+            var select_checkboxs_to_delete = $(event.target).parent().siblings('.select-checkbox');
+            
+            for(let j = 0; j< select_checkboxs_to_delete.length;j++){
+                
+                $siblings=select_checkboxs_to_delete.eq(j).siblings();
+                for (let i = 0; i < $siblings.length; i++) {
+                    if($siblings.eq(i).children('select').find(":selected").val()==select_checkboxs_to_delete.eq(j).children('select').find(":selected").val()){
+                        $siblings.eq(i).remove();
+                    }
+                }
+                var visibility_delete = select_checkboxs_to_delete.eq(j).css("visibility");  
+                var propertyValue_delete = select_checkboxs_to_delete.eq(j).children('select').find(":selected").val().trim();
+                
+                if(propertyValue_delete == "" && visibility_delete != "hidden"){
+                    select_checkboxs_to_delete.eq(j).remove();                          
+                }
+            }
+
+            //selects values and required to send in teh request
             var select_checkboxs = $(event.target).parent().siblings('.select-checkbox');
             var data = [];
-
             for(let j = 0; j< select_checkboxs.length;j++){
 
                 var propertyValue = select_checkboxs.eq(j).children('select').find(":selected").val().trim();
                 var required = select_checkboxs.eq(j).find('div label input[type="checkbox"]').is(':checked');
+                var visibility = select_checkboxs.eq(j).css("visibility");  
 
-                if(propertyValue != ""){
+                if(visibility!="hidden"){
                     var propertyId = propertyValue.substring(propertyValue.indexOf('-')+1,propertyValue.length);
-                    
-                    console.log("Property: " + propertyId + "    Required: " + required);
-                    
+                    console.log(propertyId);
+                
                     data.push({
                         'propertyId': propertyId,
                         'required': required
                     });
-                   
-                }    
+                }
+                                 
             }
-
-            console.log(data);
 
             var fullurl = window.location.href;
             var my_url = '/admin/category_properties'
@@ -111,45 +127,26 @@ function saveCategoryAction(){
                     'categoryProperties': JSON.stringify(data)},
                 dataType: 'json',
                 success: function (data) {
-
                     console.log(data.category);
-
-                    categoryUpdated = document.getElementById("category-"+ data.category.id);
-
-                                     
-
-                    categoryUpdated.innerHTML = 
-                    '<div class="category-header"><h6>' +
-                    data.category.name +
-                    '</h6><div class="d-flex flex-row"><div class="checkbox-container form-check d-flex"><label class="form-check-label"></label>';
-
-                    var navCheckbox = categoryUpdated.querySelector( 'label.form-check-label');
-
-                    if(data.category.is_navbar_category=="true")
-                        navCheckbox.innerHTML = 'Show on the navigation menu <input type="checkbox" class="form-check-input" checked> <span class="checkmark"></span>'; 
-                    else
-                        navCheckbox.innerHTML = 'Show on the navigation menu <input type="checkbox" class="form-check-input"> <span class="checkmark"></span>';  
+                    var dropDownMenu = document.getElementById("nav-dropdown");
                     
-                    var el = categoryUpdated.querySelector( '.category-header div');
+                    if(data.category.is_navbar_category == "true"){
 
-                    el.innerHTML += '<i class="fas fa-trash-alt ml-auto btn-deleteCategory"></i>';
+                        /*var custom_location = ' "<?php echo route(" + ", ['id' => $category->id]); ?>";';
 
-                    //default entry
-                    var newEntry = document.getElementsByClassName("select-checkbox default")[0];  
 
-                    categoryUpdated.innerHTML += '<div class="select-checkbox default" style="visibility: hidden;">'+
-                    newEntry.innerHTML +
-                    '</div>'+
-                    '<div class="entry-buttons"><input class="btn-addEntryCategory" type="button" value="Add Entry"></input><input type="button" value="Add Product"></input><input class="btn-saveCategory black-button" type="button" value="Save"></input> </div>';
+                        dropDownMenu.innerHTML+= '<a class="dropdown-item" href='+ custom_location + '>' +
+                        'href="{{ route("category_products", ["id" => ' +
+                        data.category.id +
+                        ']) }}"> ' + 
+                        data.category.name + 
+                        ' </a>';
 
-                    addDeleteCategoryAction();
-                    addEntryAction();
-                    saveCategoryAction();
+                        console.log(dropDownMenu.innerHTML);*/
+                    }else{
 
-                    //TODO: add navbar category to navbar
-                    //TODO: delete das category properties que se colocaram a none
-                    //TODO: delete das repetidas
-
+                    }
+            
                 },
                 error: function (data) {
 

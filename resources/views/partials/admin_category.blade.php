@@ -54,7 +54,7 @@
                     @foreach($properties as $property)
                         <option value="property-{{$property->id}}">{{$property->name}}</option>
                     @endforeach
-                    <option value="None" style="font-style:italic;" >None</option>
+                    <option value="" style="font-style:italic;" >None</option>
                 </select>
 
                 <div class="checkbox-container form-check d-flex">

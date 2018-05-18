@@ -122,9 +122,11 @@ class AdminController extends Controller{
             $e->getMessage();
         }
 
+
         $requestProperties = json_decode($request->categoryProperties, true);
         
         $propertiesIds = array();
+
         foreach($requestProperties as $requestProperty){
             $propertyId = $requestProperty['propertyId'];
             $is_required = $requestProperty['required'];
@@ -140,7 +142,7 @@ class AdminController extends Controller{
             if($databaseCategoryProperty->isEmpty()){
 
                 $addCategoryProperty = new CategoryProperty;
-                $addCategoryProperty->category_id = $categoryId;
+                $addCategoryProperty->category_id = $request->categoryId;
                 $addCategoryProperty->property_id = $propertyId;
                 $addCategoryProperty->is_required_property = $is_required;
                 
@@ -165,19 +167,7 @@ class AdminController extends Controller{
             }
            
         }
-        
-        //deletes category property that aren't in the list
-        foreach($category->category_properties as $catProp){
 
-            if (!in_array($catProp->property_id, $propertiesIds)) {
-                try {
-                    $catProp->delete();
-                   }catch(\Exception $e) {
-                       $e->getMessage();
-                }
-            }
-
-        }
 
         return response()->json(array('category'=> $category, 200));
     
