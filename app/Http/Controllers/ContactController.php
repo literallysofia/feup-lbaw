@@ -14,7 +14,7 @@ class ContactController extends Controller{
 
     public function validator(array $data){
         return Validator::make($data,[
-                'name' => 'required',
+                'name' => "required|regex:/^[A-Z][a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/u|max:255",
                 'email'=> 'required|email',
                 'subject' => 'required',
                 'message' => 'required|string',

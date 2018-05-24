@@ -47,10 +47,11 @@ Route::put('/profile/address', 'AddressController@deleteAddressResponse');
 
 //Admin
 Route::get('admin', 'AdminController@showAdmin')->name('admin');
+Route::post('admin/property', 'AdminController@addPropertyResponse');
+Route::delete('admin/property', 'AdminController@deletePropertyResponse');
 Route::post('admin/category', 'AdminController@addCategoryResponse');
 Route::put('admin/category', 'AdminController@deleteCategoryResponse');
-
-
+Route::post('admin/category_properties', 'AdminController@addCategoryPropertiesResponse');
 
 //Static pages
 Route::get('faq','FaqController@showFaqs')->name('faq');
@@ -73,7 +74,7 @@ Route::get('product/{product_id}', 'ProductsController@showProduct')->name('prod
 Route::get('category/{category_id}','ProductsController@showProducts')->name('category_products');
 
 //Add Product
-Route::get('/add_product/{category_name}','ProductsController@showAddProduct')->name('add_product');
+Route::get('add_product/{category_name}','ProductsController@showAddProduct')->name('add_product');
 
 //Edit Product
 Route::get('/product/{id}/edit','ProductsController@showEditProduct')->name('edit_product');
