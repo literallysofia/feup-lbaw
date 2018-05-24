@@ -53,6 +53,7 @@ class ProductsController extends Controller
             $sort = $request->get('sort', null);
             $price_limit = $request->get('price_limit', null);
             $brands = $request->has('brands') ? json_decode($request->brands) : null;
+            $properties = $request->has('properties') ? json_decode($request->properties) : null;
 
             // APPLY QUERIES //
             if ($sort) {
@@ -73,6 +74,12 @@ class ProductsController extends Controller
                 $products = $products->whereIn('brand', $brands);
             }
 
+            /*if (!empty($properties)) {
+            foreach ($properties as $key => $values) {
+            $products = $products->values_lists->whereIn($key, $values);
+            }
+            }*/
+
             if ($price_limit) {
                 $products = $products->where('price', '<=', $price_limit);
             }
@@ -90,7 +97,7 @@ class ProductsController extends Controller
         if ($request->ajax()) {
             $response = array(
                 'dropdown' => view('partials.products.dropdown', ['category' => $category, 'products' => $products, 'brands' => $brands, 'price_limit' => $price_limit])->render(),
-                'filters' => view('partials.products.filters', ['category' => $category, 'brands_filter' => $brands_filter, 'properties_filter' => $properties_filter, 'brands' => $brands, 'price_max' => $price_max, 'sort' => $sort, 'price_limit' => $price_limit])->render(),
+                'filters' => view('partials.products.filters', ['category' => $category, 'brands_filter' => $brands_filter, 'properties_filter' => $properties_filter, 'brands' => $brands, 'properties' => $properties, 'price_max' => $price_max, 'sort' => $sort, 'price_limit' => $price_limit])->render(),
                 'products' => view('partials.products.product', ['products' => $products])->render(),
                 'links' => view('partials.products.pagination', ['products' => $products])->render(),
                 'url' => $request->fullUrl(),

@@ -39,7 +39,18 @@ $(document).ready(function () {
             brands[i] = $(this).val();
         });
 
-        filterProducts(url, price, brands);
+        var properties = {};
+        $('input[name="properties[]"]:checked').each(function (i) {
+            var str = $(this).val();
+            var res = str.split(';');
+            if (properties[res[0]] === undefined) {
+                properties[res[0]] = [];
+            }
+            properties[res[0]].push(res[1]);
+        });
+        console.log(properties);
+
+        filterProducts(url, price, brands, properties);
     });
 });
 
@@ -69,7 +80,7 @@ function getProducts(my_url) {
     });
 }
 
-function filterProducts(my_url, price, brands) {
+function filterProducts(my_url, price, brands, properties) {
 
     $.ajaxSetup({
         headers: {
@@ -83,7 +94,8 @@ function filterProducts(my_url, price, brands) {
         dataType: 'json',
         data: {
             'price_limit': price,
-            'brands': JSON.stringify(brands)
+            'brands': JSON.stringify(brands),
+            'properties': JSON.stringify(properties)
         },
         success: function (response) {
             $('#dropdown-sortby').html(response.dropdown);
