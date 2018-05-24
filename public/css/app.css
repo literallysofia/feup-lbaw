@@ -524,23 +524,27 @@ main .modal .modal-footer {
 .cart-item h5 {
   font-size: 1.2em; }
 
+#info_message {
+  font-size: 0.3em; }
+
 .cart-item-quantity {
   display: inline;
   padding-top: 0.7em; }
   .cart-item-quantity p {
     padding-top: 0.2em;
-    margin-right: 0.5em; }
-  .cart-item-quantity p > i {
-    -webkit-text-stroke: 0.2em white; }
-    .cart-item-quantity p > i:first-child {
-      padding-left: 0.7em;
-      padding-right: 0.7em; }
+    margin-left: 1em; }
+    .cart-item-quantity p > i {
+      -webkit-text-stroke: 0.2em white;
+      cursor: pointer; }
+    .cart-item-quantity p .fa-minus {
+      margin-left: 0em;
+      margin-right: 1em;
+      padding-left: 0.7em; }
   .cart-item-quantity input {
     width: 2em;
     height: 2em;
     text-align: center;
     background: none;
-    border: 0em;
     font-weight: bold; }
 
 .info-item {

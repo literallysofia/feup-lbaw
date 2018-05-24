@@ -8,6 +8,9 @@ use App\Product;
 use App\Property;
 use App\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Middleware\Authenticate;
 
 class ProductsController extends Controller
 {
@@ -95,9 +98,11 @@ class ProductsController extends Controller
        try {
             $user = Auth::user();
             $review = $user->reviews->where('id', $request->id)->first();
+            $product = Product::findOrFail($request->product_id);
+            if($product == null)
+                return response(json_encode(array('Message'=>'This product does not exist', 'Reviews'=>null)), 404);
             if($review != null){
                 $review->delete();
-                $product = Product::findOrFail($request->product_id);
                 return response(json_encode(array('Message'=>'Review deleted', 'Reviews'=>count($product->reviews))), 200);
             } else
                 return response(json_encode(array("Message"=>"You can not delete this review or it does not exist", 'Reviews'=>null)), 404);

@@ -61,7 +61,9 @@ Route::post('contact','ContactController@sendEmail')->name('sendemail');
 //Cart and wishlist
 Route::get('wishlist','CartWishlistController@showWishlist')->name('wishlist');
 Route::delete('wishlist', 'CartWishlistController@removeWishlistProduct');
+Route::post('wishlist', 'CartWishlistController@addWishlistProduct');
 Route::get('cart', 'CartWishlistController@showCart')->name('cart');
+Route::delete('cart', 'CartWishlistController@removeCartProduct');
 Route::post('cart', 'CartWishlistController@addCartProduct');
 
 //Product

@@ -25,14 +25,16 @@
                                 </div>
                                 <div class="d-flex flex-row cart-item-quantity">
                                     <p>Quantity:</p>
-                                    <input value="1" disabled>
                                     <p>
-                                        <i class="fas fa-minus"></i>
-                                        <i class="fas fa-plus"></i>
+                                        <i onclick="decrement(this,{{$product->quantity_available}})" class="fas fa-minus"></i>
+                                    </p>
+                                    <input id="quantity" value="1" data-value="{{$product->quantity_available}}">
+                                    <p> 
+                                        <i onclick="increment(this,{{$product->quantity_available}})" class="fas fa-plus"></i>
                                     </p>
                                 </div>
                                 <div class="remove-item-cart mt-auto d-flex align-items-end">
-                                    <a class="mr-auto mt-auto" href="#">Remove</a>
+                                    <a class="mr-auto mt-auto" href="" onclick="return deleteProduct(this,{{$product->id}})">Remove</a>
                                     <div class="info-item ">
                                         <p class="mb-auto">{{$product->price}} €</p>
                                     </div>
@@ -44,11 +46,12 @@
                 @endforeach
                 <div id="end_cart" class="col-12 d-flex justify-content-end align-items-center">
                     <p class="subtotal">Subtotal before delivery: </p>
-                    <p>{{collect($products)->sum('price')}} €</p>
+                    <p id="subtotal_price">{{collect($products)->sum('price')}} €</p>
                 </div>
                 <div id="checkout_cart" class="d-flex flex-row justify-content-end">
                     <input type="button" class="black-button" value="Checkout" data-toggle="modal" data-target="#checkoutModal"></input>
                 </div>
+                <p id="info_message">*The stock may change during this procedure.</p>
             </div>
         </div>
 
@@ -70,16 +73,17 @@
                             @endforeach
                         </select>
                         <h6>Subtotal before Delivery</h6>
-                        <p>{{collect($products)->sum('price')}} €</p>
+                        <?php $subtotal = collect($products)->sum('price') ?>
+                        <p id="subtotal_price" value="{{$subtotal}}">{{$subtotal}} €</p>
                         <h6>Delivery Type</h6>
-                        <select>
+                        <select onchange="update_total(this.options[this.selectedIndex])">
                             <option disabled selected value>Choose Delivery Type</option>
                             @foreach($delivery_types as $delivery)
-                                <option value="{{$delivery->id}}">{{$delivery->name}} (+{{$delivery->price}} €)</option>
+                                <option value="{{$delivery->id}}" data="{{$delivery->price}}">{{$delivery->name}} (+{{$delivery->price}} €)</option>
                             @endforeach
                         </select>
                         <h6 class="ml-auto">Total</h6>
-                        <p class="ml-auto">2179,98 €</p>
+                        <p id="total_price" class="ml-auto">2179,98 €</p>
                     </div>
                     <div class="modal-footer">
                         <input type="button" data-dismiss="modal" value="Close"></input>
