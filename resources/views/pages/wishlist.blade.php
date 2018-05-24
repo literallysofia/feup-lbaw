@@ -6,6 +6,7 @@
 
 @include('partials.breadcrumbs', $data = array('Wishlist' => ''))
 
+<script type="text/javascript" src={{ asset('js/product.js') }} defer></script>
 <script type="text/javascript" src={{ asset('js/wishlist.js') }} defer></script>
 <main>
     <div class="container">

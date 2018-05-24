@@ -1,48 +1,25 @@
 $(document).ready(isEmpty());
 
 function isEmpty() {
-
-    if (document.querySelector(".section-container > form") == null) {
-        document.getElementsByClassName("section-container")[0].innerHTML = "<p style='text-align:center'>You don't have products in your wishlist :-(";
+    let products = document.querySelectorAll(".section-container > form");
+    if (products[0] == null) {
+        document.getElementsByClassName("section-container")[0].innerHTML = "<p style='text-align:center'>You don't have any product in your wishlist :-(";
+        return true;
+    } else if(products.length == 1) {
+        $(products[0]).next().remove();
     }
     return false;
 }
 
-function addToCart(event, id) {
-    
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
 
-    let product_data = {};
-    product_data.id = id;
+function removeDesignProduct(obj) {
 
-    let insert_cart = "cart";
-    
-    $.ajax({
-        type: "POST",
-        url: insert_cart,
-        data: product_data,
-        dataType: 'text',
-        success: function (data) {
-            alert("Done: " + data);
-            console.log(data);
-            $(event).next().remove();
-            $(event).remove();
-            isEmpty();
-        },
-        error: function (data) {
-            alert("Error: " + data.responseText);
-            console.log('Error: ', data);
-        }
-    });
-    return false;
-
+    $(obj).closest("form").next().remove();
+    $(obj).closest("form").remove();
+    isEmpty();
 }
 
-function deleteProduct(event, id) {
+function deleteProduct(obj, id) {
     
 
     if(!confirm('are you sure you want to remove this product?'))
@@ -66,9 +43,7 @@ function deleteProduct(event, id) {
         success: function (data) {
             alert("Done: " + data);
             console.log(data);
-            $(event).closest("form").next().remove();
-            $(event).closest("form").remove();
-            isEmpty();
+            removeDesignProduct(obj);
         },
         error: function (data) {
             alert("Error: " + data.responseText);

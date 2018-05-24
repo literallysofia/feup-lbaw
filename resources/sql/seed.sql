@@ -112,7 +112,8 @@ CREATE TABLE product_carts (
     "user_id" integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     "product_id" integer NOT NULL REFERENCES products(id) ON DELETE CASCADE,
     quantity integer NOT NULL,
-    CONSTRAINT quantity CHECK ((quantity > 0))
+    CONSTRAINT quantity CHECK ((quantity > 0)),
+    UNIQUE("user_id", "product_id")
 );
 
 DROP TABLE IF EXISTS purchases CASCADE;

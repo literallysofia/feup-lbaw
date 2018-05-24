@@ -4,6 +4,7 @@
 
 @section('content')
 
+<script type="text/javascript" src={{ asset('js/product.js') }} defer></script>
 <script type="text/javascript" src={{ asset('js/review.js') }} defer></script>
 
 @include('partials.breadcrumbs', $data = array($product->category->name => route('category_products', $product->category->id), $product->name => ''))
@@ -54,8 +55,8 @@
                             </div>
                         </div>
                         <p class="mt-1" id="product_price">{{$product->price}} €</p>
-                        <input type="button" class="black-button col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Add to Cart"></input>
-                        <input type="button" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Add to Wishlist"></input>
+                        <input type="button" class="black-button col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Add to Cart" onclick="return addToCart(null, {{$product->id}})"></input>
+                        <input type="button" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Add to Wishlist" onclick="return addToWishlist({{$product->id}})"></input>
                     </div>
                 </div>
             </div>

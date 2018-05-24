@@ -39,7 +39,7 @@ $(document).ready(function(){
             let score_value = scores[i].querySelector("input[type='hidden']");
             if(score_value != null && score_value.value != null && isInteger(score_value.value)) {
 
-                var starRating = parseInt(score_value.value)*20;
+                var starRating = parseFloat(score_value.value)*20;
                 // set the width of the stars
                 let stars;
                 if((stars = scores[i].querySelector('.stars-inner')) != null){
