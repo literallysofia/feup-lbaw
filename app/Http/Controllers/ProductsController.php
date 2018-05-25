@@ -7,9 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Review;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Auth\Middleware\Authenticate;
 
 class ProductsController extends Controller
 {
@@ -111,6 +109,18 @@ class ProductsController extends Controller
         return view('pages.products', ['category' => $category, 'products' => $products, 'brands_filter' => $brands_filter, 'properties_filter' => $properties_filter, 'price_max' => $price_max, 'sort' => $sort, 'brands' => $brands, 'price_limit' => $price_limit]);
     }
 
+    public function showHighlights()
+    {
+        try {
+            $products = Product::orderBy('id', 'asc')->take(8)->get();
+
+        } catch (\Exception $e) {
+            return response(json_encode($e->getMessage()), 400);
+        }
+
+        return view('pages.home', ['products' => $products]);
+    }
+
     public function showProduct($product_id)
     {
 
@@ -160,17 +170,21 @@ class ProductsController extends Controller
             $user = Auth::user();
             $review = $user->reviews->where('id', $request->id)->first();
             $product = Product::findOrFail($request->product_id);
-            if($product == null)
-                return response(json_encode(array('Message'=>'This product does not exist', 'Reviews'=>null)), 404);
-            if($review != null){
+            if ($product == null) {
+                return response(json_encode(array('Message' => 'This product does not exist', 'Reviews' => null)), 404);
+            }
+
+            if ($review != null) {
                 $review->delete();
-                return response(json_encode(array('Message'=>'Review deleted', 'Reviews'=>count($product->reviews))), 200);
-            } else
-                return response(json_encode(array("Message"=>"You can not delete this review or it does not exist", 'Reviews'=>null)), 404);
-       }catch(\Exception $e){
-           return response(json_encode($e->getMessage()), 400);
-       }
-       
+                return response(json_encode(array('Message' => 'Review deleted', 'Reviews' => count($product->reviews))), 200);
+            } else {
+                return response(json_encode(array("Message" => "You can not delete this review or it does not exist", 'Reviews' => null)), 404);
+            }
+
+        } catch (\Exception $e) {
+            return response(json_encode($e->getMessage()), 400);
+        }
+
     }
 
     public function addReview(Request $request, $product_id)

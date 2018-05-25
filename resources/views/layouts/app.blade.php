@@ -43,7 +43,7 @@
                 </button>
 
                 <!-- LOGO -->
-                <a class="navbar-brand mr-auto" href="{{ url('/homepage') }}">Sweven</a>
+                <a class="navbar-brand mr-auto" href="{{ url('/') }}">Sweven</a>
 
                 <ul class="navbar-nav d-flex flex-row align-items-center">
                     <!-- DROPDOWN -->

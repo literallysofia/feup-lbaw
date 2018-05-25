@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return redirect('homepage');
-});
+});*/
 
 //Homepage
-Route::view('/homepage', 'pages/homepage');
+Route::get('/', 'ProductsController@showHighlights');
 
 // Cards
 Route::get('cards', 'CardController@list');
@@ -30,7 +30,6 @@ Route::post('api/item/{id}', 'ItemController@update');
 Route::delete('api/item/{id}', 'ItemController@delete');
 
 // Authentication
-
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
