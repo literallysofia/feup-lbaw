@@ -14,11 +14,11 @@
 
     p {
         padding-top: 0.2em;
-        margin-left: 1em;
 
         >i {
             -webkit-text-stroke: 0.2em white;
             cursor: pointer;
+            margin-left: 1em;
         }
         .fa-minus {
             margin-left: 0em;
@@ -27,7 +27,11 @@
         }
     }
     input {
-        width: 2em;
+        &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+        width: 2.5em;
         height: 2em;
         text-align: center;
         background: none;

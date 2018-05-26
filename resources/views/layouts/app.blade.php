@@ -126,7 +126,10 @@
             </div>
         </nav>
     </header>
-        @yield('content')
+        <div id="loader_page">
+            <div id="loader"></div>
+        </div>
+       @yield('content')
     <footer class="page-footer">
       <div class="container">
           <div class="row">

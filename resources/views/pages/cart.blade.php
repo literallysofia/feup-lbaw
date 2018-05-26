@@ -26,11 +26,11 @@
                                 <div class="d-flex flex-row cart-item-quantity">
                                     <p>Quantity:</p>
                                     <p>
-                                        <i onclick="decrement(this,{{$product->quantity_available}})" class="fas fa-minus"></i>
+                                        <i onclick="decrement(this, {{$product->quantity_available}})" class="fas fa-minus"></i>
                                     </p>
-                                    <input id="quantity" value="1" data-value="{{$product->quantity_available}}">
+                                    <input type="number" class="item_quantity" value="{{$product->pivot->quantity}}" data-value="{{$product->quantity_available}}" data-id="{{$product->id}}">
                                     <p> 
-                                        <i onclick="increment(this,{{$product->quantity_available}})" class="fas fa-plus"></i>
+                                        <i onclick="increment(this, {{$product->quantity_available}})" class="fas fa-plus"></i>
                                     </p>
                                 </div>
                                 <div class="remove-item-cart mt-auto d-flex align-items-end">
@@ -46,7 +46,7 @@
                 @endforeach
                 <div id="end_cart" class="col-12 d-flex justify-content-end align-items-center">
                     <p class="subtotal">Subtotal before delivery: </p>
-                    <p id="subtotal_price">{{collect($products)->sum('price')}} €</p>
+                    <p class="subtotal_price">{{$total}} €</p>
                 </div>
                 <div id="checkout_cart" class="d-flex flex-row justify-content-end">
                     <input type="button" class="black-button" value="Checkout" data-toggle="modal" data-target="#checkoutModal"></input>
@@ -57,7 +57,8 @@
 
         <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
+                <form class="modal-content" method="POST" action="{{ route('checkout') }}">
+                    {{ csrf_field() }}
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Checkout</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -66,30 +67,30 @@
                     </div>
                     <div class="modal-body section-container mt-0 d-flex flex-column">
                         <h6>Delivery Address</h6>
-                        <select>
+                        <select id="delivery_address" name="delivery_address" required>
                             <option disabled selected value>Choose Address</option>
                             @foreach($addresses as $address)
                                 <option value="{{$address->id}}">{{$address->name}} - {{$address->street}}, {{$address->postal_code}} {{$address->city->name}}, {{$address->city->country->name}} </option>
                             @endforeach
                         </select>
                         <h6>Subtotal before Delivery</h6>
-                        <?php $subtotal = collect($products)->sum('price') ?>
-                        <p id="subtotal_price" value="{{$subtotal}}">{{$subtotal}} €</p>
+                        <p class="subtotal_price" value="{{$total}}">{{$total}} €</p>
                         <h6>Delivery Type</h6>
-                        <select onchange="update_total(this.options[this.selectedIndex])">
+                        <select id="delivery_type" name="delivery_type" onchange="update_total(this.options[this.selectedIndex])" required>
                             <option disabled selected value>Choose Delivery Type</option>
                             @foreach($delivery_types as $delivery)
                                 <option value="{{$delivery->id}}" data="{{$delivery->price}}">{{$delivery->name}} (+{{$delivery->price}} €)</option>
                             @endforeach
                         </select>
                         <h6 class="ml-auto">Total</h6>
-                        <p id="total_price" class="ml-auto">2179,98 €</p>
+                        <input type="hidden" id="total_price_input" name="total_price" value="{{$total}}"></input>
+                        <p id="total_price" class="ml-auto">{{$total}} €</p>
                     </div>
                     <div class="modal-footer">
                         <input type="button" data-dismiss="modal" value="Close"></input>
-                        <input type="button" class="black-button" value="Purchase"></input>
+                        <input type="submit" class="black-button" value="Purchase"></input>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
 

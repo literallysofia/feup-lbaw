@@ -49,30 +49,7 @@ class AddressController extends Controller{
         }catch(\Exception $e) {
             echo $e->getMessage();
         }
-        /*$city = City::find($request->cityId);
-        $city->addresses()->attach($addAddress);
-        Auth::user()->addresses()->attach($addAddress);
-        $city->save();
-        Auth::user()->save();*/
 
-        //
-        //$addAddress->user()->associate(Auth::user());
-        //$addAddress->city()->save($city);
-        //$addAddress->user()->save(Auth::user());
-        //$addAddress->save();
-
-        /*$addAddress->city_id = $request->cityId;
-        $addAddress->user_id = Auth::id();
-        $addAddress->city()->associate($city);
-        $addAddress->user()->associate();
-        $addAddress->create();*/
-
-        /*$addAddress = DB::table('addresses')->insert(
-            ['name' => $request->addressName,'street' => $request->street,
-            'postal_code' => $request->postalCode,
-            'city_id' => $request->cityId,
-            'user_id' => Auth::id()]
-        );*/
 
         if($addAddress){
             try {

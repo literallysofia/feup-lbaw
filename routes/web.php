@@ -63,9 +63,15 @@ Route::post('contact','ContactController@sendEmail')->name('sendemail');
 Route::get('wishlist','CartWishlistController@showWishlist')->name('wishlist');
 Route::delete('wishlist', 'CartWishlistController@removeWishlistProduct');
 Route::post('wishlist', 'CartWishlistController@addWishlistProduct');
+
 Route::get('cart', 'CartWishlistController@showCart')->name('cart');
 Route::delete('cart', 'CartWishlistController@removeCartProduct');
 Route::post('cart', 'CartWishlistController@addCartProduct');
+Route::put('cart', 'CartWishlistController@updateCartProduct');
+
+//Purchase
+Route::view('checkout', 'erros/404')->name('checkout');
+Route::post('checkout', 'CartWishlistController@checkout');
 
 //Product
 Route::get('product/{product_id}', 'ProductsController@showProduct')->name('product');
@@ -81,3 +87,7 @@ Route::get('/product/{id}/edit','ProductsController@showEditProduct')->name('edi
 
 Route::delete('product/{id}/review', 'ProductsController@deleteReview')->name('review');
 Route::post('product/{id}/review', 'ProductsController@addReview');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

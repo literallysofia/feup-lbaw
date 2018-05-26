@@ -22,4 +22,8 @@ class Purchase extends Model
   public function address(){
     return $this->belongsTo('App\Address');
   }
+
+  public function deliveryType() {
+    return $this->belongsTo('App\DeliveryType');
+  }
 }

@@ -18,4 +18,8 @@ class UserPolicy {
     public function edit(User $user, User $user2) {
       return $user->id == $user2->id;
     }
+
+    public function admin(User $user) {
+      
+    }
 }
