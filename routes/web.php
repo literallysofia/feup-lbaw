@@ -71,6 +71,7 @@ Route::get('product/{product_id}', 'ProductsController@showProduct')->name('prod
 
 //Products
 Route::get('category/{category_id}','ProductsController@showProducts')->name('category_products');
+Route::get('search','ProductsController@searchProducts')->name('search_products');
 
 //Add Product
 Route::get('add_product/{category_name}','ProductsController@showAddProduct')->name('add_product');

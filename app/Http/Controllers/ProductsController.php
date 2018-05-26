@@ -8,6 +8,7 @@ use App\Product;
 use App\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class ProductsController extends Controller
 {
@@ -85,7 +86,7 @@ class ProductsController extends Controller
                 $products = $products->where('price', '<=', $price_limit);
             }
 
-            $products = $products->paginate(3)->appends([
+            $products = $products->paginate(8)->appends([
                 'sort' => request('sort'),
                 'brands' => request('brands'),
                 'price_limit' => request('price_limit'),
@@ -119,6 +120,30 @@ class ProductsController extends Controller
         }
 
         return view('pages.home', ['products' => $products]);
+    }
+
+    public function searchProducts()
+    {
+        try {
+            $keyword = Input::get('keyword');
+
+            if ($keyword) {
+
+                $search = preg_split('/\s+/', $keyword, -1, PREG_SPLIT_NO_EMPTY);
+
+                $products = Product::where(function ($q) use ($search) {
+                    foreach ($search as $value) {
+                        $q->orWhere('name', 'ILIKE', "%{$value}%");
+                    }
+                })->paginate(8);
+
+            } else return;
+
+        } catch (\Exception $e) {
+            return response(json_encode($e->getMessage()), 400);
+        }
+
+        return view('pages.search', ['keyword' => $keyword, 'products' => $products]);
     }
 
     public function showProduct($product_id)
