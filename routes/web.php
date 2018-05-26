@@ -88,5 +88,3 @@ Route::delete('product/{id}/review', 'ProductsController@deleteReview')->name('r
 Route::post('product/{id}/review', 'ProductsController@addReview');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

@@ -38,6 +38,9 @@
                     <span class="float-right">New to Sweven?
                         <a href="{{ url('register') }}">Create an account.</a>
                     </span>
+                    <span class="float-right">Forgot your password?
+                        <a href="{{ route('password.request') }}">Reset password.</a>
+                    </span>
                 </div>
             </div>
         </div>

@@ -175,6 +175,44 @@ CREATE TABLE wishlists (
 );
 
 
+/** PASSWORD RESET **/
+-- Table: public.password_resets
+
+-- DROP TABLE public.password_resets;
+DROP TABLE IF EXISTS password_resets CASCADE;
+CREATE TABLE password_resets
+(
+    id SERIAL PRIMARY KEY,
+    email character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    token character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone
+)
+WITH (OIDS = FALSE)
+TABLESPACE pg_default;
+
+ALTER TABLE password_resets
+    OWNER to postgres;
+
+-- Index: password_resets_email_index
+
+-- DROP INDEX public.password_resets_email_index;
+DROP INDEX IF EXISTS password_resets_email_index;
+CREATE INDEX password_resets_email_index
+    ON password_resets USING btree
+    (email COLLATE pg_catalog."default")
+    TABLESPACE pg_default;
+
+-- Index: password_resets_token_index
+
+-- DROP INDEX public.password_resets_token_index;
+DROP INDEX IF EXISTS password_resets_token_index;
+CREATE INDEX password_resets_token_index
+    ON password_resets USING btree
+    (token COLLATE pg_catalog."default")
+    TABLESPACE pg_default;
+
+
 /** TRIGGERS **/
 
 DROP FUNCTION IF EXISTS remove_wishlist_product() CASCADE;
@@ -302,7 +340,7 @@ INSERT INTO users (name, username, email, password) VALUES ('Ulises Reubel', 'ur
 INSERT INTO users (name, username, email, password) VALUES ('Edy MacMenamin', 'emacmenaminh', 'emacmenaminh@ed.gov', 'pvwtW3DT');
 INSERT INTO users (name, username, email, password) VALUES ('Zachariah Chadburn', 'zchadburni', 'zchadburni@typepad.com', 'Wcjj8vZSA');
 INSERT INTO users (name, username, email, password) VALUES ('Jorry MacAndie', 'jmacandiej', 'jmacandiej@wordpress.com', 'Q9oAsh5');
-INSERT INTO users (name, username, email, password) VALUES ('Test', 'test', 'test@test.com', '$2y$10$v.JHOjwkOhrK1ZsTY4Mgf.9zY.7MziX8KhtgofT6kaQpNvx1j07NO'); /*password: testtest*/
+INSERT INTO users (name, username, email, password) VALUES ('Test', 'test', 'sweventechshop@gmail.com', '$2y$10$v.JHOjwkOhrK1ZsTY4Mgf.9zY.7MziX8KhtgofT6kaQpNvx1j07NO'); /*password: testtest*/
 
 
 /*ADDRESSES*/
