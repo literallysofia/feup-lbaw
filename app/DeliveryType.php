@@ -8,6 +8,10 @@ class DeliveryType extends Model
   // Don't add create and update timestamps in database.
   public $timestamps  = false;
   protected $table = 'delivery_types';
+
+  public function purchases() {
+    return $this->hasMany('App\Purchase');
+  }
 }
 
 ?>

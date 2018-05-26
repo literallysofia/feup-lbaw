@@ -2,6 +2,7 @@ function increment(obj, quantity_aval) {
     let quantity = $(obj).parent().prev();
     if(quantity.val() < 1 || quantity.val() >= quantity_aval) return;
     quantity.val(parseInt(quantity.val())+1);
+    update_quantity(quantity);
     return false;
 }
 
@@ -9,38 +10,53 @@ function decrement(obj, quantity_aval) {
     let quantity = $(obj).parent().next();
     if(quantity.val() <= 1) return;
     quantity.val(parseInt(quantity.val())-1);
+    update_quantity(quantity);
     return false;
 }
 
-
 function update_total(selected_obj){
-    let delivery_price = selected_obj.getAttribute('data');
-    let subtotal = document.getElementById("subtotal_price");
-    if(subtotal != null && subtotal.getAttribute('value') != null && delivery_price != null){
-        subtotal = subtotal.getAttribute('value');
-        $("#total_price").html((parseFloat(delivery_price)+parseFloat(subtotal))+" €");
+    let delivery_price = $(selected_obj).attr('data');
+    let subtotal = $(".subtotal_price:eq(1)").attr("value");
+    if (typeof subtotal !== typeof undefined && subtotal !== false && typeof delivery_price !== typeof undefined && delivery_price !== false) {
+        let value = parseFloat(parseFloat(delivery_price)+parseFloat(subtotal)).toFixed(2)
+        $("#total_price").html(value+" €");
+        $("#total_price_input").val(value);
     }
 }
 
 
-function update_quantity() {
+function update_quantity(selected_obj) {
     
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+    let product_data = {};
+    product_data.id = parseInt($(selected_obj).attr("data-id"));
+    product_data.quantity = parseInt($(selected_obj).val());
+
+    let update_product = "cart";
     
     $.ajax({
-        type: "PATCH",
-        url: delete_product,
+        type: "PUT",
+        url: update_product,
         data: product_data,
         dataType: 'text',
         success: function (data) {
+            
             let final = JSON.parse(data);
-            alert("Done: " + final.Message);
-            removeDesignProduct(obj);
-            $("#subtotal_price").html(final.Price+"€");
+
+            /* update subtotal variables */
+            let value = parseFloat(final.Price).toFixed(2);
+            $(".subtotal_price").text(value + " €");
+            var subtotal = $(".subtotal_price:eq(1)").attr("value");
+            if (typeof subtotal !== typeof undefined && subtotal !== false) {
+                $(".subtotal_price:eq(1)").attr('value', value);
+            }
+            $("#total_price").html(value+" €");
+            $("#total_price_input").val(value);
         },
         error: function (data) {
             let final = JSON.parse(data.responseText);
@@ -48,19 +64,36 @@ function update_quantity() {
             console.log('Error: ', data);
         }
     });
+    return false;
 }
 
 $(document).ready(function(){
     
     isEmpty();
 
-    $('#quantity').on('change blur',function(){
+    $('.item_quantity').on('change blur',function(){
 
         if($(this).val().trim().length === 0){
           $(this).val(1);
         } else {
+            let quantity = parseInt($(this).val());
+            if(quantity < 0) {
+                $(this).val(1);
+            } else if(quantity > parseInt($(this).attr("data-value"))) {
+                alert("There's not enough quantity of this product");
+                $(this).val(1);
+            }
         }
+        update_quantity(this);
+
     });
+
+    $(document).bind('ajaxStart', function(){
+        $("#loader_page").show();
+    }).bind('ajaxStop', function(){
+        $("#loader_page").hide();
+    });
+
 });
 
 function isEmpty() {

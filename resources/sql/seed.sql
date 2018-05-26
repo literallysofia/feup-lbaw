@@ -123,6 +123,7 @@ CREATE TABLE purchases (
     total double precision NOT NULL,
     "user_id" integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     "address_id" integer NOT NULL REFERENCES addresses(id) ON DELETE CASCADE,
+    "delivery_type_id" integer NOT NULL REFERENCES delivery_types(id) ON DELETE CASCADE,
     status text DEFAULT 'Processing'::text NOT NULL,
     CONSTRAINT status CHECK (status IN ('Processing', 'Shipped', 'Delivered')),
     CONSTRAINT total CHECK ((total > (0)::double precision))
@@ -176,7 +177,7 @@ CREATE TABLE wishlists (
 
 /** TRIGGERS **/
 
-DROP FUNCTION IF EXISTS remove_wishlist_product();
+DROP FUNCTION IF EXISTS remove_wishlist_product() CASCADE;
 CREATE FUNCTION remove_wishlist_product() RETURNS TRIGGER AS
 $$
 BEGIN
@@ -188,11 +189,57 @@ END
 $$
 LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS remove_wishlist_product ON product_carts;  
+DROP TRIGGER IF EXISTS remove_wishlist_product ON product_carts CASCADE;  
 CREATE TRIGGER remove_wishlist_product AFTER INSERT
 ON product_carts
 FOR EACH ROW EXECUTE PROCEDURE remove_wishlist_product();
 
+
+DROP FUNCTION IF EXISTS check_product_quantities() CASCADE;
+CREATE FUNCTION check_product_quantities() RETURNS TRIGGER AS
+$$
+BEGIN
+	IF 
+		NOT EXISTS (SELECT quantity_available FROM products WHERE id = New.product_id AND quantity_available >= New.quantity) 
+	THEN
+		RAISE EXCEPTION 'You can’t buy % items of product %' , New.quantity, New.product_id;
+	END IF;
+	RETURN NEW;
+END
+$$
+LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS check_product_quantities ON product_carts CASCADE;  
+CREATE TRIGGER check_product_quantities BEFORE INSERT OR UPDATE
+ON product_carts
+FOR EACH ROW
+EXECUTE PROCEDURE check_product_quantities();
+
+
+DROP TRIGGER IF EXISTS check_product_quantities ON product_purchase CASCADE;  
+CREATE TRIGGER check_product_quantities BEFORE INSERT OR UPDATE
+ON product_purchase
+FOR EACH ROW
+EXECUTE PROCEDURE check_product_quantities();
+
+
+DROP FUNCTION IF EXISTS update_available_products() CASCADE;
+CREATE FUNCTION update_available_products() RETURNS TRIGGER AS
+$$
+BEGIN
+  UPDATE products
+  SET quantity_available = quantity_available - New.quantity
+  WHERE id = New."product_id";
+  RETURN NEW;
+END
+$$
+LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS update_available_products ON product_purchase CASCADE;  
+CREATE TRIGGER update_available_products AFTER INSERT
+ON product_purchase 
+FOR EACH ROW
+EXECUTE PROCEDURE update_available_products();
 
 /** POPULATE **/
 
@@ -452,23 +499,24 @@ INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (17, 6, 3);
 INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (15, 7, 1);
 INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (12, 12, 1);
 INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (13, 4, 2);
+INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (21, 4, 90);
 
 /*PURCHASES*/
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-08-07', 2542.42, 21, 4, 'Processing');
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-10-31', 1072.94, 21, 1, 'Shipped');
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-10-04', 2878.82, 21, 1, 'Delivered');
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-08-18', 1119.94, 21, 16, 'Processing');
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-04-11', 1115.11, 8, 9, 'Shipped');
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-12-12', 4507.83, 8, 9, 'Shipped');
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2018-01-20', 899.21, 14, 18, 'Processing');
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2018-02-28', 3471.12, 16, 13, 'Processing');
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-02-22', 625.19, 19, 6, 'Shipped');
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-04-02', 4929.18, 13, 19, 'Delivered');
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-10-10', 3464.1, 3, 2, 'Shipped');
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-07-31', 4273.67, 7, 1, 'Processing');
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-11-18', 538.7, 9, 17, 'Processing');
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-06-15', 3259.77, 14, 18, 'Delivered');
-INSERT INTO purchases (date, total, "user_id", "address_id", status) VALUES ('2017-02-15', 1201.51, 10, 20, 'Shipped');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-08-07', 2542.42, 21, 4, 2, 'Processing');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-10-31', 1072.94, 21, 1, 2, 'Shipped');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-10-04', 2878.82, 21, 1, 3, 'Delivered');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-08-18', 1119.94, 21, 16, 3, 'Processing');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-04-11', 1115.11, 8, 9, 2, 'Shipped');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-12-12', 4507.83, 8, 9, 3, 'Shipped');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2018-01-20', 899.21, 14, 18, 2, 'Processing');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2018-02-28', 3471.12, 16, 13, 1, 'Processing');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-02-22', 625.19, 19, 6, 1, 'Shipped');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-04-02', 4929.18, 13, 19, 2, 'Delivered');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-10-10', 3464.1, 3, 2, 3, 'Shipped');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-07-31', 4273.67, 7, 1, 1, 'Processing');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-11-18', 538.7, 9, 17, 2, 'Processing');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-06-15', 3259.77, 14, 18, 3, 'Delivered');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-02-15', 1201.51, 10, 20, 2, 'Shipped');
 
 /*PRODUCT-PURCHASES*/
 INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (1, 1, 1, 1106.96);
