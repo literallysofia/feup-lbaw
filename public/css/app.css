@@ -823,7 +823,8 @@ main .register-form {
     color: #6174AA; }
   main .register-form form {
     margin: 2em 0; }
-    main .register-form form input[type="button"], main .register-form form input[type="submit"] {
+    main .register-form form input[type="button"],
+    main .register-form form input[type="submit"] {
       min-width: 100%; }
     main .register-form form #register {
       margin-top: 0.5em; }

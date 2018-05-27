@@ -11,10 +11,6 @@
 |
 */
 
-/*Route::get('/', function () {
-    return redirect('homepage');
-});*/
-
 //Homepage
 Route::get('/', 'ProductsController@showHighlights');
 

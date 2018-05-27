@@ -39,4 +39,5 @@
         </nav>
     </div>
 </main>
+
 @endsection
