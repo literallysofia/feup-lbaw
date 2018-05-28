@@ -68,8 +68,8 @@
             <input type="password" class="form-control" id="password_confirmation" placeholder="Repeat New Password">
           </div>
           <div class="d-flex flex-column">
-            <input id="btn-saveProfile" type="submit" value="Save"></input>
-            <input type="button" class="black-button mt-3" value="Delete Account"></input>
+            <input id="btn-saveProfile" type="submit" value="Save">
+            <input type="button" class="black-button mt-3" value="Delete Account">
           </div>
         </form>
       </div>
@@ -139,8 +139,8 @@
               </select>
             </div>
             <div class="modal-footer">
-              <input type="button" data-dismiss="modal" value="Close"></input>
-              <input type="submit" class="black-button" value="Save"></input>
+              <input type="button" data-dismiss="modal" value="Close">
+              <input type="submit" class="black-button" value="Save">
             </div>
           </form>
         </div>

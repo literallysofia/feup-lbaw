@@ -30,20 +30,20 @@
 </div>
 
 <main>
-<div class="mt-5 container">
-    <h2>Highlights</h2>
-    <div class="row">
-    @foreach($products as $product)
-        <div class="mt-4 col-md-6 col-lg-3">
-            <div class="box d-flex flex-column align-items-center">
-                <a href="{{route('product', ['product_id'=> $product->id])}}"><img src="{{ $product->photos->get(0)->path }}" alt="Item 1" class="img-fluid" style="cursor:pointer;"></a>
-                <a href="{{route('product', ['product_id'=> $product->id])}}"><h6 style="cursor:pointer;">{{$product->name}}</h6></a>
-                <span>{{$product->price}} €</span>
-                <input type="button" value="Add To Cart">
+    <div class="mt-5 container">
+        <h2>Highlights</h2>
+        <div class="row">
+        @foreach($products as $product)
+            <div class="mt-4 col-md-6 col-lg-3">
+                <div class="box d-flex flex-column align-items-center">
+                    <a href="{{route('product', ['product_id'=> $product->id])}}"><img src="{{ $product->photos->get(0)->path }}" alt="Item 1" class="img-fluid" style="cursor:pointer;"></a>
+                    <a href="{{route('product', ['product_id'=> $product->id])}}"><h6 style="cursor:pointer;">{{$product->name}}</h6></a>
+                    <span>{{$product->price}} €</span>
+                    <input type="button" value="Add To Cart">
+                </div>
             </div>
+        @endforeach
         </div>
-    @endforeach
     </div>
-</div>
 </main>
 @endsection

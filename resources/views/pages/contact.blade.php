@@ -38,7 +38,7 @@
                             <textarea class="form-control" id="message" name="message" rows="5" placeholder="Explain your problems or concerns."></textarea>
                         </div>
 
-                        <input type="submit" class="black-button" value="Send"></input>
+                        <input type="submit" class="black-button" value="Send">
                     </form>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12 d-flex flex-column contact-info">

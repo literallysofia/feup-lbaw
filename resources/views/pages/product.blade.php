@@ -60,16 +60,12 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-
     <section class="mt-5">
         <div class="container">
-
             <h2>Tech Specs</h2>
-
             <div class="section-container">
                 <?php $properties = $product->category_properties ?>
                 @for($i=0; $i<count($properties); $i++)
@@ -94,8 +90,6 @@
             </div>
         </div>
     </section>
-
-
 
     <section class="mt-5">
         <div class="container">
@@ -282,4 +276,5 @@
         </div>
     </div>
 </main>
+
 @endsection

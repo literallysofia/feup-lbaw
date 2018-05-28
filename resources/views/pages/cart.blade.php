@@ -49,7 +49,7 @@
                     <p class="subtotal_price">{{$total}} €</p>
                 </div>
                 <div id="checkout_cart" class="d-flex flex-row justify-content-end">
-                    <input type="button" class="black-button" value="Checkout" data-toggle="modal" data-target="#checkoutModal"></input>
+                    <input type="button" class="black-button" value="Checkout" data-toggle="modal" data-target="#checkoutModal">
                 </div>
                 <p id="info_message">*The stock may change during this procedure.</p>
             </div>
@@ -83,18 +83,16 @@
                             @endforeach
                         </select>
                         <h6 class="ml-auto">Total</h6>
-                        <input type="hidden" id="total_price_input" name="total_price" value="{{$total}}"></input>
+                        <input type="hidden" id="total_price_input" name="total_price" value="{{$total}}">
                         <p id="total_price" class="ml-auto">{{$total}} €</p>
                     </div>
                     <div class="modal-footer">
-                        <input type="button" data-dismiss="modal" value="Close"></input>
-                        <input type="submit" class="black-button" value="Purchase"></input>
+                        <input type="button" data-dismiss="modal" value="Close">
+                        <input type="submit" class="black-button" value="Purchase">
                     </div>
                 </form>
             </div>
         </div>
-
-
-
     </main>
+    
 @endsection
