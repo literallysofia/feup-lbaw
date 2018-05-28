@@ -41,12 +41,16 @@ Route::post('/profile/address', 'AddressController@addAddressResponse');
 Route::put('/profile/address', 'AddressController@deleteAddressResponse');
 
 //Admin
-Route::get('admin', 'AdminController@showAdmin')->name('admin');
+Route::get('admin', 'AdminController@showAdmin')->name('admin')->middleware('auth', 'admin');
+Route::view('/admin/property', 'errors/404');
 Route::post('admin/property', 'AdminController@addPropertyResponse');
 Route::delete('admin/property', 'AdminController@deletePropertyResponse');
+Route::view('/admin/category', 'errors/404');
 Route::post('admin/category', 'AdminController@addCategoryResponse');
 Route::put('admin/category', 'AdminController@deleteCategoryResponse');
+Route::view('/admin/category_properties', 'errors/404');
 Route::post('admin/category_properties', 'AdminController@addCategoryPropertiesResponse');
+Route::view('/admin/faq', 'errors/404');
 Route::post('admin/faq', 'AdminController@addFaq');
 Route::delete('admin/faq', 'AdminController@deleteFaq');
 

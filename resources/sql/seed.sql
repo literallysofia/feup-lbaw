@@ -348,6 +348,7 @@ INSERT INTO users (name, username, email, password) VALUES ('Edy MacMenamin', 'e
 INSERT INTO users (name, username, email, password) VALUES ('Zachariah Chadburn', 'zchadburni', 'zchadburni@typepad.com', 'Wcjj8vZSA');
 INSERT INTO users (name, username, email, password) VALUES ('Jorry MacAndie', 'jmacandiej', 'jmacandiej@wordpress.com', 'Q9oAsh5');
 INSERT INTO users (name, username, email, password) VALUES ('Test', 'test', 'sweventechshop@gmail.com', '$2y$10$v.JHOjwkOhrK1ZsTY4Mgf.9zY.7MziX8KhtgofT6kaQpNvx1j07NO'); /*password: testtest*/
+INSERT INTO users (name, username, email, password) VALUES ('Sweven Tech Shop', 'swevenAdmin', 'sweven@sweven.com', '$2y$10$3Wc9dkxovmxwQZObfnJfEuOiTDCPPNPL6HdYKpQ/I7qbQrP9U58AK'); /*password: Sweven61*/
 
 
 /*ADDRESSES*/
@@ -377,6 +378,8 @@ INSERT INTO admins ("user_id") VALUES (1);
 INSERT INTO admins ("user_id") VALUES (2);
 INSERT INTO admins ("user_id") VALUES (3);
 INSERT INTO admins ("user_id") VALUES (4);
+INSERT INTO admins ("user_id") VALUES (22);
+
 
 /*CATEGORIES*/
 INSERT INTO categories (name, "is_navbar_category") VALUES ('Smartphones', true);
