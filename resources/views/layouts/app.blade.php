@@ -66,7 +66,7 @@
                     <li>
                         <form class="form-inline search-container d-none d-md-flex" action="/search" method="get">
                             <i class="fas fa-search search-icon"></i>
-                            <input class="form-control mr-sm-2" type="text" name="keyword" placeholder="Search">
+                            <input class="form-control mr-sm-2" type="text" name="keyword" placeholder="Search" required>
                         </form>
                     </li>
                     <!-- ICONS -->

@@ -1,7 +1,6 @@
 DROP DOMAIN IF EXISTS "Today" CASCADE;
 CREATE DOMAIN "Today" AS date NOT NULL DEFAULT ('now'::text)::date;
 
-
 DROP TABLE IF EXISTS countries CASCADE;
 CREATE TABLE countries (
     id serial PRIMARY KEY,
@@ -211,6 +210,14 @@ CREATE INDEX password_resets_token_index
     ON password_resets USING btree
     (token COLLATE pg_catalog."default")
     TABLESPACE pg_default;
+
+-- Index: product_title_index
+
+-- DROP INDEX public.product_title_index;
+DROP INDEX IF EXISTS product_title_index;
+CREATE INDEX product_title_index
+    ON products USING GIN
+    (to_tsvector('english', name));
 
 
 /** TRIGGERS **/

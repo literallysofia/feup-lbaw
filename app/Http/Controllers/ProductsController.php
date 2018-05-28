@@ -126,18 +126,7 @@ class ProductsController extends Controller
     {
         try {
             $keyword = Input::get('keyword');
-
-            if ($keyword) {
-
-                $search = preg_split('/\s+/', $keyword, -1, PREG_SPLIT_NO_EMPTY);
-
-                $products = Product::where(function ($q) use ($search) {
-                    foreach ($search as $value) {
-                        $q->orWhere('name', 'ILIKE', "%{$value}%");
-                    }
-                })->paginate(8);
-
-            } else return;
+            $products = Product::whereRaw("name @@ plainto_tsquery('" . $keyword . "')")->paginate(8);
 
         } catch (\Exception $e) {
             return response(json_encode($e->getMessage()), 400);
