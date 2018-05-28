@@ -75,18 +75,26 @@
                         </a>
                     </li>
                     @if (Auth::check())
-                        @if (Route::currentRouteName() == 'profile')
+                        @if (Route::currentRouteName() == 'profile' || Route::currentRouteName() == 'admin')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">
                                 <i class="fas fa-power-off"></i>
                             </a>
                         </li>
                         @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('profile', [Auth::id()]) }}">
-                                <i class="fas fa-user"></i>
-                            </a>
-                        </li>
+                            @if(Auth::user()->isAdmin())
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin') }}">
+                                        <i class="fas fa-user"></i>
+                                    </a>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('profile', [Auth::id()]) }}">
+                                        <i class="fas fa-user"></i>
+                                    </a>
+                                </li>
+                            @endif
                         @endif
                     @else
                     <li class="nav-item">

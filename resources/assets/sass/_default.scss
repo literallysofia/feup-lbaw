@@ -134,11 +134,17 @@ main {
     }
 }
 
+div .modal-footer{
+    border-top:none;
+}
+
 @media (max-width: 767px) {
     body {
         padding-top: 126px;
     }
 }
+
+
 
 
 
