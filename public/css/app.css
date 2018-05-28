@@ -299,11 +299,9 @@ nav .pagination {
     margin-top: 2em; }
   .filters input {
     cursor: pointer; }
-  .filters .form-check-label > p {
+  .filters .form-check-label {
     font-size: 0.9em;
-    font-weight: normal;
-    margin: 0;
-    padding-top: 0.2em; }
+    font-weight: normal; }
   .filters .price-slider input {
     width: 100%; }
   .filters .price-slider span {

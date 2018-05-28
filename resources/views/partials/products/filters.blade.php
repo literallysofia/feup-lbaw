@@ -17,7 +17,7 @@ if ($price_limit === NULL) {
             @else
                 <input class="form-check-input" type="checkbox" name="brands[]" value="{{ $brand }}">
             @endif
-                <p>{{ $brand }}</p>
+                {{ $brand }}
             </label>
         </div>
         @endforeach
@@ -33,7 +33,7 @@ if ($price_limit === NULL) {
                 @else
                     <input class="form-check-input" type="checkbox" name="properties[]" value="{{ $property }};{{ $value }}">
                 @endif
-                    <p>{{ $value }}</p>
+                    {{ $value }}
                 </label>
             </div>
             @endforeach
