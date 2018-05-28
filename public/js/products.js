@@ -40,17 +40,7 @@ $(document).ready(function () {
         });
         var brands = arr.join(',');
 
-        var properties = {};
-        $('input[name="properties[]"]:checked').each(function (i) {
-            var str = $(this).val();
-            var res = str.split(';');
-            if (properties[res[0]] === undefined) {
-                properties[res[0]] = [];
-            }
-            properties[res[0]].push(res[1]);
-        });
-
-        filterProducts(url, price, brands, properties);
+        filterProducts(url, price, brands);
     });
 });
 
@@ -71,7 +61,7 @@ function getProducts(my_url) {
     });
 }
 
-function filterProducts(my_url, price, brands, properties) {
+function filterProducts(my_url, price, brands) {
 
     ajaxSetup();
 
@@ -81,8 +71,7 @@ function filterProducts(my_url, price, brands, properties) {
         dataType: 'json',
         data: {
             'price_limit': price,
-            'brands': brands,
-            'properties': JSON.stringify(properties)
+            'brands': brands
         },
         success: function (response) {
             ajaxSuccess(response);

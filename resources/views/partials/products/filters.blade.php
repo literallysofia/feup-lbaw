@@ -23,23 +23,6 @@ $brand_arr = explode( ',', $brands);
         </div>
         @endforeach
     @endif
-    @if (count($properties_filter) >= 1)
-        @foreach($properties_filter as $property => $values)
-            <h6>{{ $property }}</h6>
-            @foreach($values as $value)
-            <div class="form-check">
-                <label class="form-check-label">
-                @if(!empty($properties) && array_key_exists($property, $properties))
-                    <input class="form-check-input" type="checkbox" name="properties[]" value="{{ $property }};{{ $value }}" checked>
-                @else
-                    <input class="form-check-input" type="checkbox" name="properties[]" value="{{ $property }};{{ $value }}">
-                @endif
-                    {{ $value }}
-                </label>
-            </div>
-            @endforeach
-        @endforeach
-    @endif
     <h6>Max Price</h6>
     <div class="price-slider">
         <input class="price-slider-range" type="range" value="{{ $price }}" min="0" max="{{ $price_max }}">
