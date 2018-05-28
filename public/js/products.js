@@ -34,10 +34,11 @@ $(document).ready(function () {
         var url = $(this).attr('href');
         var price = $('.price-slider-value').html().split(' ')[0];
 
-        var brands = [];
+        var arr = [];
         $('input[name="brands[]"]:checked').each(function (i) {
-            brands[i] = $(this).val();
+            arr[i] = $(this).val();
         });
+        var brands = arr.join(',');
 
         var properties = {};
         $('input[name="properties[]"]:checked').each(function (i) {
@@ -48,7 +49,6 @@ $(document).ready(function () {
             }
             properties[res[0]].push(res[1]);
         });
-        console.log(properties);
 
         filterProducts(url, price, brands, properties);
     });
@@ -56,23 +56,14 @@ $(document).ready(function () {
 
 function getProducts(my_url) {
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+    ajaxSetup();
 
     $.ajax({
         url: my_url,
         type: 'GET',
         dataType: 'json',
         success: function (response) {
-            $('#dropdown-sortby').html(response.dropdown);
-            $('#filter-listing').html(response.filters);
-            $('#product-listing').html(response.products);
-            $('.pagination-links').html(response.links);
-            window.history.pushState('', '', response.url);
-            rangeSlider();
+            ajaxSuccess(response);
         },
         error: function () {
             alert('Products could not be loaded.');
@@ -82,11 +73,7 @@ function getProducts(my_url) {
 
 function filterProducts(my_url, price, brands, properties) {
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+    ajaxSetup();
 
     $.ajax({
         url: my_url,
@@ -94,19 +81,37 @@ function filterProducts(my_url, price, brands, properties) {
         dataType: 'json',
         data: {
             'price_limit': price,
-            'brands': JSON.stringify(brands),
+            'brands': brands,
             'properties': JSON.stringify(properties)
         },
         success: function (response) {
-            $('#dropdown-sortby').html(response.dropdown);
-            $('#filter-listing').html(response.filters);
-            $('#product-listing').html(response.products);
-            $('.pagination-links').html(response.links);
-            window.history.pushState('', '', response.url);
-            rangeSlider();
+            ajaxSuccess(response);
         },
         error: function () {
             alert('Products could not be loaded.');
         }
     });
+}
+
+function ajaxSetup() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+}
+
+function ajaxSuccess(response) {
+    $('#dropdown-sortby').html(response.dropdown);
+    $('#filter-listing').html(response.filters);
+    $('#product-listing').html(response.products);
+    $('.pagination-links').html(response.links);
+
+    if (response.total === 1)
+        $('#product-total').html('1 Product');
+    else
+        $('#product-total').html(response.total + ' Products');
+
+    window.history.pushState('', '', response.url);
+    rangeSlider();
 }

@@ -4,6 +4,7 @@ if ($price_limit === NULL) {
 } else {
     $price = $price_limit;
 }
+$brand_arr = explode( ',', $brands);
 @endphp
 <div class="filters d-flex flex-column">
     <h5>Filters</h5>
@@ -12,7 +13,7 @@ if ($price_limit === NULL) {
         @foreach($brands_filter as $brand)
         <div class="form-check">
             <label class="form-check-label">
-            @if(!empty($brands) && in_array($brand, $brands))
+            @if(!empty($brand_arr) && in_array($brand, $brand_arr))
                 <input class="form-check-input" type="checkbox" name="brands[]" value="{{ $brand }}" checked>
             @else
                 <input class="form-check-input" type="checkbox" name="brands[]" value="{{ $brand }}">

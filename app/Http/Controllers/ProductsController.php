@@ -54,7 +54,7 @@ class ProductsController extends Controller
             // BASIC FILTERS //
             $sort = $request->get('sort', null);
             $price_limit = $request->get('price_limit', null);
-            $brands = $request->has('brands') ? json_decode($request->brands) : null;
+            $brands = $request->get('brands', null);
             $properties = $request->has('properties') ? json_decode($request->properties) : null;
 
             // APPLY QUERIES //
@@ -72,8 +72,9 @@ class ProductsController extends Controller
                 }
             }
 
-            if (!empty($brands)) {
-                $products = $products->whereIn('brand', $brands);
+            if ($brands) {
+                $brand_arr = explode( ',', $brands);
+                $products = $products->whereIn('brand', $brand_arr);
             }
 
             /*if (!empty($properties)) {
@@ -86,7 +87,7 @@ class ProductsController extends Controller
                 $products = $products->where('price', '<=', $price_limit);
             }
 
-            $products = $products->paginate(8)->appends([
+            $products = $products->paginate(3)->appends([
                 'sort' => request('sort'),
                 'brands' => request('brands'),
                 'price_limit' => request('price_limit'),
@@ -102,7 +103,8 @@ class ProductsController extends Controller
                 'filters' => view('partials.products.filters', ['category' => $category, 'brands_filter' => $brands_filter, 'properties_filter' => $properties_filter, 'brands' => $brands, 'properties' => $properties, 'price_max' => $price_max, 'sort' => $sort, 'price_limit' => $price_limit])->render(),
                 'products' => view('partials.products.product', ['products' => $products])->render(),
                 'links' => view('partials.products.pagination', ['products' => $products])->render(),
-                'url' => $request->fullUrl(),
+                'url' => urldecode($request->fullUrl()),
+                'total' => $products->total()
             );
             return response(json_encode($response), 200);
         }
@@ -113,7 +115,7 @@ class ProductsController extends Controller
     public function showHighlights()
     {
         try {
-            $products = Product::orderBy('id', 'asc')->take(8)->get();
+            $products = Product::orderBy('id', 'desc')->take(8)->get();
 
         } catch (\Exception $e) {
             return response(json_encode($e->getMessage()), 400);

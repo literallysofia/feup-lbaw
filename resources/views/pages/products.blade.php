@@ -12,7 +12,11 @@
     <div class="container">
     <div class="products d-flex justify-content-between align-items-center flex-wrap">
             <h1>{{ $category->name }}</h1>
-            <span>{{ $products->total() }} Products</span>
+            @if($products->total() == 1)
+                <span id="product-total">1 Product</span>
+            @else
+                <span id="product-total">{{ $products->total() }} Products</span>
+            @endif
             <div class="dropdown show">
                 <a id="dropdownSort" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort by</a>
                 <div id="dropdown-sortby" class="dropdown-menu" aria-labelledby="dropdownSort">
