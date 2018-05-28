@@ -132,13 +132,13 @@ function saveCategoryAction(){
                     
                     if(data.category.is_navbar_category == "true"){
 
-                        /*var custom_location = ' "<?php echo route(" + ", ['id' => $category->id]); ?>";';
+                        //var custom_location = "{{ route('category_products', ['id' => $category->id]) }};
 
 
-                        dropDownMenu.innerHTML+= '<a class="dropdown-item" href='+ custom_location + '>' +
-                        'href="{{ route("category_products", ["id" => ' +
+                        /*dropDownMenu.innerHTML+= '<a class="dropdown-item"' +
+                        'href=<?php echo route(\'category_products\', [\'id\' = > ' +
                         data.category.id +
-                        ']) }}"> ' + 
+                        ']);?> ' + 
                         data.category.name + 
                         ' </a>';
 

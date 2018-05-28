@@ -165,4 +165,49 @@ class AdminController extends Controller
 
     }
 
+    public function addFaq(Request $request)
+    {
+
+        $addFaq = new Faq;
+        $addFaq->question = $request->question;
+        $addFaq->answer = $request->answer;
+        
+        try {
+            $addFaq->save();
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+
+        if ($addFaq) {
+            try {
+                $newFaq = Faq::where([['question', $request->question],['answer', $request->answer]])->first();
+            } catch (\Exception $e) {
+                $e->getMessage();
+            }
+        }
+
+        return response()->json(array('faq' => $newFaq), 200);
+
+    }
+
+    public function deleteFaq(Request $request)
+    {
+
+        $faq = Faq::findOrFail($request->faqId);
+
+        try {
+            $faq->delete();
+        } catch (\Exception $e) {
+            $e->getMessage();
+        }
+
+        return response()->json('Success', 200);
+
+    }
+
+
+
+
+
+
 }

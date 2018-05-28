@@ -131,7 +131,7 @@
             <div id="manage_faqs_title" class="jumptarget">
                 <h2>FAQs</h2>
             </div>
-            <div class="cards">
+            <div class="cards faqs-cards">
                 @foreach ($faqs as $faq)
                     <div class="mt-4">
                         <div id="faq-{{$faq->id}}" class="box d-flex flex-column question-card">
@@ -157,14 +157,17 @@
                     <h5 class="modal-title" id="exampleModalLongTitle">Add FAQ</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
+
                 <div class="modal-body section-container mt-0">
-                    <input type="text" id="new_question" placeholder="Question">
-                    <textarea rows="5" placeholder="Answer"></textarea>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" data-dismiss="modal" value="Close">
-                    <input type="button" class="black-button" value="Save">
-                </div>
+                    <form  id="add_faq_form">
+                        <input type="text" class="pt-1 pb-1" id="new_question" placeholder="Question">
+                        <textarea class="pt-2" rows="5" id="new_answer" placeholder="Answer"></textarea>
+                        <div class="modal-footer">
+                            <input type="button" data-dismiss="modal" value="Close">
+                            <input type="submit" class="black-button" value="Save">
+                        </div>
+                    </form>
+                </div> 
             </div>
         </div>
     </div>

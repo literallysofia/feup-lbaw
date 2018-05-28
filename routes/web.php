@@ -47,6 +47,8 @@ Route::delete('admin/property', 'AdminController@deletePropertyResponse');
 Route::post('admin/category', 'AdminController@addCategoryResponse');
 Route::put('admin/category', 'AdminController@deleteCategoryResponse');
 Route::post('admin/category_properties', 'AdminController@addCategoryPropertiesResponse');
+Route::post('admin/faq', 'AdminController@addFaq');
+Route::delete('admin/faq', 'AdminController@deleteFaq');
 
 //Static pages
 Route::get('faq','FaqController@showFaqs')->name('faq');
