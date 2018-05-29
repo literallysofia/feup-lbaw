@@ -6,6 +6,8 @@
 <script type="text/javascript" src={{ asset('js/propertyRequest.js') }} defer></script>
 <script type="text/javascript" src={{ asset('js/categoryRequest.js') }} defer></script>
 <script type="text/javascript" src={{ asset('js/faqsRequest.js') }} defer></script>
+<script type="text/javascript" src={{ asset('js/updatePurchases.js') }} defer></script>
+
 
 <main>
     <div class="container">

@@ -166,8 +166,8 @@
             </tr>
           </thead>
           <tbody>
-            @each('partials.purchase', $shipped_purchases,'purchase')
             @each('partials.purchase', $processing_purchases,'purchase')
+            @each('partials.purchase', $shipped_purchases,'purchase')            
           </tbody>
         </table>
       </div>

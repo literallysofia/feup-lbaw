@@ -22,7 +22,15 @@
     <td colspan="4" class="collapse-line">
         <div id= <?php echo 'admin-purchase-'; echo $purchase->id;?> class="collapse-div collapse">
         <p class="accordion_list_title">Products</p>
-        @each('partials.purchase_product', $purchase->products,'purchase_product')        
+        @each('partials.purchase_product', $purchase->products,'purchase_product')
+        <p class="accordion_list_title mt-3">Delivery Type</p>
+        <div class="container">
+            <div class="row">
+                <p class="col-lg-auto col-md-auto col-sm-auto">{{$purchase->deliverytype->name}}</p>
+                <hr class="col">
+                <p class="col-lg-auto col-md-auto col-sm-auto">{{$purchase->deliverytype->price}}€</p>
+            </div>
+        </div>        
         <p class="accordion_list_title mt-3">Address</p>
         <p>{{$purchase->address->street}},
             {{$purchase->address->postal_code}},
