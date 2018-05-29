@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Sweven')
+
 @section('content')
 
 <div id="carouselHomepage" class="carousel slide" data-ride="carousel">
@@ -10,13 +12,13 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="{{ asset('../assets/slider1.jpg') }}" alt="First slide">
+            <img class="d-block w-100" src="{{ asset('../assets/slider1.jpg') }}" alt="Summer Offers: up to 30% off">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="{{ asset('../assets/slider2.jpg') }}" alt="Second slide">
+            <img class="d-block w-100" src="{{ asset('../assets/slider2.jpg') }}" alt="iPhone X: shop now">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="{{ asset('../assets/slider3.jpg') }}" alt="Third slide">
+            <img class="d-block w-100" src="{{ asset('../assets/slider3.jpg') }}" alt="Surface Pro: shop now">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselHomepage" role="button" data-slide="prev">

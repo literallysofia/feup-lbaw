@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Contact')
+@section('title', 'Sweven | Contact Us')
 
 @section('content')
 
@@ -23,7 +23,7 @@
                         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                         <div class="form-group">
                             <label for="name">YOUR NAME (required)</label>
-                            <input type="text" class="form-control" id="name"  pattern="^[A-Z][a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" name="name" placeholder="Full Name" required>
+                            <input type="text" class="form-control" id="name" pattern="^[A-Z][a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" name="name" placeholder="Full Name" required>
                         </div>
                         <div class="form-group">
                             <label for="email">YOUR EMAIL (required)</label>

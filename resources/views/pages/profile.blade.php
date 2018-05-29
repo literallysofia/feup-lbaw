@@ -1,5 +1,7 @@
 @extends('layouts.app') 
 
+@section('title','Sweven | Profile')
+
 @section('content') 
 
 @include('partials.breadcrumbs', $data = array('Client Area' => ''))
@@ -108,21 +110,21 @@
         <div class="modal-body section-container mt-0">
           <form id="add_address_form">
             <div class="form-group">
-              <label>Name</label>
-              <input type="text" class="form-control" required>
+              <label for="address-name">Name</label>
+              <input id="address-name" class="form-control" type="text" required>
             </div>
             <div class="form-group">
-              <label>Street</label>
-              <input type="text" class="form-control" required>
+              <label for="address-street">Street</label>
+              <input id="address-street" class="form-control" type="text" required>
             </div>
             <div class="form-group">
-              <label>Postal Code</label>
-              <input type="text" class="form-control" oninvalid="this.setCustomValidity('Please enter a valid postal code \n(eg: NNNN-NNN)')"
+              <label for="address-postal">Postal Code</label>
+              <input id="address-postal" class="form-control" type="text" oninvalid="this.setCustomValidity('Please enter a valid postal code \n(eg: NNNN-NNN)')"
                 oninput="this.setCustomValidity('')" pattern="[0-9]{4}-[0-9]{3}" required>
             </div>
             <div class="form-group">
-              <label>Country</label>
-              <select required class="form-control" onchange="filterCities(this)" id="countries_selector">
+              <label for="countries_selector">Country</label>
+              <select id="countries_selector" class="form-control" onchange="filterCities(this)" required>
                 <option value="" disabled selected>Select country</option>
                 @foreach($countries as $country)
                 <option value="{{$country->id}}">{{$country->name}}</option>
@@ -130,8 +132,8 @@
               </select>
             </div>
             <div class="form-group">
-              <label>City</label>
-              <select required class="form-control" id="cities_selector">
+              <label for="cities_selector">City</label>
+              <select id="cities_selector" class="form-control" required>
                 <option value="" disabled selected>Select city</option>
                 @foreach($cities as $city)
                 <option value="{{$city->id}}" data-value="{{$city->country_id}}">{{$city->name}}</option>
@@ -150,7 +152,6 @@
 
   <div class="container">
     <section class="mt-5">
-
 
       <div id="onhold_title" class="jumptarget">
         <h2>On Hold</h2>

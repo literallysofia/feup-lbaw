@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Sweven | Add Product')
+
 @section('content')
 
 @include('partials.breadcrumbs', $data = array('Management Area' => 'admin','Add/Edit Product' => ''))

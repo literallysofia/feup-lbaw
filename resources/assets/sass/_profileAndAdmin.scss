@@ -144,7 +144,6 @@ main {
                     width: 100%;
                 }
             }
-
             .checkbox-container {
                 display: block;
                 position: relative;
@@ -303,11 +302,8 @@ main {
         }
     }
     .modal {
-        input[type="text"] {
-            width: 100%;
-        }
+        input[type="text"],
         textarea {
-            margin-top: 1em;
             width: 100%;
         }
         .modal-footer {

@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title','Wishlist')
+@section('title', 'Sweven | ' . $product->name)
 
 @section('content')
 
+@include('partials.breadcrumbs', $data = array($product->category->name => route('category_products', $product->category->id), $product->name => ''))
+
 <script type="text/javascript" src={{ asset('js/product.js') }} defer></script>
 <script type="text/javascript" src={{ asset('js/review.js') }} defer></script>
-
-@include('partials.breadcrumbs', $data = array($product->category->name => route('category_products', $product->category->id), $product->name => ''))
 
 <main>
     <section class="mt-4">
@@ -36,7 +36,7 @@
                     </div>
 
                     <div class="col-md-6 col-sm-12 d-flex flex-column align-items-center align-self-center">
-                        <h1 class="text-center">{{$product->name}}</h1>
+                        <h1 class="text-center">{{ $product->name }}</h1>
                         <div class="stars mt-2">
                             <input type="hidden" value="{{$product->score}}">
                             <div class="stars-outer">

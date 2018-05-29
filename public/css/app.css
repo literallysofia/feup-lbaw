@@ -566,10 +566,8 @@ main #table-save-button {
   @media (max-width: 700px) {
     main #table-save-button {
       width: 100%; } }
-main .modal input[type="text"] {
-  width: 100%; }
+main .modal input[type="text"],
 main .modal textarea {
-  margin-top: 1em;
   width: 100%; }
 main .modal .modal-footer {
   padding-right: 0; }

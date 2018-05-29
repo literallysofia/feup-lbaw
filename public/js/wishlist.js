@@ -3,7 +3,7 @@ $(document).ready(isEmpty());
 function isEmpty() {
     let products = document.querySelectorAll(".section-container > form");
     if (products[0] == null) {
-        document.getElementsByClassName("section-container")[0].innerHTML = "<p style='text-align:center'>You don't have any product in your wishlist :-(";
+        document.getElementsByClassName("section-container")[0].innerHTML = "<p style='text-align:center'>You don't have any products in your wishlist.";
         return true;
     } else if(products.length == 1) {
         $(products[0]).next().remove();
