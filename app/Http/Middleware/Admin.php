@@ -16,6 +16,6 @@ class Admin
             return $next($request);
         }
 
-        return redirect('/');
+        return redirect('error/403');
     }
 }

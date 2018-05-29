@@ -15,8 +15,8 @@
 Route::get('/', 'ProductsController@showHighlights');
 
 // Cards
-Route::get('cards', 'CardController@list');
-Route::get('cards/{id}', 'CardController@show');
+Route::view('error/403', 'errors/403');
+
 
 // API
 Route::put('api/cards', 'CardController@create');
@@ -36,9 +36,16 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::get('profile/{id}', 'UserController@showProfile')->name('profile')->where('id','[0-9]+');
 Route::view('/profile/edit', 'errors/404');
 Route::put('/profile/edit', 'UserController@editProfile');
+
+Route::get('/profile/archive', function() {
+    return redirect('/logout');
+})->name('archive');
+Route::put('/profile/archive', 'UserController@archiveAccount')->name('archive');
+
 Route::view('/profile/address', 'errors/404');
 Route::post('/profile/address', 'AddressController@addAddressResponse');
 Route::put('/profile/address', 'AddressController@deleteAddressResponse');
+
 
 //Admin
 Route::get('admin', 'AdminController@showAdmin')->name('admin')->middleware('auth', 'admin');
