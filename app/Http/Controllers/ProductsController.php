@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
 use App\Review;
+use App\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -172,9 +173,17 @@ class ProductsController extends Controller
 
         $photos = Photo::where('product_id', $id)->get();
 
-        $properties = $category->properties()->get();
-        return view('pages.add_product', ['category_name' => $category->name, 'product' => $product, 'photos' => $photos, 'properties' => $properties]);
+        //$properties = $product->category_properties;
+        return view('pages.add_product', ['category' => $category, 'product' => $product, 'photos' => $photos]);
 
+    }
+
+    public function addProduct($category_name,Request $request){
+
+    }
+
+    public function editProduct($product_id,Request $request){
+        
     }
 
     public function deleteReview(Request $request)

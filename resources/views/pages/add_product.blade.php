@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('partials.breadcrumbs', $data = array('Management Area' => '','Add/Edit Product' => ''))
+@include('partials.breadcrumbs', $data = array('Management Area' => 'admin','Add/Edit Product' => ''))
 
 <script type="text/javascript" src={{ asset('js/addProduct.js') }} refer></script>
 
@@ -10,7 +10,7 @@
     <div class="container">
         <div class="container scroll_nav">
             <div class="row">
-                <h1 class="col-12">{{$category->name}}</h1>
+                <h1 class="col-12" id="category_name">{{$category->name}}</h1>
             </div>
         </div>
     </div>
@@ -18,6 +18,7 @@
         <section class="mt-5">
             <h2>Basic Information</h2>
             <div class="section-container">
+            <div class="alert alert-danger" id="basic-error" style="display:none"></div>
                 <form id="requiredForm">
                     <div class="form-group">
                         <label for="product_name">Name</label>
@@ -38,7 +39,7 @@
                     <div class="form-group">
                         <label for="product_quantity">Quantity</label>
                         @if($product != null)
-                        <input type="text" class="form-control" id="product_quantity" pattern="[0-9]+" value="{{$product->quantity}}" required>
+                        <input type="text" class="form-control" id="product_quantity" pattern="[0-9]+" value="{{$product->quantity_available}}" required>
                         @else
                         <input type="text" class="form-control" id="product_quantity" pattern="[1-9][0-9]*" placeholder="Poduct Quantity" required>
                         @endif
@@ -71,12 +72,18 @@
     <div class="container">
         <section class="mt-5">
             <h2>Tech Specs</h2>
+            <div class="alert alert-danger" id="specs-error" style="display:none"></div>
             <div class="cards specs-cards row">
                 @include('partials.add_spec', ['category'=>$category, 'properties'=>$category->properties,'product'=>$product])     
             </div>
         </section>
         <div id="save_product_button" class="d-flex flex-column">
-            <input type="submit" form="requiredForm" class="black-button mt-2 ml-auto" value="Save" id="addProductButton">
+            <input type="submit" form="requiredForm" class="black-button mt-2 ml-auto" 
+            @if($product != null)
+                value="Edit Product" 
+            @else 
+                value="Add Product"
+            @endif id="addProductButton">
         </div>
     </div>
 </main>

@@ -67,7 +67,7 @@
 
             <div class="entry-buttons">
                 <input class="btn-addEntryCategory" type="button" value="Add Entry"></input>
-                <input type="button" value="Add Product"></input>
+                <input class="btn-addProductCategory" type="button" value="Add Product" onclick="window.location='{{  route("add_product",["category_name" => $category->name])}}'"></input>
                 <input class="btn-saveCategory black-button" type="button" value="Save"></input>
             </div>
         </div>

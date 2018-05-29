@@ -82,10 +82,13 @@ Route::get('category/{category_id}','ProductsController@showProducts')->name('ca
 Route::get('search','ProductsController@searchProducts')->name('search_products');
 
 //Add Product
-Route::get('add_product/{category_name}','ProductsController@showAddProduct')->name('add_product');
+Route::get('add_product/{category_name}','ProductsController@showAddProduct')->name('add_product')->middleware('auth','admin');
+Route::post('add_product/{category_name}','ProductsController@addProduct');
 
 //Edit Product
-Route::get('/product/{id}/edit','ProductsController@showEditProduct')->name('edit_product');
+Route::get('/product/{id}/edit','ProductsController@showEditProduct')->name('edit_product')->middleware('auth','admin');
+Route::put('/product/{id}/edit','ProductsController@editProduct');
+
 
 Route::delete('product/{id}/review', 'ProductsController@deleteReview')->name('review');
 Route::post('product/{id}/review', 'ProductsController@addReview');
