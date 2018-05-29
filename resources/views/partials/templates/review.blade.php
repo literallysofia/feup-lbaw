@@ -36,7 +36,7 @@
     </div>
     {{#owner}}
     <div class="d-flex flex-row align-items-end col-12">
-        <a class="ml-auto mr-3" onclick="editReview({{id}}, '{{title}}', '{{content}}', {{score}})" data-toggle="modal" data-target="#giveOpinionModal">
+        <a class="ml-auto mr-3" onclick="editReview({{product_id}}, {{id}}, '{{title}}', '{{content}}', {{score}})" data-toggle="modal" data-target="#giveOpinionModal">
             <i class="fas fa-lg fa-pencil-alt "></i>
         </a>
         <a onclick="deleteReview(this, {{id}}, {{product_id}})">
