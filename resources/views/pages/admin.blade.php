@@ -1,13 +1,14 @@
 @extends('layouts.app') 
+
 @section('content') 
+
 @include('partials.breadcrumbs', $data = array('Management Area' => ''))
 
-<script type="text/javascript" src={{ asset('js/profileRequest.js') }} defer></script>
-<script type="text/javascript" src={{ asset('js/propertyRequest.js') }} defer></script>
-<script type="text/javascript" src={{ asset('js/categoryRequest.js') }} defer></script>
-<script type="text/javascript" src={{ asset('js/faqsRequest.js') }} defer></script>
-<script type="text/javascript" src={{ asset('js/updatePurchases.js') }} defer></script>
-
+<script src={{ asset('js/profileRequest.js') }} defer></script>
+<script src={{ asset('js/propertyRequest.js') }} defer></script>
+<script src={{ asset('js/categoryRequest.js') }} defer></script>
+<script src={{ asset('js/faqsRequest.js') }} defer></script>
+<script src={{ asset('js/updatePurchases.js') }} defer></script>
 
 <main>
     <div class="container">
@@ -72,11 +73,11 @@
         </section>
     </div>
 
-    <div class="modal fade" id="add_property_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="add_property_modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add Property</h5>
+                    <h5 class="modal-title">Add Property</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body section-container mt-0">
@@ -108,11 +109,11 @@
         </section>
     </div>
 
-    <div class="modal fade" id="add_category_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="add_category_modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add Category</h5>
+                    <h5 class="modal-title">Add Category</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body section-container mt-0">
@@ -152,11 +153,11 @@
         </section>
     </div>
 
-    <div class="modal fade" id="add_faq_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="add_faq_modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add FAQ</h5>
+                    <h5 class="modal-title">Add FAQ</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
 

@@ -1,1 +1,1 @@
-<pagination>{{ $products->appends(request()->query())->links() }}</pagination>
+<div>{{ $products->appends(request()->query())->links() }}</div>

@@ -4,7 +4,7 @@
 
 @include('partials.breadcrumbs', $data = array('Management Area' => 'admin','Add/Edit Product' => ''))
 
-<script type="text/javascript" src={{ asset('js/addProduct.js') }} refer></script>
+<script src={{ asset('js/addProduct.js') }} defer></script>
 
 <main>
     <div class="container">

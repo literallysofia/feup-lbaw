@@ -6,7 +6,7 @@
 
 @include('partials.breadcrumbs', $data = array($category->name => ''))
 
-<script type="text/javascript" src={{ asset('js/products.js') }} defer></script>
+<script src={{ asset('js/products.js') }} defer></script>
 
 <main>
     <div class="container">
@@ -23,9 +23,9 @@
                     @include('partials.products.dropdown')
                 </div>
             </div>
-            <nav class="pagination-links" aria-label="Page navigation">
+            <div class="pagination-links" aria-label="Page navigation">
                 @include('partials.products.pagination')
-            </nav>
+            </div>
         </div>
         <hr>
         <div class="row">
@@ -38,9 +38,9 @@
                 </div>
             </div>
         </div>
-        <nav class="mt-4 d-flex justify-content-end pagination-links" aria-label="Page navigation">
+        <div class="mt-4 d-flex justify-content-end pagination-links" aria-label="Page navigation">
             @include('partials.products.pagination')
-        </nav>
+        </div>
     </div>
 </main>
 

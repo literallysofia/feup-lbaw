@@ -4,8 +4,8 @@
 
 @include('partials.breadcrumbs', $data = array('Client Area' => ''))
 
-<script type="text/javascript" src={{ asset('js/addressRequest.js') }} defer></script>
-<script type="text/javascript" src={{ asset('js/profileRequest.js') }} defer></script>
+<script src={{ asset('js/addressRequest.js') }} defer></script>
+<script src={{ asset('js/profileRequest.js') }} defer></script>
 <main>
   <div class="container">
     <div class="container scroll_nav">
@@ -96,7 +96,7 @@
     </section>
   </div>
 
-  <div class="modal fade" id="add_address_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal fade" id="add_address_modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -108,20 +108,20 @@
         <div class="modal-body section-container mt-0">
           <form id="add_address_form">
             <div class="form-group">
-              <label for="review_title">Name</label>
+              <label>Name</label>
               <input type="text" class="form-control" required>
             </div>
             <div class="form-group">
-              <label for="review_title">Street</label>
+              <label>Street</label>
               <input type="text" class="form-control" required>
             </div>
             <div class="form-group">
-              <label for="review_title">Postal Code</label>
+              <label>Postal Code</label>
               <input type="text" class="form-control" oninvalid="this.setCustomValidity('Please enter a valid postal code \n(eg: NNNN-NNN)')"
                 oninput="this.setCustomValidity('')" pattern="[0-9]{4}-[0-9]{3}" required>
             </div>
             <div class="form-group">
-              <label for="review_title">Country</label>
+              <label>Country</label>
               <select required class="form-control" onchange="filterCities(this)" id="countries_selector">
                 <option value="" disabled selected>Select country</option>
                 @foreach($countries as $country)
@@ -130,7 +130,7 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="review_title">City</label>
+              <label>City</label>
               <select required class="form-control" id="cities_selector">
                 <option value="" disabled selected>Select city</option>
                 @foreach($cities as $city)

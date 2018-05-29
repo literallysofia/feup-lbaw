@@ -1,9 +1,7 @@
-
 @foreach($properties as $property)
 <div class="mt-4 col-md-6 col-lg-4">
     <div class="box d-flex flex-column ">
         <div class="spec-header">
-           
             <h6>{{$property->name}}
             @if($property->category_properties->where('category_id',$category->id)->first()->is_required_property) 
             *
@@ -19,15 +17,15 @@
             @endif
                 @if($property_values != null && count($property_values) > 0)
                     @foreach($property_values as $value)
-                        <input class="mb-2" type="text" value="{{$value->name}}"></input>
+                        <input class="mb-2" type="text" value="{{ $value->name }}">
                     @endforeach
                 @else 
-                    <input class="mb-2" type="text" ></input>
-                    <input class="mb-2" type="text"></input>
+                    <input class="mb-2" type="text" >
+                    <input class="mb-2" type="text">
                 @endif
         </div>
         <div class="entry-buttons">
-            <input type="button" value="Add Entry" name="addEntry"></input>
+            <input type="button" value="Add Entry" name="addEntry">
         </div>
     </div>
 </div>
