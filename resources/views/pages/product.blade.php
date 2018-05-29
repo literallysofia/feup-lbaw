@@ -6,8 +6,8 @@
 
 @include('partials.breadcrumbs', $data = array($product->category->name => route('category_products', $product->category->id), $product->name => ''))
 
-<script type="text/javascript" src={{ asset('js/product.js') }} defer></script>
-<script type="text/javascript" src={{ asset('js/review.js') }} defer></script>
+<script src={{ asset('js/product.js') }} defer></script>
+<script src={{ asset('js/review.js') }} defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 
 <main>

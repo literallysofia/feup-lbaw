@@ -14,10 +14,10 @@
         <h1>My Wishlist</h1>
         <div class="section-container">
             @for($i=0; $i<count($products); $i++)
-                <form class="cart-item row" onsubmit="return addToCart(this, {{$products[$i]->id}})">
+                <form class="cart-item row" onsubmit="return addToCart(this, {{ $products[$i]->id }})">
                     <div class="col-xl-2 col-lg-2 col-md-3 col-sm col-xs">
                         <div class="d-flex flex-column align-items-center cart_item_img">
-                            <img src="{{ $products[$i]->photos->get(0)->path }}" alt="{{ $products[$i]->name }} image" class="img-fluid">
+                            <img src="{{ $products[$i]->photos->get(0)->path }}" alt="{{ $products[$i]->name }}" class="img-fluid">
                         </div>
                     </div>
                     <div class="col-xl-10 col-lg-10 col-md-9 col-sm-auto col-xs-auto">
@@ -26,11 +26,9 @@
                                 <h5>{{ $products[$i]->name }}</h5>
                                 <p class="mt-auto ml-auto">{{ $products[$i]->price }} €</p>
                             </div>
-                            <div class="d-flex align-items-end mt-auto">
-                                <div class="remove-item-cart">
-                                    <a href="" onclick="return deleteProduct(this, {{ $products[$i]->id }})">Remove</a>
-                                </div>
-                                <input type="submit" class="ml-auto black-button" value="Add to Cart">
+                            <div class="d-flex align-items-end mt-auto flex-wrap">
+                                <a class="remove-item-cart" onclick="return deleteProduct(this, {{ $products[$i]->id }})">Remove</a>
+                                <input type="submit" class="ml-auto black-button wishlist-button" value="Add to Cart">
                             </div>
                         </div>
                     </div>

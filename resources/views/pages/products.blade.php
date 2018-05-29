@@ -7,6 +7,7 @@
 @include('partials.breadcrumbs', $data = array($category->name => ''))
 
 <script src={{ asset('js/products.js') }} defer></script>
+<script src={{ asset('js/product.js') }} defer></script>
 
 <main>
     <div class="container">

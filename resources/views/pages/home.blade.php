@@ -4,6 +4,8 @@
 
 @section('content')
 
+<script src={{ asset('js/product.js') }} defer></script>
+
 <div id="carouselHomepage" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselHomepage" data-slide-to="0" class="active"></li>
@@ -38,10 +40,10 @@
         @foreach($products as $product)
             <div class="mt-4 col-md-6 col-lg-3">
                 <div class="box d-flex flex-column align-items-center">
-                    <a href="{{route('product', ['product_id'=> $product->id])}}"><img src="{{ $product->photos->get(0)->path }}" alt="{{$product->name}}" class="img-fluid" style="cursor:pointer;"></a>
-                    <a href="{{route('product', ['product_id'=> $product->id])}}"><h6 style="cursor:pointer;">{{$product->name}}</h6></a>
-                    <span>{{$product->price}} €</span>
-                    <input type="button" value="Add To Cart">
+                    <a href="{{ route('product', ['product_id'=> $product->id]) }}"><img src="{{ $product->photos->get(0)->path }}" alt="{{ $product->name }}" class="img-fluid" style="cursor:pointer;"></a>
+                    <a href="{{ route('product', ['product_id'=> $product->id]) }}"><h6 style="cursor:pointer;">{{ $product->name }}</h6></a>
+                    <span>{{ $product->price }} €</span>
+                    <input type="button" value="Add To Cart" onclick="return addToCart(null, {{$product->id}})">
                 </div>
             </div>
         @endforeach
