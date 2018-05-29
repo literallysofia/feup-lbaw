@@ -17,11 +17,12 @@
                 <div class="row">
                     <div id="productCarouselIndicators" class="col-md-6 col-sm-12 carousel slide align-self-center" data-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="../assets/laptop.jpg" alt="Item 1" class="img-fluid">
-                            </div>
                             @for($i=0; $i<count($product->photos); $i++)
+                                @if($i==0)
+                                <div class="carousel-item active">
+                                @else
                                 <div class="carousel-item">
+                                @endif
                                     <img src="{{$product->photos[$i]->path}}" alt="Item 1" class="img-fluid">
                                 </div>
                             @endfor
@@ -77,7 +78,7 @@
                                 <hr class="specs-title-line">
                             </div>
                             <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                <?php $property_values = $properties[$i]->values_lists->where('product_id', $product->id)->get(0)->values; ?>
+                                <?php $property_values = $properties[$i]->values_lists->where('product_id', $product->id)->first()->values; ?>
                                 @foreach($property_values as $value)
                                     <p class="row-specs">{{$value->name}}</p>
                                 @endforeach 
@@ -98,11 +99,6 @@
                 <div class="d-flex flex-row">
                     <h2>Reviews</h2>
                     <h2 id="reviews_counter">/{{count($product->reviews)}}</h2>
-                </div>
-                <div class="ml-auto">
-                    <nav class="pagination-links" aria-label="Page navigation">
-                        @include('partials.products.pagination_review')
-                    </nav>
                 </div>
             </div>
 
@@ -170,11 +166,6 @@
                         </div>
                     @endcan
                 </div>
-            </div>
-            <div class="d-flex justify-content-end mt-3">
-                <nav class="pagination-links" aria-label="Page navigation">
-                    @include('partials.products.pagination_review')
-                </nav>
             </div>
         </div>
     </section>

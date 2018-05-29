@@ -102,5 +102,6 @@ Route::put('/product/{id}/edit','ProductsController@editProduct');
 Route::delete('product/{id}/review', 'ProductsController@deleteReview')->name('review');
 Route::post('product/{id}/review', 'ProductsController@addReview');
 Route::put('product/{id}/review', 'ProductsController@updateReview');
+Route::view('product/{id}/review', 'erros/404');
 
 Auth::routes();

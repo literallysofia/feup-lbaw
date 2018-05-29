@@ -6,9 +6,10 @@ function deleteReview(review, id, product_id) {
         }
     });
 
-    action = id+"/review";
+    action = product_id+"/review";
     let review_data = {};
-    review_data.product_id = product_id;
+    review_data.id = id;
+
     
     $.ajax({
         type: "DELETE",
@@ -17,11 +18,16 @@ function deleteReview(review, id, product_id) {
         dataType: 'text',
         success: function (data) {
             final = JSON.parse(data);
-            alert("Done: " + final.Message);
             let reviewO = $(review).closest('.review-item');
             reviewO.next().remove();
             reviewO.remove();
             $("#reviews_counter").text("/"+final.Reviews);
+            $("#give_opinion_form").attr("onsubmit", "return newOpinion("+product_id+")");
+            let opinion = document.createElement('div');
+            opinion.innerHTML = '<hr class="my-4"><div id="opinion_product" class="d-flex flex-row justify-content-end col-12"><input type="button" class="col-lg-3 col-xl-3 col-md-5 col-sm-6 col-xs-12" value="Give your Opinion" data-toggle="modal" data-target="#giveOpinionModal"></input></div>';
+            let reviews = document.getElementById("reviews");
+            reviews.appendChild(opinion);
+        
         },
         error: function (data) {
             final = JSON.parse(data.responseText);
@@ -82,70 +88,7 @@ function newOpinion(product_id){
     
 
     return DBreview("POST", product_id);
-    /*let inputStars = document.getElementById("opinion_rate");
-    let inputTitle = document.querySelector("#give_opinion_form input[type='text']");
-    let content = document.querySelector("#give_opinion_form textarea");
-    let stars = document.getElementById("review_stars");
-    if(stars != null)
-        stars.style.border = "none";
-    let review_data = {};
-    if(content.value == null || content.value == '' || inputTitle.value == null || inputTitle.value == '')
-      return false;
     
-    if(inputStars.value == null || inputStars.value == '' || !String(inputStars.value).match(/^([1-5])$/)) {
-        if(stars != null) {
-            stars.style.border = "thin solid red";
-        }
-        return false;
-    }
-
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    action = id+"/review";
-
-    review_data = {};
-    review_data.score=inputStars.value;
-    review_data.title = inputTitle.value;
-    review_data.content = content.value;
-
-    
-    $.ajax({
-        type: "POST",
-        url: action,
-        data: review_data,
-        dataType: 'text',
-        success: function (data) {
-            let final = JSON.parse(data);
-            let reviews = final.Reviews.data;
-            let template = document.getElementById('template').innerHTML;
-            let design = document.getElementById("reviews");
-            design.innerHTML = "";
-            
-            for(let i=0; i<reviews.length; i++){
-                let html = document.createElement("div");
-                if(i == reviews.length-2) {
-                    reviews[i].last = true;
-                }
-                html.innerHTML = Mustache.render(template, reviews[i]);
-                design.appendChild(html);
-                console.log(design);
-            }
-            $("#giveOpinionModal").modal("hide");
-            $("#reviews_counter").text("/"+final.Total);
-            update_stars();
-            
-        },
-        error: function (data) {
-            let final = JSON.parse(data.responseText);
-            alert("Error: " + final.Message);
-            console.log('Error: ', final);
-        }
-    });
-    return false;*/
 }
 
 function editReview(product_id, id, title, content, score) {
@@ -207,12 +150,12 @@ function DBreview(type, product_id, id) {
         data: review_data,
         dataType: 'text',
         success: function (data) {
-           let final = JSON.parse(data);
-            let reviews = final.Reviews.data;
+            let final = JSON.parse(data);
+            let reviews = final.Reviews;
             let template = document.getElementById('template').innerHTML;
             let design = document.getElementById("reviews");
             design.innerHTML = "";
-            
+            console.log(reviews);
             for(let i=0; i<reviews.length; i++){
                 let html = document.createElement("div");
                 if(i == reviews.length-2) {
@@ -269,9 +212,9 @@ function setNewRate(score) {
     let stars;
     console.log(score);
     if((stars = document.querySelectorAll('#review_stars .stars-inner .fas')) != null) {
-        for(let i=stars.length; i>=score-1; --i) {
-            $(stars[i]).addClass('selected-star');
-            if(i >=score-2) {
+        for(let i=0; i<=score; i++) {
+            $(stars[stars.length-i]).addClass('selected-star');
+            if(stars.length-i == score) {
                 rateText2($(stars[i]).attr("title"));
             }
         }
