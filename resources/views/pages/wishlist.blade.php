@@ -6,8 +6,9 @@
 
 @include('partials.breadcrumbs', $data = array('Wishlist' => ''))
 
-<script type="text/javascript" src={{ asset('js/product.js') }} defer></script>
-<script type="text/javascript" src={{ asset('js/wishlist.js') }} defer></script>
+<script src={{ asset('js/product.js') }} defer></script>
+<script src={{ asset('js/wishlist.js') }} defer></script>
+
 <main>
     <div class="container">
         <h1>My Wishlist</h1>
@@ -29,7 +30,7 @@
                                 <div class="remove-item-cart">
                                     <a href="" onclick="return deleteProduct(this, {{$products[$i]->id}})">Remove</a>
                                 </div>
-                                <input type="submit" class="ml-auto black-button" value="Add to Cart"></input>
+                                <input type="submit" class="ml-auto black-button" value="Add to Cart">
                             </div>
                         </div>
                     </div>
@@ -41,4 +42,5 @@
         </div>
     </div>
 </main>
+
 @endsection

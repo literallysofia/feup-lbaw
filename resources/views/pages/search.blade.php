@@ -16,6 +16,9 @@
             </nav>
         </div>
         <hr>
+        @if($products->total() == 0)
+            <span>Sorry, no products found.</span>
+        @else
         <div class="row">
         @foreach($products as $product)
             <div class="mt-4 col-md-6 col-lg-3">
@@ -28,6 +31,7 @@
             </div>
         @endforeach
         </div>
+        @endif
         <nav class="mt-4 d-flex justify-content-end pagination-links" aria-label="Page navigation">
             @include('partials.products.pagination')
         </nav>

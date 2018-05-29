@@ -81,7 +81,7 @@ main #message {
   main input[type="email"]:hover,
   main textarea:hover,
   main #message:hover {
-    background-color: none;
+    background: none;
     cursor: auto; }
   main input[type="text"]:focus,
   main input[type="password"]:focus,
@@ -120,6 +120,9 @@ main input[type="submit"].black-button {
     border-color: #6174AA; }
 main ::placeholder {
   color: #646464; }
+
+div .modal-footer {
+  border-top: none; }
 
 @media (max-width: 767px) {
   body {
@@ -280,13 +283,13 @@ footer {
     text-align: center; }
   footer .justify-content-end {
     justify-content: center !important; } }
-nav .pagination {
+.pagination-links {
   margin: 0; }
-  nav .pagination * {
+  .pagination-links * {
     padding-left: 1em; }
-    nav .pagination *:hover {
+    .pagination-links *:hover {
       text-decoration: none; }
-  nav .pagination a {
+  .pagination-links a {
     color: #6174AA; }
 
 .filters {
@@ -299,11 +302,9 @@ nav .pagination {
     margin-top: 2em; }
   .filters input {
     cursor: pointer; }
-  .filters .form-check-label > p {
+  .filters .form-check-label {
     font-size: 0.9em;
-    font-weight: normal;
-    margin: 0;
-    padding-top: 0.2em; }
+    font-weight: normal; }
   .filters .price-slider input {
     width: 100%; }
   .filters .price-slider span {
@@ -823,7 +824,8 @@ main .register-form {
     color: #6174AA; }
   main .register-form form {
     margin: 2em 0; }
-    main .register-form form input[type="button"], main .register-form form input[type="submit"] {
+    main .register-form form input[type="button"],
+    main .register-form form input[type="submit"] {
       min-width: 100%; }
     main .register-form form #register {
       margin-top: 0.5em; }

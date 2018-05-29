@@ -11,10 +11,6 @@
 |
 */
 
-/*Route::get('/', function () {
-    return redirect('homepage');
-});*/
-
 //Homepage
 Route::get('/', 'ProductsController@showHighlights');
 
@@ -45,12 +41,20 @@ Route::post('/profile/address', 'AddressController@addAddressResponse');
 Route::put('/profile/address', 'AddressController@deleteAddressResponse');
 
 //Admin
-Route::get('admin', 'AdminController@showAdmin')->name('admin');
+Route::get('admin', 'AdminController@showAdmin')->name('admin')->middleware('auth', 'admin');
+Route::view('/admin/admin_purchases', 'errors/404');
+Route::post('admin/admin_purchases', 'AdminController@updateAdminPurchases');
+Route::view('/admin/property', 'errors/404');
 Route::post('admin/property', 'AdminController@addPropertyResponse');
 Route::delete('admin/property', 'AdminController@deletePropertyResponse');
+Route::view('/admin/category', 'errors/404');
 Route::post('admin/category', 'AdminController@addCategoryResponse');
 Route::put('admin/category', 'AdminController@deleteCategoryResponse');
+Route::view('/admin/category_properties', 'errors/404');
 Route::post('admin/category_properties', 'AdminController@addCategoryPropertiesResponse');
+Route::view('/admin/faq', 'errors/404');
+Route::post('admin/faq', 'AdminController@addFaq');
+Route::delete('admin/faq', 'AdminController@deleteFaq');
 
 //Static pages
 Route::get('faq','FaqController@showFaqs')->name('faq');
@@ -80,10 +84,13 @@ Route::get('category/{category_id}','ProductsController@showProducts')->name('ca
 Route::get('search','ProductsController@searchProducts')->name('search_products');
 
 //Add Product
-Route::get('add_product/{category_name}','ProductsController@showAddProduct')->name('add_product');
+Route::get('add_product/{category_name}','ProductsController@showAddProduct')->name('add_product')->middleware('auth','admin');
+Route::post('add_product','ProductsController@addProduct');
 
 //Edit Product
-Route::get('/product/{id}/edit','ProductsController@showEditProduct')->name('edit_product');
+Route::get('/product/{id}/edit','ProductsController@showEditProduct')->name('edit_product')->middleware('auth','admin');
+Route::put('/product/{id}/edit','ProductsController@editProduct');
+
 
 Route::delete('product/{id}/review', 'ProductsController@deleteReview')->name('review');
 Route::post('product/{id}/review', 'ProductsController@addReview');

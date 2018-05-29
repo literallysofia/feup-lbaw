@@ -90,7 +90,7 @@ main {
         border: 0.06em solid $light-grey;
         border-radius: 2em;
         &:hover {
-            background-color: none;
+            background: none;
             cursor: auto;
         }
         &:focus {
@@ -134,11 +134,17 @@ main {
     }
 }
 
+div .modal-footer{
+    border-top:none;
+}
+
 @media (max-width: 767px) {
     body {
         padding-top: 126px;
     }
 }
+
+
 
 
 

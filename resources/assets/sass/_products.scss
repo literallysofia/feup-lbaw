@@ -1,4 +1,4 @@
-nav .pagination {
+.pagination-links {
     margin: 0;
     * {
         padding-left: 1em;
@@ -24,11 +24,9 @@ nav .pagination {
     input {
         cursor: pointer;
     }
-    .form-check-label>p {
+    .form-check-label {
         font-size: 0.9em;
         font-weight: normal;
-        margin: 0;
-        padding-top: 0.2em;
     }
     .price-slider {
         input {

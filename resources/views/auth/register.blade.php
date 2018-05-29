@@ -47,8 +47,7 @@
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" oninvalid="this.setCustomValidity('Password must have one uppercase letter, one number and at least 8 characters')"
-    oninput="this.setCustomValidity('')" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$" name="password" aria-describedby="passwordAdvice" placeholder="Password" required>
-                        <!--<small id="passwordAdvice" class="form-text text-muted">Your password must be atleast 8 char long, blablabla</small>-->
+    oninput="this.setCustomValidity('')" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$" name="password" placeholder="Password" required>
                         @if ($errors->has('password'))
                         <span class="error">
                             {{ $errors->first('password') }}
@@ -59,7 +58,7 @@
                         <input type="password" class="form-control" oninvalid="this.setCustomValidity('Password must have one uppercase letter, one number and at least 8 characters')"
     oninput="this.setCustomValidity('')" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$" name="password_confirmation" placeholder="Repeat password" required>
                     </div>
-                    <input type="submit" class="black-button" value="Create Account"></input>
+                    <input type="submit" class="black-button" value="Create Account">
                 </form>
                 <span class="float-right">Have an account?
                     <a href="{{ url('/login')}}">Login</a>

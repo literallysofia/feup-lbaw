@@ -33,7 +33,7 @@
                                 </span>
                             @endif
                         </div>
-                        <input type="submit" class="black-button" value="Login"></input>
+                        <input type="submit" class="black-button" value="Login">
                     </form>
                     <span class="float-right">New to Sweven?
                         <a href="{{ url('register') }}">Create an account.</a>

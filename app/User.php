@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable {
@@ -28,6 +29,20 @@ class User extends Authenticatable {
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isAdmin(){
+        $admin = DB::table('admins')
+                 ->where('user_id', '=', $this->id)
+                 ->first();
+
+
+        //$admin = DB::select ('select * from admin where user_id = :id', ['id'=> $this->id]);
+        
+
+        if(empty($admin))
+            return false;
+        else return true;
+    }
 
 
     public function purchases() {

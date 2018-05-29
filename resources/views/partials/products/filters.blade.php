@@ -4,6 +4,7 @@ if ($price_limit === NULL) {
 } else {
     $price = $price_limit;
 }
+$brand_arr = explode( ',', $brands);
 @endphp
 <div class="filters d-flex flex-column">
     <h5>Filters</h5>
@@ -12,31 +13,14 @@ if ($price_limit === NULL) {
         @foreach($brands_filter as $brand)
         <div class="form-check">
             <label class="form-check-label">
-            @if(!empty($brands) && in_array($brand, $brands))
+            @if(!empty($brand_arr) && in_array($brand, $brand_arr))
                 <input class="form-check-input" type="checkbox" name="brands[]" value="{{ $brand }}" checked>
             @else
                 <input class="form-check-input" type="checkbox" name="brands[]" value="{{ $brand }}">
             @endif
-                <p>{{ $brand }}</p>
+                {{ $brand }}
             </label>
         </div>
-        @endforeach
-    @endif
-    @if (count($properties_filter) >= 1)
-        @foreach($properties_filter as $property => $values)
-            <h6>{{ $property }}</h6>
-            @foreach($values as $value)
-            <div class="form-check">
-                <label class="form-check-label">
-                @if(!empty($properties) && array_key_exists($property, $properties))
-                    <input class="form-check-input" type="checkbox" name="properties[]" value="{{ $property }};{{ $value }}" checked>
-                @else
-                    <input class="form-check-input" type="checkbox" name="properties[]" value="{{ $property }};{{ $value }}">
-                @endif
-                    <p>{{ $value }}</p>
-                </label>
-            </div>
-            @endforeach
         @endforeach
     @endif
     <h6>Max Price</h6>

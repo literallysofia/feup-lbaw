@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-
 use App\Card;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CardController extends Controller
 {
@@ -18,11 +16,11 @@ class CardController extends Controller
      */
     public function show($id)
     {
-      $card = Card::find($id);
+        $card = Card::find($id);
 
-      $this->authorize('show', $card);
+        $this->authorize('show', $card);
 
-      return view('pages.card', ['card' => $card]);
+        return view('pages.card', ['card' => $card]);
     }
 
     /**
@@ -30,15 +28,16 @@ class CardController extends Controller
      *
      * @return Response
      */
-    public function list()
-    {
-      if (!Auth::check()) return redirect('/login');
+    function list() {
+        if (!Auth::check()) {
+            return redirect('/login');
+        }
 
-      $this->authorize('list', Card::class);
+        $this->authorize('list', Card::class);
 
-      $cards = Auth::user()->cards()->orderBy('id')->get();
+        $cards = Auth::user()->cards()->orderBy('id')->get();
 
-      return view('pages.cards', ['cards' => $cards]);
+        return view('pages.cards', ['cards' => $cards]);
     }
 
     /**
@@ -48,24 +47,24 @@ class CardController extends Controller
      */
     public function create(Request $request)
     {
-      $card = new Card();
+        $card = new Card();
 
-      $this->authorize('create', $card);
+        $this->authorize('create', $card);
 
-      $card->name = $request->input('name');
-      $card->user_id = Auth::user()->id;
-      $card->save();
+        $card->name = $request->input('name');
+        $card->user_id = Auth::user()->id;
+        $card->save();
 
-      return $card;
+        return $card;
     }
 
     public function delete(Request $request, $id)
     {
-      $card = Card::find($id);
+        $card = Card::find($id);
 
-      $this->authorize('delete', $card);
-      $card->delete();
+        $this->authorize('delete', $card);
+        $card->delete();
 
-      return $card;
+        return $card;
     }
 }

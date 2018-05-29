@@ -1,7 +1,6 @@
 DROP DOMAIN IF EXISTS "Today" CASCADE;
 CREATE DOMAIN "Today" AS date NOT NULL DEFAULT ('now'::text)::date;
 
-
 DROP TABLE IF EXISTS countries CASCADE;
 CREATE TABLE countries (
     id serial PRIMARY KEY,
@@ -71,7 +70,7 @@ CREATE TABLE products (
     name text NOT NULL,
     price double precision NOT NULL,
     "quantity_available" integer NOT NULL,
-    score double precision NOT NULL,
+    score double precision DEFAULT 0 NOT NULL ,
     "category_id" integer NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
     brand text NOT NULL,
     CONSTRAINT price CHECK ((price > (0)::double precision)),
@@ -206,6 +205,14 @@ CREATE INDEX password_resets_token_index
     (token COLLATE pg_catalog."default")
     TABLESPACE pg_default;
 
+-- Index: product_title_index
+
+-- DROP INDEX public.product_title_index;
+DROP INDEX IF EXISTS product_title_index;
+CREATE INDEX product_title_index
+    ON products USING GIN
+    (to_tsvector('english', name));
+
 
 /** TRIGGERS **/
 
@@ -335,6 +342,7 @@ INSERT INTO users (name, username, email, password) VALUES ('Edy MacMenamin', 'e
 INSERT INTO users (name, username, email, password) VALUES ('Zachariah Chadburn', 'zchadburni', 'zchadburni@typepad.com', 'Wcjj8vZSA');
 INSERT INTO users (name, username, email, password) VALUES ('Jorry MacAndie', 'jmacandiej', 'jmacandiej@wordpress.com', 'Q9oAsh5');
 INSERT INTO users (name, username, email, password) VALUES ('Test', 'test', 'sweventechshop@gmail.com', '$2y$10$v.JHOjwkOhrK1ZsTY4Mgf.9zY.7MziX8KhtgofT6kaQpNvx1j07NO'); /*password: testtest*/
+INSERT INTO users (name, username, email, password) VALUES ('Sweven Tech Shop', 'swevenAdmin', 'sweven@sweven.com', '$2y$10$3Wc9dkxovmxwQZObfnJfEuOiTDCPPNPL6HdYKpQ/I7qbQrP9U58AK'); /*password: Sweven61*/
 
 
 /*ADDRESSES*/
@@ -364,6 +372,8 @@ INSERT INTO admins ("user_id") VALUES (1);
 INSERT INTO admins ("user_id") VALUES (2);
 INSERT INTO admins ("user_id") VALUES (3);
 INSERT INTO admins ("user_id") VALUES (4);
+INSERT INTO admins ("user_id") VALUES (22);
+
 
 /*CATEGORIES*/
 INSERT INTO categories (name, "is_navbar_category") VALUES ('Smartphones', true);
@@ -456,7 +466,7 @@ INSERT INTO products (name, price, "quantity_available", score, "category_id", b
 INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Asus ZenPad 10" Z301MF-1H011A - Grey', '219.99', 20, 5, 2, 'Asus');
 INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Huawei MediaPad M3 8.4"', '321.00', 100, 1, 2, 'Huawei');
 
-INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Apple MacBook Pro 13" Retina i5-2,3GHz - 128GB - Space Gray', '1549.00', 50, 2, 3, 'Apple');
+INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Apple MacBook Pro 13" Retina i5-2,3GHz - 128GB - Space Grey', '1549.00', 50, 2, 3, 'Apple');
 INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Apple MacBook Air 13" i5-1,8GHz - 256GB', '1379.00', 50, 1, 3, 'Apple');
 INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Asus Zenbook UX430UA-57CHDCB1', '949.99', 80, 1, 3, 'Asus');
 

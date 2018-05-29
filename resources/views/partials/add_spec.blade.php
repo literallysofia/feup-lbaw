@@ -1,31 +1,31 @@
-
 @foreach($properties as $property)
 <div class="mt-4 col-md-6 col-lg-4">
     <div class="box d-flex flex-column ">
+    <p class = "propertyName" style="display:none;">{{$property->name}}</p>
         <div class="spec-header">
-           
             <h6>{{$property->name}}
             @if($property->category_properties->where('category_id',$category->id)->first()->is_required_property) 
             *
             @endif</h6>
         </div>
         <div class="spec-input">
-            @if($product != null) 
-               @php $property_values = $property->values_lists->where('product_id',$product->id)->get(0)->values; @endphp 
+            @if($product != null && count($product->category_properties->where('property_id',$property->id)) >0 ) 
+               @php $aux = $product->category_properties->where('property_id',$property->id)->first();
+                    $property_values = $aux->values_lists->where('product_id', $product->id)->first()->values; @endphp 
+               
             @else
-                @php $property_values = null; @endphp
+                @php $property_values = null; @endphp   
             @endif
                 @if($property_values != null && count($property_values) > 0)
                     @foreach($property_values as $value)
-                        <input class="mb-2" type="text" value="{{$value->name}}"></input>
+                        <input class="mb-2" type="text" value="{{ $value->name }}">
                     @endforeach
                 @else 
-                    <input class="mb-2" type="text"></input>
-                    <input class="mb-2" type="text"></input>
+                    <input class="mb-2" type="text" >
                 @endif
         </div>
         <div class="entry-buttons">
-            <input type="button" value="Add Entry" name="addEntry"></input>
+            <input type="button" value="Add Entry" name="addEntry">
         </div>
     </div>
 </div>
