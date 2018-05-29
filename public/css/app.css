@@ -81,7 +81,7 @@ main #message {
   main input[type="email"]:hover,
   main textarea:hover,
   main #message:hover {
-    background-color: none;
+    background: none;
     cursor: auto; }
   main input[type="text"]:focus,
   main input[type="password"]:focus,
