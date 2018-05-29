@@ -85,7 +85,7 @@ Route::get('search','ProductsController@searchProducts')->name('search_products'
 
 //Add Product
 Route::get('add_product/{category_name}','ProductsController@showAddProduct')->name('add_product')->middleware('auth','admin');
-Route::post('add_product/{category_name}','ProductsController@addProduct');
+Route::post('add_product','ProductsController@addProduct');
 
 //Edit Product
 Route::get('/product/{id}/edit','ProductsController@showEditProduct')->name('edit_product')->middleware('auth','admin');

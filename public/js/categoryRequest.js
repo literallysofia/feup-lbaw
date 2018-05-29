@@ -160,6 +160,16 @@ function saveCategoryAction(){
     }
 }
 
+function addProductAction(){
+
+    var addProducts = $(".btn-addProductCategory");
+    for(var i = 0; i< addProducts.length;i++){
+        addProducts[i].addEventListener('click',function(){
+            
+        })
+    }
+}
+
 $(document).ready(function () {
     
     addDeleteCategoryAction();
@@ -213,7 +223,7 @@ $(document).ready(function () {
                     '<div class="select-checkbox default" style="visibility: hidden;">'+
                     newEntry.innerHTML +
                     '</div>'+
-                    '<div class="entry-buttons"><input class="btn-addEntryCategory" type="button" value="Add Entry"></input><input type="button" value="Add Product"></input><input class="btn-saveCategory black-button" type="button" value="Save"></input> </div>';
+                    '<div class="entry-buttons"><input class="btn-addEntryCategory" type="button" value="Add Entry"></input><input type="button" value="Add Product" ></input><input class="btn-saveCategory black-button" type="button" value="Save"></input> </div>';
 
                     var addCard = '<div class="mt-4 col-md-6 col-lg-4"> <div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#add_category_modal"> Add Category </div> </div>';
     
@@ -226,6 +236,7 @@ $(document).ready(function () {
 
                     addDeleteCategoryAction();
                     addEntryAction();
+                    //addProductAction();
                     saveCategoryAction();
                 },
                 error: function (data) {

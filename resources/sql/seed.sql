@@ -70,7 +70,7 @@ CREATE TABLE products (
     name text NOT NULL,
     price double precision NOT NULL,
     "quantity_available" integer NOT NULL,
-    score double precision NOT NULL,
+    score double precision DEFAULT 0 NOT NULL ,
     "category_id" integer NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
     brand text NOT NULL,
     CONSTRAINT price CHECK ((price > (0)::double precision)),

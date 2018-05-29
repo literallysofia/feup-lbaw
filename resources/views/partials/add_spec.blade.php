@@ -1,6 +1,7 @@
 @foreach($properties as $property)
 <div class="mt-4 col-md-6 col-lg-4">
     <div class="box d-flex flex-column ">
+    <p class = "propertyName" style="display:none;">{{$property->name}}</p>
         <div class="spec-header">
             <h6>{{$property->name}}
             @if($property->category_properties->where('category_id',$category->id)->first()->is_required_property) 
@@ -21,7 +22,6 @@
                     @endforeach
                 @else 
                     <input class="mb-2" type="text" >
-                    <input class="mb-2" type="text">
                 @endif
         </div>
         <div class="entry-buttons">

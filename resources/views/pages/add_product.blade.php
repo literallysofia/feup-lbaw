@@ -72,7 +72,7 @@
     <div class="container">
         <section class="mt-5">
             <h2>Tech Specs</h2>
-            <div class="alert alert-danger" id="specs-error" style="display:none"></div>
+            <div class="alert alert-danger" id="specs-error" style="display:none; margin-top: 2em;"></div>
             <div class="cards specs-cards row">
                 @include('partials.add_spec', ['category'=>$category, 'properties'=>$category->properties,'product'=>$product])     
             </div>
