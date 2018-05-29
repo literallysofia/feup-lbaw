@@ -280,6 +280,44 @@ ON product_purchase
 FOR EACH ROW
 EXECUTE PROCEDURE update_available_products();
 
+
+
+DROP FUNCTION IF EXISTS update_product_score() CASCADE;
+CREATE FUNCTION update_product_score() RETURNS TRIGGER AS
+$$
+BEGIN
+	UPDATE products
+	SET score = (SELECT AVG(score) FROM reviews WHERE product_id = New.product_id)
+	WHERE id = New."product_id";
+    RETURN NEW;
+END
+$$
+LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS product_score ON reviews CASCADE;  
+CREATE TRIGGER product_score AFTER INSERT OR UPDATE
+ON reviews
+FOR EACH ROW
+EXECUTE PROCEDURE update_product_score();
+
+DROP FUNCTION IF EXISTS update_product_score_delete() CASCADE;
+CREATE FUNCTION update_product_score_delete() RETURNS TRIGGER AS
+$$
+BEGIN
+	UPDATE products
+	SET score = (SELECT AVG(score) FROM reviews WHERE product_id = OLD.product_id)
+	WHERE id = OLD."product_id";
+    RETURN OLD;
+END
+$$
+LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS product_score_delete ON reviews CASCADE;  
+CREATE TRIGGER product_score_delete AFTER DELETE
+ON reviews
+FOR EACH ROW
+EXECUTE PROCEDURE update_product_score_delete();
+
 /** POPULATE **/
 
 /*COUNTRIES*/

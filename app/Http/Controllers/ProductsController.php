@@ -114,9 +114,7 @@ class ProductsController extends Controller
 
         try {
             $product = Product::findOrFail($product_id);
-
-            $reviews = Review::where('product_id', $product_id)->orderBy('date', 'DESC')->paginate(1);
-
+            $reviews = Review::where('product_id', $product_id)->orderBy('date', 'DESC')->get();
             if ($product != null) {
                 return view('pages.product', ['product' => $product, 'reviews' => $reviews]);
             } else {
@@ -126,6 +124,7 @@ class ProductsController extends Controller
             return response(json_encode($e->getMessage()), 400);
         }
     }
+
 
     public function showAddProduct($category_name)
     {
@@ -173,11 +172,6 @@ class ProductsController extends Controller
 
         $product->save();
 
-        
-       
-        
-
-
         $specs = $request->property_values;
 
         foreach($specs as $spec){
@@ -215,29 +209,64 @@ class ProductsController extends Controller
         
     }
 
-    public function deleteReview(Request $request)
+    public function deleteReview(Request $request, $product_id)
     {
 
         try {
+
             $user = Auth::user();
-            $review = $user->reviews->where('id', $request->id)->first();
-            $product = Product::findOrFail($request->product_id);
+            $review = $user->reviews()->where('id', $request->id)->first();
+            $product = Product::findOrFail($product_id);
             if ($product == null) {
                 return response(json_encode(array('Message' => 'This product does not exist', 'Reviews' => null)), 404);
             }
 
             if ($review != null) {
+
                 $review->delete();
+
                 return response(json_encode(array('Message' => 'Review deleted', 'Reviews' => count($product->reviews))), 200);
             } else {
-                return response(json_encode(array("Message" => "You can not delete this review or it does not exist", 'Reviews' => null)), 404);
+                return response(json_encode(array("Message" => "You can not delete this review or it does not exist", 'Reviews' => null)), 403);
             }
 
         } catch (\Exception $e) {
-            return response(json_encode($e->getMessage()), 400);
+            return response(json_encode(array("Message"=>"Error deleting review")), 500);
         }
-
     }
+
+
+
+    function setReview(Request $request, $product_id, $review) {
+        try{
+            $product = Product::findOrFail($product_id);
+            $review->title = $request->title;
+            if (is_int($request->score) && $request->score >= 1 && $request->score <= 5) {
+                return response(json_encode(array("Message" => "Score value is not valid")), 500);
+            }
+            $review->score = $request->score;
+            $review->content = $request->content;
+            $review->user_id = Auth::id();
+            $review->product_id = $product_id;
+            if($review->save()) {
+                $reviews = Review::where('product_id', $product_id)->orderBy('date', 'DESC')->get();
+                foreach($reviews as $pagereview) {
+                    $pagereview->date = date('d F Y', strtotime($pagereview->date));
+                    $pagereview->user->name;
+                    if($pagereview->user_id == Auth::id())
+                        $pagereview->owner = true;
+                    else
+                        $pagereview->owner = false;
+                }   
+                return response(json_encode(array("Message" => "Review updated", "Reviews" => $reviews, "Total"=>count($product->reviews))), 200);
+            } else {
+                return response(json_encode(array("Message" => "Error adding/updating review")), 500);
+            }
+        }catch (\Exception $e) {
+            return response(json_encode(array("Message" => "Error adding/updating review")), 500);
+        }
+    }
+
 
     public function addReview(Request $request, $product_id)
     {
@@ -246,58 +275,26 @@ class ProductsController extends Controller
             $product = Product::findOrFail($product_id);
             $this->authorize('review', $product);
             $review = new Review;
-            $review->title = $request->title;
-            if (is_int($request->score) && $request->score >= 1 && $request->score <= 5) {
-                return response(json_encode(array("Message" => "Score value is not valid")), 500);
-            }
-            $review->score = $request->score;
-            $review->content = $request->content;
-            $review->user_id = Auth::id();
-            $review->product_id = $product_id;
-            if($review->save()) {
-                $reviews = Review::where('product_id', $product_id)->orderBy('date', 'DESC')->paginate(1);
-                foreach($reviews as $pagereview) {
-                    $pagereview->date = date('d F Y', strtotime($pagereview->date));
-                    $pagereview->user->name;
-                    $pagereview->owner = ($review->user_id == Auth::id());
-                }
-                return response(json_encode(array("Message" => "Review added", "Reviews" => $reviews, "Total"=>count($product->reviews))), 200);
-            } else {
-                return response(json_encode(array("Message" => "1 Error adding review")), 500);
-            }
+            return $this->setReview($request, $product_id, $review);
+
         } catch (\Exception $e) {
-            return response(json_encode(array("Message" => $e->getMessage())), 500);
+            return response(json_encode(array("Message" => "Error adding review")), 500);
         }
     }
 
     public function updateReview(Request $request, $product_id) {
+        
+        
         try {
             $user = Auth::user();
             $review = $user->reviews()->where('id', $request->id)->first();
-            $product = Product::findOrFail($product_id);
-            $review->title = $request->title;
-            if (is_int($request->score) && $request->score >= 1 && $request->score <= 5) {
-                return response(json_encode(array("Message" => "Score value is not valid")), 500);
-            }
-            $review->score = $request->score;
-            $review->content = $request->content;
-            $review->user_id = Auth::id();
-            $review->product_id = $product_id;
-            if($review->save()) {
-                $reviews = Review::where('product_id', $product_id)->orderBy('date', 'DESC')->paginate(1);
-                foreach($reviews as $pagereview) {
-                    $pagereview->date = date('d F Y', strtotime($pagereview->date));
-                    $pagereview->user->name;
-                    $pagereview->owner = ($review->user_id == Auth::id());
-                }
-                return response(json_encode(array("Message" => "Review updated", "Reviews" => $reviews, "Total"=>count($product->reviews))), 200);
-            } else {
-                return response(json_encode(array("Message" => "1 Error adding review")), 500);
-            }
+            return $this->setReview($request, $product_id, $review);
+            
         } catch (\Exception $e) {
-            return response(json_encode(array("Message" => $e->getMessage())), 500);
+            return response(json_encode(array("Message" => "Error updating review")), 500);
         }
     }
+
 
 }
 
