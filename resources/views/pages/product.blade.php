@@ -231,12 +231,7 @@
         </div>
     </div>
 </main>
-<<<<<<< HEAD
 <script id="template" type="x-tmpl-mustache">
     @include('partials.templates.review')
 </script> 
 @endsection
-=======
-
-@endsection
->>>>>>> 3a602fc2c11e3eacfc61819b1021cedfc6b5d8ed
