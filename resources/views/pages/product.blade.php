@@ -236,4 +236,7 @@
 <script id="template" type="x-tmpl-mustache">
     @include('partials.templates.review')
 </script> 
+
+<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" data-toggle="tooltip" data-placement="left"><i class="fas fa-angle-up"></i></a>
+
 @endsection

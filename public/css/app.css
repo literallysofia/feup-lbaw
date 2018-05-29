@@ -774,8 +774,16 @@ main .review_comment {
       #save_product_button input {
         width: 100%; } }
 
-.review_item a i:hover {
-  color: #646464; }
+.btn.btn-primary.back-to-top {
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #6174AA;
+  border: none;
+  z-index: 100; }
+  .btn.btn-primary.back-to-top:active {
+    background-color: #6174AA !important; }
 
 main .contact p {
   text-align: justify; }

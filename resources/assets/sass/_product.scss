@@ -127,8 +127,15 @@ main {
     }
 }
 
-.review_item a i {
-    &:hover {
-        color: $dark-grey;
+.btn.btn-primary.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: $highlight;
+    border: none;
+    z-index: 100;
+    &:active {
+        background-color: $highlight !important;
     }
 }
