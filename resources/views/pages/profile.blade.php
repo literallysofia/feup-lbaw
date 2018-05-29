@@ -115,7 +115,8 @@
             <fieldset>
               <div class="form-group">
                 <label for="address-name">Name</label>
-                <input id="address-name" class="form-control" type="text" required>
+                <input id="address-name" class="form-control" type="text" oninvalid="this.setCustomValidity('Address name can only be 30 chracters long')"
+                oninput="this.setCustomValidity('')" pattern=".{1,30}" required>
               </div>
               <div class="form-group">
                 <label for="address-street">Street</label>
@@ -123,7 +124,7 @@
               </div>
               <div class="form-group">
                 <label for="address-postal">Postal Code</label>
-                <input id="address-postal" class="form-control" type="text" oninvalid="this.setCustomValidity('Please enter a valid postal code \n(eg: NNNN-NNN)')"
+                <input id="address-postal" class="form-control" type="text" oninvalid="this.setCustomValidity('Please enter a valid postal code (eg: NNNN-NNN)')"
                   oninput="this.setCustomValidity('')" pattern="[0-9]{4}-[0-9]{3}" required>
               </div>
               <div class="form-group">
