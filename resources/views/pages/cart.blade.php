@@ -16,12 +16,15 @@
                 <div class="cart-item row">
                     <div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 col-xs-12 pb-lg-0 pb-md-0 pb-sm-3">
                         <div class="d-flex flex-column align-items-center cart_item_img">
-                            <img src="{{$product->photos->get(0)->path}}" alt="Item 1" class="img-fluid">
+                        <a href="{{ route('product', ['product_id'=> $product->id]) }}">
+                            <img src="{{$product->photos->first()->path}}" alt="Item 1" class="img-fluid" style="cursor:pointer;"></a>
                         </div>
                     </div>
                     <div class="col-xl-10 col-lg-10 col-md-9 col-sm-12 col-xs-12">
                         <div class="info-item d-flex flex-column">
-                            <h5>{{ $product->name }}</h5>
+                            <a href="{{ route('product', ['product_id'=> $product->id]) }}">
+                                <h5>{{ $product->name }}</h5>
+                            </a>
                             <div class="d-flex flex-row cart-item-quantity">
                                 <p>Quantity:</p>
                                     <p><i onclick="decrement(this, {{ $product->quantity_available }})" class="fas fa-minus"></i></p>

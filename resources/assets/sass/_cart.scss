@@ -1,5 +1,9 @@
-.cart-item h5 {
-    font-size: 1.2em;
+.cart-item a {
+    color: $black;
+    &:hover {
+        color: $black;
+        text-decoration: none;
+    }
 }
 
 #info_message {
