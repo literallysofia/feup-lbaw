@@ -81,7 +81,7 @@ main #message {
   main input[type="email"]:hover,
   main textarea:hover,
   main #message:hover {
-    background-color: none;
+    background: none;
     cursor: auto; }
   main input[type="text"]:focus,
   main input[type="password"]:focus,
@@ -363,8 +363,13 @@ main div.jumptarget {
 main form label {
   padding-left: 1.1em;
   font-weight: 700; }
+main form legend {
+  font-size: 1em;
+  padding-left: 1.1em;
+  font-weight: 700; }
 main form span {
-  font-size: 0.7em; }
+  font-size: 0.7em;
+  font-weight: normal; }
 main form input[type="button"],
 main form input[type="submit"] {
   width: 20%;
@@ -566,10 +571,8 @@ main #table-save-button {
   @media (max-width: 700px) {
     main #table-save-button {
       width: 100%; } }
-main .modal input[type="text"] {
-  width: 100%; }
+main .modal input[type="text"],
 main .modal textarea {
-  margin-top: 1em;
   width: 100%; }
 main .modal .modal-footer {
   padding-right: 0; }

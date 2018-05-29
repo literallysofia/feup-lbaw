@@ -1,4 +1,6 @@
-@extends('layouts.app') 
+@extends('layouts.app')
+
+@section('title', 'Sweven | Management')
 
 @section('content') 
 
@@ -87,8 +89,11 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body section-container mt-0">
-                    <form  id="add_property_form">
-                        <input type="text" class="form-control" id="new_property" placeholder="New Property">
+                    <form id="add_property_form">
+                        <fieldset>
+                            <label for="new_property">New Property</label>
+                            <input id="new_property" class="form-control" type="text" placeholder="Name">
+                        </fieldset>
                         <div class="modal-footer">
                             <input type="button" data-dismiss="modal" value="Close">
                             <input type="submit" class="black-button" value="Save">
@@ -126,7 +131,10 @@
                 </div>
                 <div class="modal-body section-container mt-0">
                     <form  id="add_category_form">
-                        <input type="text" class="form-control" id="new_category" placeholder="New Category">
+                        <fieldset>
+                            <label for="new_category">New Category</label>
+                            <input type="text" class="form-control" id="new_category" placeholder="Name">
+                        <fieldset>
                         <div class="modal-footer">
                             <input type="button" data-dismiss="modal" value="Close">
                             <input type="submit" class="black-button" value="Save">
@@ -173,8 +181,12 @@
 
                 <div class="modal-body section-container mt-0">
                     <form  id="add_faq_form">
-                        <input type="text" class="pt-1 pb-1" id="new_question" placeholder="Question">
-                        <textarea class="pt-2" rows="5" id="new_answer" placeholder="Answer"></textarea>
+                        <fieldset>
+                            <label for="new_question">New Question</label>
+                            <input id="new_question" type="text" placeholder="Question">
+                            <label class="mt-4" for="new_answer">New Answer</label>
+                            <textarea id="new_answer" rows="5" placeholder="Answer"></textarea>
+                        </fieldset>
                         <div class="modal-footer">
                             <input type="button" data-dismiss="modal" value="Close">
                             <input type="submit" class="black-button" value="Save">

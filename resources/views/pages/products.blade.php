@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $category->name)
+@section('title', 'Sweven | ' . $category->name)
 
 @section('content')
 

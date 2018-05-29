@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
-@section('title','Wishlist')
+@section('title', 'Sweven | ' . $product->name)
 
 @section('content')
 
+@include('partials.breadcrumbs', $data = array($product->category->name => route('category_products', $product->category->id), $product->name => ''))
+
 <script type="text/javascript" src={{ asset('js/product.js') }} defer></script>
 <script type="text/javascript" src={{ asset('js/review.js') }} defer></script>
-
-@include('partials.breadcrumbs', $data = array($product->category->name => route('category_products', $product->category->id), $product->name => ''))
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 
 <main>
     <section class="mt-4">
@@ -36,7 +37,7 @@
                     </div>
 
                     <div class="col-md-6 col-sm-12 d-flex flex-column align-items-center align-self-center">
-                        <h1 class="text-center">{{$product->name}}</h1>
+                        <h1 class="text-center">{{ $product->name }}</h1>
                         <div class="stars mt-2">
                             <input type="hidden" value="{{$product->score}}">
                             <div class="stars-outer">
@@ -99,37 +100,14 @@
                     <h2 id="reviews_counter">/{{count($product->reviews)}}</h2>
                 </div>
                 <div class="ml-auto">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination">
-                            {{--<li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </li>--}}
-                            {{ $reviews->links() }}
-                        </ul>
+                    <nav class="pagination-links" aria-label="Page navigation">
+                        @include('partials.products.pagination_review')
                     </nav>
                 </div>
             </div>
 
             <div class="section-container">
-                <div class="container">
+                <div id="reviews" class="container">
                     @if(count($product->reviews) == 0)
                         <p style="text-align: center">There's not any review yet</p>
                     @endif
@@ -171,7 +149,7 @@
                             </div>
                             @if(Auth::id() == $reviews[$i]->user_id)
                                 <div class="d-flex flex-row align-items-end col-12">
-                                    <a class="ml-auto mr-3" data-toggle="modal" data-target="#giveOpinionModal">
+                                    <a class="ml-auto mr-3" onclick="editReview({{$product->id}},{{$reviews[$i]->id}}, '{{$reviews[$i]->title}}', '{{$reviews[$i]->content}}', {{$reviews[$i]->score}})" data-toggle="modal" data-target="#giveOpinionModal">
                                         <i class="fas fa-lg fa-pencil-alt "></i>
                                     </a>
                                     <a onclick="deleteReview(this, {{$reviews[$i]->id}}, {{$product->id}})">
@@ -194,31 +172,8 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end mt-3">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination">
-                        {{--<li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>--}}
-                        {{ $reviews->links() }}
-                    </ul>
+                <nav class="pagination-links" aria-label="Page navigation">
+                    @include('partials.products.pagination_review')
                 </nav>
             </div>
         </div>
@@ -234,38 +189,40 @@
                     </button>
                 </div>
                 <div class="modal-body section-container" id="review_body">
-                    <form id="give_opinion_form" onsubmit="return newOpinion({{$product->id}})">
-                        <div class="form-group">
-                            <label for="rate_review">Global rate:</label>
-                            <div class="d-flex justify-content-center">
-                                <div id="review_stars">
-                                    <div class="stars-outer">
-                                        <i class="fas fa-star fa-lg"></i>
-                                        <i class="fas fa-star fa-lg"></i>
-                                        <i class="fas fa-star fa-lg"></i>
-                                        <i class="fas fa-star fa-lg"></i>
-                                        <i class="fas fa-star fa-lg"></i>
-                                        <div class="stars-inner">
-                                            <i class="fas fa-star fa-lg" data-alt="5" title="Excellent"></i>
-                                            <i class="fas fa-star fa-lg" data-alt="4" title="Good"></i>
-                                            <i class="fas fa-star fa-lg" data-alt="3" title="Average"></i>
-                                            <i class="fas fa-star fa-lg" data-alt="2" title="Poor"></i>
-                                            <i class="fas fa-star fa-lg" data-alt="1" title="Terrible"></i>
+                    <form id="give_opinion_form" onsubmit="return newOpinion({{ $product->id }})">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="rate_review">Global rate:</label>
+                                <div class="d-flex justify-content-center">
+                                    <div id="review_stars">
+                                        <div class="stars-outer">
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <div class="stars-inner">
+                                                <i class="fas fa-star fa-lg" data-alt="5" title="Excellent"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="4" title="Good"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="3" title="Average"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="2" title="Poor"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="1" title="Terrible"></i>
+                                            </div>
                                         </div>
+                                        <p id="rate_text">rate</p>
                                     </div>
-                                    <p id="rate_text">rate</p>
                                 </div>
+                                <input id="opinion_rate" type="hidden" value="" required></input>
                             </div>
-                            <input id="opinion_rate" type="hidden"></input>
-                        </div>
-                        <div class="form-group">
-                            <label for="review_title">Title</label>
-                            <input type="text" class="form-control" id="review_title" placeholder="Your title" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="review_text">Review</label>
-                            <textarea form="give_opinion_form" rows="4" cols="10" id="review_text" placeholder="Your review" required></textarea>
-                        </div>
+                            <div class="form-group">
+                                <label for="review_title">Title</label>
+                                <input type="text" class="form-control" id="review_title" placeholder="Your title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="review_text">Review</label>
+                                <textarea form="give_opinion_form" rows="4" cols="10" id="review_text" placeholder="Your review" required></textarea>
+                            </div>
+                        </fieldset>
                         <div class="modal-footer">
                             <input type="button" data-dismiss="modal" value="Close"></input>
                             <input type="submit" class="black-button" value="Save"></input>
@@ -276,5 +233,7 @@
         </div>
     </div>
 </main>
-
+<script id="template" type="x-tmpl-mustache">
+    @include('partials.templates.review')
+</script> 
 @endsection

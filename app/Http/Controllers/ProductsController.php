@@ -7,9 +7,14 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Review;
 use App\Photo;
+use App\Property;
+use App\CategoryProperty;
+use App\ValuesLists;
+use App\Value;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 
 class ProductsController extends Controller
 {
@@ -110,7 +115,7 @@ class ProductsController extends Controller
         try {
             $product = Product::findOrFail($product_id);
 
-            $reviews = Review::where('product_id', $product_id)->paginate(2);
+            $reviews = Review::where('product_id', $product_id)->orderBy('date', 'DESC')->paginate(1);
 
             if ($product != null) {
                 return view('pages.product', ['product' => $product, 'reviews' => $reviews]);
@@ -137,6 +142,9 @@ class ProductsController extends Controller
     {
 
         $product = Product::where('id', $id)->first();
+
+        if($product == null)
+            return view('errors.404');
         $category = $product->category()->first();
 
         $photos = Photo::where('product_id', $id)->get();
@@ -146,7 +154,60 @@ class ProductsController extends Controller
 
     }
 
-    public function addProduct($category_name,Request $request){
+    public function validateAddProduct(array $data){
+        
+    }
+
+    public function addProduct(Request $request){
+        
+        
+        $product = new Product;
+        
+        $category = Category::where('name',$request->category_name)->first();
+
+        $product->category_id = $category->id;
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->quantity_available = $request->quantity;
+        $product->brand = $request->brand;
+
+        $product->save();
+
+        
+       
+        
+
+
+        $specs = $request->property_values;
+
+        foreach($specs as $spec){
+            $property = Property::where('name',$spec['property'])->first();
+            $category_property = CategoryProperty::where([['category_id',$category->id],['property_id',$property->id]])->first();
+            $values_list = new ValuesLists;
+            $values_list->category_property_id = $category_property->id;
+            $values_list->product_id = $product->id;
+            $values_list->save();
+            foreach($spec['values'] as $value){
+                $spec_value = new Value;
+                $spec_value->name=$value;
+                $spec_value->values_lists_id = $values_list->id;
+                $spec_value->save();
+            }
+        }
+
+        if(count($request->photos) > 0)
+            foreach($request->photos as $photo){
+                $newPhoto = new Photo;
+                $newPhoto->path = $photo;
+                $newPhoto->product_id = $newProduct->id;
+                $newPhoto->save();
+            }
+
+        return response()->json(array('product' => $request), 200);
+
+
+
+
 
     }
 
@@ -180,26 +241,63 @@ class ProductsController extends Controller
 
     public function addReview(Request $request, $product_id)
     {
-
         try {
             $user = Auth::user();
             $product = Product::findOrFail($product_id);
-            $this->authorize('review', $product_id);
-            $review = new Review();
+            $this->authorize('review', $product);
+            $review = new Review;
             $review->title = $request->title;
             if (is_int($request->score) && $request->score >= 1 && $request->score <= 5) {
-                return response(json_encode(array("Message" => "Score value is not valid", "Content" => null)), 400);
+                return response(json_encode(array("Message" => "Score value is not valid")), 500);
             }
             $review->score = $request->score;
             $review->content = $request->content;
-            if ($review->save()) {
-                return response(json_encode(array("Message" => "Review added", "Content" => $review)), 200);
+            $review->user_id = Auth::id();
+            $review->product_id = $product_id;
+            if($review->save()) {
+                $reviews = Review::where('product_id', $product_id)->orderBy('date', 'DESC')->paginate(1);
+                foreach($reviews as $pagereview) {
+                    $pagereview->date = date('d F Y', strtotime($pagereview->date));
+                    $pagereview->user->name;
+                    $pagereview->owner = ($review->user_id == Auth::id());
+                }
+                return response(json_encode(array("Message" => "Review added", "Reviews" => $reviews, "Total"=>count($product->reviews))), 200);
             } else {
-                return response(json_encode(array("Message" => "Error adding review", "Content" => null)), 400);
+                return response(json_encode(array("Message" => "1 Error adding review")), 500);
             }
         } catch (\Exception $e) {
-            return response(json_encode(array("Message" => "Error adding review", "Content" => null)), 400);
+            return response(json_encode(array("Message" => $e->getMessage())), 500);
+        }
+    }
+
+    public function updateReview(Request $request, $product_id) {
+        try {
+            $user = Auth::user();
+            $review = $user->reviews()->where('id', $request->id)->first();
+            $product = Product::findOrFail($product_id);
+            $review->title = $request->title;
+            if (is_int($request->score) && $request->score >= 1 && $request->score <= 5) {
+                return response(json_encode(array("Message" => "Score value is not valid")), 500);
+            }
+            $review->score = $request->score;
+            $review->content = $request->content;
+            $review->user_id = Auth::id();
+            $review->product_id = $product_id;
+            if($review->save()) {
+                $reviews = Review::where('product_id', $product_id)->orderBy('date', 'DESC')->paginate(1);
+                foreach($reviews as $pagereview) {
+                    $pagereview->date = date('d F Y', strtotime($pagereview->date));
+                    $pagereview->user->name;
+                    $pagereview->owner = ($review->user_id == Auth::id());
+                }
+                return response(json_encode(array("Message" => "Review updated", "Reviews" => $reviews, "Total"=>count($product->reviews))), 200);
+            } else {
+                return response(json_encode(array("Message" => "1 Error adding review")), 500);
+            }
+        } catch (\Exception $e) {
+            return response(json_encode(array("Message" => $e->getMessage())), 500);
         }
     }
 
 }
+

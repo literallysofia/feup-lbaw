@@ -87,7 +87,7 @@ function addEntryInput(event){
     var input = document.createElement("INPUT");
     input.setAttribute("type","text");
     input.setAttribute("class","mb-2");
-    event.target.offsetParent.firstElementChild.children[1].appendChild(input);
+    event.target.offsetParent.firstElementChild.children[2].appendChild(input);
 }
 
 function getPhotosSrc(){
@@ -107,7 +107,7 @@ function saveProduct(event){
 
     var photos_src = getPhotosSrc();
    
-
+  
     var flag = false;
     if($('#product_name').is(":invalid")){
         $('#product_name').css('border',"2px solid #ff5555");
@@ -147,20 +147,24 @@ function saveProduct(event){
     if(flag == true) {
         $("#basic-error").css('display','block');
         $("#basic-error").text("Please recheck the basic information");
-        $("#basic-error").css('outline', 'none !important').attr("tabindex", -1).focus();
+        $("#basic-error").parent().parent().css('outline', 'none !important').attr("tabindex", -1).focus();
         return;
     }
     var product_specs = checkProperties();
     if(!product_specs[0]) {
         $("#specs-error").css('display','block');
         $("#specs-error").text("Required properties need to have atleast one value");
-        $("#specs-error").css('outline', 'none !important').attr("tabindex", -1).focus();
+        console.log($("#specs-error").prev())
+        $("#specs-error").prev().css('outline', 'none !important').attr("tabindex", -1).focus();
         return;
 
     }
     product_specs = product_specs[1];
-
+    var url =  window.location.href ;
+    var my_url = url.substring(url.indexOf("add_product"),url.length).trim();
+    var category_name = my_url.substring(my_url.indexOf("/")+1,my_url.length).trim();
     var product = {
+        'category_name':category_name,
         'name' : product_name,
         'price' : product_price,
         'quantity' : product_quantity,
@@ -189,14 +193,19 @@ function addProduct(product){
     var url =  window.location.href ;
     var my_url = url.substring(url.indexOf("add_product"),url.length).trim();
 
+    my_url = "/add_product";
     $.ajax({
         type: 'POST',
         url: my_url,
         data: product,
+        dataType: 'json',
         success: function (data) {
-           
+           console.log("Success");
+           console.log(data);
         },
         error: function (data) {
+          console.log("Error");
+          console.log(data);
           
         }
     });
@@ -246,9 +255,9 @@ function checkProperties(){
             var property_name ;
             if(is_required){
                 var index = property_header[i].innerText.lastIndexOf('*');
-                property_name = property_header[i].innerText.substring(0,index).trim();
+                property_name = $(".propertyName")[i].innerText.substring(0,index).trim();
             }else{
-                property_name = property_header[i].innerText.trim()
+                property_name = $(".propertyName")[i].innerText.trim()
             }
             prop_values.push({property:property_name,values:values});
         }

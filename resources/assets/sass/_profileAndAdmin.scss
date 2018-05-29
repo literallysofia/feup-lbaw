@@ -36,11 +36,15 @@ main {
             padding-left: 1.1em;
             font-weight: 700;
         }
+        legend {
+            font-size: 1em;
+            padding-left: 1.1em;
+            font-weight: 700;
+        }
         span {
             font-size: 0.7em;
+            font-weight: normal;
         }
-    }
-    form {
         input[type="button"],
         input[type="submit"] {
             width: 20%;
@@ -144,7 +148,6 @@ main {
                     width: 100%;
                 }
             }
-
             .checkbox-container {
                 display: block;
                 position: relative;
@@ -303,11 +306,8 @@ main {
         }
     }
     .modal {
-        input[type="text"] {
-            width: 100%;
-        }
+        input[type="text"],
         textarea {
-            margin-top: 1em;
             width: 100%;
         }
         .modal-footer {
