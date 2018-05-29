@@ -17,6 +17,7 @@ class AdminController extends Controller
         try {
             $shipped_purchases = Purchase::where('status', 'Shipped')->orderBy('date')->get();
             $processing_purchases = Purchase::where('status', 'Processing')->orderBy('date')->get();
+            $delivered_purchases = Purchase::where('status', 'Delivered')->orderBy('date')->get();            
             $properties = Property::get();
             $faqs = Faq::get();
             $categories = Category::where('is_archived', false)->get();
@@ -25,9 +26,31 @@ class AdminController extends Controller
             return response()->setStatusCode(400);
         }
 
-        return view('pages.admin', ['shipped_purchases' => $shipped_purchases, 'processing_purchases' => $processing_purchases,
+        return view('pages.admin', ['shipped_purchases' => $shipped_purchases, 'processing_purchases' => $processing_purchases, 'delivered_purchases' => $delivered_purchases,
             'properties' => $properties, 'categories' => $categories, 'faqs' => $faqs]);
 
+    }
+
+    public function updateAdminPurchases(Request $request){
+
+        $purchases = json_decode($request->purchases, true);
+
+
+        foreach ($purchases as $purchase) {
+
+            $newpurchase = Purchase::findOrFail($purchase['purchaseId']);
+
+            $newpurchase->status = $purchase['status'];
+            try {
+                $newpurchase->save();
+            } catch (\Exception $e) {
+                $e->getMessage();
+            }
+
+        }
+
+        return response()->json(array('purchases' => $purchases), 200);
+        
     }
 
     public function addCategoryResponse(Request $request)

@@ -38,9 +38,11 @@
                         <th scope="col">Total</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="admin_purchases">
                         @each('partials.admin_purchase', $processing_purchases,'purchase')
                         @each('partials.admin_purchase', $shipped_purchases,'purchase')
+                        @each('partials.admin_purchase', $delivered_purchases,'purchase')
+                        
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-end">
