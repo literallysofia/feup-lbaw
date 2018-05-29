@@ -36,11 +36,15 @@ main {
             padding-left: 1.1em;
             font-weight: 700;
         }
+        legend {
+            font-size: 1em;
+            padding-left: 1.1em;
+            font-weight: 700;
+        }
         span {
             font-size: 0.7em;
+            font-weight: normal;
         }
-    }
-    form {
         input[type="button"],
         input[type="submit"] {
             width: 20%;

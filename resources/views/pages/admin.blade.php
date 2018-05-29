@@ -86,8 +86,10 @@
                 </div>
                 <div class="modal-body section-container mt-0">
                     <form id="add_property_form">
-                        <label for="new_property">New Property</label>
-                        <input id="new_property" class="form-control" type="text" placeholder="Name">
+                        <fieldset>
+                            <label for="new_property">New Property</label>
+                            <input id="new_property" class="form-control" type="text" placeholder="Name">
+                        </fieldset>
                         <div class="modal-footer">
                             <input type="button" data-dismiss="modal" value="Close">
                             <input type="submit" class="black-button" value="Save">
@@ -123,8 +125,10 @@
                 </div>
                 <div class="modal-body section-container mt-0">
                     <form  id="add_category_form">
-                        <label for="new_category">New Category</label>
-                        <input type="text" class="form-control" id="new_category" placeholder="Name">
+                        <fieldset>
+                            <label for="new_category">New Category</label>
+                            <input type="text" class="form-control" id="new_category" placeholder="Name">
+                        <fieldset>
                         <div class="modal-footer">
                             <input type="button" data-dismiss="modal" value="Close">
                             <input type="submit" class="black-button" value="Save">
@@ -169,10 +173,12 @@
 
                 <div class="modal-body section-container mt-0">
                     <form  id="add_faq_form">
-                        <label for="new_question">New Question</label>
-                        <input id="new_question" type="text" placeholder="Question">
-                        <label class="mt-4" for="new_answer">New Answer</label>
-                        <textarea id="new_answer" rows="5" placeholder="Answer"></textarea>
+                        <fieldset>
+                            <label for="new_question">New Question</label>
+                            <input id="new_question" type="text" placeholder="Question">
+                            <label class="mt-4" for="new_answer">New Answer</label>
+                            <textarea id="new_answer" rows="5" placeholder="Answer"></textarea>
+                        </fieldset>
                         <div class="modal-footer">
                             <input type="button" data-dismiss="modal" value="Close">
                             <input type="submit" class="black-button" value="Save">

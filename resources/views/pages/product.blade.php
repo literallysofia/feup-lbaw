@@ -189,38 +189,40 @@
                     </button>
                 </div>
                 <div class="modal-body section-container" id="review_body">
-                    <form id="give_opinion_form" onsubmit="return newOpinion({{$product->id}})">
-                        <div class="form-group">
-                            <label for="rate_review">Global rate:</label>
-                            <div class="d-flex justify-content-center">
-                                <div id="review_stars">
-                                    <div class="stars-outer">
-                                        <i class="fas fa-star fa-lg"></i>
-                                        <i class="fas fa-star fa-lg"></i>
-                                        <i class="fas fa-star fa-lg"></i>
-                                        <i class="fas fa-star fa-lg"></i>
-                                        <i class="fas fa-star fa-lg"></i>
-                                        <div class="stars-inner">
-                                            <i class="fas fa-star fa-lg" data-alt="5" title="Excellent"></i>
-                                            <i class="fas fa-star fa-lg" data-alt="4" title="Good"></i>
-                                            <i class="fas fa-star fa-lg" data-alt="3" title="Average"></i>
-                                            <i class="fas fa-star fa-lg" data-alt="2" title="Poor"></i>
-                                            <i class="fas fa-star fa-lg" data-alt="1" title="Terrible"></i>
+                    <form id="give_opinion_form" onsubmit="return newOpinion({{ $product->id }})">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="rate_review">Global rate:</label>
+                                <div class="d-flex justify-content-center">
+                                    <div id="review_stars">
+                                        <div class="stars-outer">
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <div class="stars-inner">
+                                                <i class="fas fa-star fa-lg" data-alt="5" title="Excellent"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="4" title="Good"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="3" title="Average"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="2" title="Poor"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="1" title="Terrible"></i>
+                                            </div>
                                         </div>
+                                        <p id="rate_text">rate</p>
                                     </div>
-                                    <p id="rate_text">rate</p>
                                 </div>
+                                <input id="opinion_rate" type="hidden" value="" required></input>
                             </div>
-                            <input id="opinion_rate" type="hidden" value="" required></input>
-                        </div>
-                        <div class="form-group">
-                            <label for="review_title">Title</label>
-                            <input type="text" class="form-control" id="review_title" placeholder="Your title" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="review_text">Review</label>
-                            <textarea form="give_opinion_form" rows="4" cols="10" id="review_text" placeholder="Your review" required></textarea>
-                        </div>
+                            <div class="form-group">
+                                <label for="review_title">Title</label>
+                                <input type="text" class="form-control" id="review_title" placeholder="Your title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="review_text">Review</label>
+                                <textarea form="give_opinion_form" rows="4" cols="10" id="review_text" placeholder="Your review" required></textarea>
+                            </div>
+                        </fieldset>
                         <div class="modal-footer">
                             <input type="button" data-dismiss="modal" value="Close"></input>
                             <input type="submit" class="black-button" value="Save"></input>

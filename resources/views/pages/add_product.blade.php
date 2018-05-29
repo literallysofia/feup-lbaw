@@ -22,38 +22,40 @@
             <div class="section-container">
             <div class="alert alert-danger" id="basic-error" style="display:none"></div>
                 <form id="requiredForm">
-                    <div class="form-group">
-                        <label for="product_name">Name</label>
-                        @if($product != null)
-                        <input type="text" class="form-control" id="product_name" value="{{$product->name}}" required>
-                        @else
-                        <input type="text" class="form-control" id="product_name" placeholder="Product Name" required>
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        <label for="add_product_price">Price</label>
-                        @if($product != null)
-                        <input type="text" class="form-control" id="add_product_price" pattern="[0-9]+(\.[0-9]+)?$" value="{{$product->price}}" required>
-                        @else
-                        <input type="text" class="form-control" id="add_product_price" pattern="[0-9]+(\.[0-9]+)?$" placeholder="Product Price" required>
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        <label for="product_quantity">Quantity</label>
-                        @if($product != null)
-                        <input type="text" class="form-control" id="product_quantity" pattern="[0-9]+" value="{{$product->quantity_available}}" required>
-                        @else
-                        <input type="text" class="form-control" id="product_quantity" pattern="[1-9][0-9]*" placeholder="Poduct Quantity" required>
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        <label for="product_brand">Brand</label>
-                        @if($product != null)
-                        <input type="text" class="form-control" id="product_brand" value="{{$product->brand}}" required>
-                        @else
-                        <input type="text" class="form-control" id="product_brand" placeholder="Product Brand" required>
-                        @endif
-                    </div>
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="product_name">Name</label>
+                            @if($product != null)
+                            <input type="text" class="form-control" id="product_name" value="{{$product->name}}" required>
+                            @else
+                            <input type="text" class="form-control" id="product_name" placeholder="Product Name" required>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="add_product_price">Price</label>
+                            @if($product != null)
+                            <input type="text" class="form-control" id="add_product_price" pattern="[0-9]+(\.[0-9]+)?$" value="{{$product->price}}" required>
+                            @else
+                            <input type="text" class="form-control" id="add_product_price" pattern="[0-9]+(\.[0-9]+)?$" placeholder="Product Price" required>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="product_quantity">Quantity</label>
+                            @if($product != null)
+                            <input type="text" class="form-control" id="product_quantity" pattern="[0-9]+" value="{{$product->quantity_available}}" required>
+                            @else
+                            <input type="text" class="form-control" id="product_quantity" pattern="[1-9][0-9]*" placeholder="Poduct Quantity" required>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="product_brand">Brand</label>
+                            @if($product != null)
+                            <input type="text" class="form-control" id="product_brand" value="{{$product->brand}}" required>
+                            @else
+                            <input type="text" class="form-control" id="product_brand" placeholder="Product Brand" required>
+                            @endif
+                        </div>
+                    </fieldset>
                 </form>
             </div>
         </section>
