@@ -142,11 +142,7 @@ function saveCategoryAction(){
 
                         var dropDownMenu = document.getElementById("nav-dropdown");
                         
-
-                        //var custom_location = "{{ route('category_products', ['id' => $category->id]) }}";
-
-
-                        dropDownMenu.innerHTML+= '<a id="nav-cat-' +data.category.id + '" class="dropdown-item">' +
+                        dropDownMenu.innerHTML+= '<a id="nav-cat-' +data.category.id + '" class="dropdown-item"  href=' + data.navlink +'>' +
                         data.category.name + 
                         ' </a>';
 

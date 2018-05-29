@@ -204,7 +204,9 @@ class AdminController extends Controller
 
         }
 
-        return response()->json(array("Message" => "Category saved with success.", 'category' => $category), 200);
+        $navlink = route('category_products', ['id' => $category->id]);
+
+        return response()->json(array("Message" => "Category saved with success.", 'category' => $category, 'navlink'=>$navlink), 200);
 
     }
 
