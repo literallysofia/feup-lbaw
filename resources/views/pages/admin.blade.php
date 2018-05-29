@@ -1,4 +1,6 @@
-@extends('layouts.app') 
+@extends('layouts.app')
+
+@section('title', 'Sweven | Management')
 
 @section('content') 
 
@@ -28,6 +30,8 @@
             <div id="manage_purchases_title" class="jumptarget">
                 <h2>Purchases</h2>
             </div>
+            <div class="alert alert-success" id="purchases-success" style="display:none"></div>
+            <div class="alert alert-danger" id="purchases-error" style="display:none"></div>       
             <div class="section-container">
                 <table class="table">
                     <thead>
@@ -53,10 +57,12 @@
     </div>
 
     <div class="container">
-        <section class="mt-5">
+        <section class="mt-5">       
             <div id="manage_properties_title" class="jumptarget">
                 <h2>Properties</h2>
             </div>
+            <div class="alert alert-success" id="properties-success" style="display:none"></div>
+            <div class="alert alert-danger" id="properties-error" style="display:none"></div>
             <div class="cards row properties-cards">
                 @foreach ($properties as $property)
                     <div class="mt-4 col-md-6 col-lg-3">
@@ -83,8 +89,11 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body section-container mt-0">
-                    <form  id="add_property_form">
-                        <input type="text" class="form-control" id="new_property" placeholder="New Property">
+                    <form id="add_property_form">
+                        <fieldset>
+                            <label for="new_property">New Property</label>
+                            <input id="new_property" class="form-control" type="text" placeholder="Name">
+                        </fieldset>
                         <div class="modal-footer">
                             <input type="button" data-dismiss="modal" value="Close">
                             <input type="submit" class="black-button" value="Save">
@@ -100,6 +109,8 @@
             <div id="manage_categories_title" class="jumptarget">
                 <h2>Categories</h2>
             </div>
+            <div class="alert alert-success" id="categories-success" style="display:none"></div>
+            <div class="alert alert-danger" id="categories-error" style="display:none"></div>
             <div class="cards categories-cards row">
                 @include('partials.admin_category', ['categories'=>$categories, 'properties'=>$properties])
                 <div class="mt-4 col-md-6 col-lg-4">
@@ -120,7 +131,10 @@
                 </div>
                 <div class="modal-body section-container mt-0">
                     <form  id="add_category_form">
-                        <input type="text" class="form-control" id="new_category" placeholder="New Category">
+                        <fieldset>
+                            <label for="new_category">New Category</label>
+                            <input type="text" class="form-control" id="new_category" placeholder="Name">
+                        <fieldset>
                         <div class="modal-footer">
                             <input type="button" data-dismiss="modal" value="Close">
                             <input type="submit" class="black-button" value="Save">
@@ -136,6 +150,8 @@
             <div id="manage_faqs_title" class="jumptarget">
                 <h2>FAQs</h2>
             </div>
+            <div class="alert alert-success" id="faqs-success" style="display:none"></div>
+            <div class="alert alert-danger" id="faqs-error" style="display:none"></div>            
             <div class="cards faqs-cards">
                 @foreach ($faqs as $faq)
                     <div class="mt-4">
@@ -165,8 +181,12 @@
 
                 <div class="modal-body section-container mt-0">
                     <form  id="add_faq_form">
-                        <input type="text" class="pt-1 pb-1" id="new_question" placeholder="Question">
-                        <textarea class="pt-2" rows="5" id="new_answer" placeholder="Answer"></textarea>
+                        <fieldset>
+                            <label for="new_question">New Question</label>
+                            <input id="new_question" type="text" placeholder="Question">
+                            <label class="mt-4" for="new_answer">New Answer</label>
+                            <textarea id="new_answer" rows="5" placeholder="Answer"></textarea>
+                        </fieldset>
                         <div class="modal-footer">
                             <input type="button" data-dismiss="modal" value="Close">
                             <input type="submit" class="black-button" value="Save">

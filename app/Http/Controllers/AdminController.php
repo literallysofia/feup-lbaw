@@ -35,21 +35,22 @@ class AdminController extends Controller
 
         $purchases = json_decode($request->purchases, true);
 
+        try {
+            
+            foreach ($purchases as $purchase) {
 
-        foreach ($purchases as $purchase) {
-
-            $newpurchase = Purchase::findOrFail($purchase['purchaseId']);
-
-            $newpurchase->status = $purchase['status'];
-            try {
+                $newpurchase = Purchase::findOrFail($purchase['purchaseId']);
+                $newpurchase->status = $purchase['status'];
                 $newpurchase->save();
-            } catch (\Exception $e) {
-                $e->getMessage();
             }
 
+        } catch (\Exception $e) {
+            //$e->getMessage();
+            return response()->json(array("Message" => "Error updating purchases."), 400);        
         }
 
-        return response()->json(array('purchases' => $purchases), 200);
+        return response()->json(array("Message" => "Purchases updated with success."), 200);      
+
         
     }
 
@@ -61,6 +62,7 @@ class AdminController extends Controller
             $addCategory->save();
         } catch (\Exception $e) {
             echo $e->getMessage();
+            return response()->json(array("Message" => "Error adding category."), 400);            
         }
 
         if ($addCategory) {
@@ -69,10 +71,14 @@ class AdminController extends Controller
 
             } catch (\Exception $e) {
                 $e->getMessage();
+                return response()->json(array("Message" => "Error adding category."), 400);
             }
         }
+        else{
+            return response()->json(array("Message" => "Error adding category."), 404);
+        }
 
-        return response()->json(array('category' => $newCategory), 200);
+        return response()->json(array("Message" => "Category added with success.", 'category' => $newCategory), 200);
 
     }
 
@@ -86,7 +92,11 @@ class AdminController extends Controller
             $category->save();
         } catch (\Exception $e) {
             $e->getMessage();
+            return response()->json(array("Message" => "Error deleting category"), 400);
         }
+
+        return response()->json(array("Message" => "Category deleted with success."), 200);
+        
     }
 
     public function addPropertyResponse(Request $request)
@@ -97,7 +107,8 @@ class AdminController extends Controller
         try {
             $addProperty->save();
         } catch (\Exception $e) {
-            echo $e->getMessage();
+            $e->getMessage();
+            return response()->json(array("Message" => "Error adding property."), 400);            
         }
 
         if ($addProperty) {
@@ -106,10 +117,14 @@ class AdminController extends Controller
 
             } catch (\Exception $e) {
                 $e->getMessage();
+                return response()->json(array("Message" => "Error adding property."), 400);
+                
             }
+        } else{
+            return response()->json(array("Message" => "Error adding property."), 400);            
         }
 
-        return response()->json(array('property' => $newProperty), 200);
+        return response()->json(array("Message" => "Property added with success.", 'property' => $newProperty), 200);
 
     }
 
@@ -122,9 +137,11 @@ class AdminController extends Controller
             $property->delete();
         } catch (\Exception $e) {
             $e->getMessage();
+            return response()->json(array("Message" => "Error deleting property."), 400);
+            
         }
 
-        return response()->json('Success', 200);
+        return response()->json(array("Message" => "Property deleted with success."), 200);
 
     }
 
@@ -137,6 +154,7 @@ class AdminController extends Controller
             $category->save();
         } catch (\Exception $e) {
             $e->getMessage();
+            return response()->json(array("Message" => "Error saving category."), 400);            
         }
 
         $requestProperties = json_decode($request->categoryProperties, true);
@@ -166,6 +184,7 @@ class AdminController extends Controller
                     $addCategoryProperty->save();
                 } catch (\Exception $e) {
                     echo $e->getMessage();
+                    return response()->json(array("Message" => "Error saving category."), 400);                    
                 }
             }
 
@@ -177,6 +196,7 @@ class AdminController extends Controller
                         CategoryProperty::find($databaseCategoryPropertyId)->update(['is_required_property' => $is_required]);
                     } catch (\Exception $e) {
                         echo $e->getMessage();
+                        return response()->json(array("Message" => "Error saving category."), 400);
                     }
                 }
 
@@ -184,7 +204,9 @@ class AdminController extends Controller
 
         }
 
-        return response()->json(array('category' => $category, 200));
+        $navlink = route('category_products', ['id' => $category->id]);
+
+        return response()->json(array("Message" => "Category saved with success.", 'category' => $category, 'navlink'=>$navlink), 200);
 
     }
 
@@ -209,22 +231,31 @@ class AdminController extends Controller
             }
         }
 
-        return response()->json(array('faq' => $newFaq), 200);
+        return response()->json(array("Message" => "FAQ added with success.",'faq' => $newFaq), 200);
 
     }
 
     public function deleteFaq(Request $request)
     {
 
-        $faq = Faq::findOrFail($request->faqId);
-
         try {
-            $faq->delete();
+
+            $faq = Faq::findOrFail($request->faqId);
+
+            if($faq!=null){
+                $faq->delete();
+                return response()->json(array("Message" => "FAQ deleted with success."), 200);
+            }
+            else{
+                return response(json_encode(array("Message" => "You can not delete this FAQ or it does not exist.")), 404);                
+            }
+
+       
         } catch (\Exception $e) {
-            $e->getMessage();
+            return response()->json(array("Message" => $e->getMessage()), 400);
         }
 
-        return response()->json('Success', 200);
+        
 
     }
 

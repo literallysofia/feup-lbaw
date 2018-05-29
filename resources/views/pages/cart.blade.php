@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Wishlist')
+@section('title', 'Sweven | Cart')
 
 @section('content')
 
@@ -28,8 +28,8 @@
                                     <input type="number" class="item_quantity" value="{{ $product->pivot->quantity }}" data-value="{{ $product->quantity_available }}" data-id="{{ $product->id }}">
                                     <p><i onclick="increment(this, {{ $product->quantity_available }})" class="fas fa-plus"></i></p>
                             </div>
-                            <div class="remove-item-cart mt-auto d-flex align-items-end">
-                                <a class="mr-auto mt-auto" href="" onclick="return deleteProduct(this, {{ $product->id }})">Remove</a>
+                            <div class="mt-auto d-flex align-items-end">
+                                <a class="remove-item-cart mr-auto mt-auto" onclick="return deleteProduct(this, {{ $product->id }})">Remove</a>
                                 <div class="info-item ">
                                     <p class="mb-auto">{{ $product->price }} €</p>
                                 </div>

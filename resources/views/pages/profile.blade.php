@@ -1,5 +1,7 @@
 @extends('layouts.app') 
 
+@section('title','Sweven | Profile')
+
 @section('content') 
 
 @include('partials.breadcrumbs', $data = array('Client Area' => ''))
@@ -40,37 +42,40 @@
 
       <div class="section-container">
         <form id="profile_form">
-          <div class="form-group">
-            <label for="profile_name">Name</label>
-            <input type="text" class="form-control" oninvalid="this.setCustomValidity('Please enter a valid name')" oninput="this.setCustomValidity('')"
-              pattern="^[A-Z][a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" id="profile_name" value="{{$user->name}}">
-          </div>
-          <div class="form-group">
-            <label for="profile_username">Username</label>
-            <input type="text" class="form-control" oninvalid="this.setCustomValidity('Username must have at least 6 characters')" oninput="this.setCustomValidity('')"
-              pattern="^[a-zA-Z0-9]{6,20}$" id="profile_username" value={{$user->username}}>
-          </div>
-          <div class="form-group">
-            <label for="profile_email">Email</label>
-            <input type="email" class="form-control" id="profile_email" value={{$user->email}}>
-          </div>
-          <label>Change Password</label>
-          <span>(optional)</span>
-          <div class="form-group">
-            <input type="password" class="form-control" id="profile_oldpassword" placeholder="Old Password">
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" oninvalid="this.setCustomValidity('Password must have one uppercase letter, one number and at least 8 characters')"
-              oninput="this.setCustomValidity('')" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$" id="profile_newpassword"
-              placeholder="New Password">
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" id="password_confirmation" placeholder="Repeat New Password">
-          </div>
-          <div class="d-flex flex-column">
-            <input id="btn-saveProfile" type="submit" value="Save">
-            <input type="button" class="black-button mt-3" value="Delete Account">
-          </div>
+        <fieldset>
+            <div class="form-group">
+              <label for="profile_name">Name</label>
+              <input type="text" class="form-control" oninvalid="this.setCustomValidity('Please enter a valid name')" oninput="this.setCustomValidity('')"
+                pattern="^[A-Z][a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" id="profile_name" value="{{$user->name}}">
+            </div>
+            <div class="form-group">
+              <label for="profile_username">Username</label>
+              <input type="text" class="form-control" oninvalid="this.setCustomValidity('Username must have at least 6 characters')" oninput="this.setCustomValidity('')"
+                pattern="^[a-zA-Z0-9]{6,20}$" id="profile_username" value={{$user->username}}>
+            </div>
+            <div class="form-group">
+              <label for="profile_email">Email</label>
+              <input type="email" class="form-control" id="profile_email" value={{$user->email}}>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Change Password <span>(optional)</span></legend>
+            <div class="form-group">
+              <input type="password" class="form-control" id="profile_oldpassword" placeholder="Old Password">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" oninvalid="this.setCustomValidity('Password must have one uppercase letter, one number and at least 8 characters')"
+                oninput="this.setCustomValidity('')" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$" id="profile_newpassword"
+                placeholder="New Password">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" id="password_confirmation" placeholder="Repeat New Password">
+            </div>
+            <div class="d-flex flex-column">
+              <input id="btn-saveProfile" type="submit" value="Save">
+              <input type="button" class="black-button mt-3" value="Delete Account">
+            </div>
+          </fieldset>
         </form>
       </div>
 
@@ -107,37 +112,40 @@
         </div>
         <div class="modal-body section-container mt-0">
           <form id="add_address_form">
-            <div class="form-group">
-              <label>Name</label>
-              <input type="text" class="form-control" required>
-            </div>
-            <div class="form-group">
-              <label>Street</label>
-              <input type="text" class="form-control" required>
-            </div>
-            <div class="form-group">
-              <label>Postal Code</label>
-              <input type="text" class="form-control" oninvalid="this.setCustomValidity('Please enter a valid postal code \n(eg: NNNN-NNN)')"
-                oninput="this.setCustomValidity('')" pattern="[0-9]{4}-[0-9]{3}" required>
-            </div>
-            <div class="form-group">
-              <label>Country</label>
-              <select required class="form-control" onchange="filterCities(this)" id="countries_selector">
-                <option value="" disabled selected>Select country</option>
-                @foreach($countries as $country)
-                <option value="{{$country->id}}">{{$country->name}}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="form-group">
-              <label>City</label>
-              <select required class="form-control" id="cities_selector">
-                <option value="" disabled selected>Select city</option>
-                @foreach($cities as $city)
-                <option value="{{$city->id}}" data-value="{{$city->country_id}}">{{$city->name}}</option>
-                @endforeach
-              </select>
-            </div>
+            <fieldset>
+              <div class="form-group">
+                <label for="address-name">Name</label>
+                <input id="address-name" class="form-control" type="text" oninvalid="this.setCustomValidity('Address name can only be 30 chracters long')"
+                oninput="this.setCustomValidity('')" pattern=".{1,30}" required>
+              </div>
+              <div class="form-group">
+                <label for="address-street">Street</label>
+                <input id="address-street" class="form-control" type="text" required>
+              </div>
+              <div class="form-group">
+                <label for="address-postal">Postal Code</label>
+                <input id="address-postal" class="form-control" type="text" oninvalid="this.setCustomValidity('Please enter a valid postal code (eg: NNNN-NNN)')"
+                  oninput="this.setCustomValidity('')" pattern="[0-9]{4}-[0-9]{3}" required>
+              </div>
+              <div class="form-group">
+                <label for="countries_selector">Country</label>
+                <select id="countries_selector" class="form-control" onchange="filterCities(this)" required>
+                  <option value="" disabled selected>Select country</option>
+                  @foreach($countries as $country)
+                  <option value="{{$country->id}}">{{$country->name}}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="cities_selector">City</label>
+                <select id="cities_selector" class="form-control" required>
+                  <option value="" disabled selected>Select city</option>
+                  @foreach($cities as $city)
+                  <option value="{{$city->id}}" data-value="{{$city->country_id}}">{{$city->name}}</option>
+                  @endforeach
+                </select>
+              </div>
+            </fieldset>
             <div class="modal-footer">
               <input type="button" data-dismiss="modal" value="Close">
               <input type="submit" class="black-button" value="Save">
@@ -150,7 +158,6 @@
 
   <div class="container">
     <section class="mt-5">
-
 
       <div id="onhold_title" class="jumptarget">
         <h2>On Hold</h2>

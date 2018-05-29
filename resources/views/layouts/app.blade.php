@@ -3,12 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
     <link rel="shortcut icon" href="{{{ asset('assets/favicon.png') }}}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{{ asset('assets/favicon/apple-touch-icon.png') }}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{{ asset('assets/favicon/favicon-32x32.png') }}}">
@@ -53,7 +52,7 @@
                             <h6 class="dropdown-header">Shop By Category</h6>
                             <div class="dropdown-divider"></div>
                             @foreach ($navCategories as $category)
-                                <a class="dropdown-item" href="{{ route('category_products', ['id' => $category->id]) }}">{{ $category->name }}</a>
+                                <a id="nav-cat-{{$category->id}}" class="dropdown-item" href="{{ route('category_products', ['id' => $category->id]) }}">{{ $category->name }}</a>
                             @endforeach
                         </div>
                     </li>
