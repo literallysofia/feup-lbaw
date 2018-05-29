@@ -87,5 +87,6 @@ Route::get('/product/{id}/edit','ProductsController@showEditProduct')->name('edi
 
 Route::delete('product/{id}/review', 'ProductsController@deleteReview')->name('review');
 Route::post('product/{id}/review', 'ProductsController@addReview');
+Route::put('product/{id}/review', 'ProductsController@updateReview');
 
 Auth::routes();

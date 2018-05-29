@@ -152,7 +152,7 @@ class ProductsController extends Controller
         try {
             $product = Product::findOrFail($product_id);
 
-            $reviews = Review::where('product_id', $product_id)->paginate(2);
+            $reviews = Review::where('product_id', $product_id)->orderBy('date', 'DESC')->paginate(1);
 
             if ($product != null) {
                 return view('pages.product', ['product' => $product, 'reviews' => $reviews]);
@@ -214,26 +214,63 @@ class ProductsController extends Controller
 
     public function addReview(Request $request, $product_id)
     {
-
         try {
             $user = Auth::user();
             $product = Product::findOrFail($product_id);
-            $this->authorize('review', $product_id);
-            $review = new Review();
+            $this->authorize('review', $product);
+            $review = new Review;
             $review->title = $request->title;
             if (is_int($request->score) && $request->score >= 1 && $request->score <= 5) {
-                return response(json_encode(array("Message" => "Score value is not valid", "Content" => null)), 400);
+                return response(json_encode(array("Message" => "Score value is not valid")), 500);
             }
             $review->score = $request->score;
             $review->content = $request->content;
-            if ($review->save()) {
-                return response(json_encode(array("Message" => "Review added", "Content" => $review)), 200);
+            $review->user_id = Auth::id();
+            $review->product_id = $product_id;
+            if($review->save()) {
+                $reviews = Review::where('product_id', $product_id)->orderBy('date', 'DESC')->paginate(1);
+                foreach($reviews as $pagereview) {
+                    $pagereview->date = date('d F Y', strtotime($pagereview->date));
+                    $pagereview->user->name;
+                    $pagereview->owner = ($review->user_id == Auth::id());
+                }
+                return response(json_encode(array("Message" => "Review added", "Reviews" => $reviews, "Total"=>count($product->reviews))), 200);
             } else {
-                return response(json_encode(array("Message" => "Error adding review", "Content" => null)), 400);
+                return response(json_encode(array("Message" => "1 Error adding review")), 500);
             }
         } catch (\Exception $e) {
-            return response(json_encode(array("Message" => "Error adding review", "Content" => null)), 400);
+            return response(json_encode(array("Message" => $e->getMessage())), 500);
+        }
+    }
+
+    public function updateReview(Request $request, $product_id) {
+        try {
+            $user = Auth::user();
+            $review = $user->reviews()->where('id', $request->id)->first();
+            $product = Product::findOrFail($product_id);
+            $review->title = $request->title;
+            if (is_int($request->score) && $request->score >= 1 && $request->score <= 5) {
+                return response(json_encode(array("Message" => "Score value is not valid")), 500);
+            }
+            $review->score = $request->score;
+            $review->content = $request->content;
+            $review->user_id = Auth::id();
+            $review->product_id = $product_id;
+            if($review->save()) {
+                $reviews = Review::where('product_id', $product_id)->orderBy('date', 'DESC')->paginate(1);
+                foreach($reviews as $pagereview) {
+                    $pagereview->date = date('d F Y', strtotime($pagereview->date));
+                    $pagereview->user->name;
+                    $pagereview->owner = ($review->user_id == Auth::id());
+                }
+                return response(json_encode(array("Message" => "Review updated", "Reviews" => $reviews, "Total"=>count($product->reviews))), 200);
+            } else {
+                return response(json_encode(array("Message" => "1 Error adding review")), 500);
+            }
+        } catch (\Exception $e) {
+            return response(json_encode(array("Message" => $e->getMessage())), 500);
         }
     }
 
 }
+

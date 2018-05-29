@@ -54,7 +54,6 @@ class AddressController extends Controller{
         if($addAddress){
             try {
                 $newAddress = DB::table('addresses')->select('id','name','postal_code','street')->where('user_id',Auth::id())->orderBy('id','desc')->first();
-        
             }catch(\Exception $e) {
                 $e->getMessage();
             }
