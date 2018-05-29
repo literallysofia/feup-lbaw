@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use App\City;
+use App\Country;
+
 
 class AddressController extends Controller
 {
@@ -50,14 +53,16 @@ class AddressController extends Controller
 
         if ($addAddress) {
             try {
-                $newAddress = DB::table('addresses')->select('id', 'name', 'postal_code', 'street')->where('user_id', Auth::id())->orderBy('id', 'desc')->first();
-
+                $newAddress = DB::table('addresses')->select('id', 'name', 'postal_code', 'street', 'city_id')->where('user_id', Auth::id())->orderBy('id', 'desc')->first();
             } catch (\Exception $e) {
                 $e->getMessage();
             }
         }
+        $city_id = $newAddress->city_id;
+        $city = City::findOrFail($city_id);
+        $country = Country::findOrFail($city->country_id);   
 
-        return response()->json(array('address' => $newAddress), 200);
+        return response()->json(array('address' => $newAddress, 'city' =>$city->name, 'country' => $country->name), 200);
     }
 
     public function deleteAddressResponse(Request $request)

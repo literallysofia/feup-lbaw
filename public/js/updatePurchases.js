@@ -6,8 +6,6 @@ $(document).ready(function () {
 
         var collapseLines = purchases.getElementsByClassName("collapse-line");
 
-        console.log(collapseLines);
-
         var data = [];
         for(let j = 0; j< collapseLines.length;j++){
             var purchase =  collapseLines[j].childNodes[1];
@@ -21,8 +19,6 @@ $(document).ready(function () {
                 'status': status
             });  
         }
-
-        console.log(data);
 
         var fullurl = window.location.href;
         var my_url = '/admin/admin_purchases'
@@ -41,13 +37,18 @@ $(document).ready(function () {
             data: {'purchases':JSON.stringify(data)},
             dataType: 'json',
             success: function (data) {
-                console.log(data.purchases);
+                $("#purchases-error").css('display','none');            
+                $("#purchases-success").css('display','block');
+                $("#purchases-success").text(data.Message);
+                $("#manage_purchases_title").attr("tabindex", -1).focus();
         
             },
             error: function (data) {
 
-                alert('Error saving purchases, please try again!');
-                console.log('Error: ', data);
+                $("#purchases-success").css('display','none');            
+                $("#purchases-error").css('display','block');
+                $("#purchases-error").text(data.Message);
+                $("#manage_purchases_title").attr("tabindex", -1).focus();
                
             }
         });

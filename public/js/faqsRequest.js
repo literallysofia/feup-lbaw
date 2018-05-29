@@ -13,7 +13,6 @@ function deleteFaq(e){
     e.preventDefault();
     var faq = e.target.parentElement.id;
     var faqId = faq.substring(faq.indexOf('-')+1,faq.length);
-    console.log(faqId);
     var my_data = {
         'faqId' : faqId
     }
@@ -29,15 +28,22 @@ function deleteFaq(e){
             var cards = $('.faqs-cards')[0].children;
             for(let i = 0; i < cards.length ; i++){
                 if(cards[i].children[0].id === faq){
-                    console.log(i);
                     cards[i].remove();
                 }
             }
 
+            $("#faqs-error").css('display','none');            
+            $("#faqs-success").css('display','block');
+            $("#faqs-success").text(data.Message);
+            $("#manage_faqs_title").attr("tabindex", -1).focus();
+
         },
         error: function (data) {
-            alert('Error deleting faq, please try again!');
-            console.log('Error: ', data);
+
+            $("#faqs-success").css('display','none');
+            $("#faqs-error").css('display','block');
+            $("#faqs-error").text(data.Message);
+            $("#manage_faqs_title").attr("tabindex", -1).focus();
         }
     });
 }
@@ -93,8 +99,6 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (data) {
     
-                    console.log(data);
-
                     $('.faqs-cards')[0].children[$('.faqs-cards')[0].children.length - 1].remove();
 
 
@@ -113,15 +117,22 @@ $(document).ready(function () {
     
                     $('#add_faq_modal').modal('hide');
     
-                    console.log($('.properties-cards')[0].children);
                     questionFill.value='';
                     answerFill.value='';                    
                     addDeleteFaqAction();
 
+                    $("#faqs-error").css('display','none');    
+                    $("#faqs-success").css('display','block');
+                    $("#faqs-success").text(data.Message);
+                    //$("#manage_faqs_title").attr("tabindex", -1).focus();
+
                 },
                 error: function (data) {
-                    alert('Error adding faq, please try again!');
-                    console.log('Error: ', data);
+                    $("#faqs-success").css('display','none');                        
+                    $("#faqs-error").css('display','block');
+                    $("#faqs-error").text(data.Message);
+                    $("#manage_faqs_title").attr("tabindex", -1).focus();
+
                 }
             });
         }

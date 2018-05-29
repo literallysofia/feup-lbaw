@@ -28,6 +28,8 @@
             <div id="manage_purchases_title" class="jumptarget">
                 <h2>Purchases</h2>
             </div>
+            <div class="alert alert-success" id="purchases-success" style="display:none"></div>
+            <div class="alert alert-danger" id="purchases-error" style="display:none"></div>       
             <div class="section-container">
                 <table class="table">
                     <thead>
@@ -53,10 +55,12 @@
     </div>
 
     <div class="container">
-        <section class="mt-5">
+        <section class="mt-5">       
             <div id="manage_properties_title" class="jumptarget">
                 <h2>Properties</h2>
             </div>
+            <div class="alert alert-success" id="properties-success" style="display:none"></div>
+            <div class="alert alert-danger" id="properties-error" style="display:none"></div>
             <div class="cards row properties-cards">
                 @foreach ($properties as $property)
                     <div class="mt-4 col-md-6 col-lg-3">
@@ -100,6 +104,8 @@
             <div id="manage_categories_title" class="jumptarget">
                 <h2>Categories</h2>
             </div>
+            <div class="alert alert-success" id="categories-success" style="display:none"></div>
+            <div class="alert alert-danger" id="categories-error" style="display:none"></div>
             <div class="cards categories-cards row">
                 @include('partials.admin_category', ['categories'=>$categories, 'properties'=>$properties])
                 <div class="mt-4 col-md-6 col-lg-4">
@@ -136,6 +142,8 @@
             <div id="manage_faqs_title" class="jumptarget">
                 <h2>FAQs</h2>
             </div>
+            <div class="alert alert-success" id="faqs-success" style="display:none"></div>
+            <div class="alert alert-danger" id="faqs-error" style="display:none"></div>            
             <div class="cards faqs-cards">
                 @foreach ($faqs as $faq)
                     <div class="mt-4">

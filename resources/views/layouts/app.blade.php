@@ -52,7 +52,7 @@
                             <h6 class="dropdown-header">Shop By Category</h6>
                             <div class="dropdown-divider"></div>
                             @foreach ($navCategories as $category)
-                                <a class="dropdown-item" href="{{ route('category_products', ['id' => $category->id]) }}">{{ $category->name }}</a>
+                                <a id="nav-cat-{{$category->id}}" class="dropdown-item" href="{{ route('category_products', ['id' => $category->id]) }}">{{ $category->name }}</a>
                             @endforeach
                         </div>
                     </li>

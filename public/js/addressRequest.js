@@ -103,7 +103,8 @@ $(document).ready(function () {
                     + '<div class="d-flex flex-row address-header">'
                     + '<h6>' + data.address.name + '</h6>'
                     + '<i class="fas fa-trash-alt ml-auto btn-deleteAddress"></i></div>'
-                    + '<h6>' + data.address.street + ', ' + data.address.postal_code + '</h6>';
+                    + '<h6>' + data.address.street + ', ' + data.address.postal_code + ', ' +  data.city + ', ' + 
+                    data.country  + '</h6>';
                 + '</div></div>';
 
                 var addCard = '<div class="mt-4 col-md-6 col-lg-3">' +
