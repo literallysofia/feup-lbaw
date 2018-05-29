@@ -141,6 +141,7 @@ CREATE TABLE product_purchase (
 
 DROP TABLE IF EXISTS reviews CASCADE;
 CREATE TABLE reviews (
+    id serial PRIMARY KEY,
     "user_id" integer REFERENCES users(id) ON DELETE CASCADE,
     "product_id" integer REFERENCES products(id) ON DELETE CASCADE,
     score integer NOT NULL,
@@ -148,7 +149,7 @@ CREATE TABLE reviews (
     content text NOT NULL,
     "date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL,
     CONSTRAINT score CHECK (((score >= 0) AND (score <= 5))),
-    PRIMARY KEY ("user_id", "product_id")
+    UNIQUE("user_id", "product_id")
 );
 
 DROP TABLE IF EXISTS values_lists CASCADE;
@@ -177,7 +178,6 @@ CREATE TABLE wishlists (
 /** PASSWORD RESET **/
 -- Table: public.password_resets
 
--- DROP TABLE public.password_resets;
 DROP TABLE IF EXISTS password_resets CASCADE;
 CREATE TABLE password_resets
 (
@@ -190,21 +190,15 @@ CREATE TABLE password_resets
 WITH (OIDS = FALSE)
 TABLESPACE pg_default;
 
-ALTER TABLE password_resets
-    OWNER to postgres;
 
--- Index: password_resets_email_index
-
--- DROP INDEX public.password_resets_email_index;
 DROP INDEX IF EXISTS password_resets_email_index;
 CREATE INDEX password_resets_email_index
     ON password_resets USING btree
     (email COLLATE pg_catalog."default")
     TABLESPACE pg_default;
 
--- Index: password_resets_token_index
 
--- DROP INDEX public.password_resets_token_index;
+
 DROP INDEX IF EXISTS password_resets_token_index;
 CREATE INDEX password_resets_token_index
     ON password_resets USING btree
