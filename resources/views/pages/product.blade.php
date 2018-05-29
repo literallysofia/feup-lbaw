@@ -77,7 +77,7 @@
                                 <hr class="specs-title-line">
                             </div>
                             <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                <?php $property_values = $properties[$i]->values_lists->where('product_id', $product->id)->get(0)->values; ?>
+                                <?php $property_values = $properties[$i]->values_lists->where('product_id', $product->id)->first()->values; ?>
                                 @foreach($property_values as $value)
                                     <p class="row-specs">{{$value->name}}</p>
                                 @endforeach 
