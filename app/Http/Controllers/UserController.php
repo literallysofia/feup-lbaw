@@ -108,57 +108,16 @@ class UserController extends Controller
     }
 
 
-    public function archiveAccount()
+    public function archiveProfile($user_id)
     {
         Auth::check();
 
-        /*$validator = $this->validator($request->all());
-        if ($validator->fails()) {
-            return response(json_encode("Error validating user data"), 400);
+        if(Auth::id()==$user_id){
+            $user=User::findorFail($user_id);
+            $user->is_archived=true;
+            $user->save();
+            return redirect('/logout');        
         }
-        if ($request->old_password != null) {
-            if (Hash::check($request->old_password, Auth::user()->password)) {
-                $password = Hash::make($request->new_password);
-                Auth::user()->password = $password;
-                try {
-                    Auth::user()->save();
-                } catch (\Exception $e) {
-                    $e->getMessage();
-                    return response(json_encode("Error updating password"), 400);
-                }
-            } else {
-                return response(json_encode("Old password is incorrect"), 400);
-            }
-
-        }
-        if ($request->name != null) {
-            Auth::user()->name = $request->name;
-            try {
-                Auth::user()->save();
-            } catch (\Exception $e) {
-                $e->getMessage();
-                return response(json_encode("Error updating name"), 400);
-            }
-        }
-        if ($request->username != null) {
-            Auth::user()->username = $request->username;
-            try {
-                Auth::user()->save();
-            } catch (\Exception $e) {
-                $e->getMessage();
-                return response(json_encode("Error updating username"), 400);
-            }
-        }
-        if ($request->email != null) {
-            Auth::user()->email = $request->email;
-            try {
-                Auth::user()->save();
-            } catch (\Exception $e) {
-                $e->getMessage();
-                return response(json_encode("Error updating email"), 400);
-            }
-        }
-        return response(json_encode("User updated with success"), 200);*/
     }
 
     public function __construct()

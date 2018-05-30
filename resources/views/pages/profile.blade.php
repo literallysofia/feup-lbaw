@@ -93,6 +93,7 @@
             </div>
             <div class="d-flex flex-column">
               <input id="btn-saveProfile" type="submit" value="Save">
+              <input type="button" class="black-button mt-3" value="Delete Account" onclick="window.location='{{route("archive_profile", ["id" => Auth::user()->id])}}'">
             </div>
           </fieldset>
         </form>
