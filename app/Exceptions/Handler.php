@@ -7,6 +7,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Auth\Access\AuthorizationException as AuthorizationException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException as NotFoundHttpException;
 use Illuminate\Database\Eloquent\ModelNotFoundException as ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException as MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -51,9 +52,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if($exception instanceof MethodNotAllowedHttpException) {
-            return redirect()->route('404');
-        }
         if($request->isMethod('get')) {
             if($exception instanceof NotFoundHttpException) {
                 return redirect()->route('404');
@@ -61,6 +59,9 @@ class Handler extends ExceptionHandler
 
             if($exception instanceof AuthorizationException) {
                 return redirect()->route('401');
+            }
+            if($exception instanceof MethodNotAllowedHttpException) {
+                return redirect()->route('404');   
             }
         }
         

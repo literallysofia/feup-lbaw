@@ -206,14 +206,7 @@ class ProductsController extends Controller
             }*/
 
         return response()->json(array('product' => $product), 200);
-
-    public function editProduct($product_id, Request $request)
-    {
-
-
-
-
-    }
+        }
 
     public function uploadImage(Request $request){
      

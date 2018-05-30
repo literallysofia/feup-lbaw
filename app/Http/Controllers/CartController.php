@@ -35,7 +35,6 @@ class CartController extends Controller
     {
 
         try {
-            $this->middleware('auth');
             $user = Auth::user();
             $this->authorize('edit', $user);
             $product = Product::findOrFail($request->id);
@@ -51,7 +50,7 @@ class CartController extends Controller
             $user->cart()->attach($product, array('quantity' => 1));
             return response(json_encode("Product added to Cart"), 200);
         } else {
-            return response(json_encode("That produt does not exist or it is not available"), 404);
+            return response(json_encode("That product does not exist or it is not available"), 404);
         }
 
     }
