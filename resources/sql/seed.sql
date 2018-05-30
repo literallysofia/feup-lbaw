@@ -301,7 +301,7 @@ FOR EACH ROW
 EXECUTE PROCEDURE update_product_score();
 
 DROP FUNCTION IF EXISTS update_product_score_delete() CASCADE;
-/*CREATE FUNCTION update_product_score_delete() RETURNS TRIGGER AS
+CREATE FUNCTION update_product_score_delete() RETURNS TRIGGER AS
 $$
 BEGIN
 	IF EXISTS(SELECT * FROM reviews WHERE id != OLD.id AND product_id = OLD."product_id") THEN
@@ -317,13 +317,13 @@ BEGIN
     END IF;
 END
 $$
-LANGUAGE plpgsql;*/
+LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS product_score_delete ON reviews CASCADE;  
-/*CREATE TRIGGER product_score_delete AFTER DELETE
+CREATE TRIGGER product_score_delete AFTER DELETE
 ON reviews
 FOR EACH ROW
-EXECUTE PROCEDURE update_product_score_delete();*/
+EXECUTE PROCEDURE update_product_score_delete();
 
 /** POPULATE **/
 
