@@ -222,11 +222,11 @@ $(document).ready(function () {
                     data.category.id +
                     '" class="box d-flex flex-column"> <div class="category-header"><h6>' +
                     data.category.name +
-                    '</h6><div class="d-flex flex-row"> <div class="checkbox-container form-check d-flex"> <label class="form-check-label">Show on the navigation menu <input type="checkbox" class="form-check-input"> <span class="checkmark"></span> </label> </div> <i class="fas fa-trash-alt ml-auto btn-deleteCategory"></i></div></div>' + 
+                    '</h6>'+ '<p id="categoryName" style="display:none;">' + data.category.name + '</p>' + '<div class="d-flex flex-row"> <div class="checkbox-container form-check d-flex"> <label class="form-check-label">Show on the navigation menu <input type="checkbox" class="form-check-input"> <span class="checkmark"></span> </label> </div> <i class="fas fa-trash-alt ml-auto btn-deleteCategory"></i></div></div>' + 
                     '<div class="select-checkbox default" style="visibility: hidden;">'+
                     newEntry.innerHTML +
                     '</div>'+
-                    '<div class="entry-buttons"><input class="btn-addEntryCategory" type="button" value="Add Entry"></input><input type="button" value="Add Product" ></input><input class="btn-saveCategory black-button" type="button" value="Save"></input> </div>';
+                    '<div class="entry-buttons"><input class="btn-addEntryCategory" type="button" value="Add Entry"></input><input type="button" value="Add Product"class="btn-addProductCategory"></input><input class="btn-saveCategory black-button" type="button" value="Save"></input> </div>';
 
                     var addCard = '<div class="mt-4 col-md-6 col-lg-4"> <div class="box d-flex flex-column last-card" data-toggle="modal" data-target="#add_category_modal"> Add Category </div> </div>';
     
@@ -237,6 +237,13 @@ $(document).ready(function () {
                     nameFill.value='';
 
                     addDeleteCategoryAction();
+                    $(".btn-addProductCategory").bind('click',function(){
+                        var url = window.location.href;
+                        var index = url.indexOf('admin');
+                        url = url.substring(0,index);
+                        url = url + 'add_product/' + this.parentElement.parentElement.children[0].children[1].innerText;
+                        document.location.href = url;
+                    });
                     addEntryAction();
                     saveCategoryAction();
 

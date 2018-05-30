@@ -64,6 +64,7 @@
     <div class="container">
         <section class="mt-5">
             <h2>Photos</h2>
+            <div class="alert alert-danger" id="photos-error" style="display:none"></div>
             <div class="cards photo-cards row">
                 @each('partials.add_photo',$photos,'photo')
                 <div class="mt-4 col-md-6 col-lg-3" >
