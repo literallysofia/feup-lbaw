@@ -233,7 +233,7 @@ class ProductsController extends Controller
         
     }
 
-    public function deleteReview(Request $request)
+    public function deleteReview(Request $request, $product_id)
     {
 
         try {

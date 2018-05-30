@@ -139,3 +139,10 @@ main {
         background-color: $highlight !important;
     }
 }
+
+.fa-pencil-alt, .fa-trash-alt{
+    &:hover {
+        color: $dark-grey;
+        cursor: pointer;
+    }
+}
