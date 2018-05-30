@@ -44,7 +44,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-12 d-flex flex-column contact-info">
                     <div>
                         <p class="font-weight-bold">EMAIL</p>
-                        <p>info@sweven.com</p>
+                        <p>sweventechshop@gmail.com</p>
                         <hr>
                     </div>
                     <div>

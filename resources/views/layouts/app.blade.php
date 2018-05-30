@@ -119,8 +119,8 @@
                         </ul>
                     </div>
                 </div>
-                <form class="search-container-mobile d-flex flex-row flex-nowrap d-md-none form-inline my-2 my-lg-0">
-                    <input class="form-control mr-2 w-100" type="text" placeholder="Search">
+                <form class="search-container-mobile d-flex flex-row flex-nowrap d-md-none form-inline my-2 my-lg-0" action="/search" method="get">
+                    <input class="form-control mr-2 w-100" type="text" name="keyword" placeholder="Search">
                     <button class="btn my-2 my-sm-0" type="submit">
                         <i class="fas fa-search search-icon"></i>
                     </button>
