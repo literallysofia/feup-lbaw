@@ -23,7 +23,7 @@
                                 @else
                                 <div class="carousel-item">
                                 @endif
-                                    <img src="{{$product->photos[$i]->path}}" alt="Item 1" class="img-fluid">
+                                    <img src="{{asset($product->photos[$i]->path)}}" alt="Item 1" class="img-fluid">
                                 </div>
                             @endfor
                         </div>
