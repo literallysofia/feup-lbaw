@@ -92,6 +92,8 @@ Route::get('/product/{id}/edit','ProductsController@showEditProduct')->name('edi
 Route::put('/product/{id}/edit','ProductsController@editProduct');
 Route::get('/product/{id}/archive', 'ProductsController@archiveProduct')->name('archive_product');
 
+Route::post('upload','ProductsController@uploadImage');
+
 
 Route::delete('product/{id}/review', 'ProductsController@deleteReview')->name('review');
 Route::post('product/{id}/review', 'ProductsController@addReview');

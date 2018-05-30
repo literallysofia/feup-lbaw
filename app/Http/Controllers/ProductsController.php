@@ -14,6 +14,8 @@ use App\ValuesLists;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller
 {
@@ -190,25 +192,52 @@ class ProductsController extends Controller
             }
         }
 
-        if (count($request->photos) > 0) {
-            foreach ($request->photos as $photo) {
+        /*$photos_dataForm = $request->photos;
+        if(count($photos_dataForm) > 0)
+            foreach($photos_dataForm as $photo){
+
+                $path = file($photo)->store('upload');
+
                 $newPhoto = new Photo;
-                $newPhoto->path = $photo;
-                $newPhoto->product_id = $newProduct->id;
-                $newPhoto->save();
-            }
-        }
 
-        return response()->json(array('product' => $request), 200);
+                $newPhoto->path = $path;
+                $newPhoto->product_id = $product->id;
+                $newPhoto->save();  
+            }*/
 
-    }
+        return response()->json(array('product' => $product), 200);
 
     public function editProduct($product_id, Request $request)
     {
 
+
+
+
     }
 
-    public function deleteReview(Request $request, $product_id)
+    public function uploadImage(Request $request){
+     
+        $dataForm = $request->all();
+        $product_id = $dataForm['id'];
+        
+        $path = file($dataForm['photo']);
+
+        $new_path = $dataForm['photo']->store('public/'.$product_id);
+        
+        $new_path = str_replace("public","",$new_path);
+        $new_path = "storage".$new_path;
+
+        $newPhoto = new Photo;
+        $newPhoto->path = $new_path;
+        $newPhoto->product_id = $product_id;
+        $newPhoto->save();
+    }
+
+    public function editProduct($product_id,Request $request){
+        
+    }
+
+    public function deleteReview(Request $request)
     {
 
         try {

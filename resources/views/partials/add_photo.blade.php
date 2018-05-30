@@ -1,7 +1,7 @@
 <div class="mt-4 col-md-6 col-lg-3">
     <div class="box d-flex flex-column ">
         <div class="box d-flex flex-column align-items-center pt-0 pr-0 pl-0">
-            <img src="{{$photo->path}}" alt="Product Photo" class="img-fluid product_photo">
+            <img src="{{asset($photo->path)}}" alt="Product Photo" class="img-fluid product_photo">
         </div>
         <div class="mt-auto">
             <div class="custom-file">
