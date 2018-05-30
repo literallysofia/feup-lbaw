@@ -34,6 +34,8 @@ Route::post('register', 'Auth\RegisterController@register');
 
 //Profile
 Route::get('profile/{id}', 'UserController@showProfile')->name('profile')->where('id','[0-9]+');
+Route::view('404', 'errors/404')->name('404');
+Route::view('401', 'errors/401')->name('401');
 Route::view('/profile/edit', 'errors/404');
 Route::put('/profile/edit', 'UserController@editProfile');
 Route::view('/profile/address', 'errors/404');
@@ -73,14 +75,13 @@ Route::post('cart', 'CartController@addCartProduct');
 Route::put('cart', 'CartController@updateCartProduct');
 
 //Purchase
-Route::view('checkout', 'erros/404')->name('checkout');
-Route::post('checkout', 'CartController@checkout');
+Route::post('checkout', 'CartController@checkout')->name('checkout');
 
 //Product
-Route::get('product/{product_id}', 'ProductsController@showProduct')->name('product');
+Route::get('product/{product_id}', 'ProductsController@showProduct')->where('product_id','[0-9]+')->name('product');
 
 //Products
-Route::get('category/{category_id}','ProductsController@showProducts')->name('category_products');
+Route::get('category/{category_id}','ProductsController@showProducts')->where('category_id','[0-9]+')->name('category_products');
 Route::get('search','ProductsController@searchProducts')->name('search_products');
 
 //Add Product
@@ -88,16 +89,15 @@ Route::get('add_product/{category_name}','ProductsController@showAddProduct')->n
 Route::post('add_product','ProductsController@addProduct');
 
 //Edit Product
-Route::get('/product/{id}/edit','ProductsController@showEditProduct')->name('edit_product')->middleware('auth','admin');
-Route::put('/product/{id}/edit','ProductsController@editProduct');
-Route::get('/product/{id}/archive', 'ProductsController@archiveProduct')->name('archive_product');
+Route::get('/product/{id}/edit','ProductsController@showEditProduct')->where('id','[0-9]+')->name('edit_product')->middleware('auth','admin');
+Route::put('/product/{id}/edit','ProductsController@editProduct')->where('id','[0-9]+');
+Route::get('/product/{id}/archive', 'ProductsController@archiveProduct')->where('id','[0-9]+')->name('archive_product');
 
 Route::post('upload','ProductsController@uploadImage');
 
 
-Route::delete('product/{id}/review', 'ProductsController@deleteReview')->name('review');
-Route::post('product/{id}/review', 'ProductsController@addReview');
-Route::put('product/{id}/review', 'ProductsController@updateReview');
-Route::view('product/{id}/review', 'erros/404');
+Route::delete('product/{id}/review', 'ProductsController@deleteReview')->where('id','[0-9]+')->name('review');
+Route::post('product/{id}/review', 'ProductsController@addReview')->where('id','[0-9]+');
+Route::put('product/{id}/review', 'ProductsController@updateReview')->where('id','[0-9]+');
 
 Auth::routes();

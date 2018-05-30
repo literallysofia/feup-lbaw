@@ -64,6 +64,9 @@
                             <input type="button" class="black-button col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Add to Cart" onclick="return addToCart(null, {{$product->id}})"></input>
                             <input type="button" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Add to Wishlist" onclick="return addToWishlist({{$product->id}})"></input>
                         @endif
+                        @if($product->quantity == 0)
+                        <p>This product is not available</p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -75,6 +78,9 @@
             <h2>Tech Specs</h2>
             <div class="section-container">
                 <?php $properties = $product->category_properties ?>
+                @if(count($properties) == 0)
+                <p style="text-align: center">There are not any tech spec yet</p>
+                @else
                 @for($i=0; $i<count($properties); $i++)
                     <div class="container product-spec">
                         <div class="row">
@@ -94,6 +100,7 @@
                         <hr class="mt-1 specs-break-line">
                     @endif
                 @endfor
+                @endif
             </div>
         </div>
     </section>
@@ -110,7 +117,7 @@
             <div class="section-container">
                 <div id="reviews" class="container">
                     @if(count($product->reviews) == 0)
-                        <p style="text-align: center">There's not any review yet</p>
+                        <p style="text-align: center">There are not any review yet</p>
                     @endif
                     @for($i=0; $i<count($reviews); $i++)
                         <div class="review-item row col-12 ml-0">
