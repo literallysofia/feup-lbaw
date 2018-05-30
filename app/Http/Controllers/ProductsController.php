@@ -206,16 +206,13 @@ class ProductsController extends Controller
             }*/
 
         return response()->json(array('product' => $product), 200);
-
     }
 
     public function uploadImage(Request $request){
      
         $dataForm = $request->all();
         $product_id = $dataForm['id'];
-
-        $path = file($dataForm['photo']);
-
+        
         $new_path = $dataForm['photo']->store('public/'.$product_id);
         
         $new_path = str_replace("public","",$new_path);
@@ -226,7 +223,7 @@ class ProductsController extends Controller
         $newPhoto->product_id = $product_id;
         $newPhoto->save();
 
-        return response()->json(array('photo' => $newPhoto), 200);
+        return response()->json(array('count' => $dataForm['count'],'id'=>$product_id), 200);
     }
 
     public function editProduct($product_id,Request $request){

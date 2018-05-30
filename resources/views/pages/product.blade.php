@@ -64,7 +64,7 @@
                             <input type="button" class="black-button col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Add to Cart" onclick="return addToCart(null, {{$product->id}})"></input>
                             <input type="button" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Add to Wishlist" onclick="return addToWishlist({{$product->id}})"></input>
                         @endif
-                        @if($product->quantity == 0)
+                        @if($product->quantity_available == 0)
                         <p>This product is not available</p>
                         @endif
                     </div>

@@ -27,11 +27,11 @@ function addPhotoCard(e) {
     var newCard = '<div class="mt-4 col-md-6 col-lg-3">' +
         '<div class="box d-flex flex-column ">' +
         '<div class="box d-flex flex-column align-items-center pt-0 pr-0 pl-0">' +
-        '<img alt="Photo preview" class="img-fluid product_photo" id="imagePreview">' +
+        '<img alt="Photo preview" class="img-fluid product_photo">' +
         '</div>' +
         '<div class="mt-auto">' +
         '<div class="custom-file">' +
-        '<input type="file" class="imageUpload custom-file-input" id="imageUpload"accept=".png, .jpg, .jpeg">' +
+        '<input type="file" class="imageUpload custom-file-input" name="imageUpload"accept=".png, .jpg, .jpeg">' +
         '<label class="custom-file-label" for="imageUpload">Choose file</label>' +
         '</div>' +
         '</div>' + '</div></div>';
@@ -55,11 +55,17 @@ function addPhotoCard(e) {
     var imagePreview = theFreshCard.firstChild.firstChild.firstChild;
 
 
-    list = $('.photo-cards')[0];
+    /*list = $('.photo-cards')[0];
     $('.imageUpload').on('change', function () {
         console.log("entrou");
         readUrl(this);
-    });
+    });*/
+    var ret = document.getElementsByClassName('imageUpload');
+    for(var i = 0; i<ret.length;i++){
+        ret[i].addEventListener('change',function(){
+            readUrl(this);
+        });
+    }
 
 
 
@@ -93,7 +99,7 @@ function getPhotosSrc() {
     var photos_paths = [];
     for (let i = 0; i < photosCards.length; i++) {
         var src = photosCards[i].files[0];
-        console.log(src);
+        //  console.log(src);
         if (src != null)
             photos_paths.push(src);
     }
@@ -251,19 +257,28 @@ function editProduct(product) {
 }
 
 function uploadImages(id) {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+  
 
     var photos = this.getPhotosSrc();
+    console.log(photos);
 
     if (photos <= 0) return;
 
     var success = true;
     var count = 0;
-    for (let i = 0; i < photos.length; i++) {
+
+    var toUpload = new FormData();
+    toUpload.append('id',id);
+    toUpload.append('count',count);
+    var photo = photos[count];
+    toUpload.append('photo',photo);
+    toUpload.append('all',photos);
+
+    sendImage(toUpload);
+
+
+
+    /*for (let i = 0; i < photos.length; i++) {
         var toUpload = new FormData();
         toUpload.append('id', id);
         var photo = photos[i];
@@ -286,7 +301,7 @@ function uploadImages(id) {
 
     }
     if(photos.length == 0)
-        return;
+        return;*/
     /*if(success){
 
         var url = window.location.href;
@@ -304,6 +319,59 @@ function uploadImages(id) {
         
 
 
+
+}
+
+function sendImage(toUpload){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type: 'POST',
+        url: '/upload',
+        data: toUpload,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            console.log("Success cenas");
+            var photos = getPhotosSrc();
+            console.log(photos);  
+            if(data.count < (photos.length)){
+
+                var count = parseInt(data.count) + 1;
+                var toUpload = new FormData();
+                toUpload.append('id',data.id);
+                toUpload.append('count',count);
+                console.log(count);
+               
+                var photo = photos[count];
+                console.log(photo);
+                toUpload.append('photo',photo);
+
+                sendImage(toUpload);
+
+            }else{
+                var url = window.location.href;
+        var index = url.indexOf('add_product');
+        if(index != -1)
+            url = url.substring(0,index);
+        else{
+            index = url.indexOf('/product');
+            url = url.substring(0,index);
+            url += '/';
+        }
+        document.location.href = url  + 'product/' + data.id;
+            }
+
+        },
+        error: function (data) {
+            console.log("Error");
+            console.log(data);
+        }
+    });    
 
 }
 
@@ -372,10 +440,17 @@ $(document).ready(function () {
         $(this).on("click", addEntryInput);
     });
 
-    $('.imageUpload').on('change', function () {
+    /*$('.imageUpload').on('change', function () {
         console.log("entrou");
         readUrl(this);
-    });
+    });*/
+
+    var ret = document.getElementsByClassName('imageUpload');
+    for(var i = 0; i<ret.length;i++){
+        ret[i].addEventListener('change',function(){
+            readUrl(this);
+        });
+    }
 
     $('.saveProduct-btn').on("click", saveProduct);
 
