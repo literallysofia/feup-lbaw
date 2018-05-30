@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Sweven | FAQs')
+
 @section('content')
 
 @include('partials.breadcrumbs', $data = array('FAQs' => ''))

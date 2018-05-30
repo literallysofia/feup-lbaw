@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Http\Controllers\Controller;
-use App\Product;
-use App\Review;
-use App\Photo;
-use App\Property;
 use App\CategoryProperty;
-use App\ValuesLists;
+use App\Http\Controllers\Controller;
+use App\Photo;
+use App\Product;
+use App\Property;
+use App\Review;
 use App\Value;
+use App\ValuesLists;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -115,9 +115,7 @@ class ProductsController extends Controller
 
         try {
             $product = Product::findOrFail($product_id);
-
-            $reviews = Review::where('product_id', $product_id)->paginate(2);
-
+            $reviews = Review::where('product_id', $product_id)->orderBy('date', 'DESC')->get();
             if ($product != null) {
                 return view('pages.product', ['product' => $product, 'reviews' => $reviews]);
             } else {
@@ -144,8 +142,10 @@ class ProductsController extends Controller
 
         $product = Product::where('id', $id)->first();
 
-        if($product == null)
+        if ($product == null) {
             return view('errors.404');
+        }
+
         $category = $product->category()->first();
 
         $photos = Photo::where('product_id', $id)->get();
@@ -155,16 +155,17 @@ class ProductsController extends Controller
 
     }
 
-    public function validateAddProduct(array $data){
-        
+    public function validateAddProduct(array $data)
+    {
+
     }
 
-    public function addProduct(Request $request){
-        
-        
+    public function addProduct(Request $request)
+    {
+
         $product = new Product;
-        
-        $category = Category::where('name',$request->category_name)->first();
+
+        $category = Category::where('name', $request->category_name)->first();
 
         $product->category_id = $category->id;
         $product->name = $request->name;
@@ -174,23 +175,18 @@ class ProductsController extends Controller
 
         $product->save();
 
-        
-       
-        
-
-
         $specs = $request->property_values;
 
-        foreach($specs as $spec){
-            $property = Property::where('name',$spec['property'])->first();
-            $category_property = CategoryProperty::where([['category_id',$category->id],['property_id',$property->id]])->first();
+        foreach ($specs as $spec) {
+            $property = Property::where('name', $spec['property'])->first();
+            $category_property = CategoryProperty::where([['category_id', $category->id], ['property_id', $property->id]])->first();
             $values_list = new ValuesLists;
             $values_list->category_property_id = $category_property->id;
             $values_list->product_id = $product->id;
             $values_list->save();
-            foreach($spec['values'] as $value){
+            foreach ($spec['values'] as $value) {
                 $spec_value = new Value;
-                $spec_value->name=$value;
+                $spec_value->name = $value;
                 $spec_value->values_lists_id = $values_list->id;
                 $spec_value->save();
             }
@@ -211,6 +207,8 @@ class ProductsController extends Controller
 
         return response()->json(array('product' => $product), 200);
 
+    public function editProduct($product_id, Request $request)
+    {
 
 
 
@@ -243,48 +241,99 @@ class ProductsController extends Controller
     {
 
         try {
+
             $user = Auth::user();
-            $review = $user->reviews->where('id', $request->id)->first();
-            $product = Product::findOrFail($request->product_id);
+            $review = $user->reviews()->where('id', $request->id)->first();
+            $product = Product::findOrFail($product_id);
             if ($product == null) {
                 return response(json_encode(array('Message' => 'This product does not exist', 'Reviews' => null)), 404);
             }
 
             if ($review != null) {
+
                 $review->delete();
+
                 return response(json_encode(array('Message' => 'Review deleted', 'Reviews' => count($product->reviews))), 200);
             } else {
-                return response(json_encode(array("Message" => "You can not delete this review or it does not exist", 'Reviews' => null)), 404);
+                return response(json_encode(array("Message" => "You can not delete this review or it does not exist", 'Reviews' => null)), 403);
             }
 
         } catch (\Exception $e) {
-            return response(json_encode($e->getMessage()), 400);
+            return response(json_encode(array("Message" => "Error deleting review")), 500);
         }
+    }
 
+    public function setReview(Request $request, $product_id, $review)
+    {
+        try {
+            $product = Product::findOrFail($product_id);
+            $review->title = $request->title;
+            if (is_int($request->score) && $request->score >= 1 && $request->score <= 5) {
+                return response(json_encode(array("Message" => "Score value is not valid")), 500);
+            }
+            $review->score = $request->score;
+            $review->content = $request->content;
+            $review->user_id = Auth::id();
+            $review->product_id = $product_id;
+            if ($review->save()) {
+                $reviews = Review::where('product_id', $product_id)->orderBy('date', 'DESC')->get();
+                foreach ($reviews as $pagereview) {
+                    $pagereview->date = date('d F Y', strtotime($pagereview->date));
+                    $pagereview->user->name;
+                    if ($pagereview->user_id == Auth::id()) {
+                        $pagereview->owner = true;
+                    } else {
+                        $pagereview->owner = false;
+                    }
+
+                }
+                return response(json_encode(array("Message" => "Review updated", "Reviews" => $reviews, "Total" => count($product->reviews))), 200);
+            } else {
+                return response(json_encode(array("Message" => "Error adding/updating review")), 500);
+            }
+        } catch (\Exception $e) {
+            return response(json_encode(array("Message" => "Error adding/updating review")), 500);
+        }
     }
 
     public function addReview(Request $request, $product_id)
     {
-
         try {
             $user = Auth::user();
             $product = Product::findOrFail($product_id);
-            $this->authorize('review', $product_id);
-            $review = new Review();
-            $review->title = $request->title;
-            if (is_int($request->score) && $request->score >= 1 && $request->score <= 5) {
-                return response(json_encode(array("Message" => "Score value is not valid", "Content" => null)), 400);
-            }
-            $review->score = $request->score;
-            $review->content = $request->content;
-            if ($review->save()) {
-                return response(json_encode(array("Message" => "Review added", "Content" => $review)), 200);
-            } else {
-                return response(json_encode(array("Message" => "Error adding review", "Content" => null)), 400);
-            }
+            $this->authorize('review', $product);
+            $review = new Review;
+            return $this->setReview($request, $product_id, $review);
+
         } catch (\Exception $e) {
-            return response(json_encode(array("Message" => "Error adding review", "Content" => null)), 400);
+            return response(json_encode(array("Message" => "Error adding review")), 500);
         }
     }
 
+    public function updateReview(Request $request, $product_id)
+    {
+
+        try {
+            $user = Auth::user();
+            $review = $user->reviews()->where('id', $request->id)->first();
+            return $this->setReview($request, $product_id, $review);
+
+        } catch (\Exception $e) {
+            return response(json_encode(array("Message" => "Error updating review")), 500);
+        }
+    }
+
+<<<<<<< HEAD
+    public function archiveProduct($product_id){
+            if(Auth::user()->isAdmin()) {
+                $product = Product::findOrFail($product_id);
+                $product->is_archived = true;
+                $product->save();
+                return redirect('/');
+            }
+    }
+
+
+=======
+>>>>>>> 4911ff75a58ee67d9caca57a609b86b947245e07
 }

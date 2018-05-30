@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Wishlist')
+@section('title', 'Sweven | Wishlist')
 
 @section('content')
 
@@ -14,23 +14,24 @@
         <h1>My Wishlist</h1>
         <div class="section-container">
             @for($i=0; $i<count($products); $i++)
-                <form class="cart-item row" onsubmit="return addToCart(this, {{$products[$i]->id}})">
+                <form class="cart-item row" onsubmit="return addToCart(this, {{ $products[$i]->id }})">
                     <div class="col-xl-2 col-lg-2 col-md-3 col-sm col-xs">
                         <div class="d-flex flex-column align-items-center cart_item_img">
-                            <img src="{{$products[$i]->photos->get(0)->path}}" alt="Item 1" class="img-fluid">
+                        <a href="{{ route('product', ['product_id'=> $products[$i]->id]) }}">
+                            <img src="{{ $products[$i]->photos->first()->path }}" alt="{{ $products[$i]->name }}" class="img-fluid" style="cursor:pointer;"></a>
                         </div>
                     </div>
                     <div class="col-xl-10 col-lg-10 col-md-9 col-sm-auto col-xs-auto">
                         <div class="info-item d-flex flex-column">
                             <div>
-                                <h5>{{$products[$i]->name}}</h5>
-                                <p class="mt-auto ml-auto">{{$products[$i]->price}} €</p>
+                            <a href="{{ route('product', ['product_id'=> $products[$i]->id]) }}">
+                                <h5>{{ $products[$i]->name }}</h5>
+                            </a>
+                                <p class="mt-auto ml-auto">{{ $products[$i]->price }} €</p>
                             </div>
-                            <div class="d-flex align-items-end mt-auto">
-                                <div class="remove-item-cart">
-                                    <a href="" onclick="return deleteProduct(this, {{$products[$i]->id}})">Remove</a>
-                                </div>
-                                <input type="submit" class="ml-auto black-button" value="Add to Cart">
+                            <div class="d-flex align-items-end mt-auto flex-wrap">
+                                <a class="remove-item-cart" onclick="return deleteProduct(this, {{ $products[$i]->id }})">Remove</a>
+                                <input type="submit" class="ml-auto black-button wishlist-button" value="Add to Cart">
                             </div>
                         </div>
                     </div>

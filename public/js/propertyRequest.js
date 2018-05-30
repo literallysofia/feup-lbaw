@@ -12,7 +12,6 @@ function deleteProperty(e){
     e.preventDefault();
     var property = e.target.parentElement.id;
     var propertyId = property.substring(property.indexOf('-')+1,property.length);
-    console.log(propertyId);
     var my_data = {
         'propertyId' : propertyId
     }
@@ -28,7 +27,6 @@ function deleteProperty(e){
             var cards = $('.properties-cards')[0].children;
             for(let i = 0; i < cards.length ; i++){
                 if(cards[i].children[0].id === property){
-                    console.log(i);
                     cards[i].remove();
                 }
             }
@@ -45,10 +43,17 @@ function deleteProperty(e){
                 options[i].remove();
             }
 
+            $("#properties-error").css('display','none');            
+            $("#properties-success").css('display','block');
+            $("#properties-success").text(data.Message);
+            $("#manage_properties_title").attr("tabindex", -1).focus();
+
         },
         error: function (data) {
-            alert('Error deleting property, please try again!');
-            console.log('Error: ', data);
+            $("#properties-success").css('display','none');            
+            $("#properties-error").css('display','block');
+            $("#properties-error").text(data.Message);
+            $("#manage_properties_title").attr("tabindex", -1).focus();
         }
     });
 }
@@ -101,7 +106,6 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (data) {
     
-                    console.log(data);
                     $('.properties-cards')[0].children[$('.properties-cards')[0].children.length - 1].remove();
     
                     $('.properties-cards')[0].innerHTML += '<div class="mt-4 col-md-6 col-lg-3"> <div id=property-' +
@@ -118,13 +122,20 @@ $(document).ready(function () {
     
                     $('#add_property_modal').modal('hide');
     
-                    console.log($('.properties-cards')[0].children);
                     nameFill.value='';
                     addDeletePropertyAction();
+
+                    $("#properties-error").css('display','none');            
+                    $("#properties-success").css('display','block');
+                    $("#properties-success").text(data.Message);
+                    $("#manage_properties_title").attr("tabindex", -1).focus();
+
                 },
                 error: function (data) {
-                    alert('Error adding property, please try again!');
-                    console.log('Error: ', data);
+                    $("#properties-success").css('display','none');            
+                    $("#properties-error").css('display','block');
+                    $("#properties-error").text(data.Message);
+                    $("#manage_properties_title").attr("tabindex", -1).focus();
                 }
             });
         }

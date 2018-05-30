@@ -11,7 +11,6 @@ function deleteCategory(e){
     e.preventDefault();
     var category = e.target.parentElement.parentElement.parentElement.id;
     var categoryId = category.substring(category.indexOf('-')+1,category.length);
-    console.log(categoryId);
     var my_data = {
         'categoryId' : categoryId
     }
@@ -25,14 +24,21 @@ function deleteCategory(e){
             var cards = $('.categories-cards')[0].children;
             for(let i = 0; i < cards.length ; i++){
                 if(cards[i].children[0].id === category){
-                    console.log(i);
                     cards[i].remove();
                 }
             }
+
+            $("#categories-error").css('display','none');            
+            $("#categories-success").css('display','block');
+            $("#categories-success").text(data.Message);
+            $("#manage_categories_title").attr("tabindex", -1).focus();
+
         },
         error: function (data) {
-            alert('Error deleting categoy, please try again!');
-            console.log('Error: ', data);
+            $("#categories-success").css('display','none');            
+            $("#categories-error").css('display','block');
+            $("#categories-error").text(data.Message);
+            $("#manage_categories_title").attr("tabindex", -1).focus();
         }
     });
 }
@@ -97,7 +103,6 @@ function saveCategoryAction(){
 
                 if(visibility!="hidden"){
                     var propertyId = propertyValue.substring(propertyValue.indexOf('-')+1,propertyValue.length);
-                    console.log(propertyId);
                 
                     data.push({
                         'propertyId': propertyId,
@@ -127,31 +132,32 @@ function saveCategoryAction(){
                     'categoryProperties': JSON.stringify(data)},
                 dataType: 'json',
                 success: function (data) {
-                    console.log(data.category);
-                    var dropDownMenu = document.getElementById("nav-dropdown");
+
+                    $("#categories-error").css('display','none');            
+                    $("#categories-success").css('display','block');
+                    $("#categories-success").text(data.Message);
+                    $("#manage_categories_title").attr("tabindex", -1).focus();
                     
                     if(data.category.is_navbar_category == "true"){
 
-                        //var custom_location = "{{ route('category_products', ['id' => $category->id]) }};
-
-
-                        /*dropDownMenu.innerHTML+= '<a class="dropdown-item"' +
-                        'href=<?php echo route(\'category_products\', [\'id\' = > ' +
-                        data.category.id +
-                        ']);?> ' + 
+                        var dropDownMenu = document.getElementById("nav-dropdown");
+                        
+                        dropDownMenu.innerHTML+= '<a id="nav-cat-' +data.category.id + '" class="dropdown-item"  href=' + data.navlink +'>' +
                         data.category.name + 
                         ' </a>';
 
-                        console.log(dropDownMenu.innerHTML);*/
                     }else{
-
+                        var category_a = document.getElementById("nav-cat-" +  data.category.id);
+                        $("#nav-cat-" + data.category.id).remove();
                     }
             
                 },
                 error: function (data) {
 
-                    alert('Error saving category, please try again!');
-                    console.log('Error: ', data);
+                    $("#categories-success").css('display','none');            
+                    $("#categories-error").css('display','block');
+                    $("#categories-error").text(data.Message);
+                    $("#manage_categories_title").attr("tabindex", -1).focus();
                    
                 }
             });
@@ -211,7 +217,6 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (data) {
     
-                    console.log(data);
                     $('.categories-cards')[0].children[$('.categories-cards')[0].children.length - 1].remove();
                     var newEntry = document.getElementsByClassName("select-checkbox default")[0];
                     
@@ -231,17 +236,25 @@ $(document).ready(function () {
     
                     $('#add_category_modal').modal('hide');
     
-                    console.log($('.categories-cards')[0].children);
                     nameFill.value='';
 
                     addDeleteCategoryAction();
                     addEntryAction();
                     //addProductAction();
                     saveCategoryAction();
+
+
+                    $("#categories-error").css('display','none');            
+                    $("#categories-success").css('display','block');
+                    $("#categories-success").text(data.Message);
+                    $("#manage_categories_title").attr("tabindex", -1).focus();
                 },
                 error: function (data) {
-                    alert('Error adding category, please try again!');
-                    console.log('Error: ', data);
+
+                    $("#categories-success").css('display','none');            
+                    $("#categories-error").css('display','block');
+                    $("#categories-error").text(data.Message);
+                    $("#manage_categories_title").attr("tabindex", -1).focus();
                 }
             });
 

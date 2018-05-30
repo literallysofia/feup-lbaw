@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Wishlist')
+@section('title', 'Sweven | Cart')
 
 @section('content')
 
@@ -16,20 +16,23 @@
                 <div class="cart-item row">
                     <div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 col-xs-12 pb-lg-0 pb-md-0 pb-sm-3">
                         <div class="d-flex flex-column align-items-center cart_item_img">
-                            <img src="{{$product->photos->get(0)->path}}" alt="Item 1" class="img-fluid">
+                        <a href="{{ route('product', ['product_id'=> $product->id]) }}">
+                            <img src="{{$product->photos->first()->path}}" alt="Item 1" class="img-fluid" style="cursor:pointer;"></a>
                         </div>
                     </div>
                     <div class="col-xl-10 col-lg-10 col-md-9 col-sm-12 col-xs-12">
                         <div class="info-item d-flex flex-column">
-                            <h5>{{ $product->name }}</h5>
+                            <a href="{{ route('product', ['product_id'=> $product->id]) }}">
+                                <h5>{{ $product->name }}</h5>
+                            </a>
                             <div class="d-flex flex-row cart-item-quantity">
                                 <p>Quantity:</p>
                                     <p><i onclick="decrement(this, {{ $product->quantity_available }})" class="fas fa-minus"></i></p>
                                     <input type="number" class="item_quantity" value="{{ $product->pivot->quantity }}" data-value="{{ $product->quantity_available }}" data-id="{{ $product->id }}">
                                     <p><i onclick="increment(this, {{ $product->quantity_available }})" class="fas fa-plus"></i></p>
                             </div>
-                            <div class="remove-item-cart mt-auto d-flex align-items-end">
-                                <a class="mr-auto mt-auto" href="" onclick="return deleteProduct(this, {{ $product->id }})">Remove</a>
+                            <div class="mt-auto d-flex align-items-end">
+                                <a class="remove-item-cart mr-auto mt-auto" onclick="return deleteProduct(this, {{ $product->id }})">Remove</a>
                                 <div class="info-item ">
                                     <p class="mb-auto">{{ $product->price }} €</p>
                                 </div>

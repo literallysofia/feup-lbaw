@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
-@section('title','Wishlist')
+@section('title', 'Sweven | ' . $product->name)
 
 @section('content')
 
-<script type="text/javascript" src={{ asset('js/product.js') }} defer></script>
-<script type="text/javascript" src={{ asset('js/review.js') }} defer></script>
-
 @include('partials.breadcrumbs', $data = array($product->category->name => route('category_products', $product->category->id), $product->name => ''))
+
+<script src={{ asset('js/product.js') }} defer></script>
+<script src={{ asset('js/review.js') }} defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 
 <main>
     <section class="mt-4">
@@ -16,11 +17,12 @@
                 <div class="row">
                     <div id="productCarouselIndicators" class="col-md-6 col-sm-12 carousel slide align-self-center" data-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="../assets/laptop.jpg" alt="Item 1" class="img-fluid">
-                            </div>
                             @for($i=0; $i<count($product->photos); $i++)
+                                @if($i==0)
+                                <div class="carousel-item active">
+                                @else
                                 <div class="carousel-item">
+                                @endif
                                     <img src="{{$product->photos[$i]->path}}" alt="Item 1" class="img-fluid">
                                 </div>
                             @endfor
@@ -36,7 +38,7 @@
                     </div>
 
                     <div class="col-md-6 col-sm-12 d-flex flex-column align-items-center align-self-center">
-                        <h1 class="text-center">{{$product->name}}</h1>
+                        <h1 class="text-center">{{ $product->name }}</h1>
                         <div class="stars mt-2">
                             <input type="hidden" value="{{$product->score}}">
                             <div class="stars-outer">
@@ -55,8 +57,13 @@
                             </div>
                         </div>
                         <p class="mt-1" id="product_price">{{$product->price}} €</p>
-                        <input type="button" class="black-button col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Add to Cart" onclick="return addToCart(null, {{$product->id}})"></input>
-                        <input type="button" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Add to Wishlist" onclick="return addToWishlist({{$product->id}})"></input>
+                        @if(Auth::check() && Auth::user()->isAdmin())
+                            <input type="button" class="black-button col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Archive Product" onclick="window.location='{{route("archive_product", ["id" => $product->id])}}'"></input>
+                            <input type="button" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Edit Product" onclick="window.location='{{route("edit_product", ["id" => $product->id])}}'"></input>
+                        @else
+                            <input type="button" class="black-button col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Add to Cart" onclick="return addToCart(null, {{$product->id}})"></input>
+                            <input type="button" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Add to Wishlist" onclick="return addToWishlist({{$product->id}})"></input>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -76,7 +83,7 @@
                                 <hr class="specs-title-line">
                             </div>
                             <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                <?php $property_values = $properties[$i]->values_lists->where('product_id', $product->id)->get(0)->values; ?>
+                                <?php $property_values = $properties[$i]->values_lists->where('product_id', $product->id)->first()->values; ?>
                                 @foreach($property_values as $value)
                                     <p class="row-specs">{{$value->name}}</p>
                                 @endforeach 
@@ -98,38 +105,10 @@
                     <h2>Reviews</h2>
                     <h2 id="reviews_counter">/{{count($product->reviews)}}</h2>
                 </div>
-                <div class="ml-auto">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination">
-                            {{--<li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </li>--}}
-                            {{ $reviews->links() }}
-                        </ul>
-                    </nav>
-                </div>
             </div>
 
             <div class="section-container">
-                <div class="container">
+                <div id="reviews" class="container">
                     @if(count($product->reviews) == 0)
                         <p style="text-align: center">There's not any review yet</p>
                     @endif
@@ -171,7 +150,7 @@
                             </div>
                             @if(Auth::id() == $reviews[$i]->user_id)
                                 <div class="d-flex flex-row align-items-end col-12">
-                                    <a class="ml-auto mr-3" data-toggle="modal" data-target="#giveOpinionModal">
+                                    <a class="ml-auto mr-3" onclick="editReview({{$product->id}},{{$reviews[$i]->id}}, '{{$reviews[$i]->title}}', '{{$reviews[$i]->content}}', {{$reviews[$i]->score}})" data-toggle="modal" data-target="#giveOpinionModal">
                                         <i class="fas fa-lg fa-pencil-alt "></i>
                                     </a>
                                     <a onclick="deleteReview(this, {{$reviews[$i]->id}}, {{$product->id}})">
@@ -193,34 +172,6 @@
                     @endcan
                 </div>
             </div>
-            <div class="d-flex justify-content-end mt-3">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination">
-                        {{--<li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>--}}
-                        {{ $reviews->links() }}
-                    </ul>
-                </nav>
-            </div>
         </div>
     </section>
 
@@ -234,38 +185,40 @@
                     </button>
                 </div>
                 <div class="modal-body section-container" id="review_body">
-                    <form id="give_opinion_form" onsubmit="return newOpinion({{$product->id}})">
-                        <div class="form-group">
-                            <label for="rate_review">Global rate:</label>
-                            <div class="d-flex justify-content-center">
-                                <div id="review_stars">
-                                    <div class="stars-outer">
-                                        <i class="fas fa-star fa-lg"></i>
-                                        <i class="fas fa-star fa-lg"></i>
-                                        <i class="fas fa-star fa-lg"></i>
-                                        <i class="fas fa-star fa-lg"></i>
-                                        <i class="fas fa-star fa-lg"></i>
-                                        <div class="stars-inner">
-                                            <i class="fas fa-star fa-lg" data-alt="5" title="Excellent"></i>
-                                            <i class="fas fa-star fa-lg" data-alt="4" title="Good"></i>
-                                            <i class="fas fa-star fa-lg" data-alt="3" title="Average"></i>
-                                            <i class="fas fa-star fa-lg" data-alt="2" title="Poor"></i>
-                                            <i class="fas fa-star fa-lg" data-alt="1" title="Terrible"></i>
+                    <form id="give_opinion_form" onsubmit="return newOpinion({{ $product->id }})">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="rate_review">Global rate:</label>
+                                <div class="d-flex justify-content-center">
+                                    <div id="review_stars">
+                                        <div class="stars-outer">
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <i class="fas fa-star fa-lg"></i>
+                                            <div class="stars-inner">
+                                                <i class="fas fa-star fa-lg" data-alt="5" title="Excellent"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="4" title="Good"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="3" title="Average"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="2" title="Poor"></i>
+                                                <i class="fas fa-star fa-lg" data-alt="1" title="Terrible"></i>
+                                            </div>
                                         </div>
+                                        <p id="rate_text">rate</p>
                                     </div>
-                                    <p id="rate_text">rate</p>
                                 </div>
+                                <input id="opinion_rate" type="hidden" value="" required></input>
                             </div>
-                            <input id="opinion_rate" type="hidden"></input>
-                        </div>
-                        <div class="form-group">
-                            <label for="review_title">Title</label>
-                            <input type="text" class="form-control" id="review_title" placeholder="Your title" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="review_text">Review</label>
-                            <textarea form="give_opinion_form" rows="4" cols="10" id="review_text" placeholder="Your review" required></textarea>
-                        </div>
+                            <div class="form-group">
+                                <label for="review_title">Title</label>
+                                <input type="text" class="form-control" id="review_title" placeholder="Your title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="review_text">Review</label>
+                                <textarea form="give_opinion_form" rows="4" cols="10" id="review_text" placeholder="Your review" required></textarea>
+                            </div>
+                        </fieldset>
                         <div class="modal-footer">
                             <input type="button" data-dismiss="modal" value="Close"></input>
                             <input type="submit" class="black-button" value="Save"></input>
@@ -276,5 +229,10 @@
         </div>
     </div>
 </main>
+<script id="template" type="x-tmpl-mustache">
+    @include('partials.templates.review')
+</script> 
+
+<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" data-toggle="tooltip" data-placement="left"><i class="fas fa-angle-up"></i></a>
 
 @endsection

@@ -100,7 +100,7 @@ function isEmpty() {
 
     let products = document.querySelectorAll(".cart-item");
     if (products[0] == null) {
-        document.getElementsByClassName("section-container")[0].innerHTML = "<p style='text-align:center'>You don't have any product in your cart :-(";
+        document.getElementsByClassName("section-container")[0].innerHTML = "<p style='text-align:center'>You don't have any products in your cart.";
         return true;
     }
     return false;
