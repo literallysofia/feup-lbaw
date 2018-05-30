@@ -22,7 +22,8 @@ CREATE TABLE users (
     email text NOT NULL UNIQUE,
     password text NOT NULL,
     nif integer UNIQUE,
-    remember_token VARCHAR
+    remember_token VARCHAR,
+    "is_archived" boolean DEFAULT false NOT NULL    
 );
 
 DROP TABLE IF EXISTS addresses CASCADE;

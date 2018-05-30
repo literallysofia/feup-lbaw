@@ -41,6 +41,8 @@ Route::put('/profile/edit', 'UserController@editProfile');
 Route::view('/profile/address', 'errors/404');
 Route::post('/profile/address', 'AddressController@addAddressResponse');
 Route::put('/profile/address', 'AddressController@deleteAddressResponse');
+Route::get('/profile/{id}/archive', 'UserController@archiveProfile')->name('archive_profile');
+
 
 //Admin
 Route::get('admin', 'AdminController@showAdmin')->name('admin')->middleware('auth', 'admin');
