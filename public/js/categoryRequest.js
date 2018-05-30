@@ -73,7 +73,6 @@ function saveCategoryAction(){
             var categoryId = category.substring(category.indexOf('-')+1,category.length);
             var isNavBar = $(event.target).parent().siblings('.category-header').find('div div label input[type="checkbox"]').is(':checked');        
 
-            //delete repeated properties and invalid options
             var select_checkboxs_to_delete = $(event.target).parent().siblings('.select-checkbox');
             
             for(let j = 0; j< select_checkboxs_to_delete.length;j++){
@@ -92,7 +91,6 @@ function saveCategoryAction(){
                 }
             }
 
-            //selects values and required to send in teh request
             var select_checkboxs = $(event.target).parent().siblings('.select-checkbox');
             var data = [];
             for(let j = 0; j< select_checkboxs.length;j++){
@@ -240,7 +238,6 @@ $(document).ready(function () {
 
                     addDeleteCategoryAction();
                     addEntryAction();
-                    //addProductAction();
                     saveCategoryAction();
 
 
