@@ -25,7 +25,7 @@ class ProductsController extends Controller
         try {
             // GENERAL DATA //
             $category = Category::where('id', $category_id)->first();
-            $products = Product::where('category_id', $category->id);
+            $products = Product::where([['category_id', $category->id],['is_archived', false]]);
             $price_max = $products->max('price');
 
             if (!empty($products)) {
@@ -88,7 +88,7 @@ class ProductsController extends Controller
     public function showHighlights()
     {
         try {
-            $products = Product::orderBy('id', 'desc')->take(8)->get();
+            $products = Product::where('is_archived',false)->orderBy('id', 'desc')->take(8)->get();
 
         } catch (\Exception $e) {
             return response(json_encode($e->getMessage()), 400);
@@ -101,7 +101,7 @@ class ProductsController extends Controller
     {
         try {
             $keyword = Input::get('keyword');
-            $products = Product::whereRaw("name @@ plainto_tsquery('" . $keyword . "')")->paginate(8);
+            $products = Product::whereRaw("is_archived = false AND name @@ plainto_tsquery('" . $keyword . "')")->paginate(8);
 
         } catch (\Exception $e) {
             return response(json_encode($e->getMessage()), 400);
