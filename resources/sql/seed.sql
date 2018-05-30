@@ -493,26 +493,38 @@ INSERT INTO category_properties ("category_id", "property_id", "is_required_prop
 INSERT INTO category_properties ("category_id", "property_id", "is_required_property") VALUES (5, 15, false);
 
 /*PRODUCTS*/
-INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Apple iPhone X - 256GB - Silver', '1359.00', 100, 3, 1, 'Apple');
-INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Apple iPhone 8 - 64GB - Space Grey', '829.00', 60, 4, 1, 'Apple');
-INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Samsung Galaxy S9+ - 64GB - Midnight Black', '969.90', 100, 3, 1, 'Samsung');
-INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Samsung Galaxy S9 - 64GB - Blue', '869.99', 90, 4, 1, 'Samsung');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Google Pixel 2 XL - 64GB - Just Black', '1099.99', 200, 1, 'Google');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Google Pixel - 32GB - Quite Black', '699.99', 80, 1, 'Google');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Apple iPhone X - 256GB - Silver', '1359.00', 100, 1, 'Apple');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Apple iPhone X - 256GB - Space Grey', '1359.00', 100, 1, 'Apple');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Apple iPhone 8 Plus - 64GB - Space Grey', '940.00', 50, 1, 'Apple');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Apple iPhone 8 - 64GB - Space Grey', '829.00', 60, 1, 'Apple');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Apple iPhone 7 - 32GB - Black', '650.00', 60, 1, 'Apple');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Apple iPhone 6S - 32GB - Space Grey', '330.00', 30, 1, 'Apple');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Samsung Galaxy S9+ - 64GB - Midnight Black', '969.90', 100, 1, 'Samsung');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Samsung Galaxy S9 - 64GB - Blue', '869.99', 90, 1, 'Samsung');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('OnePlus 5T - 128GB - Red', '596.22', 100, 1, 'OnePlus');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('OnePlus 5T - 64GB - Midnight Black', '600.00', 150, 1, 'OnePlus');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('OnePlus 5 - 64GB - Slate Gray', '472.00', 20, 1, 'OnePlus');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Huawei P20 - 128GB - Pink', '699.99', 90, 1, 'Huawei');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Huawei P20 Lite - 64GB - Midnight Black', '399.99', 10, 1, 'Huawei');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Huawei P8 Lite 2017 - Black', '199.99', 5, 1, 'Huawei');
 
-INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Apple iPad Pro 12,9" - 256GB - Space Grey', '1249.00', 100, 5, 2, 'Apple');
-INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Samsung Galaxy Tab S2 9.7" - T819 - Black', '529.99', 90, 5, 2, 'Samsung');
-INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Asus ZenPad 10" Z301MF-1H011A - Grey', '219.99', 20, 5, 2, 'Asus');
-INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Huawei MediaPad M3 8.4"', '321.00', 100, 1, 2, 'Huawei');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Apple iPad Pro 12,9" - 256GB - Space Grey', '1249.00', 100, 2, 'Apple');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Samsung Galaxy Tab S2 9.7" - T819 - Black', '529.99', 90, 2, 'Samsung');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Asus ZenPad 10" Z301MF-1H011A - Grey', '219.99', 20, 2, 'Asus');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Huawei MediaPad M3 8.4"', '321.00', 100, 2, 'Huawei');
 
-INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Apple MacBook Pro 13" Retina i5-2,3GHz - 128GB - Space Grey', '1549.00', 50, 2, 3, 'Apple');
-INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Apple MacBook Air 13" i5-1,8GHz - 256GB', '1379.00', 50, 1, 3, 'Apple');
-INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Asus Zenbook UX430UA-57CHDCB1', '949.99', 80, 1, 3, 'Asus');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Apple MacBook Pro 13" Retina i5-2,3GHz - 128GB - Space Grey', '1549.00', 50, 3, 'Apple');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Apple MacBook Air 13" i5-1,8GHz - 256GB', '1379.00', 50, 3, 'Apple');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Asus Zenbook UX430UA-57CHDCB1', '949.99', 80, 3, 'Asus');
 
-INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Gaming Asus FHD VP278QG - 27"', '259.99', 80, 3, 4, 'Asus');
-INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('iMac 21,5" Retina 5K - 2,3 GHz - 1 TB', '1349.00', 90, 3, 4, 'Apple');
-INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('iMac 27" Retina 5K - 3,8 GHz - 2 TB', '2699.00', 15, 1, 4, 'Apple');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Gaming Asus FHD VP278QG - 27"', '259.99', 80, 4, 'Asus');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('iMac 21,5" Retina 5K - 2,3 GHz - 1 TB', '1349.00', 90, 4, 'Apple');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('iMac 27" Retina 5K - 3,8 GHz - 2 TB', '2699.00', 15, 4, 'Apple');
 
-INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Headphones Beats Studio3 Wireless - Black Shadow', '349.99', 10, 2, 5, 'Beats');
-INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Power Bank Xiaomi Mi Power 20000mAh - White', '45.99', 50, 1, 5, 'Xiaomi');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Headphones Beats Studio3 Wireless - Black Shadow', '349.99', 10, 5, 'Beats');
+INSERT INTO products (name, price, "quantity_available", "category_id", brand) VALUES ('Power Bank Xiaomi Mi Power 20000mAh - White', '45.99', 50, 5, 'Xiaomi');
 
 /*DELIVERY_TYPES*/
 INSERT INTO delivery_types (name, price) VALUES ('Standard Delivery', '0.99');
@@ -527,7 +539,6 @@ INSERT INTO faqs (question, answer) VALUES ('Suspendisse accumsan tortor quis tu
 INSERT INTO faqs (question, answer) VALUES ('Curabitur at ipsum ac tellus semper interdum?', 'Morbi porttitor lorem id ligula.');
 INSERT INTO faqs (question, answer) VALUES ('Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum?', 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.');
 INSERT INTO faqs (question, answer) VALUES ('Nullam sit amet turpis elementum ligula vehicula consequat?', 'Suspendisse potenti. In eleifend quam a odio.');
-
 
 /*PHOTOS*/
 INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/5fa2dd/ffffff', 1);
@@ -546,6 +557,18 @@ INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.
 INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/cc0000/ffffff', 14);
 INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/dddddd/000000', 15);
 INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/ff4444/ffffff', 16);
+INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/5fa2dd/ffffff', 17);
+INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/ff4444/ffffff', 18);
+INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/5fa2dd/ffffff', 19);
+INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/5fa2dd/ffffff', 20);
+INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/dddddd/000000', 21);
+INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/cc0000/ffffff', 22);
+INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/5fa2dd/ffffff', 23);
+INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/ff4444/ffffff', 24);
+INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/cc0000/ffffff', 25);
+INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/dddddd/000000', 26);
+INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/cc0000/ffffff', 27);
+INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/dddddd/000000', 28);
 
 /*WISHLIST*/
 INSERT INTO wishlists ("user_id", "product_id") VALUES (2, 2);
@@ -558,7 +581,6 @@ INSERT INTO wishlists ("user_id", "product_id") VALUES (10, 10);
 INSERT INTO wishlists ("user_id", "product_id") VALUES (10, 13);
 INSERT INTO wishlists ("user_id", "product_id") VALUES (21, 8);
 INSERT INTO wishlists ("user_id", "product_id") VALUES (21, 3);
-
 
 /*PRODUCT-CARTS*/
 INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (6, 16, 2);
@@ -622,6 +644,7 @@ INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUE
 
 
 /*VALUES-LIST*/
+/*1*/
 INSERT INTO values_lists ("category_property_id", "product_id") VALUES (2, 1);
 INSERT INTO values_lists ("category_property_id", "product_id") VALUES (3, 1);
 INSERT INTO values_lists ("category_property_id", "product_id") VALUES (4, 1);
@@ -650,200 +673,366 @@ INSERT INTO values_lists ("category_property_id", "product_id") VALUES (5, 4);
 INSERT INTO values_lists ("category_property_id", "product_id") VALUES (7, 4);
 INSERT INTO values_lists ("category_property_id", "product_id") VALUES (11, 4);
 
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (2, 5);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (3, 5);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (4, 5);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (5, 5);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (7, 5);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (11, 5);
+
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (2, 6);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (3, 6);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (4, 6);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (5, 6);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (7, 6);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (11, 6);
+
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (2, 7);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (3, 7);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (4, 7);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (5, 7);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (7, 7);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (11, 7);
+
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (2, 8);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (3, 8);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (4, 8);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (5, 8);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (7, 8);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (11, 8);
+
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (2, 9);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (3, 9);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (4, 9);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (5, 9);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (7, 9);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (11, 9);
+
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (2, 10);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (3, 10);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (4, 10);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (5, 10);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (7, 10);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (11, 10);
+
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (2, 11);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (3, 11);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (4, 11);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (5, 11);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (7, 11);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (11, 11);
+
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (2, 12);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (3, 12);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (4, 12);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (5, 12);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (7, 12);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (11, 12);
+
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (2, 13);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (3, 13);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (4, 13);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (5, 13);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (7, 13);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (11, 13);
+
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (2, 14);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (3, 14);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (4, 14);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (5, 14);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (7, 14);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (11, 14);
+
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (2, 15);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (3, 15);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (4, 15);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (5, 15);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (7, 15);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (11, 15);
+
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (2, 16);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (3, 16);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (4, 16);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (5, 16);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (7, 16);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (11, 16);
+
 /*2*/
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (14, 5);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (15, 5);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (16, 5);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (17, 5);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (18, 5);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (19, 5);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (20, 5);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (24, 5);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (25, 5);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (27, 5);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (13, 17);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (14, 17);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (15, 17);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (16, 17);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (17, 17);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (18, 17);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (24, 17);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (26, 17);
 
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (14, 6);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (15, 6);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (16, 6);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (17, 6);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (18, 6);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (19, 6);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (20, 6);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (24, 6);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (25, 6);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (27, 6);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (13, 18);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (14, 18);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (15, 18);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (16, 18);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (17, 18);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (18, 18);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (24, 18);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (26, 18);
 
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (14, 7);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (15, 7);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (16, 7);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (17, 7);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (18, 7);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (19, 7);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (20, 7);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (24, 7);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (25, 7);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (27, 7);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (13, 19);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (14, 19);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (15, 19);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (16, 19);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (17, 19);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (18, 19);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (24, 19);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (26, 19);
 
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (14, 8);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (15, 8);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (16, 8);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (17, 8);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (18, 8);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (19, 8);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (20, 8);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (24, 8);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (25, 8);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (27, 8);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (13, 20);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (14, 20);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (15, 20);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (16, 20);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (17, 20);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (18, 20);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (24, 20);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (26, 20);
 
 /*3*/
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (29, 9);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (30, 9);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (31, 9);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (32, 9);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (33, 9);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (36, 9);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (40, 9);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (28, 21);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (29, 21);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (30, 21);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (31, 21);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (38, 21);
 
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (29, 10);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (30, 10);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (31, 10);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (32, 10);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (33, 10);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (36, 10);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (40, 10);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (28, 22);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (29, 22);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (30, 22);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (31, 22);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (38, 22);
 
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (29, 11);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (30, 11);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (31, 11);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (32, 11);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (33, 11);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (36, 11);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (40, 11);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (28, 23);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (29, 23);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (30, 23);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (31, 23);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (38, 23);
 
 /*4*/
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (42, 12);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (43, 12);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (44, 12);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (40, 24);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (42, 24);
 
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (42, 13);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (43, 13);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (44, 13);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (40, 25);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (42, 25);
 
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (42, 14);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (43, 14);
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (44, 14);
-
-/*5*/
-INSERT INTO values_lists ("category_property_id", "product_id") VALUES (50, 15);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (40, 26);
+INSERT INTO values_lists ("category_property_id", "product_id") VALUES (42, 26);
 
 /*VALUES*/
-INSERT INTO values (name, "values_lists_id") VALUES ('iOS', 1);
-INSERT INTO values (name, "values_lists_id") VALUES ('5.8 inches', 2);
-INSERT INTO values (name, "values_lists_id") VALUES ('2436x1125 px', 2);
-INSERT INTO values (name, "values_lists_id") VALUES ('Retina HD', 2);
-INSERT INTO values (name, "values_lists_id") VALUES ('Apple A11', 3);
-INSERT INTO values (name, "values_lists_id") VALUES ('256 GB', 4);
-INSERT INTO values (name, "values_lists_id") VALUES ('12.0 MP + 12.0 MP', 5);
-INSERT INTO values (name, "values_lists_id") VALUES ('Earpods', 6);
-INSERT INTO values (name, "values_lists_id") VALUES ('Lightning Cable', 6);
-INSERT INTO values (name, "values_lists_id") VALUES ('Adaptor', 6);
+INSERT INTO values (name, "values_lists_id") VALUES ('Android', 1);
+INSERT INTO values (name, "values_lists_id") VALUES ('6 inches', 2);
+INSERT INTO values (name, "values_lists_id") VALUES ('2880x1440 px', 2);
+INSERT INTO values (name, "values_lists_id") VALUES ('Qualcomm MSM8998 Snapdragon 835', 3);
+INSERT INTO values (name, "values_lists_id") VALUES ('64 GB', 4);
+INSERT INTO values (name, "values_lists_id") VALUES ('12.2 MP', 5);
 INSERT INTO values (name, "values_lists_id") VALUES ('Charger', 6);
 
-INSERT INTO values (name, "values_lists_id") VALUES ('iOS', 7);
-INSERT INTO values (name, "values_lists_id") VALUES ('4.7 inches', 8);
-INSERT INTO values (name, "values_lists_id") VALUES ('1334x750 px', 8);
-INSERT INTO values (name, "values_lists_id") VALUES ('Retina HD', 8);
-INSERT INTO values (name, "values_lists_id") VALUES ('Apple A11', 9);
+INSERT INTO values (name, "values_lists_id") VALUES ('Android', 7);
+INSERT INTO values (name, "values_lists_id") VALUES ('5 inches', 8);
+INSERT INTO values (name, "values_lists_id") VALUES ('1920x1080 px', 8);
+INSERT INTO values (name, "values_lists_id") VALUES ('Qualcomm MSM8998 Snapdragon 835', 9);
 INSERT INTO values (name, "values_lists_id") VALUES ('64 GB', 10);
-INSERT INTO values (name, "values_lists_id") VALUES ('12.0 MP', 11);
-INSERT INTO values (name, "values_lists_id") VALUES ('Earpods', 12);
-INSERT INTO values (name, "values_lists_id") VALUES ('Lightning Cable', 12);
-INSERT INTO values (name, "values_lists_id") VALUES ('Adaptor', 12);
+INSERT INTO values (name, "values_lists_id") VALUES ('12.2 MP', 11);
 INSERT INTO values (name, "values_lists_id") VALUES ('Charger', 12);
 
-INSERT INTO values (name, "values_lists_id") VALUES ('Android', 13);
-INSERT INTO values (name, "values_lists_id") VALUES ('6.2 inches', 14);
-INSERT INTO values (name, "values_lists_id") VALUES ('Exynos 9810', 15);
-INSERT INTO values (name, "values_lists_id") VALUES ('64 GB', 16);
+INSERT INTO values (name, "values_lists_id") VALUES ('iOS', 13);
+INSERT INTO values (name, "values_lists_id") VALUES ('5.8 inches', 14);
+INSERT INTO values (name, "values_lists_id") VALUES ('2436x1125 px', 14);
+INSERT INTO values (name, "values_lists_id") VALUES ('Retina HD', 14);
+INSERT INTO values (name, "values_lists_id") VALUES ('Apple A11', 15);
+INSERT INTO values (name, "values_lists_id") VALUES ('256 GB', 16);
 INSERT INTO values (name, "values_lists_id") VALUES ('12.0 MP + 12.0 MP', 17);
+INSERT INTO values (name, "values_lists_id") VALUES ('Earpods', 18);
+INSERT INTO values (name, "values_lists_id") VALUES ('Lightning Cable', 18);
+INSERT INTO values (name, "values_lists_id") VALUES ('Adaptor', 18);
 INSERT INTO values (name, "values_lists_id") VALUES ('Charger', 18);
 
-INSERT INTO values (name, "values_lists_id") VALUES ('Android', 19);
+INSERT INTO values (name, "values_lists_id") VALUES ('iOS', 19);
 INSERT INTO values (name, "values_lists_id") VALUES ('5.8 inches', 20);
-INSERT INTO values (name, "values_lists_id") VALUES ('Exynos 9810', 21);
-INSERT INTO values (name, "values_lists_id") VALUES ('64 GB', 22);
-INSERT INTO values (name, "values_lists_id") VALUES ('12.0 MP', 23);
+INSERT INTO values (name, "values_lists_id") VALUES ('2436x1125 px', 20);
+INSERT INTO values (name, "values_lists_id") VALUES ('Retina HD', 20);
+INSERT INTO values (name, "values_lists_id") VALUES ('Apple A11', 21);
+INSERT INTO values (name, "values_lists_id") VALUES ('256 GB', 22);
+INSERT INTO values (name, "values_lists_id") VALUES ('12.0 MP + 12.0 MP', 23);
+INSERT INTO values (name, "values_lists_id") VALUES ('Earpods', 24);
+INSERT INTO values (name, "values_lists_id") VALUES ('Lightning Cable', 24);
+INSERT INTO values (name, "values_lists_id") VALUES ('Adaptor', 24);
 INSERT INTO values (name, "values_lists_id") VALUES ('Charger', 24);
 
+INSERT INTO values (name, "values_lists_id") VALUES ('iOS', 25);
+INSERT INTO values (name, "values_lists_id") VALUES ('5.5 inches', 26);
+INSERT INTO values (name, "values_lists_id") VALUES ('1920x1080 px', 26);
+INSERT INTO values (name, "values_lists_id") VALUES ('Retina HD', 26);
+INSERT INTO values (name, "values_lists_id") VALUES ('Apple A11', 27);
+INSERT INTO values (name, "values_lists_id") VALUES ('64 GB', 28);
+INSERT INTO values (name, "values_lists_id") VALUES ('12.0 MP + 12.0 MP', 29);
+INSERT INTO values (name, "values_lists_id") VALUES ('Earpods', 30);
+INSERT INTO values (name, "values_lists_id") VALUES ('Lightning Cable', 30);
+INSERT INTO values (name, "values_lists_id") VALUES ('Adaptor', 30);
+INSERT INTO values (name, "values_lists_id") VALUES ('Charger', 30);
 
-INSERT INTO values (name, "values_lists_id") VALUES ('nulla', 25);
-INSERT INTO values (name, "values_lists_id") VALUES ('diam', 26);
-INSERT INTO values (name, "values_lists_id") VALUES ('id pretium iaculis', 27);
-INSERT INTO values (name, "values_lists_id") VALUES ('lacus at', 28);
-INSERT INTO values (name, "values_lists_id") VALUES ('nibh quisque id', 29);
-INSERT INTO values (name, "values_lists_id") VALUES ('posuere', 30);
-INSERT INTO values (name, "values_lists_id") VALUES ('molestie nibh', 31);
-INSERT INTO values (name, "values_lists_id") VALUES ('ultrices vel augue', 32);
-INSERT INTO values (name, "values_lists_id") VALUES ('turpis sed ante', 33);
-INSERT INTO values (name, "values_lists_id") VALUES ('in', 34);
-INSERT INTO values (name, "values_lists_id") VALUES ('sit', 35);
-INSERT INTO values (name, "values_lists_id") VALUES ('tempus', 36);
-INSERT INTO values (name, "values_lists_id") VALUES ('nonummy', 37);
-INSERT INTO values (name, "values_lists_id") VALUES ('nec dui luctus', 38);
-INSERT INTO values (name, "values_lists_id") VALUES ('vel lectus in', 39);
-INSERT INTO values (name, "values_lists_id") VALUES ('ultrices erat tortor', 40);
-INSERT INTO values (name, "values_lists_id") VALUES ('at', 41);
-INSERT INTO values (name, "values_lists_id") VALUES ('quis orci eget', 42);
-INSERT INTO values (name, "values_lists_id") VALUES ('porta', 43);
-INSERT INTO values (name, "values_lists_id") VALUES ('ut', 44);
-INSERT INTO values (name, "values_lists_id") VALUES ('est quam pharetra', 45);
-INSERT INTO values (name, "values_lists_id") VALUES ('erat', 46);
-INSERT INTO values (name, "values_lists_id") VALUES ('ac', 47);
-INSERT INTO values (name, "values_lists_id") VALUES ('luctus tincidunt', 48);
-INSERT INTO values (name, "values_lists_id") VALUES ('tortor', 49);
-INSERT INTO values (name, "values_lists_id") VALUES ('at turpis donec', 50);
-INSERT INTO values (name, "values_lists_id") VALUES ('interdum', 51);
-INSERT INTO values (name, "values_lists_id") VALUES ('in lectus', 52);
-INSERT INTO values (name, "values_lists_id") VALUES ('pede', 53);
-INSERT INTO values (name, "values_lists_id") VALUES ('et magnis dis', 54);
-INSERT INTO values (name, "values_lists_id") VALUES ('amet lobortis sapien', 55);
-INSERT INTO values (name, "values_lists_id") VALUES ('morbi', 56);
-INSERT INTO values (name, "values_lists_id") VALUES ('luctus cum', 57);
-INSERT INTO values (name, "values_lists_id") VALUES ('donec', 58);
-INSERT INTO values (name, "values_lists_id") VALUES ('faucibus', 59);
-INSERT INTO values (name, "values_lists_id") VALUES ('pretium iaculis justo', 60);
-INSERT INTO values (name, "values_lists_id") VALUES ('integer ac leo', 61);
-INSERT INTO values (name, "values_lists_id") VALUES ('nulla sed', 62);
-INSERT INTO values (name, "values_lists_id") VALUES ('cubilia curae', 63);
-INSERT INTO values (name, "values_lists_id") VALUES ('est donec odio', 64);
-INSERT INTO values (name, "values_lists_id") VALUES ('et commodo vulputate', 65);
-INSERT INTO values (name, "values_lists_id") VALUES ('sapien urna', 66);
-INSERT INTO values (name, "values_lists_id") VALUES ('amet consectetuer', 67);
-INSERT INTO values (name, "values_lists_id") VALUES ('ante', 68);
-INSERT INTO values (name, "values_lists_id") VALUES ('amet eleifend', 69);
-INSERT INTO values (name, "values_lists_id") VALUES ('rutrum', 70);
-INSERT INTO values (name, "values_lists_id") VALUES ('aliquam', 71);
-INSERT INTO values (name, "values_lists_id") VALUES ('mus', 72);
-INSERT INTO values (name, "values_lists_id") VALUES ('tristique in tempus', 73);
-INSERT INTO values (name, "values_lists_id") VALUES ('at', 74);
-INSERT INTO values (name, "values_lists_id") VALUES ('phasellus', 75);
-INSERT INTO values (name, "values_lists_id") VALUES ('id consequat', 76);
-INSERT INTO values (name, "values_lists_id") VALUES ('pellentesque', 77);
-INSERT INTO values (name, "values_lists_id") VALUES ('auctor sed', 78);
-INSERT INTO values (name, "values_lists_id") VALUES ('bibendum', 79);
-INSERT INTO values (name, "values_lists_id") VALUES ('interdum', 80);
-INSERT INTO values (name, "values_lists_id") VALUES ('nec dui luctus', 81);
-INSERT INTO values (name, "values_lists_id") VALUES ('vehicula condimentum curabitur', 82);
-INSERT INTO values (name, "values_lists_id") VALUES ('sit amet lobortis', 83);
-INSERT INTO values (name, "values_lists_id") VALUES ('vivamus vestibulum sagittis', 84);
-INSERT INTO values (name, "values_lists_id") VALUES ('duis ac', 85);
-INSERT INTO values (name, "values_lists_id") VALUES ('erat quisque', 86);
-INSERT INTO values (name, "values_lists_id") VALUES ('nam', 87);
-INSERT INTO values (name, "values_lists_id") VALUES ('aliquam', 88);
-INSERT INTO values (name, "values_lists_id") VALUES ('sapien', 89);
-INSERT INTO values (name, "values_lists_id") VALUES ('sit amet cursus', 90);
-INSERT INTO values (name, "values_lists_id") VALUES ('tempus semper', 91);
-INSERT INTO values (name, "values_lists_id") VALUES ('in', 92);
-INSERT INTO values (name, "values_lists_id") VALUES ('tortor quis turpis', 93);
-INSERT INTO values (name, "values_lists_id") VALUES ('vivamus metus', 94);
-INSERT INTO values (name, "values_lists_id") VALUES ('ante ipsum primis', 95);
+INSERT INTO values (name, "values_lists_id") VALUES ('iOS', 31);
+INSERT INTO values (name, "values_lists_id") VALUES ('4.7 inches', 32);
+INSERT INTO values (name, "values_lists_id") VALUES ('1334x750 px', 32);
+INSERT INTO values (name, "values_lists_id") VALUES ('Retina HD', 32);
+INSERT INTO values (name, "values_lists_id") VALUES ('Apple A11', 33);
+INSERT INTO values (name, "values_lists_id") VALUES ('64 GB', 34);
+INSERT INTO values (name, "values_lists_id") VALUES ('12.0 MP', 35);
+INSERT INTO values (name, "values_lists_id") VALUES ('Earpods', 36);
+INSERT INTO values (name, "values_lists_id") VALUES ('Lightning Cable', 36);
+INSERT INTO values (name, "values_lists_id") VALUES ('Adaptor', 36);
+INSERT INTO values (name, "values_lists_id") VALUES ('Charger', 36);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('iOS', 37);
+INSERT INTO values (name, "values_lists_id") VALUES ('4.7 inches', 38);
+INSERT INTO values (name, "values_lists_id") VALUES ('1334x750 px', 38);
+INSERT INTO values (name, "values_lists_id") VALUES ('Retina HD', 38);
+INSERT INTO values (name, "values_lists_id") VALUES ('Apple A11', 39);
+INSERT INTO values (name, "values_lists_id") VALUES ('32 GB', 40);
+INSERT INTO values (name, "values_lists_id") VALUES ('12.0 MP', 41);
+INSERT INTO values (name, "values_lists_id") VALUES ('Earpods', 42);
+INSERT INTO values (name, "values_lists_id") VALUES ('Lightning Cable', 42);
+INSERT INTO values (name, "values_lists_id") VALUES ('Adaptor', 42);
+INSERT INTO values (name, "values_lists_id") VALUES ('Charger', 42);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('iOS', 43);
+INSERT INTO values (name, "values_lists_id") VALUES ('4.7 inches', 44);
+INSERT INTO values (name, "values_lists_id") VALUES ('1334x750 px', 44);
+INSERT INTO values (name, "values_lists_id") VALUES ('Apple A9', 45);
+INSERT INTO values (name, "values_lists_id") VALUES ('32 GB', 46);
+INSERT INTO values (name, "values_lists_id") VALUES ('12.0 MP', 47);
+INSERT INTO values (name, "values_lists_id") VALUES ('Earpods', 48);
+INSERT INTO values (name, "values_lists_id") VALUES ('Lightning Cable', 48);
+INSERT INTO values (name, "values_lists_id") VALUES ('Adaptor', 48);
+INSERT INTO values (name, "values_lists_id") VALUES ('Charger', 48);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('Android', 49);
+INSERT INTO values (name, "values_lists_id") VALUES ('6.2 inches', 50);
+INSERT INTO values (name, "values_lists_id") VALUES ('Exynos 9810', 51);
+INSERT INTO values (name, "values_lists_id") VALUES ('64 GB', 52);
+INSERT INTO values (name, "values_lists_id") VALUES ('12.0 MP + 12.0 MP', 53);
+INSERT INTO values (name, "values_lists_id") VALUES ('Charger', 54);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('Android', 55);
+INSERT INTO values (name, "values_lists_id") VALUES ('5.8 inches', 56);
+INSERT INTO values (name, "values_lists_id") VALUES ('Exynos 9810', 57);
+INSERT INTO values (name, "values_lists_id") VALUES ('64 GB', 58);
+INSERT INTO values (name, "values_lists_id") VALUES ('12.0 MP', 59);
+INSERT INTO values (name, "values_lists_id") VALUES ('Charger', 60);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('Android', 55);
+INSERT INTO values (name, "values_lists_id") VALUES ('5.8 inches', 56);
+INSERT INTO values (name, "values_lists_id") VALUES ('Exynos 9810', 57);
+INSERT INTO values (name, "values_lists_id") VALUES ('64 GB', 58);
+INSERT INTO values (name, "values_lists_id") VALUES ('12.0 MP', 59);
+INSERT INTO values (name, "values_lists_id") VALUES ('Charger', 60);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('Android', 61);
+INSERT INTO values (name, "values_lists_id") VALUES ('6.01 inches', 62);
+INSERT INTO values (name, "values_lists_id") VALUES ('Qualcomm Snapdragon 835', 63);
+INSERT INTO values (name, "values_lists_id") VALUES ('128 GB', 64);
+INSERT INTO values (name, "values_lists_id") VALUES ('16.0 MP + 20.0 MP', 65);
+INSERT INTO values (name, "values_lists_id") VALUES ('Charger', 66);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('Android', 67);
+INSERT INTO values (name, "values_lists_id") VALUES ('6.01 inches', 68);
+INSERT INTO values (name, "values_lists_id") VALUES ('Qualcomm Snapdragon 835', 69);
+INSERT INTO values (name, "values_lists_id") VALUES ('64 GB', 70);
+INSERT INTO values (name, "values_lists_id") VALUES ('16.0 MP + 20.0 MP', 71);
+INSERT INTO values (name, "values_lists_id") VALUES ('Charger', 72);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('Android', 73);
+INSERT INTO values (name, "values_lists_id") VALUES ('5.5 inches', 74);
+INSERT INTO values (name, "values_lists_id") VALUES ('Qualcomm Snapdragon 835', 75);
+INSERT INTO values (name, "values_lists_id") VALUES ('64 GB', 76);
+INSERT INTO values (name, "values_lists_id") VALUES ('16.0 MP + 20.0 MP', 77);
+INSERT INTO values (name, "values_lists_id") VALUES ('Charger', 78);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('Android', 79);
+INSERT INTO values (name, "values_lists_id") VALUES ('5.8 inches', 80);
+INSERT INTO values (name, "values_lists_id") VALUES ('HiSilicon Kirin 970', 81);
+INSERT INTO values (name, "values_lists_id") VALUES ('128 GB', 82);
+INSERT INTO values (name, "values_lists_id") VALUES ('12.0 MP + 20.0 MP', 83);
+INSERT INTO values (name, "values_lists_id") VALUES ('Charger', 84);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('Android', 85);
+INSERT INTO values (name, "values_lists_id") VALUES ('5.84 inches', 86);
+INSERT INTO values (name, "values_lists_id") VALUES ('Huawei Kirin 659', 87);
+INSERT INTO values (name, "values_lists_id") VALUES ('64 GB', 88);
+INSERT INTO values (name, "values_lists_id") VALUES ('16.0 MP + 2.0 MP', 89);
+INSERT INTO values (name, "values_lists_id") VALUES ('Charger', 90);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('Android', 91);
+INSERT INTO values (name, "values_lists_id") VALUES ('5.2 inches', 92);
+INSERT INTO values (name, "values_lists_id") VALUES ('HiSilicon Kirin 655', 93);
+INSERT INTO values (name, "values_lists_id") VALUES ('16 GB', 94);
+INSERT INTO values (name, "values_lists_id") VALUES ('12.0 MP', 95);
+INSERT INTO values (name, "values_lists_id") VALUES ('Charger', 96);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('tellus in sagittis', 97);
+INSERT INTO values (name, "values_lists_id") VALUES ('non velit', 98);
+INSERT INTO values (name, "values_lists_id") VALUES ('quis', 99);
+INSERT INTO values (name, "values_lists_id") VALUES ('consequat dui nec', 100);
+INSERT INTO values (name, "values_lists_id") VALUES ('quam', 101);
+INSERT INTO values (name, "values_lists_id") VALUES ('ut ultrices vel', 102);
+INSERT INTO values (name, "values_lists_id") VALUES ('accumsan tellus', 103);
+INSERT INTO values (name, "values_lists_id") VALUES ('pede lobortis', 104);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('platea dictumst morbi', 105);
+INSERT INTO values (name, "values_lists_id") VALUES ('adipiscing', 106);
+INSERT INTO values (name, "values_lists_id") VALUES ('parturient', 107);
+INSERT INTO values (name, "values_lists_id") VALUES ('vitae quam', 108);
+INSERT INTO values (name, "values_lists_id") VALUES ('sem fusce consequat', 109);
+INSERT INTO values (name, "values_lists_id") VALUES ('quam', 110);
+INSERT INTO values (name, "values_lists_id") VALUES ('elit proin', 111);
+INSERT INTO values (name, "values_lists_id") VALUES ('sagittis', 112);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('rhoncus aliquet', 113);
+INSERT INTO values (name, "values_lists_id") VALUES ('vitae nisl', 114);
+INSERT INTO values (name, "values_lists_id") VALUES ('faucibus cursus', 115);
+INSERT INTO values (name, "values_lists_id") VALUES ('ultrices', 116);
+INSERT INTO values (name, "values_lists_id") VALUES ('vitae nisi', 117);
+INSERT INTO values (name, "values_lists_id") VALUES ('blandit', 118);
+INSERT INTO values (name, "values_lists_id") VALUES ('cras', 119);
+INSERT INTO values (name, "values_lists_id") VALUES ('iaculis diam erat', 120);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('praesent', 121);
+INSERT INTO values (name, "values_lists_id") VALUES ('sed tristique', 122);
+INSERT INTO values (name, "values_lists_id") VALUES ('tellus', 123);
+INSERT INTO values (name, "values_lists_id") VALUES ('orci pede', 124);
+INSERT INTO values (name, "values_lists_id") VALUES ('diam nam', 125);
+INSERT INTO values (name, "values_lists_id") VALUES ('enim', 126);
+INSERT INTO values (name, "values_lists_id") VALUES ('neque duis', 127);
+INSERT INTO values (name, "values_lists_id") VALUES ('hac habitasse platea', 128);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('mi nulla', 129);
+INSERT INTO values (name, "values_lists_id") VALUES ('congue eget semper', 130);
+INSERT INTO values (name, "values_lists_id") VALUES ('nisl duis ac', 131);
+INSERT INTO values (name, "values_lists_id") VALUES ('ut', 132);
+INSERT INTO values (name, "values_lists_id") VALUES ('non quam', 133);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('blandit lacinia', 134);
+INSERT INTO values (name, "values_lists_id") VALUES ('habitasse platea', 135);
+INSERT INTO values (name, "values_lists_id") VALUES ('consequat in consequat', 136);
+INSERT INTO values (name, "values_lists_id") VALUES ('nisl nunc', 137);
+INSERT INTO values (name, "values_lists_id") VALUES ('sollicitudin vitae', 138);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('curabitur convallis duis', 139);
+INSERT INTO values (name, "values_lists_id") VALUES ('at', 140);
+INSERT INTO values (name, "values_lists_id") VALUES ('nisl', 141);
+INSERT INTO values (name, "values_lists_id") VALUES ('tristique tortor', 142);
+INSERT INTO values (name, "values_lists_id") VALUES ('ligula vehicula consequat', 143);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('parturient montes nascetur', 144);
+INSERT INTO values (name, "values_lists_id") VALUES ('integer', 145);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('massa id', 146);
+INSERT INTO values (name, "values_lists_id") VALUES ('in faucibus orci', 147);
+
+INSERT INTO values (name, "values_lists_id") VALUES ('quam pede lobortis', 148);
+INSERT INTO values (name, "values_lists_id") VALUES ('justo in blandit', 149);

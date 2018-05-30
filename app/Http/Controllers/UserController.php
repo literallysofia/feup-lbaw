@@ -46,8 +46,8 @@ class UserController extends Controller
 
         return Validator::make($data, [
             'name' => "sometimes|regex:/^[A-Z][a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/u|max:255",
-            'username' => 'sometimes|regex:/^[a-zA-Z0-9]{6,20}$/u|unique:users',
-            'email' => 'sometimes|string|email|max:255|unique:users',
+            'username' => 'sometimes|regex:/^[a-zA-Z0-9]{6,20}$/u',
+            'email' => 'sometimes|string|email|max:255',
             'old_password' => 'sometimes',
             'new_password' => 'sometimes|regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/u',
         ]);
@@ -105,6 +105,60 @@ class UserController extends Controller
             }
         }
         return response(json_encode("User updated with success"), 200);
+    }
+
+
+    public function archiveAccount()
+    {
+        Auth::check();
+
+        /*$validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return response(json_encode("Error validating user data"), 400);
+        }
+        if ($request->old_password != null) {
+            if (Hash::check($request->old_password, Auth::user()->password)) {
+                $password = Hash::make($request->new_password);
+                Auth::user()->password = $password;
+                try {
+                    Auth::user()->save();
+                } catch (\Exception $e) {
+                    $e->getMessage();
+                    return response(json_encode("Error updating password"), 400);
+                }
+            } else {
+                return response(json_encode("Old password is incorrect"), 400);
+            }
+
+        }
+        if ($request->name != null) {
+            Auth::user()->name = $request->name;
+            try {
+                Auth::user()->save();
+            } catch (\Exception $e) {
+                $e->getMessage();
+                return response(json_encode("Error updating name"), 400);
+            }
+        }
+        if ($request->username != null) {
+            Auth::user()->username = $request->username;
+            try {
+                Auth::user()->save();
+            } catch (\Exception $e) {
+                $e->getMessage();
+                return response(json_encode("Error updating username"), 400);
+            }
+        }
+        if ($request->email != null) {
+            Auth::user()->email = $request->email;
+            try {
+                Auth::user()->save();
+            } catch (\Exception $e) {
+                $e->getMessage();
+                return response(json_encode("Error updating email"), 400);
+            }
+        }
+        return response(json_encode("User updated with success"), 200);*/
     }
 
     public function __construct()

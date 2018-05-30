@@ -579,8 +579,11 @@ main .modal .modal-footer {
   main .modal .modal-footer input[type="submit"] {
     width: 30%; }
 
-.cart-item h5 {
-  font-size: 1.2em; }
+.cart-item a {
+  color: black; }
+  .cart-item a:hover {
+    color: black;
+    text-decoration: none; }
 
 #info_message {
   font-size: 0.8em; }
