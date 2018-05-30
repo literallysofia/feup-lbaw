@@ -8,7 +8,7 @@
 
 <script src={{ asset('js/profileRequest.js') }} defer></script>
 <script src={{ asset('js/propertyRequest.js') }} defer></script>
-<script src={{ asset('js/categoryRequest_min.js') }} defer></script>
+<script src={{ asset('js/categoryRequest.js') }} defer></script>
 <script src={{ asset('js/faqsRequest.js') }} defer></script>
 <script src={{ asset('js/updatePurchases.js') }} defer></script>
 

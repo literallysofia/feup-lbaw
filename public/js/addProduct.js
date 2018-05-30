@@ -61,8 +61,8 @@ function addPhotoCard(e) {
         readUrl(this);
     });*/
     var ret = document.getElementsByClassName('imageUpload');
-    for(var i = 0; i<ret.length;i++){
-        ret[i].addEventListener('change',function(){
+    for (var i = 0; i < ret.length; i++) {
+        ret[i].addEventListener('change', function () {
             readUrl(this);
         });
     }
@@ -72,7 +72,6 @@ function addPhotoCard(e) {
 }
 
 function readUrl(input) {
-    console.log("Added event ");
 
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -109,20 +108,14 @@ function getPhotosSrc() {
 
 function saveProduct(event) {
     event.preventDefault();
-
-    var photos_src = getPhotosSrc();
-
-    if(photos_src.length == 0)
-        return false;
-
-    var photos_files = new FormData();
-    for (var i = 0; i < photos_src.length; i++) {
-        photos_files.append(i, photos_src[i]);
-    }
-
     var is_edit = false;
-    if (event.target.id == "editProductButton")
+    if (event.target.id.trim() == "editProductButton")
         is_edit = true;
+
+    
+
+   
+
     var flag = false;
     if ($('#product_name').is(":invalid")) {
         $('#product_name').css('border', "2px solid #ff5555");
@@ -165,6 +158,22 @@ function saveProduct(event) {
         $("#basic-error").parent().parent().css('outline', 'none !important').attr("tabindex", -1).focus();
         return;
     }
+    var photos_src = getPhotosSrc();
+     var photos_files = new FormData();
+    for (var i = 0; i < photos_src.length; i++) {
+        photos_files.append(i, photos_src[i]);
+    }
+
+
+    if (photos_src.length == 0 && !is_edit){
+        $("#photos-error").css('display','block');
+        $("#photos-error").text("There is a problem with the photos please try again!");
+        $("#photos-error").parent().css('outline', 'none !important').attr("tabindex", -1).focus();
+        return false;
+    }
+        
+
+
     var product_specs = checkProperties();
     if (!product_specs[0]) {
         $("#specs-error").css('display', 'block');
@@ -177,8 +186,13 @@ function saveProduct(event) {
     product_specs = product_specs[1];
     var url = window.location.href;
     var my_url = url.substring(url.indexOf("add_product"), url.length).trim();
-    var category_name = my_url.substring(my_url.indexOf("/") + 1, my_url.length).trim();
-    var product = {
+    if (!is_edit)
+        var category_name = my_url.substring(my_url.indexOf("/") + 1, my_url.length).trim();
+    else {
+
+        var category_name = $('#realCategoryName').text();
+
+    } var product = {
         'category_name': category_name,
         'name': product_name,
         'price': product_price,
@@ -230,34 +244,50 @@ function addProduct(product) {
 
 function editProduct(product) {
     console.log("Editing product" + product);
-
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
 
+    console.log(product);
+
     var url = window.location.href;
-    var my_url = url.substring(url.indexOf("product"), url.length).trim();
+    var my_url = '/' + url.substring(url.indexOf("product"), url.length).trim();
 
+    var first = my_url.indexOf('/');
+    var last = my_url.lastIndexOf('/');
 
+    var id = my_url.substring(first, last);
+
+    first = id.lastIndexOf('/');
+
+    id = id.substring(first + 1, id.length);
+
+    product.id = id;
+    console.log(product.id);
     $.ajax({
         type: 'PUT',
         url: my_url,
         data: product,
         success: function (data) {
+            console.log("Successo");
+            console.log(data);
 
+            var product_id = data.product.id;
+            uploadImages(product_id);
 
         },
         error: function (data) {
-
+            console.log("Erro");
+            console.log(data);
         }
     });
 
 }
 
 function uploadImages(id) {
-  
+
 
     var photos = this.getPhotosSrc();
     console.log(photos);
@@ -268,11 +298,11 @@ function uploadImages(id) {
     var count = 0;
 
     var toUpload = new FormData();
-    toUpload.append('id',id);
-    toUpload.append('count',count);
+    toUpload.append('id', id);
+    toUpload.append('count', count);
     var photo = photos[count];
-    toUpload.append('photo',photo);
-    toUpload.append('all',photos);
+    toUpload.append('photo', photo);
+    toUpload.append('all', photos);
 
     sendImage(toUpload);
 
@@ -316,13 +346,13 @@ function uploadImages(id) {
         document.location.href = url  + 'product/' + id;
     }*/
 
-        
+
 
 
 
 }
 
-function sendImage(toUpload){
+function sendImage(toUpload) {
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -338,32 +368,32 @@ function sendImage(toUpload){
         success: function (data) {
             console.log("Success cenas");
             var photos = getPhotosSrc();
-            console.log(photos);  
-            if(data.count < (photos.length)){
+            console.log(photos);
+            if (data.count < (photos.length - 1)) {
 
                 var count = parseInt(data.count) + 1;
                 var toUpload = new FormData();
-                toUpload.append('id',data.id);
-                toUpload.append('count',count);
+                toUpload.append('id', data.id);
+                toUpload.append('count', count);
                 console.log(count);
-               
+
                 var photo = photos[count];
                 console.log(photo);
-                toUpload.append('photo',photo);
+                toUpload.append('photo', photo);
 
                 sendImage(toUpload);
 
-            }else{
+            } else {
                 var url = window.location.href;
-        var index = url.indexOf('add_product');
-        if(index != -1)
-            url = url.substring(0,index);
-        else{
-            index = url.indexOf('/product');
-            url = url.substring(0,index);
-            url += '/';
-        }
-        document.location.href = url  + 'product/' + data.id;
+                var index = url.indexOf('add_product');
+                if (index != -1)
+                    url = url.substring(0, index);
+                else {
+                    index = url.indexOf('/product');
+                    url = url.substring(0, index);
+                    url += '/';
+                }
+                document.location.href = url + 'product/' + data.id;
             }
 
         },
@@ -371,7 +401,7 @@ function sendImage(toUpload){
             console.log("Error");
             console.log(data);
         }
-    });    
+    });
 
 }
 
@@ -384,8 +414,11 @@ function checkProperties() {
     var prop_values = [];
     for (let i = 0; i < property_header.length; i++) {
         is_required = property_header[i].innerText.trim().endsWith('*');
+        console.log(property_header[i].innerText);
+        console.log(is_required);
         var result = checkPropertyValue(property_values[i].children, is_required)
-        correct = result[1];
+        if (correct != false)
+            correct = result[1];
         var values = result[0];
         if (values != null && values.length != 0) {
             var property_name;
@@ -399,7 +432,8 @@ function checkProperties() {
         }
 
     }
-
+    console.log("Hello");
+    console.log(correct);
     console.log(prop_values);
 
     return [correct, prop_values];
@@ -446,15 +480,15 @@ $(document).ready(function () {
     });*/
 
     var ret = document.getElementsByClassName('imageUpload');
-    for(var i = 0; i<ret.length;i++){
-        ret[i].addEventListener('change',function(){
+    for (var i = 0; i < ret.length; i++) {
+        ret[i].addEventListener('change', function () {
             readUrl(this);
         });
     }
 
     $('.saveProduct-btn').on("click", saveProduct);
 
-   
-       
+
+
 
 })

@@ -227,7 +227,38 @@ class ProductsController extends Controller
     }
 
     public function editProduct($product_id,Request $request){
+        $category = Category::where('name', $request->category_name)->first();
+        $product = Product::findOrFail($request->id);
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->quantity_available = $request->quantity;
+        $product->brand = $request->brand;
+        $product->save();
+
         
+
+        $specs = $request->property_values;
+
+    if(count($specs) >0){
+        $product->values_lists()->delete();
+        foreach ($specs as $spec) {
+            $property = Property::where('name', $spec['property'])->first();
+            $category_property = CategoryProperty::where([['category_id', $category->id], ['property_id', $property->id]])->first();
+            $values_list = new ValuesLists;
+            $values_list->category_property_id = $category_property->id;
+            $values_list->product_id = $product->id;
+            $values_list->save();
+            foreach ($spec['values'] as $value) {
+                $spec_value = new Value;
+                $spec_value->name = $value;
+                $spec_value->values_lists_id = $values_list->id;
+                $spec_value->save();
+            }
+        }
+    }
+   
+
+    return response()->json(array('product' => $product), 200);
     }
 
     public function deleteReview($product_id, Request $request)

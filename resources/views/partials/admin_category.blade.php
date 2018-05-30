@@ -3,6 +3,7 @@
         <div id="category-{{$category->id}}" class="box d-flex flex-column ">
             <div class="category-header">
                 <h6>{{$category->name}}</h6>
+                <p id="categoryName" style="display:none;">{{$category->name}}</p>
                 <div class="d-flex flex-row">
                     <div class="checkbox-container form-check d-flex">
                         <label class="form-check-label">Show on the navigation menu

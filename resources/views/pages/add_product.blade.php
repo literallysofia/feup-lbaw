@@ -13,6 +13,7 @@
         <div class="container scroll_nav">
             <div class="row">
                 <h1 class="col-12" id="category_name">{{$category->name}}</h1>
+                <p id="realCategoryName" style="display:none;">{{$category->name}}</p>
             </div>
         </div>
     </div>
@@ -63,6 +64,7 @@
     <div class="container">
         <section class="mt-5">
             <h2>Photos</h2>
+            <div class="alert alert-danger" id="photos-error" style="display:none"></div>
             <div class="cards photo-cards row">
                 @each('partials.add_photo',$photos,'photo')
                 <div class="mt-4 col-md-6 col-lg-3" >
