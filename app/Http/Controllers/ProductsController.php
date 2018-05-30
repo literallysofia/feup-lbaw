@@ -206,7 +206,6 @@ class ProductsController extends Controller
             }*/
 
         return response()->json(array('product' => $product), 200);
-
     }
 
     public function uploadImage(Request $request){
