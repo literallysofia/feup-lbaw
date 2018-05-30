@@ -22,7 +22,7 @@ function removeDesignProduct(obj) {
 function deleteProduct(obj, id) {
     
 
-    if(!confirm('are you sure you want to remove this product?'))
+    if(!confirm('Are you sure you want to remove this product?'))
         return false;
     $.ajaxSetup({
         headers: {
