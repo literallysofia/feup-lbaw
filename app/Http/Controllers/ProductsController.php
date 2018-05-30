@@ -294,7 +294,6 @@ class ProductsController extends Controller
         }
     }
 
-<<<<<<< HEAD
     public function archiveProduct($product_id){
             if(Auth::user()->isAdmin()) {
                 $product = Product::findOrFail($product_id);
@@ -305,6 +304,4 @@ class ProductsController extends Controller
     }
 
 
-=======
->>>>>>> 4911ff75a58ee67d9caca57a609b86b947245e07
 }
