@@ -320,103 +320,69 @@ EXECUTE PROCEDURE update_product_score_delete();
 /** POPULATE **/
 
 /*COUNTRIES*/
-INSERT INTO countries (name) VALUES ('Venezuela');
-INSERT INTO countries (name) VALUES ('China');
-INSERT INTO countries (name) VALUES ('Mongolia');
-INSERT INTO countries (name) VALUES ('Colombia');
-INSERT INTO countries (name) VALUES ('Vietnam');
-INSERT INTO countries (name) VALUES ('Russia');
-INSERT INTO countries (name) VALUES ('Indonesia');
-INSERT INTO countries (name) VALUES ('Brazil');
-INSERT INTO countries (name) VALUES ('United States');
 INSERT INTO countries (name) VALUES ('France');
-INSERT INTO countries (name) VALUES ('Tajikistan');
+INSERT INTO countries (name) VALUES ('Germany');
+INSERT INTO countries (name) VALUES ('Italy');
+INSERT INTO countries (name) VALUES ('Netherlands');
 INSERT INTO countries (name) VALUES ('Portugal');
-INSERT INTO countries (name) VALUES ('Peru');
-INSERT INTO countries (name) VALUES ('Nigeria');
+INSERT INTO countries (name) VALUES ('Spain');
+INSERT INTO countries (name) VALUES ('United Kingdom');
 
 /*CITIES*/
-INSERT INTO cities (name, "country_id") VALUES ('Rubio', 1);
-INSERT INTO cities (name, "country_id") VALUES ('Jiayuguan', 2);
-INSERT INTO cities (name, "country_id") VALUES ('Huanggang', 2);
-INSERT INTO cities (name, "country_id") VALUES ('Ereencav', 3);
-INSERT INTO cities (name, "country_id") VALUES ('El Cocuy', 4);
-INSERT INTO cities (name, "country_id") VALUES ('Xinzheng', 2);
-INSERT INTO cities (name, "country_id") VALUES ('Gawul', 7);
-INSERT INTO cities (name, "country_id") VALUES ('Trà My', 5);
-INSERT INTO cities (name, "country_id") VALUES ('Mikun’', 6);
-INSERT INTO cities (name, "country_id") VALUES ('Ambarita', 7);
-INSERT INTO cities (name, "country_id") VALUES ('Taquarituba', 8);
-INSERT INTO cities (name, "country_id") VALUES ('Arlington', 9);
-INSERT INTO cities (name, "country_id") VALUES ('Caen', 10);
-INSERT INTO cities (name, "country_id") VALUES ('Itacorubi', 8);
-INSERT INTO cities (name, "country_id") VALUES ('Darband', 11);
-INSERT INTO cities (name, "country_id") VALUES ('Seixal', 12);
-INSERT INTO cities (name, "country_id") VALUES ('Zlatoust', 6);
-INSERT INTO cities (name, "country_id") VALUES ('Mucllo', 13);
-INSERT INTO cities (name, "country_id") VALUES ('Dashi', 2);
-INSERT INTO cities (name, "country_id") VALUES ('Kuta', 14);
+INSERT INTO cities (name, "country_id") VALUES ('Paris', 1);
+INSERT INTO cities (name, "country_id") VALUES ('Marselha', 1);
+INSERT INTO cities (name, "country_id") VALUES ('Lyon', 1);
+INSERT INTO cities (name, "country_id") VALUES ('Berlin', 2);
+INSERT INTO cities (name, "country_id") VALUES ('Frankfurt', 2);
+INSERT INTO cities (name, "country_id") VALUES ('Florence', 3);
+INSERT INTO cities (name, "country_id") VALUES ('Milan', 3);
+INSERT INTO cities (name, "country_id") VALUES ('Turin', 3);
+INSERT INTO cities (name, "country_id") VALUES ('Amsterdam', 4);
+INSERT INTO cities (name, "country_id") VALUES ('Delft', 4);
+INSERT INTO cities (name, "country_id") VALUES ('Naarden', 4);
+INSERT INTO cities (name, "country_id") VALUES ('Aveiro', 5);
+INSERT INTO cities (name, "country_id") VALUES ('Beja', 5);
+INSERT INTO cities (name, "country_id") VALUES ('Braga', 5);
+INSERT INTO cities (name, "country_id") VALUES ('Bragança', 5);
+INSERT INTO cities (name, "country_id") VALUES ('Coimbra', 5);
+INSERT INTO cities (name, "country_id") VALUES ('Faro', 5);
+INSERT INTO cities (name, "country_id") VALUES ('Leiria', 5);
+INSERT INTO cities (name, "country_id") VALUES ('Lisboa', 5);
+INSERT INTO cities (name, "country_id") VALUES ('Porto', 5);
+INSERT INTO cities (name, "country_id") VALUES ('Santarém', 5);
+INSERT INTO cities (name, "country_id") VALUES ('Viana do Castelo', 5);
+INSERT INTO cities (name, "country_id") VALUES ('Viseu', 5);
+INSERT INTO cities (name, "country_id") VALUES ('Barcelona', 6);
+INSERT INTO cities (name, "country_id") VALUES ('Madrid', 6);
+INSERT INTO cities (name, "country_id") VALUES ('London', 7);
+INSERT INTO cities (name, "country_id") VALUES ('Manchester', 7);
+INSERT INTO cities (name, "country_id") VALUES ('Birmingham', 7);
+INSERT INTO cities (name, "country_id") VALUES ('Liverpool', 7);
 
 /*USERS*/
-INSERT INTO users (name, username, email, password) VALUES ('Dominik Courtliff', 'dcourtliff0', 'dcourtliff0@washington.edu', 'AP8LWaw');
-INSERT INTO users (name, username, email, password) VALUES ('Chester Lownes', 'clownes1', 'clownes1@washingtonpost.com', 'LbkRHs');
-INSERT INTO users (name, username, email, password) VALUES ('Kathe Omar', 'komar2', 'komar2@e-recht24.de', '2T7AIM');
-INSERT INTO users (name, username, email, password) VALUES ('Ethelda Houseago', 'ehouseago3', 'ehouseago3@acquirethisname.com', 'afSIgLsK6M');
-INSERT INTO users (name, username, email, password) VALUES ('Amalia Glayzer', 'aglayzer4', 'aglayzer4@bandcamp.com', 'X3hO0S54dSG');
-INSERT INTO users (name, username, email, password) VALUES ('Bidget Gehrels', 'bgehrels5', 'bgehrels5@redcross.org', 'YstABQ9w');
-INSERT INTO users (name, username, email, password) VALUES ('Davide Wardale', 'dwardale6', 'dwardale6@e-recht24.de', 'BohbUPUS9LkP');
-INSERT INTO users (name, username, email, password) VALUES ('Blondie MacPhee', 'bmacphee7', 'bmacphee7@dell.com', 'yk1syP');
-INSERT INTO users (name, username, email, password) VALUES ('Rubi Duncklee', 'rduncklee8', 'rduncklee8@npr.org', 'kwDVrx631e');
-INSERT INTO users (name, username, email, password) VALUES ('Zorina Hiseman', 'zhiseman9', 'zhiseman9@usa.gov', 'AKniryg');
-INSERT INTO users (name, username, email, password) VALUES ('Zola Bosquet', 'zbosqueta', 'zbosqueta@un.org', '5h0MqBhj91HU');
-INSERT INTO users (name, username, email, password) VALUES ('Colman Dobey', 'cdobeyb', 'cdobeyb@sciencedaily.com', 'JQGVzuqymhAc');
-INSERT INTO users (name, username, email, password) VALUES ('Chrissie Dudbridge', 'cdudbridgec', 'cdudbridgec@dot.gov', 'QWaoJCPAy');
-INSERT INTO users (name, username, email, password) VALUES ('Clare Pash', 'cpashd', 'cpashd@51.la', '1fjSLVI08l9k');
-INSERT INTO users (name, username, email, password) VALUES ('Daisy Matusov', 'dmatusove', 'dmatusove@ucsd.edu', 'FDE5AhcJ');
-INSERT INTO users (name, username, email, password) VALUES ('Gualterio Flanders', 'gflandersf', 'gflandersf@prweb.com', 'QWbc7824');
-INSERT INTO users (name, username, email, password) VALUES ('Ulises Reubel', 'ureubelg', 'ureubelg@etsy.com', 'wu7vgJ');
-INSERT INTO users (name, username, email, password) VALUES ('Edy MacMenamin', 'emacmenaminh', 'emacmenaminh@ed.gov', 'pvwtW3DT');
-INSERT INTO users (name, username, email, password) VALUES ('Zachariah Chadburn', 'zchadburni', 'zchadburni@typepad.com', 'Wcjj8vZSA');
-INSERT INTO users (name, username, email, password) VALUES ('Jorry MacAndie', 'jmacandiej', 'jmacandiej@wordpress.com', 'Q9oAsh5');
-INSERT INTO users (name, username, email, password) VALUES ('Test', 'test', 'sweventechshop@gmail.com', '$2y$10$v.JHOjwkOhrK1ZsTY4Mgf.9zY.7MziX8KhtgofT6kaQpNvx1j07NO'); /*password: testtest*/
-INSERT INTO users (name, username, email, password) VALUES ('Sweven Tech Shop', 'swevenAdmin', 'sweven@sweven.com', '$2y$10$3Wc9dkxovmxwQZObfnJfEuOiTDCPPNPL6HdYKpQ/I7qbQrP9U58AK'); /*password: Sweven61*/
-
+INSERT INTO users (name, username, email, password) VALUES ('Administrator', 'swevenAdmin', 'sweventechshop@gmail.com', '$2y$10$3Wc9dkxovmxwQZObfnJfEuOiTDCPPNPL6HdYKpQ/I7qbQrP9U58AK'); /*password: Sweven61*/
+INSERT INTO users (name, username, email, password) VALUES ('Stiles Stilinski', 'stiles', 'stiles@gmail.com', '$2y$10$3Wc9dkxovmxwQZObfnJfEuOiTDCPPNPL6HdYKpQ/I7qbQrP9U58AK');
+INSERT INTO users (name, username, email, password) VALUES ('Scott McCall', 'scottmc', 'scottmccall@gmail.com', '$2y$10$3Wc9dkxovmxwQZObfnJfEuOiTDCPPNPL6HdYKpQ/I7qbQrP9U58AK');
+INSERT INTO users (name, username, email, password) VALUES ('Allison Argent', 'argent', 'allisonargent@gmail.com', '$2y$10$3Wc9dkxovmxwQZObfnJfEuOiTDCPPNPL6HdYKpQ/I7qbQrP9U58AK');
+INSERT INTO users (name, username, email, password) VALUES ('Lydia Martin', 'lydiamartin', 'lydiamartin@gmail.com', '$2y$10$3Wc9dkxovmxwQZObfnJfEuOiTDCPPNPL6HdYKpQ/I7qbQrP9U58AK');
+INSERT INTO users (name, username, email, password) VALUES ('Jackson Whittemore', 'jackson', 'jacksonwhittemore@gmail.com', '$2y$10$3Wc9dkxovmxwQZObfnJfEuOiTDCPPNPL6HdYKpQ/I7qbQrP9U58AK');
 
 /*ADDRESSES*/
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('home', 'Dennis', '18740-000', 1, 21);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('country house', 'Dahle', '18740-000', 2, 21);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('company', 'Luster', '22205', 3, 21);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('home', 'Monica', '88000-000', 4, 21);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('work', 'Manitowish', '151287', 5, 21);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('work', 'Dovetail', '22205', 6, 19);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('home', 'Garrison', '88000-000', 7, 2);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('home', 'Loeprich', '88000-000', 8, 13);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('work', 'Prairieview', '169060', 9, 8);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('work', 'Fairfield', '88000-000', 10, 16);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('home', '1st', '18740-000', 11, 2);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('work', 'Waxwing', '22205', 12, 15);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('work', 'Memorial', '14908 CEDEX 9', 13, 16);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('work', 'Nova', '88000-000', 14, 12);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('home', 'Ramsey', '18740-000', 15, 4);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('home', 'Monument', '2530-254', 16, 9);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('home', 'Valley Edge', '456209', 17, 9);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('work', 'Thierer', '88000-000', 18, 14);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('work', 'Meadow Vale', '456209', 19, 13);
-INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('home', 'Veith', '18740-000', 20, 10);
+INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('home', 'Abbey Road', '18740-000', 26, 2);
+INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('company', 'Baker Street', '18740-000', 26, 2);
+INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('company', 'Essex Street', '22205', 20, 3);
+INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('home', 'Hills Place', '88000-000', 3, 4);
+INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('work', 'Old Gravel Lane', '151287', 24, 5);
+INSERT INTO addresses (name, street, "postal_code", "city_id", "user_id") VALUES ('work', 'Richmond Mews West', '22205', 9, 6);
 
 /*ADMINS*/
 INSERT INTO admins ("user_id") VALUES (1);
-INSERT INTO admins ("user_id") VALUES (2);
-INSERT INTO admins ("user_id") VALUES (3);
-INSERT INTO admins ("user_id") VALUES (4);
-INSERT INTO admins ("user_id") VALUES (22);
-
 
 /*CATEGORIES*/
 INSERT INTO categories (name, "is_navbar_category") VALUES ('Smartphones', true);
 INSERT INTO categories (name, "is_navbar_category") VALUES ('Tablets', true);
-INSERT INTO categories (name, "is_navbar_category") VALUES ('Computers', false);
-INSERT INTO categories (name, "is_navbar_category") VALUES ('Monitors', true);
+INSERT INTO categories (name, "is_navbar_category") VALUES ('Computers', true);
+INSERT INTO categories (name, "is_navbar_category") VALUES ('Monitors', false);
 INSERT INTO categories (name, "is_navbar_category") VALUES ('Accessories', true);
 
 /*PROPERTIES*/
@@ -532,13 +498,11 @@ INSERT INTO delivery_types (name, price) VALUES ('Express Delivery', '9.99');
 INSERT INTO delivery_types (name, price) VALUES ('Priority Delivery', '19.99');
 
 /*FAQS*/
-INSERT INTO faqs (question, answer) VALUES ('Sed sagittis?', 'Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.');
-INSERT INTO faqs (question, answer) VALUES ('Nullam varius?', 'Aliquam quis turpis eget elit sodales scelerisque.');
-INSERT INTO faqs (question, answer) VALUES ('Ut tellus. Nulla ut erat id mauris vulputate elementum?', 'Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat.');
-INSERT INTO faqs (question, answer) VALUES ('Suspendisse accumsan tortor quis turpi?', 'Aenean fermentum.');
-INSERT INTO faqs (question, answer) VALUES ('Curabitur at ipsum ac tellus semper interdum?', 'Morbi porttitor lorem id ligula.');
-INSERT INTO faqs (question, answer) VALUES ('Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum?', 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.');
-INSERT INTO faqs (question, answer) VALUES ('Nullam sit amet turpis elementum ligula vehicula consequat?', 'Suspendisse potenti. In eleifend quam a odio.');
+INSERT INTO faqs (question, answer) VALUES ('How do I track my order?', 'All orders despatched with DPD are now trackable. Tracking updates will be provided by our delivery partner, with the links to follow your parcel. If your tracking number begins with RML, unfortunately, we are unable to track these parcels at present. Most parcels will reach their destination within 2 weeks, however, some destinations may require additional time allowed for parcels to arrive. As most parcels will reach their destination within 2 weeks, we are unable to query your parcel before this time. If this time has passed and you have still not received your parcel please contact our Customer Care Team.');
+INSERT INTO faqs (question, answer) VALUES ('How long will my order take to arrive?', 'Generally our international parcels will arrive within 7 working days. However if  your parcels tracking ID begins with RML, we advise that you allow up to 2 weeks to account for any postal delays within your country. Please note that UK Bank Holidays, Saturday and Sunday are not classed as working days.');
+INSERT INTO faqs (question, answer) VALUES ('What do I do if there is a problem with my delivery?', 'Please contact our Customer Care team who are here to help with any problems.');
+INSERT INTO faqs (question, answer) VALUES ('What should I do if my parcel is damaged?', 'If you notice that your parcel is damaged during delivery, please take a digital picture that you would send us, before opening your parcel to see your item(s).');
+INSERT INTO faqs (question, answer) VALUES ('What is your online security policy?', 'We want to make sure that you are safe and secure when you are shopping with us online. As part of our commitment to this, we perform random checks on orders and this means that you may need to prove your identity. Customers will be contacted by phone or email and will have up to 24 hours to provide us with the required information.');
 
 /*PHOTOS*/
 INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/5fa2dd/ffffff', 1);
@@ -571,77 +535,36 @@ INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.
 INSERT INTO photos (path, "product_id") VALUES ('http://dummyimage.com/1000x810.jpg/dddddd/000000', 28);
 
 /*WISHLIST*/
+INSERT INTO wishlists ("user_id", "product_id") VALUES (2, 1);
 INSERT INTO wishlists ("user_id", "product_id") VALUES (2, 2);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (5, 15);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (6, 4);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (7, 5);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (8, 7);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (10, 9);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (10, 10);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (10, 13);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (21, 8);
-INSERT INTO wishlists ("user_id", "product_id") VALUES (21, 3);
-
-/*PRODUCT-CARTS*/
-INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (6, 16, 2);
-INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (6, 2, 2);
-INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (2, 2, 1);
-INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (19, 7, 1);
-INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (2, 9, 2);
-INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (3, 13, 3);
-INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (11, 12, 2);
-INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (9, 1, 1);
-INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (10, 5, 1);
-INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (17, 6, 3);
-INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (15, 7, 1);
-INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (12, 12, 1);
-INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (13, 4, 2);
-INSERT INTO product_carts ("user_id", "product_id", quantity) VALUES (21, 4, 90);
+INSERT INTO wishlists ("user_id", "product_id") VALUES (2, 4);
+INSERT INTO wishlists ("user_id", "product_id") VALUES (2, 17);
+INSERT INTO wishlists ("user_id", "product_id") VALUES (3, 2);
+INSERT INTO wishlists ("user_id", "product_id") VALUES (3, 20);
+INSERT INTO wishlists ("user_id", "product_id") VALUES (4, 28);
+INSERT INTO wishlists ("user_id", "product_id") VALUES (4, 5);
+INSERT INTO wishlists ("user_id", "product_id") VALUES (4, 3);
+INSERT INTO wishlists ("user_id", "product_id") VALUES (5, 18);
 
 /*PURCHASES*/
-INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-08-07', 2542.42, 21, 4, 2, 'Processing');
-INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-10-31', 1072.94, 21, 1, 2, 'Shipped');
-INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-10-04', 2878.82, 21, 1, 3, 'Delivered');
-INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-08-18', 1119.94, 21, 16, 3, 'Processing');
-INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-04-11', 1115.11, 8, 9, 2, 'Shipped');
-INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-12-12', 4507.83, 8, 9, 3, 'Shipped');
-INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2018-01-20', 899.21, 14, 18, 2, 'Processing');
-INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2018-02-28', 3471.12, 16, 13, 1, 'Processing');
-INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-02-22', 625.19, 19, 6, 1, 'Shipped');
-INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-04-02', 4929.18, 13, 19, 2, 'Delivered');
-INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-10-10', 3464.1, 3, 2, 3, 'Shipped');
-INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-07-31', 4273.67, 7, 1, 1, 'Processing');
-INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-11-18', 538.7, 9, 17, 2, 'Processing');
-INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-06-15', 3259.77, 14, 18, 3, 'Delivered');
-INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-02-15', 1201.51, 10, 20, 2, 'Shipped');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-08-07', 350.98, 2, 1, 1, 'Processing');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-10-31', 2649.98, 2, 2, 1, 'Shipped');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-10-04', 229.98, 2, 1, 2, 'Delivered');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-08-18', 1119.98, 3, 3, 3, 'Delivered');
+INSERT INTO purchases (date, total, "user_id", "address_id", "delivery_type_id", status) VALUES ('2017-04-11', 1249.99, 4, 4, 1, 'Shipped');
 
 /*PRODUCT-PURCHASES*/
-INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (1, 1, 1, 1106.96);
-INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (2, 1, 2, 717.73);
-INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (3, 2, 1, 1072.94);
-INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (4, 3, 1, 1107.96);
-INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (5, 4, 2, 556.97);
-INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (6, 15, 1, 910.6);
-INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (7, 9, 1, 1015.66);
-INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (8, 7, 2, 1064.08);
-INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (9, 14, 2, 840.37);
-INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (10, 3, 2, 885.43);
-INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (11, 9, 1, 462.09);
-INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (12, 5, 2, 666.96);
-INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (13, 5, 2, 689.05);
-INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (14, 5, 2, 1180.96);
-INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (15, 15, 1, 596.35);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (27, 1, 1, 349.99);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (1, 2, 2, 1099.99);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (21, 2, 1, 1549.00);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (19, 3, 1, 219.99);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (1, 4, 1, 1099.99);
+INSERT INTO product_purchase ("product_id", "purchase_id", quantity, price) VALUES (17, 5, 2, 1249.00);
 
 /*REVIEWS*/
-INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (9, 2, 1, 'Some title', 'Some content.', '2017-06-22');
-INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (21, 1, 1, 'Some title', 'Some content.', '2017-06-22');
-INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (9, 1, 1, 'Some title', 'Yo', '2017-08-22');
-INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (10, 6, 5, 'Some title', 'Some content.', '2017-08-12');
-INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (16, 3, 4, 'Some title', 'Some content.', '2018-02-04');
-INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (19, 11, 2, 'Some title', 'Some content.', '2017-03-13');
-INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (10, 15, 3, 'Some title', 'Some content.', '2017-12-28');
-INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (8, 12, 4, 'Some title', 'Some content.', '2018-03-22');
-
+INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (2, 1, 5, 'Highly Recommended', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ligula ipsum, volutpat efficitur maximus et, lobortis sed lorem. Suspendisse iaculis erat ac mauris imperdiet, nec auctor felis tincidunt. Suspendisse varius semper odio eu scelerisque. Suspendisse ac est at tortor vulputate rutrum. Cras porta quam eget feugiat pellentesque. Nullam ut vestibulum risus. Praesent dapibus augue ut leo cursus lobortis.', '2017-11-22');
+INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (2, 27, 4, 'Amazing!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel imperdiet purus. Etiam eu aliquam ipsum, et maximus nisl. Nulla at porttitor ligula. Ut ut fringilla nunc. Donec metus enim.', '2017-12-14');
+INSERT INTO reviews ("user_id", "product_id", score, title, content, date) VALUES (3, 1, 3, 'Good Phone', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ligula ipsum, volutpat efficitur maximus et, lobortis sed lorem. Suspendisse iaculis erat ac mauris imperdiet, nec auctor felis tincidunt. Suspendisse varius semper odio eu scelerisque. Suspendisse ac est at tortor vulputate rutrum. Cras porta quam eget feugiat pellentesque. Nullam ut vestibulum risus. Praesent dapibus augue ut leo cursus lobortis.', '2017-10-01');
 
 /*VALUES-LIST*/
 /*1*/

@@ -106,6 +106,9 @@ function saveProduct(event) {
 
     var photos_src = getPhotosSrc();
 
+    if(photos_src.length == 0)
+        return false;
+
     var photos_files = new FormData();
     for (var i = 0; i < photos_src.length; i++) {
         photos_files.append(i, photos_src[i]);
@@ -259,7 +262,7 @@ function uploadImages(id) {
     if (photos <= 0) return;
 
     var success = true;
-
+    var count = 0;
     for (let i = 0; i < photos.length; i++) {
         var toUpload = new FormData();
         toUpload.append('id', id);
@@ -274,18 +277,17 @@ function uploadImages(id) {
             contentType: false,
             success: function (data) {
                 console.log("Success");
-                console.log(data);
 
             },
             error: function (data) {
                 console.log("Error");
-                console.log(data);
-                success = false;
             }
         });        
 
     }
-    if(success){
+    if(photos.length == 0)
+        return;
+    /*if(success){
 
         var url = window.location.href;
         var index = url.indexOf('add_product');
@@ -297,7 +299,7 @@ function uploadImages(id) {
             url += '/';
         }
         document.location.href = url  + 'product/' + id;
-    }
+    }*/
 
         
 
