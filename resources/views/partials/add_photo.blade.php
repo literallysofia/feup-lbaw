@@ -5,7 +5,7 @@
         </div>
         <div class="mt-auto">
             <div class="custom-file">
-                <input type="file" class="imageUpload custom-file-input" id="imageUpload" accept=".png, .jpg, .jpeg" >
+                <input type="file" class="imageUpload custom-file-input" name="imageUpload" accept=".png, .jpg, .jpeg" >
                 <label class="custom-file-label" for="imageUpload">Choose file</label>
             </div>
         </div>
