@@ -60,8 +60,12 @@ class Handler extends ExceptionHandler
             if($exception instanceof AuthorizationException) {
                 return redirect()->route('401');
             }
+            if($exception instanceof ModelNotFoundException) {
+                return redirect()->route('404');
+            }
+
             if($exception instanceof MethodNotAllowedHttpException) {
-                return redirect()->route('404');   
+                return redirect()->route('401');   
             }
         }
         
