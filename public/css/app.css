@@ -585,9 +585,6 @@ main .modal .modal-footer {
     color: black;
     text-decoration: none; }
 
-#info_message {
-  font-size: 0.8em; }
-
 .cart-item-quantity {
   display: inline;
   padding-top: 0.7em; }

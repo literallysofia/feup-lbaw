@@ -10,7 +10,10 @@
 
 <main>
     <div class="container">
-        <h1>My Cart</h1>
+        <div class="d-flex justify-content-between">
+            <h1>My Cart</h1>
+            <i class="fas fa-question-circle" data-toggle="modal" data-target="#online_help_modal" style="cursor:pointer;"></i>
+        </div>
         <div class="section-container">
             @foreach($products as $product)
                 <div class="cart-item row">
@@ -50,7 +53,6 @@
             <div id="checkout_cart" class="d-flex flex-row justify-content-end">
                 <input type="button" class="black-button" value="Checkout" data-toggle="modal" data-target="#checkoutModal">
             </div>
-            <p id="info_message">*The stock may change during this procedure.</p>
 
             <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -91,6 +93,25 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="online_help_modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Online Help</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body section-container mt-0">
+                <p><strong>Warning:</strong> The stock may change during this procedure.</p>
+                <p>When it comes to your cart, you can change the quantity of each product according to your desires by clicking on the symbols or inserting a number. In case you don't want it anymore, click <u>remove</u>.</p>
+                <p>Once you click on <strong>Checkout</strong>, you'll be asked to pick an address and a delivery type. If you need to add a new address, go to your profile page.</p>
+                </div>
+            </div>
+            </div>
+        </div>
+
     </div>
 </main>
     

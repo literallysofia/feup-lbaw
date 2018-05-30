@@ -27,10 +27,30 @@
         <a href="#history_title" class="col-lg-auto col-md-auto col-sm-12 text-sm-left">
           History
         </a>
+        <div class="col-lg-auto col-md-auto col-sm-12 text-sm-left" data-toggle="modal" data-target="#online_help_modal" style="cursor:pointer;">
+          <i class="fas fa-question-circle"></i>
+        </div>
       </div>
     </div>
   </div>
 
+  <div class="modal fade" id="online_help_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Online Help</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body section-container mt-0">
+          <p>As a user, on this page, you can edit your personal details and manage your addresses.</p>
+          <p>You can view all your purchases, those bellow <strong>On Hold</strong> are being processed or have just been shipped, once a package is delivered, you can find it under <strong>History</strong>.</p>
+          <p>If you click on a particular purchase, you can see all its details.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="container">
 
