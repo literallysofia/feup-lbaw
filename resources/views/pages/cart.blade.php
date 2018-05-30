@@ -73,7 +73,7 @@
                                 @endforeach
                             </select>
                             <h6>Subtotal before Delivery</h6>
-                            <p class="subtotal_price">{{ $total }} €</p>
+                            <p class="subtotal_price" value="{{$total}}">{{ $total }} €</p>
                             <h6>Delivery Type</h6>
                             <select id="delivery_type" name="delivery_type" onchange="update_total(this.options[this.selectedIndex])" required>
                                 <option disabled selected value>Choose Delivery Type</option>

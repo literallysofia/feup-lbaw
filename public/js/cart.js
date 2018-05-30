@@ -88,6 +88,7 @@ $(document).ready(function(){
 
     });
 
+
     $(document).bind('ajaxStart', function(){
         $("#loader_page").show();
     }).bind('ajaxStop', function(){
