@@ -468,9 +468,9 @@ $(document).ready(function () {
     addPhoto.bind("click", addPhotoCard);
 
 
-    var addEntry = $('input[name=addEntry');
+    var addEntry = $('input[name=addEntry]');
 
-    $('input[name=addEntry').each(function (item) {
+    $('input[name=addEntry]').each(function (item) {
         $(this).on("click", addEntryInput);
     });
 
