@@ -15,8 +15,8 @@
 Route::get('/', 'ProductsController@showHighlights');
 
 // Cards
-Route::view('error/403', 'errors/403');
-
+Route::get('cards', 'CardController@list');
+Route::get('cards/{id}', 'CardController@show');
 
 // API
 Route::put('api/cards', 'CardController@create');
@@ -36,16 +36,9 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::get('profile/{id}', 'UserController@showProfile')->name('profile')->where('id','[0-9]+');
 Route::view('/profile/edit', 'errors/404');
 Route::put('/profile/edit', 'UserController@editProfile');
-
-Route::get('/profile/archive', function() {
-    return redirect('/logout');
-})->name('archive');
-Route::put('/profile/archive', 'UserController@archiveAccount')->name('archive');
-
 Route::view('/profile/address', 'errors/404');
 Route::post('/profile/address', 'AddressController@addAddressResponse');
 Route::put('/profile/address', 'AddressController@deleteAddressResponse');
-
 
 //Admin
 Route::get('admin', 'AdminController@showAdmin')->name('admin')->middleware('auth', 'admin');
@@ -70,18 +63,18 @@ Route::view('contact','pages/contact');
 Route::post('contact','ContactController@sendEmail')->name('sendemail');
 
 //Cart and wishlist
-Route::get('wishlist','CartWishlistController@showWishlist')->name('wishlist');
-Route::delete('wishlist', 'CartWishlistController@removeWishlistProduct');
-Route::post('wishlist', 'CartWishlistController@addWishlistProduct');
+Route::get('wishlist','WishlistController@showWishlist')->name('wishlist');
+Route::delete('wishlist', 'WishlistController@removeWishlistProduct');
+Route::post('wishlist', 'WishlistController@addWishlistProduct');
 
-Route::get('cart', 'CartWishlistController@showCart')->name('cart');
-Route::delete('cart', 'CartWishlistController@removeCartProduct');
-Route::post('cart', 'CartWishlistController@addCartProduct');
-Route::put('cart', 'CartWishlistController@updateCartProduct');
+Route::get('cart', 'CartController@showCart')->name('cart');
+Route::delete('cart', 'CartController@removeCartProduct');
+Route::post('cart', 'CartController@addCartProduct');
+Route::put('cart', 'CartController@updateCartProduct');
 
 //Purchase
 Route::view('checkout', 'erros/404')->name('checkout');
-Route::post('checkout', 'CartWishlistController@checkout');
+Route::post('checkout', 'CartController@checkout');
 
 //Product
 Route::get('product/{product_id}', 'ProductsController@showProduct')->name('product');
@@ -97,6 +90,9 @@ Route::post('add_product','ProductsController@addProduct');
 //Edit Product
 Route::get('/product/{id}/edit','ProductsController@showEditProduct')->name('edit_product')->middleware('auth','admin');
 Route::put('/product/{id}/edit','ProductsController@editProduct');
+Route::get('/product/{id}/archive', 'ProductsController@archiveProduct')->name('archive_product');
+
+Route::post('upload','ProductsController@uploadImage');
 
 
 Route::delete('product/{id}/review', 'ProductsController@deleteReview')->name('review');

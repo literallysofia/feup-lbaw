@@ -73,6 +73,7 @@ CREATE TABLE products (
     score double precision DEFAULT 0 NOT NULL ,
     "category_id" integer NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
     brand text NOT NULL,
+    "is_archived" boolean DEFAULT false NOT NULL,
     CONSTRAINT price CHECK ((price > (0)::double precision)),
     CONSTRAINT quantity_available CHECK ((quantity_available >= 0)),
     CONSTRAINT score CHECK (score >= 0 AND score <= 5)
@@ -80,9 +81,7 @@ CREATE TABLE products (
 
 
 DROP TABLE IF EXISTS archived_products CASCADE;
-CREATE TABLE archived_products (
-    "product_id" integer PRIMARY KEY REFERENCES products(id) ON DELETE CASCADE
-);
+
 
 DROP TABLE IF EXISTS delivery_types CASCADE;
 CREATE TABLE delivery_types (
