@@ -76,13 +76,6 @@
             </div>
           </fieldset>
         </form>
-        <form  method="PUT" action="{{route('archive')}}">
-          <fieldset>
-            <div class="d-flex flex-column">
-              <input type="submit" class="black-button mt-3" value="Delete Account">
-            </div>              
-          </fieldset>
-        </form>
       </div>
 
     </section>
