@@ -36,6 +36,8 @@
 <main>
     <div class="mt-5 container">
         <h2>Highlights</h2>
+        <div class="alert alert-success" id="cart-success" style="display:none"></div>
+        <div class="alert alert-danger" id="cart-error" style="display:none"></div> 
         <div class="row">
         @foreach($products as $product)
             <div class="mt-4 col-md-6 col-lg-3">

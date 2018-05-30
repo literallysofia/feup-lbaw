@@ -117,8 +117,6 @@ function removeDesignProduct(obj) {
 function deleteProduct(obj, id) {
     
 
-    if(!confirm('Are you sure you want to remove this product?'))
-        return false;
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -137,7 +135,6 @@ function deleteProduct(obj, id) {
         dataType: 'text',
         success: function (data) {
             let final = JSON.parse(data);
-            alert("Done: " + final.Message);
             removeDesignProduct(obj);
             $("#subtotal_price").html(final.Price+"€");
         },

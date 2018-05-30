@@ -21,9 +21,6 @@ function removeDesignProduct(obj) {
 
 function deleteProduct(obj, id) {
     
-
-    if(!confirm('Are you sure you want to remove this product?'))
-        return false;
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -41,7 +38,6 @@ function deleteProduct(obj, id) {
         data: product_data,
         dataType: 'text',
         success: function (data) {
-            alert("Done: " + data);
             console.log(data);
             removeDesignProduct(obj);
         },

@@ -37,7 +37,7 @@ $(document).ready(function () {
             data: my_data,
             dataType: 'text',
             success: function (data) {
-                alert("Done: " + data);
+                //alert("Done: " + data);
                 console.log(data);
             },
             error: function (data) {

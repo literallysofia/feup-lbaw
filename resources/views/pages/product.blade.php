@@ -11,8 +11,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 
 <main>
+    
     <section class="mt-4">
         <div class="container">
+        <div class="alert alert-success" id="cart-success" style="display:none"></div>
+        <div class="alert alert-danger" id="cart-error" style="display:none"></div>
+        <div class="alert alert-success" id="wishlist-success" style="display:none"></div>
+        <div class="alert alert-danger" id="wishlist-error" style="display:none"></div> 
             <div class="section-container">
                 <div class="row">
                     <div id="productCarouselIndicators" class="col-md-6 col-sm-12 carousel slide align-self-center" data-ride="carousel">

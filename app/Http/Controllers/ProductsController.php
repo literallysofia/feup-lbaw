@@ -230,7 +230,7 @@ class ProductsController extends Controller
         
     }
 
-    public function deleteReview(Request $request, $product_id)
+    public function deleteReview($product_id, Request $request)
     {
 
         try {
@@ -243,7 +243,6 @@ class ProductsController extends Controller
             }
 
             if ($review != null) {
-
                 $review->delete();
 
                 return response(json_encode(array('Message' => 'Review deleted', 'Reviews' => count($product->reviews))), 200);

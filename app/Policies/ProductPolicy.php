@@ -17,15 +17,12 @@ class ProductPolicy {
     }
 
     public function review(User $user, Product $product) {
-      $reviews = $user->reviews;
-      foreach($reviews as $review) {
-        if($review->product->where('id', $product->id)->count() > 0)
+        if($product->reviews->where('user_id', $user->id)->count() > 0)
           return false;
-      }
 
       $purchases = $user->purchases;
       foreach($purchases as $purchase) {
-        if($purchase->products->where('id', $product->id)->count() > 0)
+        if(($purchase->products->where('id', $product->id))->count() > 0)
           return true;
       }
       return false;

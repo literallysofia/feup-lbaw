@@ -71,7 +71,7 @@ CREATE TABLE products (
     name text NOT NULL,
     price double precision NOT NULL,
     "quantity_available" integer NOT NULL,
-    score double precision DEFAULT 0 NOT NULL ,
+    score double precision DEFAULT 1 NOT NULL ,
     "category_id" integer NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
     brand text NOT NULL,
     "is_archived" boolean DEFAULT false NOT NULL,
@@ -301,22 +301,29 @@ FOR EACH ROW
 EXECUTE PROCEDURE update_product_score();
 
 DROP FUNCTION IF EXISTS update_product_score_delete() CASCADE;
-CREATE FUNCTION update_product_score_delete() RETURNS TRIGGER AS
+/*CREATE FUNCTION update_product_score_delete() RETURNS TRIGGER AS
 $$
 BEGIN
-	UPDATE products
-	SET score = (SELECT AVG(score) FROM reviews WHERE product_id = OLD.product_id)
-	WHERE id = OLD."product_id";
-    RETURN OLD;
+	IF EXISTS(SELECT * FROM reviews WHERE id != OLD.id AND product_id = OLD."product_id") THEN
+        UPDATE products
+	    SET score = (SELECT AVG(score) FROM reviews WHERE product_id = OLD."product_id" AND id <> OLD.id)
+	    WHERE id = OLD."product_id";
+        RETURN OLD;
+    ELSE
+        UPDATE products
+	    SET score = 1
+	    WHERE id = OLD."product_id";
+        RETURN OLD;
+    END IF;
 END
 $$
-LANGUAGE plpgsql;
+LANGUAGE plpgsql;*/
 
 DROP TRIGGER IF EXISTS product_score_delete ON reviews CASCADE;  
-CREATE TRIGGER product_score_delete AFTER DELETE
+/*CREATE TRIGGER product_score_delete AFTER DELETE
 ON reviews
 FOR EACH ROW
-EXECUTE PROCEDURE update_product_score_delete();
+EXECUTE PROCEDURE update_product_score_delete();*/
 
 /** POPULATE **/
 

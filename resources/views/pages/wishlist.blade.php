@@ -12,6 +12,8 @@
 <main>
     <div class="container">
         <h1>My Wishlist</h1>
+        <div class="alert alert-success" id="cart-success" style="display:none"></div>
+        <div class="alert alert-danger" id="cart-error" style="display:none"></div> 
         <div class="section-container">
             @for($i=0; $i<count($products); $i++)
                 <form class="cart-item row" onsubmit="return addToCart(this, {{ $products[$i]->id }})">

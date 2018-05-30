@@ -17,7 +17,6 @@ function deleteReview(review, id, product_id) {
         data: review_data,
         dataType: 'text',
         success: function (data) {
-            console.log(data);
             final = JSON.parse(data);
             let reviewO = $(review).closest('.review-item');
             reviewO.next().remove();
