@@ -72,7 +72,6 @@ function addPhotoCard(e) {
 }
 
 function readUrl(input) {
-    console.log("Added event ");
 
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -109,10 +108,13 @@ function getPhotosSrc() {
 
 function saveProduct(event) {
     event.preventDefault();
+    var is_edit = false;
+    if (event.target.id.trim() == "editProductButton")
+        is_edit = true;
 
     var photos_src = getPhotosSrc();
 
-    if(photos_src.length == 0)
+    if(photos_src.length == 0 && !is_edit)
         return false;
 
     var photos_files = new FormData();
@@ -120,9 +122,7 @@ function saveProduct(event) {
         photos_files.append(i, photos_src[i]);
     }
 
-    var is_edit = false;
-    if (event.target.id == "editProductButton")
-        is_edit = true;
+  
     var flag = false;
     if ($('#product_name').is(":invalid")) {
         $('#product_name').css('border', "2px solid #ff5555");
@@ -177,8 +177,13 @@ function saveProduct(event) {
     product_specs = product_specs[1];
     var url = window.location.href;
     var my_url = url.substring(url.indexOf("add_product"), url.length).trim();
+    if(!is_edit)
     var category_name = my_url.substring(my_url.indexOf("/") + 1, my_url.length).trim();
-    var product = {
+    else{
+   
+    var category_name = $('#realCategoryName').text();
+    
+}    var product = {
         'category_name': category_name,
         'name': product_name,
         'price': product_price,
@@ -230,27 +235,40 @@ function addProduct(product) {
 
 function editProduct(product) {
     console.log("Editing product" + product);
-
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
 
+    console.log(product);
+
     var url = window.location.href;
-    var my_url = url.substring(url.indexOf("product"), url.length).trim();
+    var my_url = '/' + url.substring(url.indexOf("product"), url.length).trim();
 
+    var first = my_url.indexOf('/');
+    var last = my_url.lastIndexOf('/');
 
+    var id = my_url.substring(first,last);
+
+    first = id.lastIndexOf('/');
+
+    id = id.substring(first+1,id.length);
+
+    product.id = id;
+    console.log(product.id);
     $.ajax({
         type: 'PUT',
         url: my_url,
         data: product,
         success: function (data) {
-
+            console.log("Successo");
+            console.log(data);
 
         },
         error: function (data) {
-
+            console.log("Erro");
+            console.log(data);
         }
     });
 
@@ -339,7 +357,7 @@ function sendImage(toUpload){
             console.log("Success cenas");
             var photos = getPhotosSrc();
             console.log(photos);  
-            if(data.count < (photos.length)){
+            if(data.count < (photos.length-1)){
 
                 var count = parseInt(data.count) + 1;
                 var toUpload = new FormData();
@@ -384,7 +402,10 @@ function checkProperties() {
     var prop_values = [];
     for (let i = 0; i < property_header.length; i++) {
         is_required = property_header[i].innerText.trim().endsWith('*');
+        console.log(property_header[i].innerText);
+        console.log(is_required);
         var result = checkPropertyValue(property_values[i].children, is_required)
+        if(correct != false)
         correct = result[1];
         var values = result[0];
         if (values != null && values.length != 0) {
@@ -399,7 +420,8 @@ function checkProperties() {
         }
 
     }
-
+    console.log("Hello");
+    console.log(correct);
     console.log(prop_values);
 
     return [correct, prop_values];

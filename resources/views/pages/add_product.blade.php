@@ -13,6 +13,7 @@
         <div class="container scroll_nav">
             <div class="row">
                 <h1 class="col-12" id="category_name">{{$category->name}}</h1>
+                <p id="realCategoryName" style="display:none;">{{$category->name}}</p>
             </div>
         </div>
     </div>
