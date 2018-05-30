@@ -788,6 +788,10 @@ main .review_comment {
   .btn.btn-primary.back-to-top:active {
     background-color: #6174AA !important; }
 
+.fa-pencil-alt:hover, .fa-trash-alt:hover {
+  color: #646464;
+  cursor: pointer; }
+
 main .contact p {
   text-align: justify; }
 main .contact .contact-form {
