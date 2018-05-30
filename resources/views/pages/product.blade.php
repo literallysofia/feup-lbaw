@@ -57,8 +57,13 @@
                             </div>
                         </div>
                         <p class="mt-1" id="product_price">{{$product->price}} €</p>
-                        <input type="button" class="black-button col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Add to Cart" onclick="return addToCart(null, {{$product->id}})"></input>
-                        <input type="button" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Add to Wishlist" onclick="return addToWishlist({{$product->id}})"></input>
+                        @if(Auth::check() && Auth::user()->isAdmin())
+                            <input type="button" class="black-button col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Archive Product" onclick="window.location='{{route("archive_product", ["id" => $product->id])}}'"></input>
+                            <input type="button" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Edit Product" onclick="window.location='{{route("edit_product", ["id" => $product->id])}}'"></input>
+                        @else
+                            <input type="button" class="black-button col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Add to Cart" onclick="return addToCart(null, {{$product->id}})"></input>
+                            <input type="button" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-4" value="Add to Wishlist" onclick="return addToWishlist({{$product->id}})"></input>
+                        @endif
                     </div>
                 </div>
             </div>

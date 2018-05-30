@@ -73,6 +73,7 @@ CREATE TABLE products (
     score double precision DEFAULT 0 NOT NULL ,
     "category_id" integer NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
     brand text NOT NULL,
+    "is_archived" boolean DEFAULT false NOT NULL,
     CONSTRAINT price CHECK ((price > (0)::double precision)),
     CONSTRAINT quantity_available CHECK ((quantity_available >= 0)),
     CONSTRAINT score CHECK (score >= 0 AND score <= 5)
@@ -80,9 +81,7 @@ CREATE TABLE products (
 
 
 DROP TABLE IF EXISTS archived_products CASCADE;
-CREATE TABLE archived_products (
-    "product_id" integer PRIMARY KEY REFERENCES products(id) ON DELETE CASCADE
-);
+
 
 DROP TABLE IF EXISTS delivery_types CASCADE;
 CREATE TABLE delivery_types (
@@ -514,10 +513,6 @@ INSERT INTO products (name, price, "quantity_available", score, "category_id", b
 
 INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Headphones Beats Studio3 Wireless - Black Shadow', '349.99', 10, 2, 5, 'Beats');
 INSERT INTO products (name, price, "quantity_available", score, "category_id", brand) VALUES ('Power Bank Xiaomi Mi Power 20000mAh - White', '45.99', 50, 1, 5, 'Xiaomi');
-
-/*ARCHIVED-PRODUCTS*/
-INSERT INTO archived_products ("product_id") VALUES (10);
-INSERT INTO archived_products ("product_id") VALUES (12);
 
 /*DELIVERY_TYPES*/
 INSERT INTO delivery_types (name, price) VALUES ('Standard Delivery', '0.99');

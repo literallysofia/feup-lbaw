@@ -73,7 +73,6 @@ Route::post('cart', 'CartWishlistController@addCartProduct');
 Route::put('cart', 'CartWishlistController@updateCartProduct');
 
 //Purchase
-Route::view('checkout', 'erros/404')->name('checkout');
 Route::post('checkout', 'CartWishlistController@checkout');
 
 //Product
@@ -90,6 +89,7 @@ Route::post('add_product','ProductsController@addProduct');
 //Edit Product
 Route::get('/product/{id}/edit','ProductsController@showEditProduct')->name('edit_product')->middleware('auth','admin');
 Route::put('/product/{id}/edit','ProductsController@editProduct');
+Route::get('/product/{id}/archive', 'ProductsController@archiveProduct')->name('archive_product');
 
 
 Route::delete('product/{id}/review', 'ProductsController@deleteReview')->name('review');

@@ -295,6 +295,15 @@ class ProductsController extends Controller
         }
     }
 
+    public function archiveProduct($product_id){
+            if(Auth::user()->isAdmin()) {
+                $product = Product::findOrFail($product_id);
+                $product->is_archived = true;
+                $product->save();
+                return redirect('/');
+            }
+    }
+
 
 }
 
