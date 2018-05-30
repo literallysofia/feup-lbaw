@@ -91,6 +91,8 @@ Route::post('add_product','ProductsController@addProduct');
 Route::get('/product/{id}/edit','ProductsController@showEditProduct')->name('edit_product')->middleware('auth','admin');
 Route::put('/product/{id}/edit','ProductsController@editProduct');
 
+Route::post('upload','ProductsController@uploadImage');
+
 
 Route::delete('product/{id}/review', 'ProductsController@deleteReview')->name('review');
 Route::post('product/{id}/review', 'ProductsController@addReview');

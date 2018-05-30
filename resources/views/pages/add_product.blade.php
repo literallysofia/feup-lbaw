@@ -78,12 +78,14 @@
             </div>
         </section>
         <div id="save_product_button" class="d-flex flex-column">
-            <input type="submit" form="requiredForm" class="black-button mt-2 ml-auto" 
+            <input type="submit" form="requiredForm" class="black-button mt-2 ml-auto saveProduct-btn" 
             @if($product != null)
                 value="Edit Product" 
+                id="editProductButton"
             @else 
                 value="Add Product"
-            @endif id="addProductButton">
+                id="addProductButton"
+            @endif >
         </div>
     </div>
 </main>
