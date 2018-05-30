@@ -1,4 +1,6 @@
 
+
+
 function addPreviewListener(list) {
     if (list.children.length == 0 || list.children == null) {
         return
@@ -275,7 +277,14 @@ function editProduct(product) {
             console.log(data);
 
             var product_id = data.product.id;
-            uploadImages(product_id);
+
+            if(!uploadImages(product_id)){
+                var url = window.location.href;
+                var index = url.indexOf('/product');
+                url = url.substring(0, index);
+                url += '/';
+                document.location.href = url + 'product/' + product_id;
+            };
 
         },
         error: function (data) {
@@ -292,7 +301,7 @@ function uploadImages(id) {
     var photos = this.getPhotosSrc();
     console.log(photos);
 
-    if (photos <= 0) return;
+    if (photos <= 0) return false;
 
     var success = true;
     var count = 0;
