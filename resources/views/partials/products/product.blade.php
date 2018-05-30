@@ -2,7 +2,7 @@
 <div class="mt-4 col-md-12 col-lg-4">
     <div class="box d-flex flex-column align-items-center">
         <a href="{{ route('product', ['product_id'=> $product->id]) }}">
-            <img src="{{ $product->photos->first()->path }}" alt="{{ $product->name }}" class="img-fluid" style="cursor:pointer;"></a>
+            <img src="{{ asset($product->photos[0]->path) }}" alt="{{ $product->name }}" class="img-fluid" style="cursor:pointer;"></a>
         <a href="{{ route('product', ['product_id'=> $product->id]) }}">
             <h6 style="cursor:pointer;">{{ $product->name }}</h6></a>
         <span>{{ $product->price }} €</span>
