@@ -10,11 +10,18 @@ Made in colaboration with [Carlos Freitas](https://github.com/CarlosFr97), [Juli
 **Completed in 30/05/2018.**
 
 ## Project
-The purpose of this project was to develop a web application for an online tech store, called **Sweven**, which means a vision seen in sleep, a dream. From the Old English to the modern days, this word inspired us. In order to have a great product diversity, the store sells multiple tech brands and product types, such as smartphones, laptops, and tablets. Sweven is based on HTML5, JavaScript, and CSS. The Bootstrap framework was used to implement the user interface and when it comes to PHP, it was used the Laravel framework.
+The purpose of this project was to develop a web application for an online tech store, called **Sweven**, which means a vision seen in sleep, a dream. From the Old English to the modern days, this word inspired us. In order to have a great product diversity, the store sells multiple tech brands and product types, such as smartphones, laptops, and tablets. Sweven is based on **HTML5**, **JavaScript**, **CSS**, **PostgreSQL** and **PHP**. The **Bootstrap framework** was used to implement the user interface and when it comes to backend, it was used the **Laravel framework**.
 
 The platform has an adaptive design and a detailed navigation system by arranging the products through categories. In order to provide a reliable service, each product has a review section, which allows users to not only review the items they purchased but also to view other people's opinions. Each review includes a score and a short description, which results in the product to have an average score. Besides, users have the ability to save favorite products in a wishlist and view the history of all previous purchases. Finally, users are distributed in three groups with different permissions: administrators, unauthenticated and authenticated users.
 
-The Sketch App was used to develop Sweven's design, you can check it out on [my behance](). Oh, and there's a [youtube video](https://youtu.be/la9v98MQ1qc).
+The Sketch App was used to develop Sweven's design, you can check it out on [my behance]().
+The website is live [here](http://lbaw1761.lbaw-prod.fe.up.pt), but access is restricted to the **FEUP network** (or FEUP VPN). Oh, and there's a [youtube video](https://youtu.be/la9v98MQ1qc).
+
+### Repository Flow
+
+ * The **source code** is in the [master branch](https://github.com/literallysofia/feup-lbaw/tree/master).
+ * The **documentation** is in [the current branch](https://github.com/literallysofia/feup-lbaw/tree/documentation), which is the default.
+ * The **vertical prototype** is in the [proto branch](https://github.com/literallysofia/feup-lbaw/tree/proto).
 
 ### Screenshots
 
