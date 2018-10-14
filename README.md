@@ -53,7 +53,7 @@ The website is live [here](http://lbaw1761.lbaw-prod.fe.up.pt), but access is re
 Link to the Github release: [Final Version](https://github.com/literallysofia/lbaw1761/releases/tag/A10)
 
 
-#### Docker Command
+### Docker Command
 ```
 docker-compose up
 
