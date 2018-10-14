@@ -18,8 +18,28 @@ The Sketch App was used to develop Sweven's design, you can check it out on [my 
 
 ### Screenshots
 
-<img src="" width="800"><br><br>
-<img src="" width="800"><br>
+<table>
+  <tr>
+    <td><img src="https://github.com/literallysofia/feup-lbaw/blob/documentation/design/screenshots/image1.jpg"></td>
+    <td><img src="https://github.com/literallysofia/feup-lbaw/blob/documentation/design/screenshots/image2.jpg"></td>
+    <td><img src="https://github.com/literallysofia/feup-lbaw/blob/documentation/design/screenshots/image3.jpg"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/literallysofia/feup-lbaw/blob/documentation/design/screenshots/image4.jpg"></td>
+    <td><img src="https://github.com/literallysofia/feup-lbaw/blob/documentation/design/screenshots/image5.jpg"></td>
+    <td><img src="https://github.com/literallysofia/feup-lbaw/blob/documentation/design/screenshots/image6.jpg"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/literallysofia/feup-lbaw/blob/documentation/design/screenshots/image10.jpg"></td>
+    <td><img src="https://github.com/literallysofia/feup-lbaw/blob/documentation/design/screenshots/image8.jpg"></td>
+    <td><img src="https://github.com/literallysofia/feup-lbaw/blob/documentation/design/screenshots/image9.jpg"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/literallysofia/feup-lbaw/blob/documentation/design/screenshots/image7.jpg"></td>
+    <td><img src="https://github.com/literallysofia/feup-lbaw/blob/documentation/design/screenshots/image11.jpg"></td>
+    <td><img src="https://github.com/literallysofia/feup-lbaw/blob/documentation/design/screenshots/image12.jpg"></td>
+  </tr>
+</table>
 
 ## Installation
 
