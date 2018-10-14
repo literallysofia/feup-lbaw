@@ -14,7 +14,7 @@ The purpose of this project was to develop a web application for an online tech 
 
 The platform has an adaptive design and a detailed navigation system by arranging the products through categories. In order to provide a reliable service, each product has a review section, which allows users to not only review the items they purchased but also to view other people's opinions. Each review includes a score and a short description, which results in the product to have an average score. Besides, users have the ability to save favorite products in a wishlist and view the history of all previous purchases. Finally, users are distributed in three groups with different permissions: administrators, unauthenticated and authenticated users.
 
-The Sketch App was used to develop Sweven's design, you can check it out on [my behance]().
+The Sketch App was used to develop Sweven's design, you can check it out on [my behance](https://www.behance.net/gallery/71374245/Sweven-Website).
 The website is live [here](http://lbaw1761.lbaw-prod.fe.up.pt), but access is restricted to the **FEUP network** (or FEUP VPN). Oh, and there's a [youtube video](https://youtu.be/la9v98MQ1qc).
 
 ### Repository Flow
